@@ -4,15 +4,18 @@
     Config.$inject = ['$stateProvider', '$urlRouterProvider'];
 
     function Config($stateProvider, $urlRouterProvider) {
-        $stateProvider.state('Home', {
+        $stateProvider.state('Welcome', {
             url: '/',
-            templateUrl: '/views/home_page.html'
+            templateUrl: '/views/welcome_page.html'
         }).state('Register', {
             url: '/Register',
             templateUrl: '/views/user_register.html'
         }).state('Login', {
             url: '/Login',
             templateUrl: '/views/user_login.html'
+        }).state('Home', {
+            url: '/Home',
+            templateUrl: '/views/home_page.html'
         });
         $urlRouterProvider.otherwise('/');
     }
@@ -29,6 +32,39 @@
         vm.title = 'Welcome to our App!';
     }
 })();
+(function () {
+    'use strict';
+    angular.module('app').controller('NavbarController', NavbarController);
+
+    NavbarController.$inject = ['UserFactory', '$state'];
+
+    function NavbarController(UserFactory, $state) {
+        var vm = this;
+        vm.user = {};
+        vm.status = UserFactory.status;
+        vm.register = register;
+        vm.login = login;
+        vm.logout = UserFactory.logout;
+
+
+        function register() {
+            var u = vm.user;
+            if (!u.username || !u.email || !u.password || !u.cpassword || (u.password !== u.cpassword)) {
+                return false;
+            }
+            UserFactory.register(u).then(function () {
+                $state.go('Home');
+            });
+        }
+
+        function login() {
+            UserFactory.login(vm.user).then(function () {
+                $state.go('Home');
+            });
+        }
+    }
+})();
+
 (function () {
     'use strict';
     angular.module('app').factory('HomeFactory', HomeFactory);
@@ -107,39 +143,6 @@
 
         function getUsername() {
             return JSON.parse(atob(getToken().split('.')[1])).username;
-        }
-    }
-})();
-
-(function () {
-    'use strict';
-    angular.module('app').controller('NavbarController', NavbarController);
-
-    NavbarController.$inject = ['UserFactory', '$state'];
-
-    function NavbarController(UserFactory, $state) {
-        var vm = this;
-        vm.user = {};
-        vm.status = UserFactory.status;
-        vm.register = register;
-        vm.login = login;
-        vm.logout = UserFactory.logout;
-
-
-        function register() {
-            var u = vm.user;
-            if (!u.username || !u.email || !u.password || !u.cpassword || (u.password !== u.cpassword)) {
-                return false;
-            }
-            UserFactory.register(u).then(function () {
-                $state.go('Home');
-            });
-        }
-
-        function login() {
-            UserFactory.login(vm.user).then(function () {
-                $state.go('Home');
-            });
         }
     }
 })();
