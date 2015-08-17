@@ -12,7 +12,13 @@ var PhotoSchema = new mongoose.Schema({
   deletedAt: { type: Date, 'default': null },
   strikes: Number,
   title: String,
-  comments: []
+  comments: [{
+		body: String,
+		user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+		dateCreated: Date,
+    dateEdited: Date,
+    dateDeleted: Date
+	}]
 });
 
 // Model is ready for Use

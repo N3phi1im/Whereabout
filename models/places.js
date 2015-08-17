@@ -8,7 +8,7 @@ var mongoose = require('mongoose');
 var PlaceSchema = new mongoose.Schema({
 	name: { type: String, lowercase: true, unique: true },
   google: Schema.Types.Mixed,
-  photos_of_place: []
+  photos: [{}]
 });
 
 // Model is ready for Use
