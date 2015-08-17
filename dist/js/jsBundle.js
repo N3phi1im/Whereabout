@@ -9,10 +9,10 @@
             templateUrl: '/views/home_page.html'
         }).state('Register', {
             url: '/Register',
-            templateUrl: '/views/register.html'
+            templateUrl: '/views/user_register.html'
         }).state('Login', {
             url: '/Login',
-            templateUrl: '/views/login.html'
+            templateUrl: '/views/user_login.html'
         });
         $urlRouterProvider.otherwise('/');
     }
@@ -97,7 +97,7 @@
         }
 
         function getToken() {
-            return localStorage['token'];
+            return localStorage.token;
         }
 
         function removeToken() {
@@ -128,7 +128,7 @@
 
         function register() {
             var u = vm.user;
-            if (!u.username || !u.email || !u.password || !u.cpassword || !(u.password === u.cpassword)) {
+            if (!u.username || !u.email || !u.password || !u.cpassword || (u.password !== u.cpassword)) {
                 return false;
             }
             UserFactory.register(u).then(function () {
