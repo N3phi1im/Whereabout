@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 // Model
 
 var PhotoSchema = new mongoose.Schema({
+  id: String,
   user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
   place: {type: mongoose.Schema.Types.ObjectId, ref: 'Place'},
   createdAt: { type: Date, 'default': Date.now },
@@ -15,9 +16,9 @@ var PhotoSchema = new mongoose.Schema({
   comments: [{
 		body: String,
 		user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-		dateCreated: Date,
-    dateEdited: Date,
-    dateDeleted: Date
+		dateCreated: { type: Date, 'default': Date.now },
+    dateEdited: { type: Date, 'default': null },
+    dateDeleted: { type: Date, 'default': null }
 	}]
 });
 
