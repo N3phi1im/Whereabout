@@ -5,3 +5,8 @@
 .vcenter {
 	vertical-align: middle;
 }
+
+#about {
+	background-image: url('https://static.pexels.com/photos/6732/city-cars-traffic-lights.jpg');
+	height: 1200px;
+}
