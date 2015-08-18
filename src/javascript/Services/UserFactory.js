@@ -17,6 +17,7 @@
 		o.removeToken = removeToken;
 		o.register = register;
 		o.login = login;
+		o.facebook = facebook;
 		o.logout = logout;
 		return o;
 
@@ -30,9 +31,18 @@
 			return q.promise;
 		}
 		function login(user) {
-			var u = { username: user.username.toLowerCase(), password: user.password};
+			var u = { email: user.email.toLowerCase(), password: user.password};
 			var q = $q.defer();
 			$http.post('/api/Users/Login', u).success(function(res) {
+				setToken(res.token);
+				o.status.isLoggedIn = true;
+				q.resolve();
+			});
+			return q.promise;
+		}
+		function facebook() {
+			var q = $q.defer();
+			$http.get('/api/Facebook/auth/facebook').success(function(res) {
 				setToken(res.token);
 				o.status.isLoggedIn = true;
 				q.resolve();
