@@ -37,9 +37,30 @@ section {
 }
 
 #welcomeText {
-	margin-top: 10%;
+	margin-top: 8%;
 }
 
 #registerLink {
 	margin-right: 12px;
+	margin-top: 2px;
+}
+
+h1 {
+	font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+	font-size: 65px;
+	font-weight: 900;
+	line-height: 1.1;
+	width: 880px;
+	color: white;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.largerWidth {
+	width: 880px;
+}
+
+#paddingRight {
+	margin-right: 10px;
 }
