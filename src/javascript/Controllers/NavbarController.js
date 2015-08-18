@@ -12,7 +12,7 @@
 		vm.register = register;
 		vm.login = login;
 		vm.logout = UserFactory.logout;
-		vm.scrollTo = scrollTo;
+
 
 		function register() {
 			var u = vm.user;
@@ -29,11 +29,11 @@
 			});
 		}
 
-		function scrollTo(id) {
+		vm.scrollTo = function(id) {
 			$location.hash(id);
 			console.log($location.hash());
 			$anchorScroll();
-		}
+		};
 
 	}
 })();

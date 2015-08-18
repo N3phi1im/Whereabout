@@ -1,5 +1,5 @@
 <html lang="en">
-<body id="page-top" ng-controller="NavbarController as vm">
+<body id="page-top" >
 
 
     <section class="bg-primary" id="about">
@@ -16,8 +16,8 @@
     </section>
 
 
-    <div class="hcenter">
-        <a ng-click="scrollTo('bottomPage')" id="learnMore"class="btn btn-default btn-xl">Learn More</a>
+    <div class="hcenter" ng-controller="NavbarController as vm">
+        <a ng-click="vm.scrollTo('bottomPage')" id="learnMore"class="btn btn-default btn-xl">Learn More</a>
     </div>
 
     <section id="services">
@@ -29,7 +29,7 @@
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container" id="bottomPage">
             <div class="row">
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
@@ -170,7 +170,7 @@
     </aside>
 
     <section id="contact">
-        <div class="container" id="bottomPage">
+        <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                     <h2 class="section-heading">Let's Get In Touch!</h2>
