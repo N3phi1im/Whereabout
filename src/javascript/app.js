@@ -16,6 +16,30 @@
 		}).state('Home', {
 			url: '/Home',
 			templateUrl: '/views/home_page.html'
+		}).
+		state('Business', {
+			url: '/Business',
+			templateUrl: '/views/business_page.html'
+		}).
+		state('Discovery', {
+			url: '/Discovery',
+			templateUrl: '/views/discovery_page.html'
+		}).
+		state('MyPost', {
+			url: '/MyPost',
+			templateUrl: '/views/mypost_page.html'
+		}).
+		state('Profile', {
+			url: '/Profile',
+			templateUrl: '/views/profile_page.html'
+		}).
+		state('TakePhoto', {
+			url: '/TakePhoto',
+			templateUrl: '/views/takephoto_page.html'
+		}).
+		state('Home', {
+			url: '/Home',
+			templateUrl: '/views/home_page.html'
 		});
 		$urlRouterProvider.otherwise('/');
 	}

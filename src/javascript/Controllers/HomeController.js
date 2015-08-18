@@ -3,10 +3,9 @@
 	angular.module('app')
 	.controller('HomeController', HomeController);
 
-	HomeController.$inject = [];
+	HomeController.$inject = ['HomeFactory','UserFactory'];
 
-	function HomeController() {
+	function HomeController(HomeFactory,UserFactory) {
 		var vm = this;
-		vm.title = 'Welcome to our App!';
 	}
 })();
