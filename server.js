@@ -28,11 +28,22 @@ app.set('view options', {
 });
 
 //middleware that allows for us to parse JSON and UTF-8 from the body of an HTTP request
-app.use(bodyParser.urlencoded({extended: true})); 
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(passport.initialize());
 
 //on homepage load, render the index page
+app.get('/auth/facebook', passport.authenticate('facebook'));
+
+app.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { successRedirect: '/', failureRedirect: '/Login' }),
+  function(req, res) {
+		res.send(req.user);
+	});
+
+	app.post('/login', passport.authenticate('local', { successRedirect: '/',
+	                                                    failureRedirect: '/login' }));
+
 app.get('/', function(req, res) {
 	res.render('index');
 });

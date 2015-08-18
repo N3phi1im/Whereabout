@@ -9,7 +9,9 @@ var UserSchema = new mongoose.Schema({
 	age: { type: Number, 'default': null },
 	gender: { type: String, 'default': null },
 	email: {type: String, unique: true, lowercase: true},
-	facebook: {},
+	facebook: {
+		id: String
+	},
 	passwordHash: String,
 	salt: String
 });
