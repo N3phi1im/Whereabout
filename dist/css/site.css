@@ -5,3 +5,24 @@
 .vcenter {
 	vertical-align: middle;
 }
+
+#about {
+	width: 100%;
+	text-align: center;
+	color: #fff;
+	background-image: url('https://static.pexels.com/photos/6732/city-cars-traffic-lights.jpg');
+	background-size:100%;
+}
+
+#learnMore {
+	background-color: #222;
+	color: #fff;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	margin-top: 2%;
+}
+
+section {
+	height: 800px;
+}

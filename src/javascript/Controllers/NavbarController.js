@@ -3,9 +3,9 @@
 	angular.module('app')
 	.controller('NavbarController', NavbarController);
 
-	NavbarController.$inject = ['UserFactory', '$state'];
+	NavbarController.$inject = ['UserFactory', '$state', '$scope','$anchorScroll', '$location'];
 
-	function NavbarController(UserFactory, $state) {
+	function NavbarController(UserFactory, $state, $scope, $anchorScroll, $location) {
 		var vm = this;
 		vm.user = {};
 		vm.status = UserFactory.status;
@@ -28,5 +28,12 @@
 				$state.go('Home');
 			});
 		}
+
+		vm.scrollTo = function(id) {
+			$location.hash(id);
+			console.log($location.hash());
+			$anchorScroll();
+		};
+
 	}
 })();
