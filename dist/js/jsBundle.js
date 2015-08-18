@@ -95,6 +95,7 @@
         vm.status = UserFactory.status;
         vm.register = register;
         vm.login = login;
+        vm.facebook = facebook;
         vm.logout = UserFactory.logout;
 
 
@@ -110,6 +111,12 @@
 
         function login() {
             UserFactory.login(vm.user).then(function () {
+                $state.go('Home');
+            });
+        }
+
+        function facebook() {
+            UserFactory.facebook().then(function () {
                 $state.go('Home');
             });
         }
@@ -163,6 +170,7 @@
         o.removeToken = removeToken;
         o.register = register;
         o.login = login;
+        o.facebook = facebook;
         o.logout = logout;
         return o;
 
@@ -178,11 +186,21 @@
 
         function login(user) {
             var u = {
-                username: user.username.toLowerCase(),
+                email: user.email.toLowerCase(),
                 password: user.password
             };
             var q = $q.defer();
             $http.post('/api/Users/Login', u).success(function (res) {
+                setToken(res.token);
+                o.status.isLoggedIn = true;
+                q.resolve();
+            });
+            return q.promise;
+        }
+
+        function facebook() {
+            var q = $q.defer();
+            $http.get('/api/Facebook/auth/facebook').success(function (res) {
                 setToken(res.token);
                 o.status.isLoggedIn = true;
                 q.resolve();

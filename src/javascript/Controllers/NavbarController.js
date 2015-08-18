@@ -11,6 +11,7 @@
 		vm.status = UserFactory.status;
 		vm.register = register;
 		vm.login = login;
+		vm.facebook = facebook;
 		vm.logout = UserFactory.logout;
 
 
@@ -25,6 +26,11 @@
 		}
 		function login() {
 			UserFactory.login(vm.user).then(function() {
+				$state.go('Home');
+			});
+		}
+		function facebook() {
+			UserFactory.facebook().then(function() {
 				$state.go('Home');
 			});
 		}
