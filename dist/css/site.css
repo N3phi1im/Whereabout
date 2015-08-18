@@ -11,7 +11,7 @@
 	width: 100%;
 	text-align: center;
 	color: #fff;
-	background-image: url('https://static.pexels.com/photos/6732/city-cars-traffic-lights.jpg');
+	background-image: url('../img/city-cars-traffic-lights.jpg');
 	background-size: cover;
 	min-height: 85vh;
 	background-repeat: none;
@@ -66,4 +66,4 @@ h1 {
 #paddingRight {
 	margin-right: 10px;
 }
-
+.modal-footer {   border-top: 0px; }
