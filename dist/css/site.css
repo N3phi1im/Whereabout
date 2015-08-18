@@ -45,6 +45,8 @@ section {
 #registerLink {
 	margin-right: 12px;
 	margin-top: 2px;
+	cursor: pointer;
+
 }
 
 h1 {
@@ -67,3 +69,31 @@ h1 {
 	margin-right: 10px;
 }
 
+.btn-facebook {
+	border-radius: 2px;
+
+	width: 185;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 10px;
+}
+
+#square {
+	border-radius: 2px;
+	margin-top: 5px;
+	width: 185;
+}
+
+label {
+	float: left;
+}
+
+.loginForm {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.modal-footer {
+	border: none;
+}
