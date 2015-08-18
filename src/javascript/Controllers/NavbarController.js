@@ -11,12 +11,13 @@
 		vm.status = UserFactory.status;
 		vm.register = register;
 		vm.login = login;
+		vm.facebook = facebook;
 		vm.logout = UserFactory.logout;
 
 
 		function register() {
 			var u = vm.user;
-			if(!u.username || !u.email || !u.password || !u.cpassword || (u.password !== u.cpassword)) {
+			if(!u.email || !u.password || !u.cpassword || (u.password !== u.cpassword)) {
 				return false;
 			}
 			UserFactory.register(u).then(function() {
@@ -25,6 +26,11 @@
 		}
 		function login() {
 			UserFactory.login(vm.user).then(function() {
+				$state.go('Home');
+			});
+		}
+		function facebook() {
+			UserFactory.facebook().then(function() {
 				$state.go('Home');
 			});
 		}

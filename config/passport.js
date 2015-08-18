@@ -3,7 +3,6 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 var LocalStrategy = require('passport-local').Strategy;
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
-var jwt = require('express-jwt');
 
 
 passport.serializeUser(function(user, done) {

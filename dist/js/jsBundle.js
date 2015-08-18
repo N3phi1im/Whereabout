@@ -61,8 +61,13 @@
 
     function HomeController(HomeFactory, UserFactory) {
         var vm = this;
+
+        vm.upload = function () {
+            HomeFactory.upload();
+        };
     }
 })();
+
 (function () {
     'use strict';
     angular.module('app').controller('ModalController', ModalController);
@@ -95,12 +100,13 @@
         vm.status = UserFactory.status;
         vm.register = register;
         vm.login = login;
+        vm.facebook = facebook;
         vm.logout = UserFactory.logout;
 
 
         function register() {
             var u = vm.user;
-            if (!u.username || !u.email || !u.password || !u.cpassword || (u.password !== u.cpassword)) {
+            if (!u.email || !u.password || !u.cpassword || (u.password !== u.cpassword)) {
                 return false;
             }
             UserFactory.register(u).then(function () {
@@ -110,6 +116,12 @@
 
         function login() {
             UserFactory.login(vm.user).then(function () {
+                $state.go('Home');
+            });
+        }
+
+        function facebook() {
+            UserFactory.facebook().then(function () {
                 $state.go('Home');
             });
         }
@@ -141,10 +153,15 @@
 
     function HomeFactory($http, $q) {
         var o = {};
-
+        o.upload = upload;
         return o;
+
+        function upload() {
+            $http.post('/api/Photos/upload');
+        }
     }
 })();
+
 (function () {
     'use strict';
     angular.module('app').factory('UserFactory', UserFactory);
@@ -156,13 +173,16 @@
         o.status = {};
         if (getToken()) {
             o.status.isLoggedIn = true;
-            o.status.username = getUsername();
+            o.status.first_name = getFirstname();
+            o.status.last_name = getLastname();
+            o.status.image = getImage();
         }
         o.setToken = setToken;
         o.getToken = getToken;
         o.removeToken = removeToken;
         o.register = register;
         o.login = login;
+        o.facebook = facebook;
         o.logout = logout;
         return o;
 
@@ -178,11 +198,21 @@
 
         function login(user) {
             var u = {
-                username: user.username.toLowerCase(),
+                email: user.email.toLowerCase(),
                 password: user.password
             };
             var q = $q.defer();
             $http.post('/api/Users/Login', u).success(function (res) {
+                setToken(res.token);
+                o.status.isLoggedIn = true;
+                q.resolve();
+            });
+            return q.promise;
+        }
+
+        function facebook() {
+            var q = $q.defer();
+            $http.get('/api/Facebook/auth/facebook').success(function (res) {
                 setToken(res.token);
                 o.status.isLoggedIn = true;
                 q.resolve();
@@ -197,7 +227,9 @@
 
         function setToken(token) {
             localStorage.setItem('token', token);
-            o.status.username = getUsername();
+            o.status.first_name = getFirstname();
+            o.status.last_name = getLastname();
+            o.status.image = getImage();
         }
 
         function getToken() {
@@ -206,11 +238,21 @@
 
         function removeToken() {
             localStorage.removeItem('token');
-            o.status.username = null;
+            o.status.first_name = null;
+            o.status.last_name = null;
+            o.status.image = null;
         }
 
-        function getUsername() {
-            return JSON.parse(atob(getToken().split('.')[1])).username;
+        function getFirstname() {
+            return JSON.parse(atob(getToken().split('.')[1])).first_name;
+        }
+
+        function getLastname() {
+            return JSON.parse(atob(getToken().split('.')[1])).last_name;
+        }
+
+        function getImage() {
+            return JSON.parse(atob(getToken().split('.')[1])).image;
         }
     }
 })();

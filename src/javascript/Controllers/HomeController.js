@@ -7,5 +7,9 @@
 
 	function HomeController(HomeFactory,UserFactory) {
 		var vm = this;
+
+		vm.upload = function() {
+			HomeFactory.upload();
+		};
 	}
 })();

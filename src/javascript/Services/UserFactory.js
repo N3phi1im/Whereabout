@@ -10,13 +10,16 @@
 		o.status = {};
 		if(getToken()) {
 			o.status.isLoggedIn = true;
-			o.status.username = getUsername();
+			o.status.first_name = getFirstname();
+			o.status.last_name = getLastname();
+			o.status.image = getImage();
 		}
 		o.setToken = setToken;
 		o.getToken = getToken;
 		o.removeToken = removeToken;
 		o.register = register;
 		o.login = login;
+		o.facebook = facebook;
 		o.logout = logout;
 		return o;
 
@@ -30,9 +33,18 @@
 			return q.promise;
 		}
 		function login(user) {
-			var u = { username: user.username.toLowerCase(), password: user.password};
+			var u = { email: user.email.toLowerCase(), password: user.password};
 			var q = $q.defer();
 			$http.post('/api/Users/Login', u).success(function(res) {
+				setToken(res.token);
+				o.status.isLoggedIn = true;
+				q.resolve();
+			});
+			return q.promise;
+		}
+		function facebook() {
+			var q = $q.defer();
+			$http.get('/api/Facebook/auth/facebook').success(function(res) {
 				setToken(res.token);
 				o.status.isLoggedIn = true;
 				q.resolve();
@@ -45,18 +57,28 @@
 		}
 		function setToken(token) {
 			localStorage.setItem('token', token);
-			o.status.username = getUsername();
+			o.status.first_name = getFirstname();
+			o.status.last_name = getLastname();
+			o.status.image = getImage();
 		}
 		function getToken() {
 			return localStorage.token;
 		}
 		function removeToken() {
 			localStorage.removeItem('token');
-			o.status.username = null;
+			o.status.first_name = null;
+			o.status.last_name = null;
+			o.status.image = null;
 		}
 
-		function getUsername() {
-			return JSON.parse(atob(getToken().split('.')[1])).username;
+		function getFirstname() {
+			return JSON.parse(atob(getToken().split('.')[1])).first_name;
+		}
+		function getLastname() {
+			return JSON.parse(atob(getToken().split('.')[1])).last_name;
+		}
+		function getImage() {
+			return JSON.parse(atob(getToken().split('.')[1])).image;
 		}
 	}
 })();
