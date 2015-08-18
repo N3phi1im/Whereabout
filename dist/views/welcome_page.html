@@ -3,11 +3,14 @@
 
     <!-- header section -->
     <section class="bg-primary" id="about">
-        <div id="signInButton">
-            <a href="#" class="btn btn-primary btn-s">Sign in</a>
-            <br>
-            <a href="#" id="registerLink">Register</a>
-        </div>
+        <!-- <ul class="nav navbar-nav navbar-right"> -->
+        <li>
+            <a class="btn btn-primary" data-toggle="modal" data-target="#login">Login</a>
+        </li>
+        <li>
+            <a class="btn btn-secondary" href="#services">Sign up</a>
+        </li>
+        <!--  </ul> -->
         <div class="container" id="welcomeText">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
@@ -17,16 +20,46 @@
                     <a href="#" class="btn btn-default btn-xl">Discover</a>
                 </div>
             </div>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a class="btn btn-primary" href="#about">Login</a>
-                </li>
-                <li>
-                    <a class="btn btn-secondary" href="#services">Sign up</a>
-                </li>
-            </ul>
+
         </div>
     </section>
+
+    <!-- login modal -->
+    <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Log in</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="hcenter">
+                        <div class="form-well vcenter">
+                            <form ng-submit="usr.login()" class="login-inner-form" novalidate>
+                                <div class="form-group">
+                                    <label>Username</label>
+                                    <input class="form-control inputBox" ng-model="usr.user.username" placeholder="username...">
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input class="form-control inputBox" type="password" ng-model="usr.user.password" placeholder="password...">
+                                </div>
+                                <div id="button-group">
+                                    <button type="submit" class="btn btn-lg btn-success" ng-disabled="!usr.user.password || !usr.user.username">Submit</button>
+                                </div>                                  
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Login with Facebook</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- login modal end -->
 
     <!-- learn more button -->
     <div class="hcenter" ng-controller="NavbarController as vm">
