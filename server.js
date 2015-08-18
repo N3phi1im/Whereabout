@@ -33,6 +33,17 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 
 //on homepage load, render the index page
+app.get('/auth/facebook', passport.authenticate('facebook'));
+
+app.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { successRedirect: '/', failureRedirect: '/Login' }),
+  function(req, res) {
+		res.send(req.user);
+	});
+
+	app.post('/login', passport.authenticate('local', { successRedirect: '/',
+	                                                    failureRedirect: '/login' }));
+
 app.get('/', function(req, res) {
 	res.render('index');
 });
