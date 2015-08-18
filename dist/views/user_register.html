@@ -12,6 +12,6 @@
       <label>Confirm Password</label>
       <input class="form-control" type="password" placeholder="Confirm Password..." ng-model="nav.user.cpassword" required />
     </div>
-    <button type="submit" class="btn btn-success" ng-disabled="!nav.user.username || !nav.user.email || !nav.user.password || !nav.user.cpassword || !(nav.user.password === nav.user.cpassword)">Submit</button>
+    <button type="submit" class="btn btn-success" ng-disabled="!nav.user.email || !nav.user.password || !nav.user.cpassword || (nav.user.password !== nav.user.cpassword)">Submit</button>
   </form>
 </div>

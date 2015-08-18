@@ -36,10 +36,6 @@
 		state('TakePhoto', {
 			url: '/TakePhoto',
 			templateUrl: '/views/takephoto_page.html'
-		}).
-		state('Home', {
-			url: '/Home',
-			templateUrl: '/views/home_page.html'
 		});
 		$urlRouterProvider.otherwise('/');
 	}

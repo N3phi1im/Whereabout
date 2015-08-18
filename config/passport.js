@@ -3,6 +3,8 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 var LocalStrategy = require('passport-local').Strategy;
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+var jwt = require('express-jwt');
+
 
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -12,10 +14,10 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
-passport.use(new LocalStrategy(function(username, password, done) {
-    User.findOne({username: username}, function(err, user) {
+passport.use(new LocalStrategy(function(email, password, done) {
+    User.findOne({email: email}, function(err, user) {
       if(err) return done(err);
-      if(!user) return done(null, false, {message: 'Incorrect username.'});
+      if(!user) return done(null, false, {message: 'Incorrect email.'});
       if(!user.validatePassword(password)) return done(null, false, {message: 'Password does not match.'});
       return done(null, user);
     });
@@ -24,13 +26,12 @@ passport.use(new LocalStrategy(function(username, password, done) {
 passport.use(new FacebookStrategy({
   clientID: "859731630748483",
   clientSecret: "8fa6616b6633811575b699b0e574974d",
-  callbackURL: "http://localhost:3000/auth/facebook/callback",
+  callbackURL: "http://localhost:3000/api/Facebook/auth/facebook/callback",
   passReqToCallback: true,
   profileFields: ['id', 'photos', 'name', 'emails', 'gender', 'birthday']
 },
 
 function(req, accessToken, refreshToken, profile, done){
-  console.log(profile);
   User.findOne({
             'facebook.id' : profile.id
         },function(err,user){
@@ -42,7 +43,7 @@ function(req, accessToken, refreshToken, profile, done){
                 if(err){
                     return next(err);
                 }
-                return done(null,user);
+                return done(null, user);
             });
         }else{
             var newUser = new User();
@@ -60,7 +61,7 @@ function(req, accessToken, refreshToken, profile, done){
                     if(err){
                         return next(err);
                     }
-                    return done(null,newUser);
+                    return done(null, newUser);
                 });
             });
         }
