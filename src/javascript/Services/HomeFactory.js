@@ -7,7 +7,11 @@
 
 	function HomeFactory($http, $q) {
 		var o = {};
-		
+		o.upload = upload;
 		return o;
+
+		function upload() {
+			$http.post('/api/Photos/upload');
+		}
 	}
 })();

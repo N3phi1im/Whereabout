@@ -10,7 +10,9 @@
 		o.status = {};
 		if(getToken()) {
 			o.status.isLoggedIn = true;
-			o.status.username = getUsername();
+			o.status.first_name = getFirstname();
+			o.status.last_name = getLastname();
+			o.status.image = getImage();
 		}
 		o.setToken = setToken;
 		o.getToken = getToken;
@@ -55,18 +57,28 @@
 		}
 		function setToken(token) {
 			localStorage.setItem('token', token);
-			o.status.username = getUsername();
+			o.status.first_name = getFirstname();
+			o.status.last_name = getLastname();
+			o.status.image = getImage();
 		}
 		function getToken() {
 			return localStorage.token;
 		}
 		function removeToken() {
 			localStorage.removeItem('token');
-			o.status.username = null;
+			o.status.first_name = null;
+			o.status.last_name = null;
+			o.status.image = null;
 		}
 
-		function getUsername() {
-			return JSON.parse(atob(getToken().split('.')[1])).username;
+		function getFirstname() {
+			return JSON.parse(atob(getToken().split('.')[1])).first_name;
+		}
+		function getLastname() {
+			return JSON.parse(atob(getToken().split('.')[1])).last_name;
+		}
+		function getImage() {
+			return JSON.parse(atob(getToken().split('.')[1])).image;
 		}
 	}
 })();

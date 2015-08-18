@@ -17,7 +17,7 @@
 
 		function register() {
 			var u = vm.user;
-			if(!u.username || !u.email || !u.password || !u.cpassword || (u.password !== u.cpassword)) {
+			if(!u.email || !u.password || !u.cpassword || (u.password !== u.cpassword)) {
 				return false;
 			}
 			UserFactory.register(u).then(function() {

@@ -61,8 +61,13 @@
 
     function HomeController(HomeFactory, UserFactory) {
         var vm = this;
+
+        vm.upload = function () {
+            HomeFactory.upload();
+        };
     }
 })();
+
 (function () {
     'use strict';
     angular.module('app').controller('ModalController', ModalController);
@@ -101,7 +106,7 @@
 
         function register() {
             var u = vm.user;
-            if (!u.username || !u.email || !u.password || !u.cpassword || (u.password !== u.cpassword)) {
+            if (!u.email || !u.password || !u.cpassword || (u.password !== u.cpassword)) {
                 return false;
             }
             UserFactory.register(u).then(function () {
@@ -148,10 +153,15 @@
 
     function HomeFactory($http, $q) {
         var o = {};
-
+        o.upload = upload;
         return o;
+
+        function upload() {
+            $http.post('/api/Photos/upload');
+        }
     }
 })();
+
 (function () {
     'use strict';
     angular.module('app').factory('UserFactory', UserFactory);
@@ -163,7 +173,9 @@
         o.status = {};
         if (getToken()) {
             o.status.isLoggedIn = true;
-            o.status.username = getUsername();
+            o.status.first_name = getFirstname();
+            o.status.last_name = getLastname();
+            o.status.image = getImage();
         }
         o.setToken = setToken;
         o.getToken = getToken;
@@ -215,7 +227,9 @@
 
         function setToken(token) {
             localStorage.setItem('token', token);
-            o.status.username = getUsername();
+            o.status.first_name = getFirstname();
+            o.status.last_name = getLastname();
+            o.status.image = getImage();
         }
 
         function getToken() {
@@ -224,11 +238,21 @@
 
         function removeToken() {
             localStorage.removeItem('token');
-            o.status.username = null;
+            o.status.first_name = null;
+            o.status.last_name = null;
+            o.status.image = null;
         }
 
-        function getUsername() {
-            return JSON.parse(atob(getToken().split('.')[1])).username;
+        function getFirstname() {
+            return JSON.parse(atob(getToken().split('.')[1])).first_name;
+        }
+
+        function getLastname() {
+            return JSON.parse(atob(getToken().split('.')[1])).last_name;
+        }
+
+        function getImage() {
+            return JSON.parse(atob(getToken().split('.')[1])).image;
         }
     }
 })();
