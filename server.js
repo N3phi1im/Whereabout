@@ -1,6 +1,7 @@
 var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
+
 //defines mongoose
 var mongoose = require('mongoose');
 var passport = require('passport');
@@ -11,6 +12,7 @@ require('./config/passport');
 mongoose.connect('mongodb://localhost/final');
 
 var userRoutes = require('./routes/UserRoutes');
+var facebookRoutes = require('./routes/FacebookRoutes');
 
 var app = express();
 var port = process.env.PORT || 3000;
@@ -33,22 +35,13 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 
 //on homepage load, render the index page
-app.get('/auth/facebook', passport.authenticate('facebook'));
-
-app.get('/auth/facebook/callback',
-  passport.authenticate('facebook', { successRedirect: '/', failureRedirect: '/Login' }),
-  function(req, res) {
-		res.send(req.user);
-	});
-
-	app.post('/login', passport.authenticate('local', { successRedirect: '/',
-	                                                    failureRedirect: '/login' }));
 
 app.get('/', function(req, res) {
 	res.render('index');
 });
 
 app.use('/api/Users', userRoutes);
+app.use('/api/Facebook', facebookRoutes);
 var server = app.listen(port, function() {
 	var host = server.address().address;
 	console.log('Example app listening at http://localhost:' + port);

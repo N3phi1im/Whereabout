@@ -16,20 +16,71 @@
         }).state('Home', {
             url: '/Home',
             templateUrl: '/views/home_page.html'
+        }).
+        state('Business', {
+            url: '/Business',
+            templateUrl: '/views/business_page.html'
+        }).
+        state('Discovery', {
+            url: '/Discovery',
+            templateUrl: '/views/discovery_page.html'
+        }).
+        state('MyPost', {
+            url: '/MyPost',
+            templateUrl: '/views/mypost_page.html'
+        }).
+        state('Profile', {
+            url: '/Profile',
+            templateUrl: '/views/profile_page.html'
+        }).
+        state('TakePhoto', {
+            url: '/TakePhoto',
+            templateUrl: '/views/takephoto_page.html'
         });
         $urlRouterProvider.otherwise('/');
     }
 })();
 
+
+(function () {
+    'use strict';
+    angular.module('app').controller('BusinessController', BusinessController);
+
+    BusinessController.$inject = ['HomeFactory'];
+
+    function BusinessController(HomeFactory) {
+        var vm = this;
+
+    }
+})();
 (function () {
     'use strict';
     angular.module('app').controller('HomeController', HomeController);
 
-    HomeController.$inject = [];
+    HomeController.$inject = ['HomeFactory', 'UserFactory'];
 
-    function HomeController() {
+    function HomeController(HomeFactory, UserFactory) {
         var vm = this;
-        vm.title = 'Welcome to our App!';
+    }
+})();
+(function () {
+    'use strict';
+    angular.module('app').controller('ModalController', ModalController);
+
+    ModalController.$inject = ['UserFactory'];
+
+    function ModalController(UserFactory) {
+        var vm = this;
+    }
+})();
+(function () {
+    'use strict';
+    angular.module('app').controller('MyPostController', MyPostController);
+
+    MyPostController.$inject = ['HomeFactory'];
+
+    function MyPostController(HomeFactory) {
+        var vm = this;
     }
 })();
 (function () {
@@ -72,6 +123,16 @@
     }
 })();
 
+(function () {
+    'use strict';
+    angular.module('app').controller('SearchController', SearchController);
+
+    SearchController.$inject = ['HomeFactory'];
+
+    function SearchController(HomeFactory) {
+        var vm = this;
+    }
+})();
 (function () {
     'use strict';
     angular.module('app').factory('HomeFactory', HomeFactory);
