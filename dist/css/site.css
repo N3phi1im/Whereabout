@@ -13,7 +13,9 @@
 	color: #fff;
 	background-image: url('https://static.pexels.com/photos/6732/city-cars-traffic-lights.jpg');
 	background-size: cover;
-	min-height: 80vh;
+	min-height: 85vh;
+	background-repeat: none;
+	padding: 10px;
 }
 
 #learnMore {
@@ -27,5 +29,20 @@
 
 section {
 	height: 100%vh;
+}
+
+
+#signInButton {
+	margin-right: 10px;
+	text-align: right;
+	margin-top: 10px;
+}
+
+#welcomeText {
+	margin-top: 10%;
+}
+
+#registerLink {
+	margin-right: 12px;
 }
 
