@@ -42,6 +42,7 @@ section {
 
 #registerLink {
 	margin-right: 12px;
+	margin-top: 2px;
 }
 
 h1 {
@@ -58,4 +59,8 @@ h1 {
 
 .largerWidth {
 	width: 880px;
+}
+
+#paddingRight {
+	margin-right: 10px;
 }
