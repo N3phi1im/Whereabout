@@ -6,12 +6,16 @@ var Photo = mongoose.model('Photo');
 var Place = mongoose.model('Place');
 var User = mongoose.model('User');
 
-router.post('/makePlace', function(req, res) {
+router.post('/makePlace', function(req, res, next) {
   var place = new Place();
   place.name =
   place.google =
   place.photos =
-  res.end();
+  place.save(function(err, place) {
+    if(err) return next(err);
+
+  });
+  res.send();
 });
 
 router.use(function (err, req, res, next) {
