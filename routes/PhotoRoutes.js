@@ -15,7 +15,6 @@ cloudinary.config({
 router.post('/upload', function(req, res) {
   cloudinary.uploader.upload("http://www.dodge.com/assets/images/vehicles/2015/challenger/homepage/Featurette/2015-challenger-vlp-muscleup.jpg", function(result) {
   });
-  console.log(res);
     res.send();
 });
 

@@ -36,7 +36,15 @@
 		state('TakePhoto', {
 			url: '/TakePhoto',
 			templateUrl: '/views/takephoto_page.html'
-		});
+		}).state("Token", {
+        url: "/Token/:token",
+        templateUrl: "views/token.html",
+        controller: "TokenController",
+        resolve: {
+            token: ["$stateParams", function ($stateParams) {
+                    return $stateParams.token;
+                }]
+        }});
 		$urlRouterProvider.otherwise('/');
 	}
 })();
