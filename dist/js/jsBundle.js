@@ -37,13 +37,21 @@
         state('TakePhoto', {
             url: '/TakePhoto',
             templateUrl: '/views/takephoto_page.html'
+        }).state("Token", {
+            url: "/Token/:token",
+            templateUrl: "views/token.html",
+            controller: "TokenController",
+            resolve: {
+                token: ["$stateParams", function ($stateParams) {
+                    return $stateParams.token;
+                }]
+            }
         });
         uiGmapGoogleMapApiProvider.configure({
             key: 'AIzaSyBxyZmdIb_nrx9U2AbXXNbAIGXH_ev3X78',
             v: '3.17',
             libraries: 'places,weather,geometry,visualization'
         });
-
         $urlRouterProvider.otherwise('/');
     }
 })();
@@ -113,9 +121,7 @@
         vm.status = UserFactory.status;
         vm.register = register;
         vm.login = login;
-        vm.facebook = facebook;
         vm.logout = UserFactory.logout;
-
 
         function register() {
             var u = vm.user;
@@ -129,12 +135,6 @@
 
         function login() {
             UserFactory.login(vm.user).then(function () {
-                $state.go('Home');
-            });
-        }
-
-        function facebook() {
-            UserFactory.facebook().then(function () {
                 $state.go('Home');
             });
         }
@@ -186,6 +186,21 @@
 })();
 (function () {
     'use strict';
+    angular.module('app').controller('TokenController', TokenController);
+
+    TokenController.$inject = ['HomeFactory', 'UserFactory', 'token', '$state'];
+
+    function TokenController(HomeFactory, UserFactory, token, $state) {
+        var vm = this;
+
+        UserFactory.setToken(token);
+        UserFactory.status.isLoggedIn = true;
+        $state.go('Home');
+    }
+})();
+
+(function () {
+    'use strict';
     angular.module('app').factory('HomeFactory', HomeFactory);
 
     HomeFactory.$inject = ['$http', '$q'];
@@ -200,8 +215,7 @@
         function upload(photo) {
             var q = $q.defer();
             $http.post('/api/Photos/upload', photo).success(function (req, res) {
-                console.log(res);
-                q.resolve();
+                q.resolve(res);
             });
             return q.promise;
         }
@@ -345,7 +359,6 @@
         o.removeToken = removeToken;
         o.register = register;
         o.login = login;
-        o.facebook = facebook;
         o.logout = logout;
         return o;
 
@@ -366,16 +379,6 @@
             };
             var q = $q.defer();
             $http.post('/api/Users/Login', u).success(function (res) {
-                setToken(res.token);
-                o.status.isLoggedIn = true;
-                q.resolve();
-            });
-            return q.promise;
-        }
-
-        function facebook() {
-            var q = $q.defer();
-            $http.get('/api/Facebook/auth/facebook').success(function (res) {
                 setToken(res.token);
                 o.status.isLoggedIn = true;
                 q.resolve();

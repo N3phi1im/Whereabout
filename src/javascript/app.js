@@ -2,7 +2,7 @@
 	'use strict';
 	angular.module('app', ['ui.router','uiGmapgoogle-maps'])
 	.config(Config);
-	
+
 	Config.$inject = ['$stateProvider', '$urlRouterProvider', 'uiGmapGoogleMapApiProvider'];
 
 	function Config($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
@@ -38,13 +38,20 @@
 		state('TakePhoto', {
 			url: '/TakePhoto',
 			templateUrl: '/views/takephoto_page.html'
-		});
+		}).state("Token", {
+        url: "/Token/:token",
+        templateUrl: "views/token.html",
+        controller: "TokenController",
+        resolve: {
+            token: ["$stateParams", function ($stateParams) {
+                    return $stateParams.token;
+                }]
+        }});
 		uiGmapGoogleMapApiProvider.configure({
 			key: 'AIzaSyBxyZmdIb_nrx9U2AbXXNbAIGXH_ev3X78',
 			v: '3.17',
 			libraries: 'places,weather,geometry,visualization'
 		});
-		
 		$urlRouterProvider.otherwise('/');
 	}
 })();
