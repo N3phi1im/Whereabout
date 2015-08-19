@@ -8,10 +8,32 @@
 	function HomeFactory($http, $q) {
 		var o = {};
 		o.upload = upload;
+		o.setPhoto = setPhoto;
+		o.setPlace = setPlace;
 		return o;
 
 		function upload() {
-			$http.post('/api/Photos/upload');
+			var q = $q.defer();
+			$http.post('/api/Photos/upload').success(function() {
+				q.resolve();
+			});
+			return q.promise;
+		}
+
+		function setPhoto() {
+			var q = $q.defer();
+			$http.post('/api/Photos/setPhoto').success(function() {
+				q.resolve();
+			});
+			return q.promise;
+		}
+
+		function setPlace() {
+			var q = $q.defer();
+			$http.post('/api/Photos/setPlace').success(function() {
+				q.resolve();
+			});
+			return q.promise;
 		}
 	}
 })();
