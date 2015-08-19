@@ -4,7 +4,7 @@
     <!-- header section -->
     <section class="bg-primary" id="about">
         <div class="navbar-right" id="paddingRight">
-           <ul class="nav navbar-nav">
+         <ul class="nav navbar-nav">
             <li id="signInButton">
                 <a data-toggle="modal" data-target="#login" class="btn btn-secondary btn-s">Sign in</a>
             </li>
@@ -20,7 +20,7 @@
         <h1 class="section-heading">Share your photo online!</h1>
         <hr class="light">
         <p class="text-faded">Whereabout is a photo album for places that allows the user to add their favorite photo of that place into the photo album.</p>
-        <a href="#" class="btn btn-default btn-xl">Discover</a>
+        <a ui-sref="Discovery" class="btn btn-default btn-xl">Discover</a>
     </div>
 </section>
 
@@ -75,7 +75,7 @@
             <div class="modal-body">
                 <div class="hcenter">
                     <div class="form-well vcenter">
-                     <form  ng-submit="nav.register()">
+                       <form  ng-submit="nav.register()">
                         <div class="form-group">
                           <label>First Name</label>
                           <input class="form-control input-lg" type="text" placeholder="First Name..." ng-model="nav.user.first_name" required />
