@@ -39,6 +39,10 @@ router.post('/setPlace', function(req, res) {
   res.end();
 });
 
+router.get('/getPhotos', function(req, res) {
+
+});
+
 router.use(function (err, req, res, next) {
   res.status(500).send(err);
 });

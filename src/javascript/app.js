@@ -1,7 +1,8 @@
 (function() {
 	'use strict';
 	angular.module('app', ['ui.router','uiGmapgoogle-maps'])
-	.config(Config);
+	.config(Config)
+	.run(auth);
 
 	Config.$inject = ['$stateProvider', '$urlRouterProvider', 'uiGmapGoogleMapApiProvider'];
 
@@ -53,5 +54,19 @@
 			libraries: 'places,weather,geometry,visualization'
 		});
 		$urlRouterProvider.otherwise('/');
+	}
+	auth.$inject = ['$rootScope', '$location', '$state', 'UserFactory'];
+	function auth($rootScope, $location, $state, UserFactory) {
+		var userInfo = UserFactory.status;
+		$rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
+			if(!userInfo.isLoggedIn) {
+				var welcome = toState.name === "Welcome";
+				if(welcome) {
+					return;
+				}
+				e.preventDefault();
+				$state.go('Welcome');
+			}
+		});
 	}
 })();
