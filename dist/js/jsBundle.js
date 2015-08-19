@@ -37,6 +37,10 @@
         state('TakePhoto', {
             url: '/TakePhoto',
             templateUrl: '/views/takephoto_page.html'
+        }).
+        state('PasswordReset', {
+            url: '/PasswordReset',
+            templateUrl: '/views/passwordreset_page.html'
         }).state("Token", {
             url: "/Token/:token",
             templateUrl: "views/token.html",
@@ -169,7 +173,6 @@
 
             function (res) {
                 // successx
-                console.log(res);
                 for (var i = 0; i < res.length; i++) {
                     Map.createMarker(res[i]);
                     vm.results.length = 0;
