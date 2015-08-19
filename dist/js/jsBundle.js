@@ -156,6 +156,7 @@
 
     function SearchController(HomeFactory, uiGmapGoogleMapApi, $scope, $window, Map, $state) {
         var vm = this;
+        vm.results = Map.placesResults;
 
         $scope.place = {};
 
@@ -167,9 +168,13 @@
             Map.search($scope.searchPlace, $scope.searchDistance).then(
 
             function (res) {
-                // success
+                // successx
+                console.log(res);
                 for (var i = 0; i < res.length; i++) {
                     Map.createMarker(res[i]);
+                    vm.results.length = 0;
+                    vm.results.push.apply(vm.results, res);
+
                 }
             }, function (status) { // error
                 $scope.apiError = true;
@@ -252,6 +257,8 @@
         var map;
         var gmarkers = [];
         var urHere;
+        var placesResults = [];
+        this.placesResults = placesResults;
 
         this.init = function () {
 
@@ -310,6 +317,7 @@
             function callback(results, status) {
                 if (status == google.maps.places.PlacesServiceStatus.OK) {
                     d.resolve(results);
+                    console.log(res);
                 }
             }
 

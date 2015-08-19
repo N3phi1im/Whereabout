@@ -13,7 +13,9 @@
 		var map;
 		var gmarkers = [];
 		var urHere;
-		
+		var placesResults = [];
+		this.placesResults = placesResults;
+
 		this.init = function() {
 
 			$window.navigator.geolocation.getCurrentPosition (
@@ -70,6 +72,7 @@
 			function callback(results, status) {
 				if (status == google.maps.places.PlacesServiceStatus.OK) {
 					d.resolve(results);
+					console.log(res);
 				}
 			}
 
