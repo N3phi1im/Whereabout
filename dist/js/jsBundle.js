@@ -52,7 +52,6 @@
             v: '3.17',
             libraries: 'places,weather,geometry,visualization'
         });
-
         $urlRouterProvider.otherwise('/');
     }
 })();
@@ -163,8 +162,6 @@
         $scope.goHome = function () {
             Map.init();
         };
-
-
         $scope.search = function () {
             $scope.apiError = false;
             Map.search($scope.searchPlace, $scope.searchDistance).then(
@@ -238,6 +235,19 @@
             });
             return q.promise;
         }
+    }
+})();
+
+(function () {
+    'use strict';
+    angular.module('app').factory('PlacesFactory', PlacesFactory);
+
+    PlacesFactory.$inject = ['$http', '$q'];
+
+    function PlacesFactory($http, $q) {
+        var o = {};
+        return o;
+
     }
 })();
 
