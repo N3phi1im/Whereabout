@@ -7,6 +7,8 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 //define the models
 require('./models/Users');
+require('./models/Places');
+require('./models/Photo');
 require('./config/passport');
 //connect to the server
 mongoose.connect('mongodb://localhost/final');

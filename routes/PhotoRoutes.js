@@ -2,6 +2,9 @@ var express = require('express');
 var mongoose = require('mongoose');
 var router = express.Router();
 var cloudinary = require('cloudinary');
+var Photo = mongoose.model('Photo');
+var Place = mongoose.model('Place');
+
 
 cloudinary.config({
   cloud_name: 'whereabout',
@@ -12,6 +15,26 @@ cloudinary.config({
 router.post('/upload', function(req, res) {
   cloudinary.uploader.upload("http://www.dodge.com/assets/images/vehicles/2015/challenger/homepage/Featurette/2015-challenger-vlp-muscleup.jpg");
     res.end();
+});
+
+router.post('/setPhoto', function(req, res) {
+  var photo = new Photo();
+  photo.user = req.body.user.id;
+  photo.place = req.body.place.id;
+  photo.createdAt = new Date();
+  photo.title = req.body.title;
+  res.send(photo);
+});
+
+router.post('/setPlace', function(req, res) {
+  Place.findByIdAndUpdate(
+    Place._id,
+    {$push: {"photos": {id: req.body.id }}},
+    {save: true, upsert: true, new: true},
+    function(err) {
+      console.log(err);
+    });
+  res.end();
 });
 
 router.use(function (err, req, res, next) {

@@ -9,7 +9,13 @@
 		var vm = this;
 
 		vm.upload = function() {
-			HomeFactory.upload();
+			HomeFactory.upload().then(function() {
+				HomeFactory.setPhoto().then(function() {
+					HomeFactory.setPlace().then(function() {
+						state.go('Home');
+					});
+				});
+			});
 		};
 	}
 })();
