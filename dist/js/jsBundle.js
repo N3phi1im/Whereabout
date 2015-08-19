@@ -1,9 +1,10 @@
 (function () {
     'use strict';
-    angular.module('app', ['ui.router']).config(Config);
-    Config.$inject = ['$stateProvider', '$urlRouterProvider'];
+    angular.module('app', ['ui.router', 'uiGmapgoogle-maps']).config(Config);
 
-    function Config($stateProvider, $urlRouterProvider) {
+    Config.$inject = ['$stateProvider', '$urlRouterProvider', 'uiGmapGoogleMapApiProvider'];
+
+    function Config($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
         $stateProvider.state('Welcome', {
             url: '/',
             templateUrl: '/views/welcome_page.html'
@@ -37,6 +38,12 @@
             url: '/TakePhoto',
             templateUrl: '/views/takephoto_page.html'
         });
+        uiGmapGoogleMapApiProvider.configure({
+            key: 'AIzaSyBxyZmdIb_nrx9U2AbXXNbAIGXH_ev3X78',
+            v: '3.17',
+            libraries: 'places,weather,geometry,visualization'
+        });
+
         $urlRouterProvider.otherwise('/');
     }
 })();
@@ -63,7 +70,13 @@
         var vm = this;
 
         vm.upload = function () {
-            HomeFactory.upload();
+            HomeFactory.upload().then(function () {
+                HomeFactory.setPhoto().then(function () {
+                    HomeFactory.setPlace().then(function () {
+                        state.go('Home');
+                    });
+                });
+            });
         };
     }
 })();
@@ -139,10 +152,38 @@
     'use strict';
     angular.module('app').controller('SearchController', SearchController);
 
-    SearchController.$inject = ['HomeFactory'];
+    SearchController.$inject = ['HomeFactory', 'uiGmapGoogleMapApi', '$scope', '$window', 'Map', '$state'];
 
-    function SearchController(HomeFactory) {
+    function SearchController(HomeFactory, uiGmapGoogleMapApi, $scope, $window, Map, $state) {
         var vm = this;
+
+        $scope.place = {};
+
+        $scope.goHome = function () {
+            Map.init();
+        };
+
+
+        $scope.search = function () {
+            $scope.apiError = false;
+            Map.search($scope.searchPlace, $scope.searchDistance).then(
+
+            function (res) {
+                // success
+                for (var i = 0; i < res.length; i++) {
+                    Map.createMarker(res[i]);
+                }
+            }, function (status) { // error
+                $scope.apiError = true;
+                $scope.apiStatus = status;
+            });
+
+        };
+        $scope.send = function () {
+            console.log($scope.place.name + ' : ' + $scope.place.lat + ', ' + $scope.place.lng);
+        };
+        Map.init();
+
     }
 })();
 (function () {
@@ -154,10 +195,32 @@
     function HomeFactory($http, $q) {
         var o = {};
         o.upload = upload;
+        o.setPhoto = setPhoto;
+        o.setPlace = setPlace;
         return o;
 
         function upload() {
-            $http.post('/api/Photos/upload');
+            var q = $q.defer();
+            $http.post('/api/Photos/upload').success(function () {
+                q.resolve();
+            });
+            return q.promise;
+        }
+
+        function setPhoto() {
+            var q = $q.defer();
+            $http.post('/api/Photos/setPhoto').success(function () {
+                q.resolve();
+            });
+            return q.promise;
+        }
+
+        function setPlace() {
+            var q = $q.defer();
+            $http.post('/api/Photos/setPlace').success(function () {
+                q.resolve();
+            });
+            return q.promise;
         }
     }
 })();

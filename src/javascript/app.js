@@ -1,9 +1,11 @@
 (function() {
 	'use strict';
-	angular.module('app', ['ui.router'])
+	angular.module('app', ['ui.router','uiGmapgoogle-maps'])
 	.config(Config);
-	Config.$inject = ['$stateProvider', '$urlRouterProvider'];
-	function Config($stateProvider, $urlRouterProvider) {
+	
+	Config.$inject = ['$stateProvider', '$urlRouterProvider', 'uiGmapGoogleMapApiProvider'];
+
+	function Config($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
 		$stateProvider.state('Welcome',{
 			url: '/',
 			templateUrl: '/views/welcome_page.html'
@@ -37,6 +39,12 @@
 			url: '/TakePhoto',
 			templateUrl: '/views/takephoto_page.html'
 		});
+		uiGmapGoogleMapApiProvider.configure({
+			key: 'AIzaSyBxyZmdIb_nrx9U2AbXXNbAIGXH_ev3X78',
+			v: '3.17',
+			libraries: 'places,weather,geometry,visualization'
+		});
+		
 		$urlRouterProvider.otherwise('/');
 	}
 })();
