@@ -13,17 +13,20 @@ cloudinary.config({
 });
 
 router.post('/upload', function(req, res) {
-  cloudinary.uploader.upload("http://www.dodge.com/assets/images/vehicles/2015/challenger/homepage/Featurette/2015-challenger-vlp-muscleup.jpg");
-    res.end();
+  cloudinary.uploader.upload("http://www.dodge.com/assets/images/vehicles/2015/challenger/homepage/Featurette/2015-challenger-vlp-muscleup.jpg", function(result) {
+  });
+  console.log(res);
+    res.send();
 });
 
 router.post('/setPhoto', function(req, res) {
   var photo = new Photo();
+  photo.url = req.body.url;
   photo.user = req.body.user.id;
   photo.place = req.body.place.id;
   photo.createdAt = new Date();
   photo.title = req.body.title;
-  res.send(photo);
+  res.send(photo.id);
 });
 
 router.post('/setPlace', function(req, res) {

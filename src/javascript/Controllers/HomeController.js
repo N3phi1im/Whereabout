@@ -8,10 +8,10 @@
 	function HomeController(HomeFactory,UserFactory) {
 		var vm = this;
 
-		vm.upload = function() {
-			HomeFactory.upload().then(function() {
+		vm.upload = function(photo) {
+			HomeFactory.upload(photo).then(function() {
 				HomeFactory.setPhoto().then(function() {
-					HomeFactory.setPlace().then(function() {
+					HomeFactory.setPlace(id).then(function() {
 						state.go('Home');
 					});
 				});
