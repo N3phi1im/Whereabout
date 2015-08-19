@@ -1,5 +1,5 @@
 <div ng-controller="HomeController as vm">
-<input type="file" accept="image/*;capture=camera">
-	<button ng-click="vm.upload()">upload</button>
+<input type="file" accept="image/*;capture=camera" ng-model='vm.img'>
+	<button ng-click="vm.upload(vm.img)">upload</button>
 
 </div>

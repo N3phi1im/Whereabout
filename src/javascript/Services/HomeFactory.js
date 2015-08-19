@@ -12,9 +12,10 @@
 		o.setPlace = setPlace;
 		return o;
 
-		function upload() {
+		function upload(photo) {
 			var q = $q.defer();
-			$http.post('/api/Photos/upload').success(function() {
+			$http.post('/api/Photos/upload', photo).success(function(req, res) {
+				console.log(res);
 				q.resolve();
 			});
 			return q.promise;
