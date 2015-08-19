@@ -68,9 +68,9 @@ h1 {
 #paddingRight {
 	margin-right: 10px;
 }
-<<<<<<< HEAD
+
 .modal-footer {   border-top: 0px; }
-=======
+
 
 .btn-facebook {
 	border-radius: 2px;
@@ -100,4 +100,14 @@ label {
 .modal-footer {
 	border: none;
 }
->>>>>>> eb2155744fa60f3696e624673d9d567a1b87576d
+
+#map-canvas { 
+	height: 475px;
+	width: auto;
+	margin: 20px 0;
+	border-radius: 5px;
+	border: 1px solid silver;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 4%;
+}
