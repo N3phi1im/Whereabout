@@ -39,15 +39,23 @@
 		state('TakePhoto', {
 			url: '/TakePhoto',
 			templateUrl: '/views/takephoto_page.html'
+		}).
+		state('CategoryResults', {
+			url: '/CategoryResults',
+			templateUrl: '/views/CategoryResults_page.html'
+		}).
+		state('PasswordReset', {
+			url: '/PasswordReset',
+			templateUrl: '/views/passwordreset_page.html'
 		}).state("Token", {
-        url: "/Token/:token",
-        templateUrl: "views/token.html",
-        controller: "TokenController",
-        resolve: {
-            token: ["$stateParams", function ($stateParams) {
-                    return $stateParams.token;
-                }]
-        }});
+			url: "/Token/:token",
+			templateUrl: "views/token.html",
+			controller: "TokenController",
+			resolve: {
+				token: ["$stateParams", function ($stateParams) {
+					return $stateParams.token;
+				}]
+			}});
 		uiGmapGoogleMapApiProvider.configure({
 			key: 'AIzaSyBxyZmdIb_nrx9U2AbXXNbAIGXH_ev3X78',
 			v: '3.17',
