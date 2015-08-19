@@ -36,6 +36,10 @@
 		state('TakePhoto', {
 			url: '/TakePhoto',
 			templateUrl: '/views/takephoto_page.html'
+		}).
+		state('PasswordReset', {
+			url: '/PasswordReset',
+			templateUrl: '/views/passwordreset_page.html'
 		});
 		$urlRouterProvider.otherwise('/');
 	}
