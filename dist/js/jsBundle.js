@@ -38,6 +38,10 @@
             url: '/TakePhoto',
             templateUrl: '/views/takephoto_page.html'
         }).
+        state('CategoryResults', {
+            url: '/CategoryResults',
+            templateUrl: '/views/CategoryResults_page.html'
+        }).
         state('PasswordReset', {
             url: '/PasswordReset',
             templateUrl: '/views/passwordreset_page.html'
