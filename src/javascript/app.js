@@ -41,7 +41,7 @@
 			templateUrl: '/views/takephoto_page.html'
 		}).
 		state('CategoryResults', {
-			url: '/CategoryResults',
+			url: '/CategoryResults/:search',
 			templateUrl: '/views/CategoryResults_page.html'
 		}).
 		state('PasswordReset', {
@@ -63,6 +63,7 @@
 		});
 		$urlRouterProvider.otherwise('/');
 	}
+
 	auth.$inject = ['$rootScope', '$location', '$state', 'UserFactory'];
 	function auth($rootScope, $location, $state, UserFactory) {
 		var userInfo = UserFactory.status;
