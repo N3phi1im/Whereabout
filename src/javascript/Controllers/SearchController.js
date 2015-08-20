@@ -3,9 +3,9 @@
 	angular.module('app')
 	.controller('SearchController', SearchController);
 
-	SearchController.$inject = ['HomeFactory', 'uiGmapGoogleMapApi', '$scope', '$window', 'Map', '$state'];
+	SearchController.$inject = ['HomeFactory', 'uiGmapGoogleMapApi', '$scope', '$window', 'Map', '$state', "$stateParams"];
 
-	function SearchController(HomeFactory, uiGmapGoogleMapApi, $scope, $window, Map, $state) {
+	function SearchController(HomeFactory, uiGmapGoogleMapApi, $scope, $window, Map, $state, $stateParams) {
 		var vm = this;
 		vm.results = Map.placesResults;
 
@@ -15,8 +15,9 @@
 			Map.init();
 		};
 		$scope.search = function() {
+			var search = $stateParams.search || $scope.searchPlace;
 			$scope.apiError = false;
-			Map.search($scope.searchPlace, $scope.searchDistance)
+			Map.search(search, $scope.searchDistance)
 			.then(
 				function(res) { 
        				 	// successx
@@ -26,6 +27,7 @@
        				 		vm.results.push.apply(vm.results, res);
 
        				 	}
+       				 	if ($stateParams.search) $stateParams.search = null;
        				 },
         			function(status) { // error
         				$scope.apiError = true;
@@ -38,6 +40,6 @@
 			console.log($scope.place.name + ' : ' + $scope.place.lat + ', ' + $scope.place.lng);
 		};
 		Map.init();
-
+		if ($stateParams.search) $scope.search();
 	}
 })();

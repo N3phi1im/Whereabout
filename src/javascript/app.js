@@ -41,7 +41,7 @@
 			templateUrl: '/views/takephoto_page.html'
 		}).
 		state('CategoryResults', {
-			url: '/CategoryResults',
+			url: '/CategoryResults/:search',
 			templateUrl: '/views/CategoryResults_page.html'
 		}).
 		state('PasswordReset', {
