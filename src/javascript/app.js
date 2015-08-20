@@ -63,18 +63,20 @@
 		});
 		$urlRouterProvider.otherwise('/');
 	}
-	// auth.$inject = ['$rootScope', '$location', '$state', 'UserFactory'];
-	// function auth($rootScope, $location, $state, UserFactory) {
-	// 	var userInfo = UserFactory.status;
-	// 	$rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
-	// 		if(!userInfo.isLoggedIn) {
-	// 			var welcome = toState.name === "Welcome";
-	// 			if(welcome) {
-	// 				return;
-	// 			}
-	// 			e.preventDefault();
-	// 			$state.go('Welcome');
-	// 		}
-	// 	});
-	// }
+
+	auth.$inject = ['$rootScope', '$location', '$state', 'UserFactory'];
+	function auth($rootScope, $location, $state, UserFactory) {
+		var userInfo = UserFactory.status;
+		$rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
+			if(!userInfo.isLoggedIn) {
+				var welcome = toState.name === "Welcome";
+				var token = toState.name === "Token";
+				if(welcome || token) {
+					return;
+				}
+				e.preventDefault();
+				$state.go('Welcome');
+			}
+		});
+	}
 })();

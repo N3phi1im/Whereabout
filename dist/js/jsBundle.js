@@ -69,7 +69,8 @@
         $rootScope.$on('$stateChangeStart', function (e, toState, toParams, fromState, fromParams) {
             if (!userInfo.isLoggedIn) {
                 var welcome = toState.name === "Welcome";
-                if (welcome) {
+                var token = toState.name === "Token";
+                if (welcome || token) {
                     return;
                 }
                 e.preventDefault();
