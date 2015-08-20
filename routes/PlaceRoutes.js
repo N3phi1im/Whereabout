@@ -7,6 +7,7 @@ var Place = mongoose.model('Place');
 var User = mongoose.model('User');
 
 router.post('/Place', function(req, res, next) {
+  console.log(req.body);
   Place.findOne({
     "google.id": req.body.id
   }, function(err, place) {
@@ -25,7 +26,7 @@ router.post('/Place', function(req, res, next) {
 });
 
 router.get('/Place/info', function(req, res, next) {
-  
+
 });
 
 router.use(function (err, req, res, next) {
