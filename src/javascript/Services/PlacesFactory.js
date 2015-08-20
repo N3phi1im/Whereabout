@@ -72,7 +72,6 @@
 			function callback(results, status) {
 				if (status == google.maps.places.PlacesServiceStatus.OK) {
 					d.resolve(results);
-					console.log(res);
 				}
 			}
 
