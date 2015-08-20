@@ -29,6 +29,7 @@
 <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
+          <form ng-submit="nav.login()" class="login-inner-form" novalidate>
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Log in</h4>
@@ -36,29 +37,25 @@
             <div class="modal-body">
                 <div class="hcenter">
                     <div class="form-well vcenter">
-                        <form ng-submit="usr.login()" class="login-inner-form" novalidate>
                             <div class="form-group loginForm">
                                 <label>E-mail</label>
-                                <input class="form-control inputBox input-lg" ng-model="usr.user.email" placeholder="E-mail...">
+                                <input class="form-control inputBox input-lg" ng-model="nav.user.email" placeholder="E-mail...">
                             </div>
                             <div class="form-group loginForm">
                                 <label>Password</label>
-                                <input class="form-control inputBox input-lg" type="password" ng-model="usr.user.password" placeholder="password...">
+                                <input class="form-control inputBox input-lg" type="password" ng-model="nav.user.password" placeholder="password...">
                             </div>
-
-                        </form>
                     </div>
                 </div>
-
             </div>
             <div class="modal-footer">
                 <a id="square" href="/api/Facebook/auth/facebook" class="btn btn-social btn-sm btn-facebook navbar-left">
                     <i class="fa fa-facebook"></i> Sign in with facebook
                 </a>
-
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-success">Submit</button>
             </div>
+          </form>
         </div>
     </div>
 </div>
@@ -68,6 +65,7 @@
 <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
+          <form  ng-submit="nav.register()">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Register</h4>
@@ -75,7 +73,6 @@
             <div class="modal-body">
                 <div class="hcenter">
                     <div class="form-well vcenter">
-                       <form  ng-submit="nav.register()">
                         <div class="form-group">
                           <label>First Name</label>
                           <input class="form-control input-lg" type="text" placeholder="First Name..." ng-model="nav.user.first_name" required />
@@ -96,8 +93,6 @@
                           <label>Confirm Password</label>
                           <input class="form-control input-lg" type="password" placeholder="Confirm Password..." ng-model="nav.user.cpassword" required />
                       </div>
-
-                  </form>
               </div>
           </div>
       </div>
@@ -105,6 +100,7 @@
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-success" ng-disabled="!nav.user.email || !nav.user.password || !nav.user.cpassword || (nav.user.password !== nav.user.cpassword)">Submit</button>
     </div>
+  </form>
 </div>
 </div>
 </div>

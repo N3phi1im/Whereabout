@@ -5,15 +5,9 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
 
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
 
-passport.deserializeUser(function(obj, done) {
-  done(null, obj);
-});
 
-passport.use(new LocalStrategy(function(email, password, done) {
+passport.use(new LocalStrategy({usernameField: 'email'}, function(email, password, done) {
     User.findOne({email: email}, function(err, user) {
       if(err) return done(err);
       if(!user) return done(null, false, {message: 'Incorrect email.'});
@@ -29,7 +23,6 @@ passport.use(new FacebookStrategy({
   passReqToCallback: true,
   profileFields: ['id', 'photos', 'name', 'emails', 'gender', 'birthday']
 },
-
 function(req, accessToken, refreshToken, profile, done){
   User.findOne({
             'facebook.id' : profile.id
@@ -67,3 +60,15 @@ function(req, accessToken, refreshToken, profile, done){
     });
     }
 ));
+
+passport.serializeUser(function(user, done) {
+  done(null, user._id);
+});
+
+passport.deserializeUser(function(id, done) {
+  user.findById(id, function(err, user){
+    console.log(user);
+    if(err) return done(err);
+    done(null, user);
+  });
+});
