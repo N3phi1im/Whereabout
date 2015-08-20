@@ -18,6 +18,7 @@ router.post('/upload', function(req, res) {
     res.send();
 });
 
+
 router.post('/setPhoto', function(req, res) {
   var photo = new Photo();
   photo.url = req.body.url;
