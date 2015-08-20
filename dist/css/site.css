@@ -103,11 +103,15 @@ label {
 
 #map-canvas { 
 	height: 475px;
-	width: auto;
+	width: 100%;
 	margin: 20px 0;
 	border-radius: 5px;
 	border: 1px solid silver;
 	margin-right: auto;
 	margin-left: auto;
 	margin-top: 4%;
+}
+
+.pointer {
+	cursor: pointer;
 }
