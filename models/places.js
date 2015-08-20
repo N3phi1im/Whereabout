@@ -9,8 +9,7 @@ var PlaceSchema = new mongoose.Schema({
   google: {
 		id: { type: String, unique: true },
 		address: String,
-		name: String,
-		hours: String
+		name: String
 	},
   photos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Photo' }]
 });

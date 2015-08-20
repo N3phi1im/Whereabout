@@ -16,8 +16,7 @@ router.post('/Place', function(req, res, next) {
     var newplace = new Place();
     newplace.google.name = req.body.name;
     newplace.google.id = req.body.id;
-    newplace.google.address = req.body.address;
-    newplace.google.hours = req.body.hours;
+    newplace.google.address = req.body.formatted_address;
     newplace.save(function(err, place) {
       if(err) return next(err);
       res.send("New");

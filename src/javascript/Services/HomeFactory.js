@@ -28,9 +28,9 @@
 			return q.promise;
 		}
 
-		function setPhoto() {
+		function setPhoto(photo) {
 			var q = $q.defer();
-			$http.post('/api/Photos/setPhoto').success(function() {
+			$http.post('/api/Photos/setPhoto', photo).success(function() {
 				q.resolve();
 			});
 			return q.promise;
