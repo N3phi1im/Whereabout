@@ -11,28 +11,21 @@
 					<p>"Ut wisi enim ad minim veniam."</p>				
 				</div>
 
-				<div style="height: 305px">
-					<carousel interval="myInterval">
+				<div ng-controller="CarouselCtrl">
+					
+					<carousel class="carouselPart" interval="myInterval" no-wrap="noWrapSlides">
 						<slide ng-repeat="slide in slides" active="slide.active">
 							<img ng-src="{{slide.image}}" style="margin:auto;">
-							<div class="carousel-caption">
-								<h4>Slide {{$index}}</h4>
-								<p>{{slide.text}}</p>
-							</div>
+							
 						</slide>
 					</carousel>
-				</div>
 
-				
+				</div>
 				
 				<div class="post-meta">
-					<ul class="list-meta list-inline">
-						<li>
-							Starbucks
-						</li>
-						<li class="fa fa-heart">
-							9
-						</li>
+					<ul>
+						<li><h5 id="business">Starbucks</h5></li>
+						<li><h5 class="fa fa-heart" id="likes"> 9</h5></li>
 					</ul>
 				</div>
 			</div>

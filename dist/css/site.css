@@ -108,6 +108,7 @@ label {
 	max-width: 1100px;
 	min-width: 800px;
 	margin: 50px auto;
+	
 }
 
 #columns {
@@ -132,7 +133,7 @@ label {
 	-moz-column-break-inside: avoid;
 	column-break-inside: avoid;
 	padding: 15px;
-	padding-bottom: 5px;
+	padding-bottom: 40px;
 	background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
 	opacity: 1;
 	
@@ -140,6 +141,7 @@ label {
 	-moz-transition: all .2s ease;
 	-o-transition: all .2s ease;
 	transition: all .2s ease;
+	position: relative;
 }
 
 .pin img {
@@ -164,22 +166,12 @@ label {
 	}
 }
 
-.post-meta {
-	display: inline-block;
-	padding: 15px;
-	background-color: #fff;
+.post-meta li{
+	display: inline;
+
+
 }
 
-.post-meta .list-meta, .post-meta .list-meta>li {
-	font-size: 12px;
-	line-height: 14px;
-}
-
-.list-inline {
-	padding-left: 0;
-	margin-left: -5px;
-	list-style: none;
-}
 
 #map-canvas { 
 	height: 475px;
@@ -202,4 +194,17 @@ label {
 	overflow: hidden;
 
 	margin-right: 10px;
+}
+
+.carouselPart {
+	margin-top: 20px;
+	
+}
+#business{
+	position: absolute;
+	left: 15px;
+}
+#likes{
+	position: absolute;
+	right: 10px;
 }
