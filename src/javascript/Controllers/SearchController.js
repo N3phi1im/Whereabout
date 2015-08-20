@@ -41,5 +41,17 @@
 		};
 		Map.init();
 		if ($stateParams.search) $scope.search();
-	}
+//-------------------------------------------------------------------------//
+
+vm.setlocation = function(location) {
+	
+	HomeFactory.uploadLocation(location).then(function() {
+		HomeFactory.setPhoto().then(function() {
+			HomeFactory.setPlace(id).then(function() {
+				state.go('Home');
+			});
+		});
+	});
+};
+}
 })();
