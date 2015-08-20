@@ -5,7 +5,7 @@
 		</div>
 		<div id="map-canvas"></div>
 		<ul ng-repeat="res in vm.results">
-			<h3 class="well pointer"><img src={{res.icon}}><a ui-sref="Business({res: " + {{res.id}} + "  })">{{res.name}}</a></h3>
+			<h3 class="well pointer"><img src={{res.icon}}><a ui-sref="Business({res: '{{res.id}}'  })">{{res.name}}</a></h3>
 		</ul>	
 	</div>
 	<div id="map-canvas"></div>
