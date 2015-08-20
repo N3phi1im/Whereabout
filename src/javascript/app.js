@@ -63,6 +63,7 @@
 		});
 		$urlRouterProvider.otherwise('/');
 	}
+
 	auth.$inject = ['$rootScope', '$location', '$state', 'UserFactory'];
 	function auth($rootScope, $location, $state, UserFactory) {
 		var userInfo = UserFactory.status;
