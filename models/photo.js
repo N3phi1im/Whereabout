@@ -7,11 +7,16 @@ var mongoose = require('mongoose');
 
 var PhotoSchema = new mongoose.Schema({
   id: String,
+  url: String,
   user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
   place: {type: mongoose.Schema.Types.ObjectId, ref: 'Place'},
   createdAt: { type: Date, 'default': Date.now },
   deletedAt: { type: Date, 'default': null },
   strikes: Number,
+  likes: [{
+    dateLiked: { type: Date, 'default': Date.now },
+    user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
+  }],
   title: String,
   comments: [{
 		body: String,

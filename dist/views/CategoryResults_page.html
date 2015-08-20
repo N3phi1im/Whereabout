@@ -1,0 +1,12 @@
+<div ng-controller="SearchController as vm">
+	<div class="form-group"> 
+		<div class="col-md-4 col-md-offset-4">
+
+		</div>
+		<div id="map-canvas"></div>
+		<ul ng-repeat="res in vm.results">
+			<h3 class="well">{{res.name}} {{res.id}}</h3>
+		</ul>	
+	</div>
+	<div id="map-canvas"></div>
+</div>

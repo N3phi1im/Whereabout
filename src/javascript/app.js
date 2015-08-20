@@ -1,7 +1,8 @@
 (function() {
 	'use strict';
 	angular.module('app', ['ui.router','uiGmapgoogle-maps'])
-	.config(Config);
+	.config(Config)
+	.run(auth);
 
 	Config.$inject = ['$stateProvider', '$urlRouterProvider', 'uiGmapGoogleMapApiProvider'];
 
@@ -38,20 +39,43 @@
 		state('TakePhoto', {
 			url: '/TakePhoto',
 			templateUrl: '/views/takephoto_page.html'
+		}).
+		state('CategoryResults', {
+			url: '/CategoryResults/:search',
+			templateUrl: '/views/CategoryResults_page.html'
+		}).
+		state('PasswordReset', {
+			url: '/PasswordReset',
+			templateUrl: '/views/passwordreset_page.html'
 		}).state("Token", {
-        url: "/Token/:token",
-        templateUrl: "views/token.html",
-        controller: "TokenController",
-        resolve: {
-            token: ["$stateParams", function ($stateParams) {
-                    return $stateParams.token;
-                }]
-        }});
+			url: "/Token/:token",
+			templateUrl: "views/token.html",
+			controller: "TokenController",
+			resolve: {
+				token: ["$stateParams", function ($stateParams) {
+					return $stateParams.token;
+				}]
+			}});
 		uiGmapGoogleMapApiProvider.configure({
 			key: 'AIzaSyBxyZmdIb_nrx9U2AbXXNbAIGXH_ev3X78',
 			v: '3.17',
 			libraries: 'places,weather,geometry,visualization'
 		});
 		$urlRouterProvider.otherwise('/');
+	}
+	auth.$inject = ['$rootScope', '$location', '$state', 'UserFactory'];
+	function auth($rootScope, $location, $state, UserFactory) {
+		var userInfo = UserFactory.status;
+		$rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
+			if(!userInfo.isLoggedIn) {
+				var welcome = toState.name === "Welcome";
+				var token = toState.name === "Token";
+				if(welcome || token) {
+					return;
+				}
+				e.preventDefault();
+				$state.go('Welcome');
+			}
+		});
 	}
 })();

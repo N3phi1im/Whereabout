@@ -1,24 +1,99 @@
-<div ng-controller="SearchController as vm">
-<!-- 	<div class="form-group"> 
-		<div class="col-md-4 col-md-offset-4">
-			<div id="center">
-				<select class="form-control searchBox"  ng-model="searchPlace" ng-change="search()">
-					<option value="" disabled selected>Restaurant</option>
-					<option>McDonald's</option>
-					<option>Burger King</option>
-					<option>Wendy's</option>
-					<option>Taco Bell</option>
-					<option>Panda Express</option>
-					<option>Starbucks</option>
-					<option>Jack in the box</option>
-					<option>Chipotle</option>
-				</select>
-				<button class="btn btn-default" ng-click="goHome()">My Location</button>
+<ul>
+	<a ui-sref="CategoryResults({search:'accounting'})">accounting</a>
+	<a ui-sref="CategoryResults({search:'airport'})">airport</a>
+	<a ui-sref="CategoryResults({search:'amusement park'})">amusement park</a>
+	<a ui-sref="CategoryResults({search:'aquarium'})">aquarium</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">art gallery</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">atm</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">bakery</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">bank</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">bar</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">beauty salon</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">bicycle store</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">book store</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">bowangalley</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">bus station</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">cafe</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">camp ground</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">car dealer</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">car rental</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">car repair</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">car wash</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">casino</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">cemetery</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">church</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">city hall</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">clothing store</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">convenience store</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">courthouse</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">dentist</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">department store</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">doctor</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">electrician</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">electronics store</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">embassy</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">estabashment</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">finance</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">fire station</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">florist</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">food</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">funeral home</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">furniture store</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">gas station</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">general contractor</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">grocery or supermarket</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">gym</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">hair care</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">hardware store</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">health</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">hindu temple</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">home goods store</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">hospital</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">insurance agency</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">jewelry store</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">laundry</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">lawyer</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">abrary</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">a liquorstore</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">local government office</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">locksmith</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">lodging</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">meal deavery</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">meal takeaway</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">mosque</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">movie rental</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">movie theater</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">moving company</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">museum</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">nightclub</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">painter</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">park</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">parking</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">pet store</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">pharmacy</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">physiotherapist</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">place of worship</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">plumber</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">poace</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">post office</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">real estate agency</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">restaurant</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">roofing contractor</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">rv park</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">school</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">shoe store</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">shopping mall</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">spa</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">stadium</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">storage</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">store</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">subway station</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">synagogue</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">taxi stand</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">train station</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">travel agency</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">university</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">veterinary care</a>
+	<a ui-sref="CategoryResults({search:'accounting'})">zoo</a>
+</ul>
 
-
-			</div>
-		</div>
-	</div> -->
-	<div id="map-canvas"></div>
-	
-</div>
