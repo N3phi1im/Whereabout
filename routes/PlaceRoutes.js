@@ -8,12 +8,13 @@ var User = mongoose.model('User');
 
 router.post('/makePlace', function(req, res, next) {
   var place = new Place();
-  place.name =
-  place.google =
-  place.photos =
+  place.google.name = req.body.name;
+  place.google.geo = req.body.geo;
+  place.google.address = req.body.address;
+  place.google.hours = req.body.hours;
   place.save(function(err, place) {
     if(err) return next(err);
-
+      
   });
   res.send();
 });

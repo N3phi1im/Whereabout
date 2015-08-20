@@ -17,6 +17,7 @@ var userRoutes = require('./routes/UserRoutes');
 var facebookRoutes = require('./routes/FacebookRoutes');
 var photoRoutes = require('./routes/PhotoRoutes');
 var placeRoutes = require('./routes/PlaceRoutes');
+var emailRoutes = require('./routes/EmailRoutes');
 
 var app = express();
 var port = process.env.PORT || 3000;
@@ -48,6 +49,7 @@ app.use('/api/Users', userRoutes);
 app.use('/api/Facebook', facebookRoutes);
 app.use('/api/Photos', photoRoutes);
 app.use('/api/Places', placeRoutes);
+app.use('/api/Email', emailRoutes);
 
 var server = app.listen(port, function() {
 	var host = server.address().address;
