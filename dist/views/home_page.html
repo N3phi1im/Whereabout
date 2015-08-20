@@ -1,5 +1,5 @@
 <div ng-controller="HomeController as vm">
-<<<<<<< HEAD
+
 	<input type="file" accept="image/*;capture=camera">
 	<button ng-click="vm.upload()">upload</button>
 	<div id="wrapper">
@@ -11,9 +11,8 @@
 					<p>"Ut wisi enim ad minim veniam."</p>				
 				</div>
 
-				<div ng-controller="CarouselCtrl">
-					
-					<carousel interval="myInterval" no-wrap="noWrapSlides">
+				<div style="height: 305px">
+					<carousel interval="myInterval">
 						<slide ng-repeat="slide in slides" active="slide.active">
 							<img ng-src="{{slide.image}}" style="margin:auto;">
 							<div class="carousel-caption">
@@ -22,8 +21,6 @@
 							</div>
 						</slide>
 					</carousel>
-					
-					
 				</div>
 
 				
@@ -44,9 +41,6 @@
 		</div>
 	</div>
 
-=======
-	<input type="file" accept="image/*;capture=camera" ng-model='vm.img'>
-	<button ui-sref="TakePhoto">Take photo</button>
->>>>>>> 35ecea9d1feda7f7bb4836e6fe99eda8667e4987
+
 </div>
 
