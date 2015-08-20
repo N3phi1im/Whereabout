@@ -18,6 +18,7 @@ router.post('/upload', function(req, res) {
     res.send();
 });
 
+
 router.post('/setPhoto', function(req, res) {
   var photo = new Photo();
   photo.url = req.body.url;
@@ -30,13 +31,13 @@ router.post('/setPhoto', function(req, res) {
 
 router.post('/setPlace', function(req, res) {
   Place.findByIdAndUpdate(
-    Place._id,
+    Place.google.id,
     {$push: {"photos": {id: req.body.id }}},
     {save: true, upsert: true, new: true},
     function(err) {
       console.log(err);
+      res.end();
     });
-  res.end();
 });
 
 router.get('/getPhotos', function(req, res) {

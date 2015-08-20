@@ -10,11 +10,20 @@
 		o.upload = upload;
 		o.setPhoto = setPhoto;
 		o.setPlace = setPlace;
+		o.uploadLocation = uploadLocation;
 		return o;
 
 		function upload(photo) {
 			var q = $q.defer();
 			$http.post('/api/Photos/upload', photo).success(function(req, res) {
+				q.resolve(res);
+			});
+			return q.promise;
+		}
+		function uploadLocation(location) {
+			console.log(location);
+			var q = $q.defer();
+			$http.post('/api/Places/Place', location).success(function(req, res) {
 				q.resolve(res);
 			});
 			return q.promise;

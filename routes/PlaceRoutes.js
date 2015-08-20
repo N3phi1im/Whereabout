@@ -6,17 +6,26 @@ var Photo = mongoose.model('Photo');
 var Place = mongoose.model('Place');
 var User = mongoose.model('User');
 
-router.post('/makePlace', function(req, res, next) {
-  var place = new Place();
-  place.google.name = req.body.name;
-  place.google.geo = req.body.geo;
-  place.google.address = req.body.address;
-  place.google.hours = req.body.hours;
-  place.save(function(err, place) {
+router.post('/Place', function(req, res, next) {
+  Place.findOne({
+    "google.id": req.body.id
+  }, function(err, place) {
     if(err) return next(err);
-      
+    if(place) return res.send("Existing");
+    var newplace = new Place();
+    newplace.google.name = req.body.name;
+    newplace.google.id = req.body.id;
+    newplace.google.address = req.body.address;
+    newplace.google.hours = req.body.hours;
+    newplace.save(function(err, place) {
+      if(err) return next(err);
+      res.send("New");
+    });
   });
-  res.send();
+});
+
+router.get('/Place/info', function(req, res, next) {
+  
 });
 
 router.use(function (err, req, res, next) {
