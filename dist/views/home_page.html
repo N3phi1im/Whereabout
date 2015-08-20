@@ -1,3 +1,40 @@
 <div ng-controller="HomeController as vm">
+
+	<input type="file" accept="image/*;capture=camera">
+	<button ng-click="vm.upload()">upload</button>
 	<button ui-sref="TakePhoto">Take photo</button>
+	<div id="wrapper">
+		<div id="columns">
+			<div class="pin">
+				<div class="inner_wrap1">
+					<img src="http://seobuzzworld.com/wp-content/uploads/2012/12/twitter-profile.jpg" id="profile-img-circle">
+					<h5>Lucy-p</h5>
+					<p>"Ut wisi enim ad minim veniam."</p>				
+				</div>
+
+				<div ng-controller="CarouselCtrl">
+					
+					<carousel class="carouselPart" interval="myInterval" no-wrap="noWrapSlides">
+						<slide ng-repeat="slide in slides" active="slide.active">
+							<img ng-src="{{slide.image}}" style="margin:auto;">
+							
+						</slide>
+					</carousel>
+
+				</div>
+				
+				<div class="post-meta">
+					<ul>
+						<li><h5 id="business">Starbucks</h5></li>
+						<li><h5 class="fa fa-heart" id="likes"> 9</h5></li>
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+
 </div>
+
