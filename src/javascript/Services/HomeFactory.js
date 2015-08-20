@@ -11,6 +11,7 @@
 		o.setPhoto = setPhoto;
 		o.setPlace = setPlace;
 		o.uploadLocation = uploadLocation;
+		o.dataObject ={};
 		return o;
 
 		function upload(photo) {
@@ -23,6 +24,7 @@
 		function uploadLocation(location) {
 			var q = $q.defer();
 			$http.post('/api/Places/Place', location).success(function(req, res) {
+				res = o.dataObject;
 				q.resolve(res);
 			});
 			return q.promise;
