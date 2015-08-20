@@ -1,9 +1,10 @@
 (function () {
     'use strict';
-    angular.module('app', ['ui.router']).config(Config);
-    Config.$inject = ['$stateProvider', '$urlRouterProvider'];
+    angular.module('app', ['ui.router', 'uiGmapgoogle-maps']).config(Config);
 
-    function Config($stateProvider, $urlRouterProvider) {
+    Config.$inject = ['$stateProvider', '$urlRouterProvider', 'uiGmapGoogleMapApiProvider'];
+
+    function Config($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
         $stateProvider.state('Welcome', {
             url: '/',
             templateUrl: '/views/welcome_page.html'
@@ -36,6 +37,20 @@
         state('TakePhoto', {
             url: '/TakePhoto',
             templateUrl: '/views/takephoto_page.html'
+        }).state("Token", {
+            url: "/Token/:token",
+            templateUrl: "views/token.html",
+            controller: "TokenController",
+            resolve: {
+                token: ["$stateParams", function ($stateParams) {
+                    return $stateParams.token;
+                }]
+            }
+        });
+        uiGmapGoogleMapApiProvider.configure({
+            key: 'AIzaSyBxyZmdIb_nrx9U2AbXXNbAIGXH_ev3X78',
+            v: '3.17',
+            libraries: 'places,weather,geometry,visualization'
         });
         $urlRouterProvider.otherwise('/');
     }
@@ -62,8 +77,14 @@
     function HomeController(HomeFactory, UserFactory) {
         var vm = this;
 
-        vm.upload = function () {
-            HomeFactory.upload();
+        vm.upload = function (photo) {
+            HomeFactory.upload(photo).then(function () {
+                HomeFactory.setPhoto().then(function () {
+                    HomeFactory.setPlace(id).then(function () {
+                        state.go('Home');
+                    });
+                });
+            });
         };
     }
 })();
@@ -100,9 +121,7 @@
         vm.status = UserFactory.status;
         vm.register = register;
         vm.login = login;
-        vm.facebook = facebook;
         vm.logout = UserFactory.logout;
-
 
         function register() {
             var u = vm.user;
@@ -120,12 +139,6 @@
             });
         }
 
-        function facebook() {
-            UserFactory.facebook().then(function () {
-                $state.go('Home');
-            });
-        }
-
         vm.scrollTo = function (id) {
             $location.hash(id);
             console.log($location.hash());
@@ -139,12 +152,53 @@
     'use strict';
     angular.module('app').controller('SearchController', SearchController);
 
-    SearchController.$inject = ['HomeFactory'];
+    SearchController.$inject = ['HomeFactory', 'uiGmapGoogleMapApi', '$scope', '$window', 'Map', '$state'];
 
-    function SearchController(HomeFactory) {
+    function SearchController(HomeFactory, uiGmapGoogleMapApi, $scope, $window, Map, $state) {
         var vm = this;
+
+        $scope.place = {};
+
+        $scope.goHome = function () {
+            Map.init();
+        };
+        $scope.search = function () {
+            $scope.apiError = false;
+            Map.search($scope.searchPlace, $scope.searchDistance).then(
+
+            function (res) {
+                // success
+                for (var i = 0; i < res.length; i++) {
+                    Map.createMarker(res[i]);
+                }
+            }, function (status) { // error
+                $scope.apiError = true;
+                $scope.apiStatus = status;
+            });
+
+        };
+        $scope.send = function () {
+            console.log($scope.place.name + ' : ' + $scope.place.lat + ', ' + $scope.place.lng);
+        };
+        Map.init();
+
     }
 })();
+(function () {
+    'use strict';
+    angular.module('app').controller('TokenController', TokenController);
+
+    TokenController.$inject = ['HomeFactory', 'UserFactory', 'token', '$state'];
+
+    function TokenController(HomeFactory, UserFactory, token, $state) {
+        var vm = this;
+
+        UserFactory.setToken(token);
+        UserFactory.status.isLoggedIn = true;
+        $state.go('Home');
+    }
+})();
+
 (function () {
     'use strict';
     angular.module('app').factory('HomeFactory', HomeFactory);
@@ -154,11 +208,46 @@
     function HomeFactory($http, $q) {
         var o = {};
         o.upload = upload;
+        o.setPhoto = setPhoto;
+        o.setPlace = setPlace;
         return o;
 
-        function upload() {
-            $http.post('/api/Photos/upload');
+        function upload(photo) {
+            var q = $q.defer();
+            $http.post('/api/Photos/upload', photo).success(function (req, res) {
+                q.resolve(res);
+            });
+            return q.promise;
         }
+
+        function setPhoto() {
+            var q = $q.defer();
+            $http.post('/api/Photos/setPhoto').success(function () {
+                q.resolve();
+            });
+            return q.promise;
+        }
+
+        function setPlace() {
+            var q = $q.defer();
+            $http.post('/api/Photos/setPlace').success(function () {
+                q.resolve();
+            });
+            return q.promise;
+        }
+    }
+})();
+
+(function () {
+    'use strict';
+    angular.module('app').factory('PlacesFactory', PlacesFactory);
+
+    PlacesFactory.$inject = ['$http', '$q'];
+
+    function PlacesFactory($http, $q) {
+        var o = {};
+        return o;
+
     }
 })();
 
@@ -182,7 +271,6 @@
         o.removeToken = removeToken;
         o.register = register;
         o.login = login;
-        o.facebook = facebook;
         o.logout = logout;
         return o;
 
@@ -203,16 +291,6 @@
             };
             var q = $q.defer();
             $http.post('/api/Users/Login', u).success(function (res) {
-                setToken(res.token);
-                o.status.isLoggedIn = true;
-                q.resolve();
-            });
-            return q.promise;
-        }
-
-        function facebook() {
-            var q = $q.defer();
-            $http.get('/api/Facebook/auth/facebook').success(function (res) {
                 setToken(res.token);
                 o.status.isLoggedIn = true;
                 q.resolve();

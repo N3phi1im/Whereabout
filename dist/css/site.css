@@ -69,6 +69,10 @@ h1 {
 	margin-right: 10px;
 }
 
+
+.modal-footer {   border-top: 0px; }
+
+
 .btn-facebook {
 	border-radius: 2px;
 
@@ -97,6 +101,7 @@ label {
 .modal-footer {
 	border: none;
 }
+
 
 #wrapper {
 	width: 100%;
@@ -160,6 +165,7 @@ label {
 }
 
 .post-meta {
+	display: inline-block;
 	padding: 15px;
 	background-color: #fff;
 }
@@ -173,4 +179,27 @@ label {
 	padding-left: 0;
 	margin-left: -5px;
 	list-style: none;
+}
+
+#map-canvas { 
+	height: 475px;
+	width: auto;
+	margin: 20px 0;
+	border-radius: 5px;
+	border: 1px solid silver;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 4%;
+}
+
+
+#profile-img-circle {
+	border: 3px solid #c99;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	float: left;
+	overflow: hidden;
+
+	margin-right: 10px;
 }
