@@ -24,13 +24,12 @@
 		function uploadLocation(location) {
 			var q = $q.defer();
 			$http.post('/api/Places/Place', location).success(function(req, res) {
-				q.resolve();
+				q.resolve(res);
 			});
 			return q.promise;
 		}
 
 		function getLocation(id) {
-			console.log(id);
 			var q = $q.defer();
 			$http.get('/api/Places/Place/info', id).success(function(req, res) {
 				q.resolve(res);
