@@ -3,10 +3,12 @@
 	angular.module('app')
 	.controller('BusinessController', BusinessController);
 
-	BusinessController.$inject = ['HomeFactory'];
+	BusinessController.$inject = ['HomeFactory', '$state', '$stateParams'];
 
-	function BusinessController(HomeFactory) {
+	function BusinessController(HomeFactory, $state, $stateParams) {
 		var vm = this;
-		
+
 	}
 })();
+
+
