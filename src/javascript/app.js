@@ -1,6 +1,6 @@
 (function() {
 	'use strict';
-	angular.module('app', ['ui.router','uiGmapgoogle-maps'])
+	angular.module('app', ['ui.router','uiGmapgoogle-maps','ui.bootstrap', 'ngAnimate'])
 	.config(Config)
 	.run(auth);
 

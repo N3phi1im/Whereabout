@@ -29,6 +29,7 @@
 			return q.promise;
 		}
 
+
 		function getLocation(id) {
 			var q = $q.defer();
 			$http.get('/api/Places/Place/info', id).success(function(req, res) {
@@ -37,9 +38,10 @@
 			return q.promise;
 		}
 
-		function setPhoto() {
+		function setPhoto(photo) {
+
 			var q = $q.defer();
-			$http.post('/api/Photos/setPhoto').success(function() {
+			$http.post('/api/Photos/setPhoto', photo).success(function() {
 				q.resolve();
 			});
 			return q.promise;
