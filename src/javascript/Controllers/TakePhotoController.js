@@ -3,20 +3,18 @@
 	angular.module('app')
 	.controller('TakePhotoController', TakePhotoController);
 
-	TakePhotoController.$inject = ['$state','HomeFactory','UserFactory'];
+	TakePhotoController.$inject = ['$scope','$state','HomeFactory','UserFactory'];
 
-	function TakePhotoController($state, HomeFactory,UserFactory) {
+	function TakePhotoController($scope, $state, HomeFactory,UserFactory) {
 		var vm = this;
+//---------------------------------------------------------------------------//
+		$scope.customer = {};
+		$scope.Submit = function(){
+			var uploadUrl = '/upload';
+			multipartForm.post(uploadUrl, $scope.customer)
+		}
 
-		vm.upload = function(photo) {
-			console.log(photo);
-			HomeFactory.upload(photo).then(function() {
-				// HomeFactory.setPhoto().then(function() {
-				// 	HomeFactory.setPlace(id).then(function() {
-					$state.go('Home');
-				});
-		// 		});
-		// 	});
-};
+
+
 }
 })();

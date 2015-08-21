@@ -1,8 +1,8 @@
 
 <!--.....................................................................-->
 <div ng-controller="TakePhotoController as vm">
-	<input type="file" accept="image/*" fileread ='vm.img'>
-	<button ng-click="vm.upload(vm.img)">upload</button>
+	<input type="file" accept="image/*" file-model='vm.img'>
+	<button ng-click="vm.upload()">upload</button>
 </div>
 <!--.....................................................................-->
 
