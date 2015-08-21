@@ -29,7 +29,6 @@
 			return q.promise;
 		}
 
-
 		function getLocation(id) {
 			var q = $q.defer();
 			$http.get('/api/Places/Place/info', id).success(function(req, res) {
