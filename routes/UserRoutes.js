@@ -8,6 +8,8 @@ var jwt = require('express-jwt');
 router.post('/Register', function(req, res, next) {
 	var user = new User();
 	user.email = req.body.email;
+	user.first_name = req.body.first_name;
+	user.last_name = req.body.last_name;
 	user.setPassword(req.body.password);
 	user.save(function(err, user) {
 		if(err) return next(err);
