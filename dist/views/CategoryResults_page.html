@@ -7,7 +7,7 @@
 			<div id="map-canvas"></div>
 		</div>
 		<ul ng-repeat="res in vm.results">
-			<h3 class="well pointer wellWidth"><img ng-src={{res.icon}}><a> {{res.name}}</a></h3>
+			<h3 class="well pointer wellWidth"><img ng-src={{res.icon}}><a ng-click="goToPage({{res.id}})"> {{res.name}}</a></h3>
 		</ul>	
 	</div>
 </div>
