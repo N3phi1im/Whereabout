@@ -7,7 +7,6 @@
 
 	function TakePhotoController(HomeFactory,UserFactory) {
 		var vm = this;
-
 		vm.upload = function(photo) {
 			console.log(photo);
 			HomeFactory.upload(photo).then(function() {
