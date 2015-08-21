@@ -184,10 +184,6 @@ label {
 	margin-top: 20px;
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 3e6a9778f71dfabb213679367de6dfc93ce15d1e
 
 #profile-img-circle {
 	border: 3px solid #c99;
@@ -210,13 +206,8 @@ label {
 #likes{
 	position: absolute;
 	right: 10px;
-<<<<<<< HEAD
-
-	.pointer {
-		cursor: pointer;
-	}
-=======
 }
+
 
 .pointer {
 	cursor: pointer;
@@ -241,4 +232,9 @@ label {
 	height: 200px;
 	border-radius: 0px;
 }
->>>>>>> 3e6a9778f71dfabb213679367de6dfc93ce15d1e
+#UserDropdown{
+	margin-top: 10px;
+}
+#camera{
+	font-size: 2em;
+}

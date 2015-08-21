@@ -4,7 +4,7 @@
   <title>final</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="styesheet" href="bootstrap-social/bootstrap-social.css">
-  <link rel="styesheet" href="font-awesome/css/font-awesome.css">
+  <link rel="styesheet" href="font-awesome/css/font-awesome.min.css">
 
   <!-- Bootstrap Core CSS -->
   <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -43,81 +43,71 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Link</a></li>
 
-          </ul>
-          <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form>
-          <ul class="nav navbar-nav navbar-right">
-            <div ng-controller="DropdownCtrl">
-              <div class="btn-group" dropdown is-open="status.isopen">
-                <button id="single-button" type="button" class="btn btn-primary" dropdown-toggle >
-                  {{nav.status.first_name}} <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="single-button">
-                  <li role="menuitem"><a href="#">Action</a></li>
-                  <li role="menuitem"><a href="#">Another action</a></li>
-                  <li role="menuitem"><a href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li role="menuitem"><a ng-click="nav.logout()">Logout</a></li>
-                </ul>
-              </div>
-            </div>
-            <!-- <li ng-show="nav.status.isLoggedIn"><a ng-click="nav.logout()">Logout</a></li>
-            <li class="dropdown" ng-show="nav.status.username">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{nav.status.username}} <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
-            </li> -->
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav>
+         <ul class="nav navbar-nav">
+           <li> <button type="button" class="btn btn-default navbar-btn">Discover</button></li>
+           <li class="active"><a href="#"><i class="fa fa-camera" id="camera"></i></a></li>
+         </ul>
 
-    <ui-view></ui-view>
-    <!-- <script src="angular/angular.min.js"></script> -->
-    <!-- Google API Libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> 
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-maps/2.1.5/angular-google-maps.js"></script>
+         <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+
+        <ul class="nav navbar-nav navbar-right" id="UserDropdown">
+          <div class="btn-group" dropdown>
+            <button id="single-button" type="button" class="btn btn-primary" dropdown-toggle >
+              username  <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="single-button">
+              <li role="menuitem"><a href="#">Action</a></li>
+              <li role="menuitem"><a href="#">Another action</a></li>
+              <li role="menuitem"><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li role="menuitem"><a ng-click="nav.logout()">Logout</a></li>
+            </ul>
+          </div>
+        </ul>
+
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+  <ui-view></ui-view>
+  <!-- <script src="angular/angular.min.js"></script> -->
+  <!-- Google API Libraries -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> 
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-maps/2.1.5/angular-google-maps.js"></script>
 
 
-  </div>
-  <!-- Ext Libs -->
+</div>
+<!-- Ext Libs -->
 
-  <!-- jQuery -->
-  <script src="js/jquery.js"></script>
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
 
-  <!-- Bootstrap Core JavaScript -->
-  <script src="js/bootstrap.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
 
-  <!-- Plugin JavaScript -->
-  <script src="js/jquery.easing.min.js"></script>
-  <script src="js/jquery.fittext.js"></script>
-  <script src="js/wow.min.js"></script>
+<!-- Plugin JavaScript -->
+<script src="js/jquery.easing.min.js"></script>
+<script src="js/jquery.fittext.js"></script>
+<script src="js/wow.min.js"></script>
 
-  <script src="angular-bootstrap/ui-bootstrap.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-animate.js"></script>
-  <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.3.js"></script>
+<script src="angular-bootstrap/ui-bootstrap.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-animate.js"></script>
+<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.3.js"></script>
 
 
-  <!-- Custom Theme JavaScript -->
-  <script src="js/creative.js"></script>
-  <script src="js/jsBundle.js"></script>
+<!-- Custom Theme JavaScript -->
+<script src="js/creative.js"></script>
+<script src="js/jsBundle.js"></script>
 
 
 
