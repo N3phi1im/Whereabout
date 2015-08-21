@@ -47,7 +47,7 @@
 		};
 
 		vm.setlocation = function(location) {
-			
+
 			HomeFactory.uploadLocation(location).then(function() {
 				HomeFactory.setPhoto().then(function() {
 					HomeFactory.setPlace(id).then(function() {
@@ -56,8 +56,8 @@
 				});
 			});
 		};
-	}
 
-	if ($stateParams.search) Map.init(true).then($scope.search);
-	else  Map.init();
+		if ($stateParams.search) Map.init(true).then($scope.search);
+		else  Map.init();
+	}
 })(); 
