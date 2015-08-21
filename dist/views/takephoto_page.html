@@ -1,7 +1,7 @@
 
 <!--.....................................................................-->
 <div ng-controller="TakePhotoController as vm">
-	<input type="file" accept="image/*;capture=camera" ng-model='vm.img'>
+	<input type="file" accept="image/*" fileread ='vm.img'>
 	<button ng-click="vm.upload(vm.img)">upload</button>
 </div>
 <!--.....................................................................-->
@@ -19,10 +19,10 @@
 		<div id="map-canvas"></div>
 		<ul ng-repeat="res in vm.results">
 			<button ng-click="vm.setlocation(res)" class="well">{{res.id}} {{res.name}} {{res.formatted_address}} </button>
-			</ul>
+		</ul>
 
-		</div>
-		<div id="map-canvas"></div>
 	</div>
-	<!--.....................................................................-->
-	<button ui-sref="Business">Next</button>
+	<div id="map-canvas"></div>
+</div>
+<!--.....................................................................-->
+<button ui-sref="Business">Next</button>

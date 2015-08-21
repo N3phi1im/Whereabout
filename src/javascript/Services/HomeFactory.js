@@ -24,15 +24,15 @@
 		function uploadLocation(location) {
 			var q = $q.defer();
 			$http.post('/api/Places/Place', location).success(function(req, res) {
-				res = o.dataObject;
-				q.resolve(res);
+				o.dataObject = location.id;
+				q.resolve();
 			});
 			return q.promise;
 		}
 
-		function setPhoto(photo) {
+		function setPhoto() {
 			var q = $q.defer();
-			$http.post('/api/Photos/setPhoto', photo).success(function() {
+			$http.post('/api/Photos/setPhoto').success(function() {
 				q.resolve();
 			});
 			return q.promise;
