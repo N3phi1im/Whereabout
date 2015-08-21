@@ -16,6 +16,7 @@
 		return o;
 
 		function upload(photo) {
+			console(photo);
 			var q = $q.defer();
 			$http.post('/api/Photos/upload', photo).success(function(req, res) {
 				q.resolve(res);

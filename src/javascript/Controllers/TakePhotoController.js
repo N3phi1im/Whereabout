@@ -1,6 +1,9 @@
-angular.module('app', [], function() {});
-TakePhotoController.$inject = ['$scope'];
-function TakePhotoController(scope) {
+(function() {
+	'use strict';
+	angular.module('app')
+	.controller('TakePhotoController', TakePhotoController);
+	TakePhotoController.$inject = ['$scope'];
+	function TakePhotoController(scope) {
     //============== DRAG & DROP =============
     // source for drag&drop: http://www.webappers.com/2011/09/28/drag-drop-file-upload-with-html5-javascript/
     var dropbox = document.getElementById("dropbox");
@@ -69,7 +72,7 @@ function TakePhotoController(scope) {
     	xhr.addEventListener("load", uploadComplete, false);
     	xhr.addEventListener("error", uploadFailed, false);
     	xhr.addEventListener("abort", uploadCanceled, false);
-    	xhr.open("POST", "/fileupload");
+    	xhr.open("POST", "/api/Photos/upload");
     	scope.progressVisible = true;
     	xhr.send(fd);
     };
@@ -86,19 +89,19 @@ function TakePhotoController(scope) {
 
     function uploadComplete(evt) {
     	/* This event is raised when the server send back a response */
-    	alert(evt.target.responseText);
+    	console.log(evt.target.responseText);
     }
 
     function uploadFailed(evt) {
-    	alert("There was an error attempting to upload the file.");
+    	console.log("There was an error attempting to upload the file.");
     }
 
     function uploadCanceled(evt) {
     	scope.$apply(function(){
     		scope.progressVisible = false;
     	});
-    	alert("The upload has been canceled by the user or the browser dropped the connection.");
+    	console.log("The upload has been canceled by the user or the browser dropped the connection.");
     }
 }
-
+})();
 
