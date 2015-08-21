@@ -118,13 +118,13 @@ aside {
 
 .navbar-default .nav > li.active>a:hover,
 .navbar-default .nav>li.active>a:focus:hover {
-    background-color: transparent;
+    background-color: #090909;
 }
 
 @media(min-width:768px) {
     .navbar-default {
         border-color: rgba(255,255,255,.3);
-        background-color: #333333;
+        background-color: #222222;
     }
 
     .navbar-default .navbar-header .navbar-brand {
