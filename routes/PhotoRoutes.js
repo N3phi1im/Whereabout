@@ -14,8 +14,8 @@ cloudinary.config({
 
 router.post('/upload', function(req, res) {
   cloudinary.uploader.upload("req.body", function(result) {
-  });
     res.send();
+  });
 });
 
 
@@ -30,7 +30,6 @@ router.post('/setPhoto', function(req, res) {
 });
 
 router.post('/setPlace', function(req, res) {
-  console.log(req.body);
   Place.findByIdAndUpdate(
     Place.google.id,
     {$push: {"photos": {id: req.body.id }}},

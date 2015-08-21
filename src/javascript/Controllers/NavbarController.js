@@ -14,6 +14,7 @@
 		vm.logout = UserFactory.logout;
 
 		function register() {
+			console.log(vm.user);
 			var u = vm.user;
 			if(!u.email || !u.password || !u.cpassword || (u.password !== u.cpassword)) {
 				return false;
