@@ -24,7 +24,7 @@
 		function uploadLocation(location) {
 			var q = $q.defer();
 			$http.post('/api/Places/Place', location).success(function(req, res) {
-				q.resolve(res);
+				q.resolve();
 			});
 			return q.promise;
 		}
