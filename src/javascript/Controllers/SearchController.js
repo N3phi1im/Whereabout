@@ -11,6 +11,12 @@
 
 		$scope.place = {};
 
+		$scope.goToPage = function(id) {
+			HomeFactory.getLocation(id).then(function(data) {
+				state.go('Business');
+			});
+		};
+
 		$scope.goHome = function(){
 			Map.init();
 		};
@@ -39,19 +45,7 @@
 		$scope.send = function() {
 			console.log($scope.place.name + ' : ' + $scope.place.lat + ', ' + $scope.place.lng);
 		};
-		Map.init();
-		if ($stateParams.search) $scope.search();
-//-------------------------------------------------------------------------//
-
-vm.setlocation = function(location) {
-	
-	HomeFactory.uploadLocation(location).then(function() {
-		HomeFactory.setPhoto().then(function() {
-			HomeFactory.setPlace(id).then(function() {
-				state.go('Home');
-			});
-		});
-	});
-};
-}
+		if ($stateParams.search) Map.init(true).then($scope.search);
+		else  Map.init();
+	}
 })();

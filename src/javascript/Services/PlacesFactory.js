@@ -16,8 +16,9 @@
 		var placesResults = [];
 		this.placesResults = placesResults;
 
-		this.init = function() {
-
+		this.init = function(promise) {
+			var q;
+			if(promise) q = $q.defer();
 			$window.navigator.geolocation.getCurrentPosition (
 				function (position) {
 					lat = position.coords.latitude;
@@ -28,7 +29,7 @@
 					var options = {
 						center: new google.maps.LatLng(lat, lng),
 						zoom: 16,
-						disableDefaultUI: true
+						disableDefaultUI: false,
 					};
 					map = new google.maps.Map(document.getElementById("map-canvas"), options);
 					places = new google.maps.places.PlacesService(map);
@@ -38,10 +39,9 @@
 						map: map,
 						position: urHere,
 					});
-
-
+					if(promise) q.resolve();
 				});
-
+			if(promise) return q.promise;
 		};
 
 		this.deleteMarker = function() {
@@ -52,15 +52,13 @@
 		};
 
 		this.search = function(str, dis) {
-			this.init();
 			var d = $q.defer();
-			var a = str;
-			var b = (dis * 1609.34);
+			var place = str;
 			var request = {
 				location:  new google.maps.LatLng(lat, lng),
-				// radius: 1,
+				radius: 1000,
 				bounds: map.getBounds(),
-				query: a,
+				query: place,
 			};
 			this.deleteMarker();
 
@@ -68,27 +66,25 @@
 			var service = new google.maps.places.PlacesService(map);
 			service.textSearch(request, callback);
 
-
 			function callback(results, status) {
 				if (status == google.maps.places.PlacesServiceStatus.OK) {
 					d.resolve(results);
-					console.log(results);
 				}
 			}
 
 			this.createMarker = function(place) {
 				var placeLoc = place.geometry.location;
-
 				var marker = new google.maps.Marker({
 					map: map,
 					position: place.geometry.location,
 				});
 
-				gmarkers.push(marker);
 				google.maps.event.addListener(marker, 'click', function() {
 					infowindow.setContent(place.name);
 					infowindow.open(map, this);
 				});
+
+				gmarkers.push(marker);
 
 				var bounds = new google.maps.LatLngBounds();
 				bounds.extend(urHere);
