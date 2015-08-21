@@ -4,6 +4,8 @@ var router = express.Router();
 var cloudinary = require('cloudinary');
 var Photo = mongoose.model('Photo');
 var Place = mongoose.model('Place');
+var multer  = require('multer');
+var upload = multer({ dest: 'uploads/' });
 
 
 cloudinary.config({
@@ -12,10 +14,9 @@ cloudinary.config({
   api_secret: 'qeL8V9TKF5O-xuYgCRINKmIhRaY'
 });
 
-router.post('/upload', function(req, res) {
-  console.log(req);
-  cloudinary.uploader.upload("image", function(result) {
-    res.send();
+router.post('/upload', upload.single('uploadedFile'), function(req, res) {
+  cloudinary.uploader.upload(req.file.path, function(result) {
+    res.send(result.url);
   });
 });
 
