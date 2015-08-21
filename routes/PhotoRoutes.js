@@ -13,7 +13,8 @@ cloudinary.config({
 });
 
 router.post('/upload', function(req, res) {
-  cloudinary.uploader.upload("req.body", function(result) {
+  console.log(req);
+  cloudinary.uploader.upload("image", function(result) {
     res.send();
   });
 });
