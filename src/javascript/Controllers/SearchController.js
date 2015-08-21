@@ -3,16 +3,19 @@
 	angular.module('app')
 	.controller('SearchController', SearchController);
 
-	SearchController.$inject = ['HomeFactory', 'uiGmapGoogleMapApi', '$scope', '$window', 'Map', '$state', "$stateParams"];
+	SearchController.$inject = ['HomeFactory', 'uiGmapGoogleMapApi', '$scope', '$window', 'Map', '$state', "$stateParams", "$location"];
 
-	function SearchController(HomeFactory, uiGmapGoogleMapApi, $scope, $window, Map, $state, $stateParams) {
+	function SearchController(HomeFactory, uiGmapGoogleMapApi, $scope, $window, Map, $state, $stateParams, $location) {
 		var vm = this;
 		vm.results = Map.placesResults;
 		$scope.place = {};
 
 		$scope.goToPage = function(id) {
+			var result = {'res': id};
+			var res = result.res;
+			$location.path("/Business/" + res);
 			HomeFactory.getLocation(id).then(function(data) {
-				state.go('Business');
+				console.log(data);
 			});
 		};
 
@@ -48,10 +51,11 @@
 		vm.setlocation = function(location) {
 
 			HomeFactory.uploadLocation(location).then(function() {
-						$state.go('Home');
+				$state.go('Home');
 			});
 		};
 		if ($stateParams.search) Map.init(true).then($scope.search);
 		else  Map.init();
 	}
 })();
+
