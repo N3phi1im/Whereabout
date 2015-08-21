@@ -51,7 +51,7 @@
 						$state.go('Home');
 			});
 		};
+		if ($stateParams.search) Map.init(true).then($scope.search);
+		else  Map.init();
 	}
-	if ($stateParams.search) Map.init(true).then($scope.search);
-	else  Map.init();
 })();
