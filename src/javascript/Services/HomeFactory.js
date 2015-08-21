@@ -11,10 +11,12 @@
 		o.setPhoto = setPhoto;
 		o.setPlace = setPlace;
 		o.uploadLocation = uploadLocation;
+		o.dataObject ={};
 		o.getLocation = getLocation;
 		return o;
 
 		function upload(photo) {
+			console(photo);
 			var q = $q.defer();
 			$http.post('/api/Photos/upload', photo).success(function(req, res) {
 				q.resolve(res);
@@ -24,7 +26,10 @@
 		function uploadLocation(location) {
 			var q = $q.defer();
 			$http.post('/api/Places/Place', location).success(function(req, res) {
-				q.resolve(res);
+
+				o.dataObject = location.id;
+				q.resolve();
+
 			});
 			return q.promise;
 		}
@@ -39,8 +44,9 @@
 
 		function setPhoto(photo) {
 
+			
 			var q = $q.defer();
-			$http.post('/api/Photos/setPhoto', photo).success(function() {
+			$http.post('/api/Photos/setPhoto').success(function() {
 				q.resolve();
 			});
 			return q.promise;
