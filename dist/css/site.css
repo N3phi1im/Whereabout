@@ -184,7 +184,7 @@ label {
 	margin-top: 4%;
 }
 
-<<<<<<< HEAD
+
 
 #profile-img-circle {
 	border: 3px solid #c99;
@@ -193,7 +193,6 @@ label {
 	height: 50px;
 	float: left;
 	overflow: hidden;
-
 	margin-right: 10px;
 }
 
@@ -208,8 +207,7 @@ label {
 #likes{
 	position: absolute;
 	right: 10px;
-=======
-.pointer {
-	cursor: pointer;
->>>>>>> 57b625c36508fbc82baea22ada4a0661e6f7bc57
-}
+
+	.pointer {
+		cursor: pointer;
+	}
