@@ -3,12 +3,13 @@
 		<div class="col-md-4 col-md-offset-4">
 
 		</div>
-		<div id="map-canvas"></div>
+		<div id="mapContainer">
+			<div id="map-canvas"></div>
+		</div>
 		<ul ng-repeat="res in vm.results">
-			<h3 class="well pointer"><img ng-src={{res.icon}}><a>{{res.name}}</a></h3>
+			<h3 class="well pointer wellWidth"><img ng-src={{res.icon}}><a> {{res.name}}</a></h3>
 		</ul>	
 	</div>
-	<div id="map-canvas"></div>
 </div>
 
 

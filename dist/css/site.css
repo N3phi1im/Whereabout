@@ -172,16 +172,16 @@ label {
 
 }
 
-
 #map-canvas {
-	height: 475px;
-	width: 100%;
+	height: 550px;
+	width: 80%;
+
 	margin: 20px 0;
 	border-radius: 5px;
 	border: 1px solid silver;
 	margin-right: auto;
 	margin-left: auto;
-	margin-top: 4%;
+	margin-top: 20px;
 }
 
 
@@ -207,7 +207,28 @@ label {
 #likes{
 	position: absolute;
 	right: 10px;
+}
 
 .pointer {
 	cursor: pointer;
+}
+
+.wellWidth {
+	width: 25%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#mapContainer {
+	margin-top: 20px;
+}
+
+.clickButton {
+	border: 0;
+	text-transform: uppercase;
+	font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+	font-weight: 700;
+	width: 200px;
+	height: 200px;
+	border-radius: 0px;
 }

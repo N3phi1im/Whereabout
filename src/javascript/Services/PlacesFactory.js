@@ -28,15 +28,16 @@
 
 					var options = {
 						center: new google.maps.LatLng(lat, lng),
-						zoom: 16,
-						disableDefaultUI: false,
+						zoom: 15,
+						disableDefaultUI: true,
 					};
 					map = new google.maps.Map(document.getElementById("map-canvas"), options);
 					places = new google.maps.places.PlacesService(map);
 
-
+					var image = '/img/1440148739_Map-Marker-Board-Azure.png';
 					var marker = new google.maps.Marker({
 						map: map,
+						icon: image,
 						position: urHere,
 					});
 					if(promise) q.resolve();
@@ -59,6 +60,8 @@
 				radius: 1000,
 				bounds: map.getBounds(),
 				query: place,
+				rankBy: google.maps.places.RankBy.DISTANCE,
+
 			};
 			this.deleteMarker();
 
@@ -71,12 +74,13 @@
 					d.resolve(results);
 				}
 			}
-
+			var image2 = '/img/1440149027_Map-Marker-Marker-Inside-Azure.png';
 			this.createMarker = function(place) {
 				var placeLoc = place.geometry.location;
 				var marker = new google.maps.Marker({
 					map: map,
 					position: place.geometry.location,
+					icon: image2,
 				});
 
 				google.maps.event.addListener(marker, 'click', function() {
@@ -87,8 +91,8 @@
 				gmarkers.push(marker);
 
 				var bounds = new google.maps.LatLngBounds();
-				bounds.extend(urHere);
 				bounds.extend(place.geometry.location);
+				bounds.extend(urHere);
 				map.fitBounds(bounds);
 
 			};
