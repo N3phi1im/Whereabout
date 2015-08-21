@@ -30,6 +30,7 @@
 		}
 
 		function getLocation(id) {
+			console.log(id);
 			var q = $q.defer();
 			$http.get('/api/Places/Place/info', id).success(function(req, res) {
 				q.resolve(res);
