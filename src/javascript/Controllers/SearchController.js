@@ -8,7 +8,6 @@
 	function SearchController(HomeFactory, uiGmapGoogleMapApi, $scope, $window, Map, $state, $stateParams) {
 		var vm = this;
 		vm.results = Map.placesResults;
-
 		$scope.place = {};
 
 		$scope.goToPage = function(id) {
@@ -25,7 +24,7 @@
 			$scope.apiError = false;
 			Map.search(search, $scope.searchDistance)
 			.then(
-				function(res) { 
+				function(res) {
        				 	// successx
        				 	for (var i = 0; i < res.length; i++) {
        				 		Map.createMarker(res[i]);
@@ -56,8 +55,8 @@
 				});
 			});
 		};
-
 		if ($stateParams.search) Map.init(true).then($scope.search);
 		else  Map.init();
 	}
+
 })(); 

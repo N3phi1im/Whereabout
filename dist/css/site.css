@@ -108,7 +108,7 @@ label {
 	max-width: 1100px;
 	min-width: 800px;
 	margin: 50px auto;
-	
+
 }
 
 #columns {
@@ -136,7 +136,7 @@ label {
 	padding-bottom: 40px;
 	background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
 	opacity: 1;
-	
+
 	-webkit-transition: all .2s ease;
 	-moz-transition: all .2s ease;
 	-o-transition: all .2s ease;
@@ -172,10 +172,10 @@ label {
 
 }
 
-
-#map-canvas { 
+#map-canvas {
 	height: 550px;
 	width: 80%;
+
 	margin: 20px 0;
 	border-radius: 5px;
 	border: 1px solid silver;
@@ -198,7 +198,7 @@ label {
 
 .carouselPart {
 	margin-top: 20px;
-	
+
 }
 #business{
 	position: absolute;
@@ -232,4 +232,3 @@ label {
 	height: 200px;
 	border-radius: 0px;
 }
-
