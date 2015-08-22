@@ -167,14 +167,11 @@ label {
 
 .post-meta %i{
 	display: inline;
-
-
 }
 
 #map-canvas {
 	height: 550px;
 	width: 80%;
-
 	margin: 20px 0;
 	border-radius: 5px;
 	border: 1px solid silver;
@@ -201,6 +198,7 @@ label {
 #business{
 	position: absolute;
 	left: 15px;
+	margin-top: 4px;
 }
 #likes{
 	position: absolute;
@@ -239,6 +237,11 @@ label {
 	font-size: 2em;
 }
 #discover{
+	padding-bottom: 20px;
+	padding-top: 18px;
+}
+
+#homeButton {
 	padding-bottom: 20px;
 	padding-top: 18px;
 }
@@ -295,13 +298,18 @@ label {
 }
 
 .busNav {
-
-	/*margin-top: 22.75vh;*/
-	vertical-align: bottom;
-
+	margin-top: -42px;
 }
 
 .navbar {
 	margin-bottom: 0px;
 	border-radius: 0px;
+}
+
+.pinTop {
+	margin: 10px;
+}
+
+.pinSide {
+	padding: 0px;
 }
