@@ -6,12 +6,12 @@ var mongoose = require('mongoose');
 // Model
 
 var PlaceSchema = new mongoose.Schema({
-  google: {
+	google: {
 		id: { type: String, unique: true },
 		address: String,
 		name: String
 	},
-  photos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Photo' }]
+	photos: [{}]
 });
 
 // Model is ready for Use

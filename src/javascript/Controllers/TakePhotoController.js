@@ -2,8 +2,8 @@
 	'use strict';
 	angular.module('app')
 	.controller('TakePhotoController', TakePhotoController);
-	TakePhotoController.$inject = ['$http', '$q', 'HomeFactory','$scope'];
-	function TakePhotoController($http, $q, HomeFactory, scope) {
+	TakePhotoController.$inject = ['$state','$http', '$q', 'HomeFactory','$scope'];
+	function TakePhotoController($state, $http, $q, HomeFactory, scope) {
     //============== DRAG & DROP =============
     // source for drag&drop: http://www.webappers.com/2011/09/28/drag-drop-file-upload-with-html5-javascript/
     var dropbox = document.getElementById("dropbox");
@@ -79,17 +79,18 @@
     	// };
     	// scope.progressVisible = true;
     	// xhr.send(fd);
-    	var d = $q.defer();
     	$http.post('/api/Photos/upload', fd, { transformRequest: angular.identity, headers: {'Content-Type': undefined}})
     	.success(function(data){
-    		HomeFactory.setPhoto(data);
-    		d.resolve();
-    	})
+            HomeFactory.setPhoto(data).then(function(res){
+                HomeFactory.combinePhotoPlace(res).then(function(){
+                    $state.go('Home');
+                });
+            });
+
+        })
     	.error(function(data){
-    		console.log(data);
-    		d.reject();
+    		console.log('a-aron');
     	});
-    	return d.promise;
     };
 
     function uploadProgress(evt) {

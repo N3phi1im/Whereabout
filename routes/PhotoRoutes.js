@@ -17,9 +17,7 @@ cloudinary.config({
 });
 
 router.post('/upload', upload.single('uploadedFile'), function(req, res) {
-  // console.log(req);
   cloudinary.uploader.upload(req.file.path, function(result) {
-    console.log(result);
     res.send(result);
   });
 });
@@ -27,26 +25,24 @@ router.post('/upload', upload.single('uploadedFile'), function(req, res) {
 
 router.post('/setPhoto', auth, function(req, res) {
   var photo = new Photo();
-  // console.log(req.body);
   photo.url = req.body.url;
   photo.user = req.payload.id;
-  photo.place = req.body.place.id;
   photo.id = req.body.id;
   photo.createdAt = new Date();
   photo.save(function(err, Photo){
-    // console.log(Photo);
-    res.end(Photo);
+    res.send(Photo);
   });
 });
 
 router.post('/setPlace', function(req, res) {
-  Place.findByIdAndUpdate(
-    Place.google.id,
-    {$push: {"photos": {id: req.body.id }}},
-    {save: true, upsert: true, new: true},
+  console.log(req.body);
+  Place.update({
+    'google.id': req.body.place},
+    {$push: {photos: {id: req.body.id }}},
+    // {save: true, upsert: true, new: true},
     function(err) {
       console.log(err);
-      res.end();
+      res.send('posted');
     });
 });
 

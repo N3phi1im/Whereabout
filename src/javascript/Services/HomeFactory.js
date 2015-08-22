@@ -9,14 +9,13 @@
 		var o = {};
 		o.upload = upload;
 		o.setPhoto = setPhoto;
-		o.setPlace = setPlace;
+		o.combinePhotoPlace = combinePhotoPlace;
 		o.uploadLocation = uploadLocation;
 		o.dataObject ={};
 		o.getLocation = getLocation;
 		return o;
 
 		function upload(photo) {
-			console(photo);
 			var q = $q.defer();
 			$http.post('/api/Photos/upload', photo).success(function(req, res) {
 				q.resolve(res);
@@ -26,7 +25,6 @@
 		function uploadLocation(location) {
 			var q = $q.defer();
 			$http.post('/api/Places/Place', location).success(function(req, res) {
-
 				o.dataObject = location.id;
 				q.resolve();
 
@@ -43,23 +41,23 @@
 		}
 
 		function setPhoto(file) {
-			console.log('hit setPhoto function');
 			var q = $q.defer();
 			var photo = {};
-			photo.id = file.id;
+			photo.id = file.public_id;
 			photo.url = file.url;
-			photo.place = o.dataObject.id;
-			console.log(photo);
-			$http.post('/api/Photos/setPhoto', photo, {headers: {Authorization: "Bearer " + localStorage.getItem('token')}}).success(function() {
+			$http.post('/api/Photos/setPhoto', photo, {headers: {Authorization: "Bearer " + localStorage.getItem('token')}}).success(function(res) {
 
-				q.resolve();
+				q.resolve(res);
 			});
 			return q.promise;
 		}
 
-		function setPlace() {
+		function combinePhotoPlace(file) {
 			var q = $q.defer();
-			$http.post('/api/Photos/setPlace').success(function() {
+			var place = {};
+			place.id = file.id;
+			place.google =  o.dataObject;
+			$http.post('/api/Photos/setPlace', place).success(function() {
 				q.resolve();
 			});
 			return q.promise;
@@ -72,6 +70,8 @@
 			});
 			return q.promise;
 		}
+
+
 
 	}
 })();

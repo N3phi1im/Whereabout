@@ -9,7 +9,6 @@ var PhotoSchema = new mongoose.Schema({
   url: String,
   id: String,
   user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-  place: {type: mongoose.Schema.Types.ObjectId, ref: 'Place'},
   createdAt: { type: Date, 'default': Date.now },
   deletedAt: { type: Date, 'default': null },
   strikes: Number,
