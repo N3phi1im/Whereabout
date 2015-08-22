@@ -1,16 +1,54 @@
 <div ng-controller="BusinessController as vm">
 
-	<div id="map-canvas"></div>
+	<div class="bodyWidth">
+		<div style="height:400px; overflow-y:hidden; background:url('/img/palmTrees.jpg') no-repeat; background-size:cover;">
+			<div id="box">Room 389</div>
+			
+		</div>
+		<footer class="busNav">
+			<div class="container-fluid ">
+				<div class="row">
+					<div class="col-md-12">
+						<ul class="nav nav-tabs">
+							<li class="active">
+								<a href="#">Home</a>
+							</li>
+							<li>
+								<a href="#">Profile</a>
+							</li>
+							<li>
+								<a href="#">Messages</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>		
+		</footer>
 
-	<div class="row-12">
-		<div class="column-md-3">
-			<div class="well">
-			</div>
+		
+	</div>
+
+	<div class="row-12 pinTop">
+		<div class="col-md-3 pinSide">
+			<div class="pin">
+				<div class="inner_wrap1">
+					<img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-128.png" id="profile-img-circle">
+					<h5>John Doe</h5>
+					<p>"I had so much fun at this place."</p>				
+				</div>
+				<div ng-controller="CarouselCtrl">
+					<carousel class="carouselPart" interval="myInterval" no-wrap="noWrapSlides">
+						<!-- <slide ng-repeat="slide in slides" active="slide.active"> -->
+						<img src="http://room389oakland.com/images/cocktails.jpg" style="margin:auto;">	
+						<!-- </slide> -->
+					</carousel>
+				</div>
+				<div class="post-meta">
+					<ul>
+						<h5 id="business">Room 389</h5>
+						<h5 class="fa fa-heart" id="likes"> 9</h5>
+					</ul>
+				</div>
+			</div>	
 		</div>
 	</div>
-</div>
-
-
-
-
-
