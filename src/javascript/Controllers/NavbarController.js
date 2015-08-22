@@ -11,7 +11,7 @@
 		vm.status = UserFactory.status;
 		vm.register = register;
 		vm.login = login;
-		vm.logout = UserFactory.logout;
+		vm.logout = logout;
 
 		function register() {
 			console.log(vm.user);
@@ -27,6 +27,11 @@
 			UserFactory.login(vm.user).then(function() {
 				$state.go('Home');
 			});
+		}
+
+		function logout() {
+			UserFactory.logout();
+			$state.go('Welcome');
 		}
 
 		vm.scrollTo = function(id) {
