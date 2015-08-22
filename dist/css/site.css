@@ -297,8 +297,13 @@ label {
 
 .busNav {
 	position: absolute;
-	top: 258px;
+	top: 42.2vh;
 	/*margin-top: 22.75vh;*/
 	vertical-align: bottom;
 
+}
+
+.navbar {
+	margin-bottom: 0px;
+	border-radius: 0px;
 }
