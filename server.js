@@ -35,9 +35,11 @@ app.set('view options', {
 });
 
 //middleware that allows for us to parse JSON and UTF-8 from the body of an HTTP request
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(passport.initialize());
+
+
 
 //on homepage load, render the index page
 

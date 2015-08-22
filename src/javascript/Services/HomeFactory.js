@@ -3,9 +3,9 @@
 	angular.module('app')
 	.factory('HomeFactory', HomeFactory);
 
-	HomeFactory.$inject = ['$http', '$q'];
+	HomeFactory.$inject = ['UserFactory','$http', '$q'];
 
-	function HomeFactory($http, $q) {
+	function HomeFactory(UserFactory, $http, $q) {
 		var o = {};
 		o.upload = upload;
 		o.setPhoto = setPhoto;
@@ -42,11 +42,16 @@
 			return q.promise;
 		}
 
-		function setPhoto(photo) {
-
-			
+		function setPhoto(file) {
+			console.log('hit setPhoto function');
 			var q = $q.defer();
-			$http.post('/api/Photos/setPhoto').success(function() {
+			var photo = {};
+			photo.id = file.id;
+			photo.url = file.url;
+			photo.place = o.dataObject.id;
+			console.log(photo);
+			$http.post('/api/Photos/setPhoto', photo, {headers: {Authorization: "Bearer " + localStorage.getItem('token')}}).success(function() {
+
 				q.resolve();
 			});
 			return q.promise;

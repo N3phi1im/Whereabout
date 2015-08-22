@@ -2,8 +2,8 @@
 	'use strict';
 	angular.module('app')
 	.controller('TakePhotoController', TakePhotoController);
-	TakePhotoController.$inject = ['$scope'];
-	function TakePhotoController(scope) {
+	TakePhotoController.$inject = ['$http', '$q', 'HomeFactory','$scope'];
+	function TakePhotoController($http, $q, HomeFactory, scope) {
     //============== DRAG & DROP =============
     // source for drag&drop: http://www.webappers.com/2011/09/28/drag-drop-file-upload-with-html5-javascript/
     var dropbox = document.getElementById("dropbox");
@@ -67,14 +67,29 @@
     	for (var i in scope.files) {
     		fd.append("uploadedFile", scope.files[i]);
     	}
-    	var xhr = new XMLHttpRequest();
-    	xhr.upload.addEventListener("progress", uploadProgress, false);
-    	xhr.addEventListener("load", uploadComplete, false);
-    	xhr.addEventListener("error", uploadFailed, false);
-    	xhr.addEventListener("abort", uploadCanceled, false);
-    	xhr.open("POST", "/api/Photos/upload");
-    	scope.progressVisible = true;
-    	xhr.send(fd);
+    	// var xhr = new XMLHttpRequest();
+    	// xhr.upload.addEventListener("progress", uploadProgress, false);
+    	// xhr.addEventListener("load", uploadComplete, false);
+    	// xhr.addEventListener("error", uploadFailed, false);
+    	// xhr.addEventListener("abort", uploadCanceled, false);
+    	// xhr.open("POST", "/api/Photos/upload");
+    	// xhr.onload = function(res) {
+    	// 	console.log(res);
+    	// 	HomeFactory.setPhoto(res);
+    	// };
+    	// scope.progressVisible = true;
+    	// xhr.send(fd);
+    	var d = $q.defer();
+    	$http.post('/api/Photos/upload', fd, { transformRequest: angular.identity, headers: {'Content-Type': undefined}})
+    	.success(function(data){
+    		HomeFactory.setPhoto(data);
+    		d.resolve();
+    	})
+    	.error(function(data){
+    		console.log(data);
+    		d.reject();
+    	});
+    	return d.promise;
     };
 
     function uploadProgress(evt) {
