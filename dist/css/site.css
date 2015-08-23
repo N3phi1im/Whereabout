@@ -180,7 +180,6 @@ label {
 	margin-top: 20px;
 }
 
-
 #profile-img-circle {
 	border-radius: 50%;
 	margin-left: 10px;
@@ -205,15 +204,15 @@ label {
 	right: 10px;
 }
 
-
 .pointer {
 	cursor: pointer;
 }
 
 .wellWidth {
-	width: 25%;
+	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
+	font-size: 1.5vh;
 }
 
 #mapContainer {
@@ -339,4 +338,24 @@ label {
 #uploadPhoto {
 	text-align: center;
 	margin: 20px;
+}
+
+.submitPhoto {
+	margin: 20px;
+}
+
+.wellSize {
+	padding-right: 10%;
+	padding-left: 10%
+}
+
+#userIcon {
+	height: 40px;
+	width: 40px;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+.modal-open {
+	padding-right: 0px;
 }

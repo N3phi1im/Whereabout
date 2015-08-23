@@ -9,7 +9,7 @@
 				<span>{{file.webkitRelativePath || file.name}}</span>
 				(<span ng-switch="file.size > 1024*1024"><span ng-switch-when="true">{{file.size / 1024 / 1024 | number:2}} MB</span><span ng-switch-default>{{file.size / 1024 | number:2}} kB</span></span>)
 			</div>
-			<button  class="btn btn-success" ng-click="uploadFile()" value="Upload">Submit</button>
+			<button  class="btn btn-success submitPhoto" ng-click="uploadFile()" value="Upload">Submit</button>
 
 			<div ng-show="progressVisible">
 				<div class="percent">{{progress}}%</div>

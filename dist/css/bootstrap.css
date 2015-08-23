@@ -5700,6 +5700,7 @@ button.close {
 }
 .modal-open {
   overflow: hidden;
+  padding-right: 0px;
 }
 .modal {
   position: fixed;
@@ -5731,6 +5732,7 @@ button.close {
 .modal-open .modal {
   overflow-x: hidden;
   overflow-y: auto;
+  padding-right: 0px;
 }
 .modal-dialog {
   position: relative;
@@ -6265,9 +6267,9 @@ button.close {
       left: 20%;
       padding-bottom: 30px;
     }
-    .carousel-indicators {
+/*    .carousel-indicators {
       bottom: 20px;
-    }
+      }*/
   }
   .clearfix:before,
   .clearfix:after,
