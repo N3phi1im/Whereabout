@@ -35,8 +35,8 @@
 		<div class="col-md-3 pinSide" ng-repeat="b in vm.business.photos">
 			<div class="pin">
 				<div class="inner_wrap1">
-					<img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-128.png" id="profile-img-circle">
-					<h5>John Doe</h5>
+					<img src="{{b.user.image}}" id="profile-img-circle">
+					<h5>{{b.user.name}}</h5>
 					<p>{{b.title}}</p>
 				</div>
 				<div class="post-meta">

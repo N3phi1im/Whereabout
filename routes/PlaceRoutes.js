@@ -5,13 +5,22 @@ var router = express.Router();
 var Photo = mongoose.model('Photo');
 var Place = mongoose.model('Place');
 var User = mongoose.model('User');
-
+var async = require('async');
 
 router.param('par', function(req, res, next, id){
-  Place.findOne({'google.id': id}).populate('photos').exec(function(err, place){
-    if (err) return next (err);
-    req.par = place;
-    next();
+  Place.findOne({'google.id': id})
+  .populate('photos')
+  // .populate('photos.user.image')
+  .exec(function(err, place){
+    async.forEach(place.photos, function(photo, cb) {
+      photo.populate('user', 'first_name last_name image', function(err, result) {
+        cb();
+      });
+    }, function(err) {
+      if(err) return next(err);
+      req.par = place;
+      next();
+    });
   });
 });
 
