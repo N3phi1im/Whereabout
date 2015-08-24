@@ -1125,7 +1125,7 @@ input.cmn-toggle-yes-no:checked + label:after {
 	height: 50px;
 }
 
-#nameTitle {
+.nameTitle {
 	color: black;
 	font-size: 30px;
 	margin-top: 10px;
@@ -1136,3 +1136,14 @@ input.cmn-toggle-yes-no:checked + label:after {
 	font-size: 53px
 }
 
+.resultIcon {
+	display: inline-block;
+
+	margin-left: 5px;
+}
+
+.selectedButton {
+	float: right!important;
+	margin-right: 10px;
+	margin-top: 20px;
+}
