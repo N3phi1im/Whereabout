@@ -13,6 +13,7 @@
 		o.uploadLocation = uploadLocation;
 		o.dataObject ={};
 		o.getBusinessInfo = getBusinessInfo;
+		o.followById = followById;
 		return o;
 
 		function upload(photo) {
@@ -65,7 +66,14 @@
 			return q.promise;
 		}
 
+		function followById(id) {
+			var q = $q.defer();
+			$http.post('/api/Places/follow/' + id, {}, {headers: {Authorization: "Bearer " + localStorage.getItem('token')}}).success(function(res){
+				q.resolve(res);
+			});
+			return q.promise;
 
+		}
 
 	}
 })();

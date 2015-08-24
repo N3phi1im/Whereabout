@@ -19,9 +19,6 @@
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="css/creative.css" type="text/css">
-  <!--  angular treeview -->
-  <link rel="stylesheet" href="//rawgit.com/iVantage/angular-ivh-treeview/master/dist/ivh-treeview.css">
-  <link rel="stylesheet" href="//rawgit.com/iVantage/angular-ivh-treeview/master/dist/ivh-treeview-theme-basic.css">
 
   <!-- Social Buttons -->
   <link rel="styesheet" href="css/bootstrap-social.css">
@@ -67,7 +64,7 @@
               {{nav.status.first_name}} <span class="caret"></span>
             </button>
             <ul class="dropdown-menu pointer" role="menu" aria-labelledby="single-button">
-              <li role="menuitem"><a class="glyphicon glyphicon-user" href="#"> Profile</a></li>
+              <li role="menuitem"><a class="glyphicon glyphicon-user" ui-sref="Profile"> Profile</a></li>
               <li role="menuitem"><a class="glyphicon glyphicon-file" href="#"> About</a></li>
               <li role="menuitem"><a class="glyphicon glyphicon-question-sign" href="#"> Help</a></li>
               <li class="divider"></li>
@@ -85,11 +82,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-animate.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-maps/2.1.5/angular-google-maps.js"></script>
-  <!-- angular treeview -->
-  <script src="//rawgit.com/iVantage/angular-ivh-treeview/master/dist/ivh-treeview.js"></script>
+  
 </div>
 
 <!-- Ext Libs -->
@@ -107,7 +104,7 @@
 <script src="js/wow.min.js"></script>
 
 <script src="angular-bootstrap/ui-bootstrap.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-animate.js"></script>
+
 <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.3.js"></script>
 
 <!-- Custom Theme JavaScript -->

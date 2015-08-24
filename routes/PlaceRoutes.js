@@ -6,11 +6,12 @@ var Photo = mongoose.model('Photo');
 var Place = mongoose.model('Place');
 var User = mongoose.model('User');
 var async = require('async');
+var jwt = require('express-jwt');
+var auth = jwt({secret: "Secret_bananas", userProperty: "payload"});
 
 router.param('par', function(req, res, next, id){
   Place.findOne({'google.id': id})
   .populate('photos')
-  // .populate('photos.user.image')
   .exec(function(err, place){
     async.forEach(place.photos, function(photo, cb) {
       photo.populate('user', 'first_name last_name image', function(err, result) {
@@ -22,6 +23,11 @@ router.param('par', function(req, res, next, id){
       next();
     });
   });
+});
+
+router.param('fid', function(req, res, next, id){
+  req.follow_id = id;
+  next();
 });
 
 router.post('/Place', function(req, res, next) {
@@ -43,6 +49,15 @@ router.post('/Place', function(req, res, next) {
 
 router.get('/Place/info/:par', function(req, res, next) {
   res.send(req.par);
+});
+
+router.post('/follow/:fid', auth, function(req, res, next){
+  User.update({ "_id": req.payload.id },
+    { $push: {follow: {_id: req.follow_id}}}, function(err, user) {
+      console.log(err);
+
+      res.send(user);
+    });
 });
 
 router.use(function (err, req, res, next) {
