@@ -36,20 +36,16 @@
 					<h5>John Doe</h5>
 					<p>"I had so much fun at this place."</p>				
 				</div>
-				<div ng-controller="CarouselCtrl as vm">
-					<carousel class="carouselPart" interval="myInterval" no-wrap="noWrapSlides">
-						<!-- <slide ng-repeat="slide in slides" active="slide.active"> -->
-						<img src="http://room389oakland.com/images/cocktails.jpg" style="margin:auto;">	
-						<!-- </slide> -->
-					</carousel>
-				</div>
+
 				<div class="post-meta">
 					<div ng-repeat="b in vm.business.photos">
-						<img src="{{b.url}}" alt="">
+						<!-- <img src="{{b.url}}" alt=""> -->
+						<!-- </div> -->
+						<img src="{{b.url}}">
+						
 					</div>
-				</div>
-			</div>	
+				</div>	
+			</div>
 		</div>
 	</div>
-</div>
 
