@@ -1130,3 +1130,8 @@ input.cmn-toggle-yes-no:checked + label:after {
 	margin-top: 10px;
 	
 }
+
+.glyphicon-heart {
+	font-size: 53px
+}
+
