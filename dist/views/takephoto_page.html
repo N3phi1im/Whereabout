@@ -31,13 +31,13 @@
 		</div>
 		<ul ng-repeat="res in vm.results" class="wellSize">
 			<h3 class="well pointer wellWidth"><img ng-src={{res.icon}}><a ng-click="vm.setlocation(res)"> {{res.name}}</a>
-				<label class="navbar-right">
-					<input id="checkBox" type="checkbox" />
-				</label>
+				<div class="squaredFour navbar-right">
+					<input type="checkbox" value="None" id="squaredFour" name="check" />
+					<label for="squaredFour"></label>
+				</div>
 			</h3>
-		</h3>
-	</ul>
-</div>
+		</ul>
+	</div>
 </div>
 
 
