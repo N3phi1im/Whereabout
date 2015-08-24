@@ -10,15 +10,6 @@
 		vm.results = Map.placesResults;
 		$scope.place = {};
 
-		$scope.goToPage = function(id) {
-			var result = {'res': id};
-			var res = result.res;
-			$location.path("/Business/" + res);
-			HomeFactory.getLocation(id).then(function(data) {
-				console.log(data);
-			});
-		};
-
 		$scope.goHome = function(){
 			Map.init();
 		};

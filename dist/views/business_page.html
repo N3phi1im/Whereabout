@@ -1,8 +1,9 @@
 <div ng-controller="BusinessController as vm">
-
+	<!--..........................................................................-->
 	<div class="bodyWidth">
-		<div style="height:400px; overflow-y:hidden; background:url('/img/palmTrees.jpg') no-repeat; background-size:cover;">
-			<div id="box">Room 389</div>
+		<div style="height:400px; overflow-y:hidden; background:url('/img/palmTrees.jpg') no-repeat; background-size:cover;">					
+
+			<div id="box">{{vm.business.google.name}}</div>
 			
 		</div>
 		<footer class="busNav">
@@ -23,10 +24,9 @@
 					</div>
 				</div>
 			</div>		
-		</footer>
-
-		
+		</footer>	
 	</div>
+	<!--..........................................................................-->
 
 	<div class="row-12 pinTop">
 		<div class="col-md-3 pinSide">
@@ -36,7 +36,7 @@
 					<h5>John Doe</h5>
 					<p>"I had so much fun at this place."</p>				
 				</div>
-				<div ng-controller="CarouselCtrl">
+				<div ng-controller="CarouselCtrl as vm">
 					<carousel class="carouselPart" interval="myInterval" no-wrap="noWrapSlides">
 						<!-- <slide ng-repeat="slide in slides" active="slide.active"> -->
 						<img src="http://room389oakland.com/images/cocktails.jpg" style="margin:auto;">	
@@ -44,11 +44,12 @@
 					</carousel>
 				</div>
 				<div class="post-meta">
-					<ul>
-						<h5 id="business">Room 389</h5>
-						<h5 class="fa fa-heart" id="likes"> 9</h5>
-					</ul>
+					<div ng-repeat="b in vm.business.photos">
+						<img src="{{b.url}}" alt="">
+					</div>
 				</div>
 			</div>	
 		</div>
 	</div>
+</div>
+
