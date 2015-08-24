@@ -38,7 +38,6 @@ router.post('/setPlace', function(req, res) {
   Place.update({
     'google.id': req.body.google},
     {$push: {photos: {_id: req.body._id }}},
-    // {save: true, upsert: true, new: true},
     function(err) {
       console.log(err);
       res.send('posted');
