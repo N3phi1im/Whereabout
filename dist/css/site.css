@@ -1078,7 +1078,7 @@ label {
 		right: 0;
 		color: #fff;
 		font-family: "Roboto Slab", serif;
-		font-size: 25px;
+		font-size: 15px;
 		text-align: center;
 		line-height: 60px;
 	}
@@ -1107,3 +1107,4 @@ label {
 	.glyphicon-heart {
 		font-size: 53px
 	}
+

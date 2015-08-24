@@ -29,14 +29,20 @@
 		<div id="mapContainer">
 			<div id="map-canvas"></div>
 		</div>
+
 		<ul ng-repeat="res in vm.results" class="wellSize">
-			<h3 class="well pointer wellWidth"><img ng-src={{res.icon}}><a ng-click="vm.setlocation(res)"> {{res.name}}</a>
-				<div class="squaredFour navbar-right">
-					<input type="checkbox" value="None" id="squaredFour" name="check" />
-					<label for="squaredFour"></label>
+
+			<h3 class="well pointer wellWidth"><img ng-src={{res.icon}}><a ui-sref="Business({res: res.id})"> {{res.name}}</a>
+				<div class="switch navbar-right">
+					<input id="{{res.id}}" class="cmn-toggle cmn-toggle-yes-no" type="checkbox">
+					<label for="{{res.id}}" data-on="SELECTED" data-off="SELECT"></label>
 				</div>
 			</h3>
+
 		</ul>
+
+
+
 	</div>
 </div>
 
