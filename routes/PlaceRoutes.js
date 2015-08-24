@@ -5,6 +5,8 @@ var router = express.Router();
 var Photo = mongoose.model('Photo');
 var Place = mongoose.model('Place');
 var User = mongoose.model('User');
+var jwt = require('express-jwt');
+var auth = jwt({secret: "Secret_bananas", userProperty: "payload"}); 
 
 
 router.param('par', function(req, res, next, id){
@@ -13,6 +15,12 @@ router.param('par', function(req, res, next, id){
     req.par = place;
     next();
   });
+});
+
+router.param('fid', function(req, res, next, id){
+    if (err) return next (err);
+    req.fid = id;
+    next();
 });
 
 router.post('/Place', function(req, res, next) {
@@ -34,6 +42,15 @@ router.post('/Place', function(req, res, next) {
 
 router.get('/Place/info/:par', function(req, res, next) {
   res.send(req.par);
+});
+
+router.post('/follow/:fid', auth, function(req, res, next){
+  User.update({ "_id": req.payload.id },
+    { $push: {follow: {"_id": req.fid}}}, function(err, user) {
+      console.log(err);
+
+      res.send(req.fid);
+    });
 });
 
 router.use(function (err, req, res, next) {
