@@ -35,10 +35,9 @@ router.post('/setPhoto', auth, function(req, res) {
 });
 
 router.post('/setPlace', function(req, res) {
-  console.log(req.body);
   Place.update({
-    'google.id': req.body.place},
-    {$push: {photos: {id: req.body.id }}},
+    'google.id': req.body.google},
+    {$push: {photos: {_id: req.body._id }}},
     // {save: true, upsert: true, new: true},
     function(err) {
       console.log(err);

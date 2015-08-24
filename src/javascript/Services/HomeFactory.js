@@ -12,7 +12,7 @@
 		o.combinePhotoPlace = combinePhotoPlace;
 		o.uploadLocation = uploadLocation;
 		o.dataObject ={};
-		o.getLocation = getLocation;
+		o.getBusinessInfo = getBusinessInfo;
 		return o;
 
 		function upload(photo) {
@@ -32,13 +32,6 @@
 			return q.promise;
 		}
 
-		function getLocation(id) {
-			var q = $q.defer();
-			$http.get('/api/Places/Place/info', id).success(function(req, res) {
-				q.resolve(res);
-			});
-			return q.promise;
-		}
 
 		function setPhoto(file) {
 			var q = $q.defer();
@@ -55,6 +48,7 @@
 		function combinePhotoPlace(file) {
 			var q = $q.defer();
 			var place = {};
+			place._id = file._id;
 			place.id = file.id;
 			place.google =  o.dataObject;
 			$http.post('/api/Photos/setPlace', place).success(function() {
@@ -63,10 +57,10 @@
 			return q.promise;
 		}
 
-		function getBusinessINfo() {
+		function getBusinessInfo(id) {
 			var q = $q.defer();
-			$http.get('/' + id).success(function(res){
-				q.resolve(res);
+			$http.get('/api/Places/place/info/' + id).success(function(data){
+				q.resolve(data);
 			});
 			return q.promise;
 		}

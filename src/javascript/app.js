@@ -40,7 +40,7 @@
 			templateUrl: '/views/profile_page.html'
 		})
 		.state('TakePhoto', {
-			url: '/TakePhoto',
+			url: '/TakePhoto/:search',
 			templateUrl: '/views/takephoto_page.html'
 		})
 		.state('CategoryResults', {

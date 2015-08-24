@@ -6,6 +6,15 @@ var Photo = mongoose.model('Photo');
 var Place = mongoose.model('Place');
 var User = mongoose.model('User');
 
+
+router.param('par', function(req, res, next, id){
+  Place.findOne({'google.id': id}).populate('photos').exec(function(err, place){
+    if (err) return next (err);
+    req.par = place;
+    next();
+  });
+});
+
 router.post('/Place', function(req, res, next) {
   Place.findOne({
     "google.id": req.body.id
@@ -23,8 +32,8 @@ router.post('/Place', function(req, res, next) {
   });
 });
 
-router.get('/Place/info', function(req, res, next) {
-
+router.get('/Place/info/:par', function(req, res, next) {
+  res.send(req.par);
 });
 
 router.use(function (err, req, res, next) {
