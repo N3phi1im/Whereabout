@@ -18,8 +18,11 @@
 		});
 	}
 	//-------------------------------------------------------------------------//
-
-
+	vm.followBusiness =function(id){
+		HomeFactory.followById(id).then(function(res){
+			console.log(res);
+		});
+	};
 }
 })();
 
