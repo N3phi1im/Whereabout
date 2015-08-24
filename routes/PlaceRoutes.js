@@ -10,7 +10,6 @@ var User = mongoose.model('User');
 router.param('par', function(req, res, next, id){
   Place.findOne({'google.id': id}).populate('photos').exec(function(err, place){
     if (err) return next (err);
-    // console.log(place[0].photos);
     req.par = place;
     next();
   });
@@ -34,17 +33,7 @@ router.post('/Place', function(req, res, next) {
 });
 
 router.get('/Place/info/:par', function(req, res, next) {
-  console.log('Hit the route');
-
-  //   Photo.find({id : req.par[0].photos[i].id}).exec(function(err, photo) {
-  //     req.par[0].photos[i] = photo;
-  //     console.log(req.par);
-  //   });
-  // }
-  // console.log("outside");
-  // console.log(req.par);
   res.send(req.par);
-
 });
 
 router.use(function (err, req, res, next) {
