@@ -1078,7 +1078,7 @@ label {
 		right: 0;
 		color: #fff;
 		font-family: "Roboto Slab", serif;
-		font-size: 20px;
+		font-size: 25px;
 		text-align: center;
 		line-height: 60px;
 	}
@@ -1090,7 +1090,7 @@ label {
 		border-radius: 10px;
 	}
 	input.cmn-toggle-yes-no + label:after {
-		background-color: #8ce196;
+		background-color: #f05f40;
 		content: attr(data-on);
 		transition: transform 0.5s;
 		transform: rotateY(180deg);
