@@ -1,12 +1,27 @@
 
-<div ng-controller="CategoryCtrl as categ">
-	<accordion-group is-open="status.open">
-	<accordion-heading>
-	Transportation <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
-</accordion-heading>
-<button>This is just some content to illustrate fancy headings.</button>
-<a>This is just some content to illustrate fancy headings.</a>
+<div ng-controller="CategoryCtrl">
+	<accordion close-others="oneAtATime">
+		<accordion-group is-open="status.open">
+		<accordion-heading>
+		<i class="fa fa-cutlery"></i> Food&Drink <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+	</accordion-heading>
+	<button ui-sref="CategoryResults({search:'bakery'})">bakery</button>
 </accordion-group>
+
+<accordion-group is-open="status.isSecondOpen">
+<accordion-heading>
+<i class="fa fa-car"></i></i> Automotive <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.isSecondOpen, 'glyphicon-chevron-right': !status.isSecondOpen}"></i>
+</accordion-heading>
+<button ui-sref="CategoryResults({search:'bakery'})">bakery</button>
+</accordion-group>
+
+<accordion-group is-open="status.isThirdOpen">
+<accordion-heading>
+<i class="fa fa-cutlery"></i> Food&Drink <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.isThirdOpen, 'glyphicon-chevron-right': !status.isThirdOpen}"></i>
+</accordion-heading>
+<button ui-sref="CategoryResults({search:'bakery'})">bakery</button>
+</accordion-group>
+</accordion>
 </div>
 
 <ul>
@@ -16,7 +31,7 @@
 	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'aquarium'})">aquarium</button>
 	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'art gallery'})">art gallery</button>
 	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'atm'})">atm</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'bakery'})">bakery</button>
+	
 	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'bank'})">bank</button>
 	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'bar'})">bar</button>
 	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'beauty salon'})">beauty salon</button>
