@@ -68,7 +68,7 @@
 
 		function followById(id) {
 			var q = $q.defer();
-			$http.post('/api/Places/follow/' + id, {headers: {Authorization: "Bearer " + localStorage.getItem('token')}}).success(function(res){
+			$http.post('/api/Places/follow/' + id, {}, {headers: {Authorization: "Bearer " + localStorage.getItem('token')}}).success(function(res){
 				q.resolve(res);
 			});
 			return q.promise;
