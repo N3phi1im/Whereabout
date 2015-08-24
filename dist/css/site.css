@@ -359,3 +359,7 @@ label {
 .modal-open {
 	padding-right: 0px;
 }
+
+#checkBox {
+	font-size: 20px;
+}
