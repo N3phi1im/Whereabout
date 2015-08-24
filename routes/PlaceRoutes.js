@@ -18,9 +18,8 @@ router.param('par', function(req, res, next, id){
 });
 
 router.param('fid', function(req, res, next, id){
-    if (err) return next (err);
-    req.fid = id;
-    next();
+  req.fid = id[0];
+  next();
 });
 
 router.post('/Place', function(req, res, next) {
@@ -44,7 +43,8 @@ router.get('/Place/info/:par', function(req, res, next) {
   res.send(req.par);
 });
 
-router.post('/follow/:fid', auth, function(req, res, next){
+router.post('/follow/:fid',auth, function(req, res, next){
+  console.log(auth);
   User.update({ "_id": req.payload.id },
     { $push: {follow: {"_id": req.fid}}}, function(err, user) {
       console.log(err);
