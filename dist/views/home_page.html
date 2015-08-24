@@ -7,9 +7,9 @@
 					<h5>John Doe</h5>
 					<p>"I had so much fun at this place."</p>				
 				</div>
-				<div ng-controller="CarouselCtrl">
-					<carousel class="carouselPart" interval="myInterval" no-wrap="noWrapSlides">
-						<slide ng-repeat="slide in slides" active="slide.active">
+				<div ng-controller="CarouselCtrl as vm">
+					<carousel class="carouselPart" interval="myInterval" no-wrap="vm.noWrapSlides">
+						<slide ng-repeat="slide in vm.slides" active="slide.active">
 							<img ng-src="{{slide.image}}" style="margin:auto;">	
 						</slide>
 					</carousel>
