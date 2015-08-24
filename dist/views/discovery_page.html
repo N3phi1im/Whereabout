@@ -1,162 +1,162 @@
 <div ng-controller="CategoryCtrl" class="container capitalize">
-
-	<accordion close-others="oneAtATime">
-		<accordion-group is-open="status.open">
-		<accordion-heading>
-		<i class="fa fa-cutlery"></i> Food&Drink <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
-	</accordion-heading>
-	<button ui-sref="CategoryResults({search:'bakery'})">Bakery</button>
-	<button ui-sref="CategoryResults({search:'bar'})">Bar</button>
-	<button ui-sref="CategoryResults({search:'food'})">Food</button>
-	<button ui-sref="CategoryResults({search:'restaurant'})">Restaurant</button>
-	<button ui-sref="CategoryResults({search:'cafe'})">Cafe</button>
+</br>
+<accordion close-others="oneAtATime">
+	<accordion-group is-open="status.open">
+	<accordion-heading>
+	<i class="fa fa-cutlery"></i> Food&Drink <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+</accordion-heading>
+<a ui-sref="CategoryResults({search:'bakery'})">Bakery   </a>
+<a ui-sref="CategoryResults({search:'bar'})">Bar </a>
+<a ui-sref="CategoryResults({search:'food'})">Food </a>
+<a ui-sref="CategoryResults({search:'restaurant'})">Restaurant </a>
+<a ui-sref="CategoryResults({search:'cafe'})">Cafe</a>
 </accordion-group>
 
 <accordion-group is-open="status.isSecondOpen">
 <accordion-heading>
 <i class="fa fa-car"></i></i> Transportaion <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.isSecondOpen, 'glyphicon-chevron-right': !status.isSecondOpen}"></i>
 </accordion-heading>
-<button ui-sref="CategoryResults({search:'airport'})">Airport</button>
-<button ui-sref="CategoryResults({search:'gas station'})">Gas station</button>
-<button ui-sref="CategoryResults({search:'parking'})">Parking</button>
-<button ui-sref="CategoryResults({search:'taxi stand'})">Taxi stand</button>
-<button ui-sref="CategoryResults({search:'train station'})">Train station</button>
-<button ui-sref="CategoryResults({search:'bus station'})">Bus station</button>
+<a ui-sref="CategoryResults({search:'airport'})">Airport </a>
+<a ui-sref="CategoryResults({search:'gas station'})">Gas station </a>
+<a ui-sref="CategoryResults({search:'parking'})">Parking </a>
+<a ui-sref="CategoryResults({search:'taxi stand'})">Taxi stand </a>
+<a ui-sref="CategoryResults({search:'train station'})">Train station </a>
+<a ui-sref="CategoryResults({search:'bus station'})">Bus station</a>
 </accordion-group>
 
 <accordion-group is-open="status.isThirdOpen">
 <accordion-heading>
 <i class="fa fa-heart-o"></i></i> Beauty & Health  <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.isThirdOpen, 'glyphicon-chevron-right': !status.isThirdOpen}"></i>
 </accordion-heading>
-<button ui-sref="CategoryResults({search:'beauty salon'})">Beauty salon</button>
-<button ui-sref="CategoryResults({search:'spa'})">Spa</button>
-<button ui-sref="CategoryResults({search:'dentist'})">Dentist</button>
-<button ui-sref="CategoryResults({search:'doctor'})">Doctor</button>
-<button ui-sref="CategoryResults({search:'gym'})">Gym</button>
-<button ui-sref="CategoryResults({search:'hair care'})">Hair care</button>
-<button ui-sref="CategoryResults({search:'health'})">Health</button>
-<button ui-sref="CategoryResults({search:'hospital'})">Hospital</button>
-<button ui-sref="CategoryResults({search:'pharmacy'})">Pharmacy</button>
-<button ui-sref="CategoryResults({search:'physical therapist'})">Physical therapist</button>
-<button ui-sref="CategoryResults({search:'veterinary care'})">Veterinary care</button>
+<a ui-sref="CategoryResults({search:'beauty salon'})">Beauty salon	</a>
+<a ui-sref="CategoryResults({search:'spa'})">spa </a>
+<a ui-sref="CategoryResults({search:'dentist'})">Dentist </a>
+<a ui-sref="CategoryResults({search:'doctor'})">Doctor </a>
+<a ui-sref="CategoryResults({search:'gym'})">Gym </a>
+<a ui-sref="CategoryResults({search:'hair care'})">Hair care </a>
+<a ui-sref="CategoryResults({search:'health'})">Health </a>
+<a ui-sref="CategoryResults({search:'hospital'})">Hospital </a>
+<a ui-sref="CategoryResults({search:'pharmacy'})">Pharmacy </a>
+<a ui-sref="CategoryResults({search:'physical therapist'})">Physical therapist </a>
+<a ui-sref="CategoryResults({search:'veterinary care'})">Veterinary care</a>
 </accordion-group>
 
 <accordion-group is-open="status.isFourthOpen">
 <accordion-heading>
 <i class="fa fa-money"></i></i> Finance  <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.isFourthOpen, 'glyphicon-chevron-right': !status.isFourthOpen}"></i>
 </accordion-heading>
-<button ui-sref="CategoryResults({search:'accounting'})">Accounting</button>
-<button ui-sref="CategoryResults({search:'bank'})">Bank</button>
-<button ui-sref="CategoryResults({search:'finance'})">Finance</button>
-<button ui-sref="CategoryResults({search:'insurance agency'})">Insurance agency</button>
-<button ui-sref="CategoryResults({search:'atm'})">ATM</button>
+<a ui-sref="CategoryResults({search:'accounting'})">Accounting </a>
+<a ui-sref="CategoryResults({search:'bank'})">Bank </a>
+<a ui-sref="CategoryResults({search:'finance'})">Finance </a>
+<a ui-sref="CategoryResults({search:'insurance agency'})">Insurance agency </a>
+<a ui-sref="CategoryResults({search:'atm'})">ATM</a>
 </accordion-group>
 
 <accordion-group is-open="status.isFifthOpen">
 <accordion-heading>
 <i class="fa fa-music"></i></i> Entertainment  <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.isFifthOpen, 'glyphicon-chevron-right': !status.isFifthOpen}"></i>
 </accordion-heading>
-<button ui-sref="CategoryResults({search:'amusement park'})">Amusement park</button>
-<button ui-sref="CategoryResults({search:'aquarium'})">Aquarium</button>
-<button ui-sref="CategoryResults({search:'art gallery'})">Art gallery</button>
-<button ui-sref="CategoryResults({search:'bowling alley'})">Bowling alley</button>
-<button ui-sref="CategoryResults({search:'camp ground'})">Camp ground</button>
-<button ui-sref="CategoryResults({search:'casino'})">Casino</button>
-<button ui-sref="CategoryResults({search:'lodging'})">Lodging</button>
-<button ui-sref="CategoryResults({search:'movie theater'})">Movie theater</button>
-<button ui-sref="CategoryResults({search:'museum'})">Museum</button>
-<button ui-sref="CategoryResults({search:'nightclub'})">Nightclub</button>
-<button ui-sref="CategoryResults({search:'park'})">Park</button>
-<button ui-sref="CategoryResults({search:'rv park'})">Rv park</button>
-<button ui-sref="CategoryResults({search:'stadium'})">Stadium</button>
-<button ui-sref="CategoryResults({search:'zoo'})">Zoo</button>
-<button ui-sref="CategoryResults({search:'bowling alley'})">Bowling alley</button>
+<a ui-sref="CategoryResults({search:'amusement park'})">Amusement park </a>
+<a ui-sref="CategoryResults({search:'aquarium'})">Aquarium </a>
+<a ui-sref="CategoryResults({search:'art gallery'})">Art gallery </a>
+<a ui-sref="CategoryResults({search:'bowling alley'})">Bowling alley </a>
+<a ui-sref="CategoryResults({search:'camp ground'})">Camp ground </a>
+<a ui-sref="CategoryResults({search:'casino'})">Casino </a>
+<a ui-sref="CategoryResults({search:'lodging'})">Lodging </a>
+<a ui-sref="CategoryResults({search:'movie theater'})">Movie theater </a>
+<a ui-sref="CategoryResults({search:'museum'})">Museum </a>
+<a ui-sref="CategoryResults({search:'nightclub'})">Nightclub </a>
+<a ui-sref="CategoryResults({search:'park'})">Park </a>
+<a ui-sref="CategoryResults({search:'rv park'})">Rv park </a>
+<a ui-sref="CategoryResults({search:'stadium'})">Stadium </a>
+<a ui-sref="CategoryResults({search:'zoo'})">Zoo </a>
+<a ui-sref="CategoryResults({search:'bowling alley'})">Bowling alley</a>
 </accordion-group>
 
 <accordion-group is-open="status.issixthOpen">
 <accordion-heading>
 <i class="fa fa-wrench"></i></i> Service  <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.issixthOpen, 'glyphicon-chevron-right': !status.issixthOpen}"></i>
 </accordion-heading>
-<button ui-sref="CategoryResults({search:'car dealer'})">Car dealer</button>
-<button ui-sref="CategoryResults({search:'car rental'})">Car rental</button>
-<button ui-sref="CategoryResults({search:'car repair'})">Car repair</button>
-<button ui-sref="CategoryResults({search:'car wash'})">Car wash</button>
-<button ui-sref="CategoryResults({search:'electrician'})">Electrician</button>
-<button ui-sref="CategoryResults({search:'funeral home'})">Funeral home</button>
-<button ui-sref="CategoryResults({search:'general contractor'})">General contractor</button>
-<button ui-sref="CategoryResults({search:'laundry'})">Laundry</button>
-<button ui-sref="CategoryResults({search:'lawyer'})">Lawyer</button>
-<button ui-sref="CategoryResults({search:'locksmith'})">Locksmith</button>
-<button ui-sref="CategoryResults({search:'meal delivery'})">Meal delivery</button>
-<button ui-sref="CategoryResults({search:'meal takeaway'})">Meal takeaway</button>
-<button ui-sref="CategoryResults({search:'painter'})">Painter</button>
-<button ui-sref="CategoryResults({search:'plumber'})">Plumber</button>
-<button ui-sref="CategoryResults({search:'real estate agency'})">Real estate agency</button>
-<button ui-sref="CategoryResults({search:'roofing contractor'})">Roofing contractor</button>
-<button ui-sref="CategoryResults({search:'cemetery'})">Cemetery</button>
-<button ui-sref="CategoryResults({search:'moving company'})">Moving company</button>
+<a ui-sref="CategoryResults({search:'car dealer'})">Car dealer </a>
+<a ui-sref="CategoryResults({search:'car rental'})">Car rental </a>
+<a ui-sref="CategoryResults({search:'car repair'})">Car repair </a>
+<a ui-sref="CategoryResults({search:'car wash'})">Car wash </a>
+<a ui-sref="CategoryResults({search:'electrician'})">Electrician </a>
+<a ui-sref="CategoryResults({search:'funeral home'})">Funeral home </a>
+<a ui-sref="CategoryResults({search:'general contractor'})">General contractor </a>
+<a ui-sref="CategoryResults({search:'laundry'})">Laundry </a>
+<a ui-sref="CategoryResults({search:'lawyer'})">Lawyer </a>
+<a ui-sref="CategoryResults({search:'locksmith'})">Locksmith </a>
+<a ui-sref="CategoryResults({search:'meal delivery'})">Meal delivery </a>
+<a ui-sref="CategoryResults({search:'meal takeaway'})">Meal takeaway </a>
+<a ui-sref="CategoryResults({search:'painter'})">Painter </a>
+<a ui-sref="CategoryResults({search:'plumber'})">Plumber </a>
+<a ui-sref="CategoryResults({search:'real estate agency'})">Real estate agency </a>
+<a ui-sref="CategoryResults({search:'roofing contractor'})">Roofing contractor </a>
+<a ui-sref="CategoryResults({search:'cemetery'})">Cemetery </a>
+<a ui-sref="CategoryResults({search:'moving company'})">Moving company</a>
 </accordion-group>
 
 <accordion-group is-open="status.isseventhOpen">
 <accordion-heading>
 <i class="fa fa-users"></i></i> Religion  <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.isseventhOpen, 'glyphicon-chevron-right': !status.isseventhOpen}"></i>
 </accordion-heading>
-<button ui-sref="CategoryResults({search:'church'})">Church</button>
-<button ui-sref="CategoryResults({search:'aquarium'})">Aquarium</button>
-<button ui-sref="CategoryResults({search:'hindu temple'})">Hindu temple</button>
-<button ui-sref="CategoryResults({search:'mosque'})">Mosque</button>
-<button ui-sref="CategoryResults({search:'place of worship'})">Place of worship</button>
-<button ui-sref="CategoryResults({search:'synagogue'})">Synagogue</button>
+<a ui-sref="CategoryResults({search:'church'})">Church </a>
+<a ui-sref="CategoryResults({search:'aquarium'})">Aquarium </a>
+<a ui-sref="CategoryResults({search:'hindu temple'})">Hindu temple </a>
+<a ui-sref="CategoryResults({search:'mosque'})">Mosque </a>
+<a ui-sref="CategoryResults({search:'place of worship'})">Place of worship </a>
+<a ui-sref="CategoryResults({search:'synagogue'})">Synagogue</a>
 </accordion-group>
 
 <accordion-group is-open="status.iseighthOpen">
 <accordion-heading>
 <i class="fa fa-paw"></i></i> Pets  <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.iseighthOpen, 'glyphicon-chevron-right': !status.iseighthOpen}"></i>
 </accordion-heading>
-<button ui-sref="CategoryResults({search:'pet store'})">Pet store</button>
+<a ui-sref="CategoryResults({search:'pet store'})">Pet store</a>
 </accordion-group>
 
 <accordion-group is-open="status.isninthOpen">
 <accordion-heading>
 <i class="fa fa-building"></i></i> Store  <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.isninthOpen, 'glyphicon-chevron-right': !status.isninthOpen}"></i>
 </accordion-heading>
-<button ui-sref="CategoryResults({search:'bicycle store'})">Bicycle store</button>
-<button ui-sref="CategoryResults({search:'book store'})">Book store</button>
-<button ui-sref="CategoryResults({search:'clothing store'})">Clothing store</button>
-<button ui-sref="CategoryResults({search:'convenience store'})">Convenience store</button>
-<button ui-sref="CategoryResults({search:'department store'})">Department store</button>
-<button ui-sref="CategoryResults({search:'electronics store'})">Electronics store</button>
-<button ui-sref="CategoryResults({search:'florist'})">Florist</button>
-<button ui-sref="CategoryResults({search:'furniture store'})">Furniture store</button>
-<button ui-sref="CategoryResults({search:'grocery or supermarket'})">Grocery or supermarket</button>
-<button ui-sref="CategoryResults({search:'hardware store'})">Hardware store</button>
-<button ui-sref="CategoryResults({search:'home goods store'})">Home goods store</button>
-<button ui-sref="CategoryResults({search:'jewelry store'})">Jewelry store</button>
-<button ui-sref="CategoryResults({search:'movie rental'})">Movie rental</button>
-<button ui-sref="CategoryResults({search:'shoe store'})">Shoe store</button>
-<button ui-sref="CategoryResults({search:'shopping mall'})">Shopping mall</button>
-<button ui-sref="CategoryResults({search:'storage'})">Storage</button>
-<button ui-sref="CategoryResults({search:'store'})">Store</button>
-<button ui-sref="CategoryResults({search:'travel agency'})">Travel agency</button>
-<button ui-sref="CategoryResults({search:'convenience store'})">Convenience store</button>
+<a ui-sref="CategoryResults({search:'bicycle store'})">Bicycle store </a>
+<a ui-sref="CategoryResults({search:'book store'})">Book store </a>
+<a ui-sref="CategoryResults({search:'clothing store'})">Clothing store </a>
+<a ui-sref="CategoryResults({search:'convenience store'})">Convenience store </a>
+<a ui-sref="CategoryResults({search:'department store'})">Department store </a>
+<a ui-sref="CategoryResults({search:'electronics store'})">Electronics store </a>
+<a ui-sref="CategoryResults({search:'florist'})">Florist </a>
+<a ui-sref="CategoryResults({search:'furniture store'})">Furniture store </a>
+<a ui-sref="CategoryResults({search:'grocery or supermarket'})">Grocery or supermarket </a>
+<a ui-sref="CategoryResults({search:'hardware store'})">Hardware store </a>
+<a ui-sref="CategoryResults({search:'home goods store'})">Home goods store </a>
+<a ui-sref="CategoryResults({search:'jewelry store'})">Jewelry store </a>
+<a ui-sref="CategoryResults({search:'movie rental'})">Movie rental </a>
+<a ui-sref="CategoryResults({search:'shoe store'})">Shoe store </a>
+<a ui-sref="CategoryResults({search:'shopping mall'})">Shopping mall </a>
+<a ui-sref="CategoryResults({search:'storage'})">Storage </a>
+<a ui-sref="CategoryResults({search:'store'})">Store </a>
+<a ui-sref="CategoryResults({search:'travel agency'})">Travel agency </a>
+<a ui-sref="CategoryResults({search:'convenience store'})">Convenience store</a>
 </accordion-group>
 
 <accordion-group is-open="status.istenthOpen">
 <accordion-heading>
 <i class="fa fa-university"></i></i> Goverment  <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.istenthOpen, 'glyphicon-chevron-right': !status.istenthOpen}"></i>
 </accordion-heading>
-<button ui-sref="CategoryResults({search:'city hall'})">City hall</button>
-<button ui-sref="CategoryResults({search:'courthouse'})">Courthouse</button>
-<button ui-sref="CategoryResults({search:'embassy'})">Embassy</button>
-<button ui-sref="CategoryResults({search:'estabashment'})">Estabashment</button>
-<button ui-sref="CategoryResults({search:'fire station'})">Fire station</button>
-<button ui-sref="CategoryResults({search:'library'})">Library</button>
-<button ui-sref="CategoryResults({search:'local government office'})">Local government office</button>
-<button ui-sref="CategoryResults({search:'police'})">Police</button>
-<button ui-sref="CategoryResults({search:'post office'})">Post office</button>
-<button ui-sref="CategoryResults({search:'school'})">School</button>
-<button ui-sref="CategoryResults({search:'university'})">University</button>
-<button ui-sref="CategoryResults({search:'art gallery'})">Art gallery</button>
+<a ui-sref="CategoryResults({search:'city hall'})">City hall </a>
+<a ui-sref="CategoryResults({search:'courthouse'})">Courthouse </a>
+<a ui-sref="CategoryResults({search:'embassy'})">Embassy </a>
+<a ui-sref="CategoryResults({search:'estabashment'})">Estabashment </a>
+<a ui-sref="CategoryResults({search:'fire station'})">Fire station </a>
+<a ui-sref="CategoryResults({search:'library'})">Library </a>
+<a ui-sref="CategoryResults({search:'local government office'})">Local government office </a>
+<a ui-sref="CategoryResults({search:'police'})">Police </a>
+<a ui-sref="CategoryResults({search:'post office'})">Post office </a>
+<a ui-sref="CategoryResults({search:'school'})">School </a>
+<a ui-sref="CategoryResults({search:'university'})">University </a>
+<a ui-sref="CategoryResults({search:'art gallery'})">Art gallery</a>
 </accordion-group>
 </accordion>
 </div>
