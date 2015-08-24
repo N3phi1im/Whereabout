@@ -1058,7 +1058,7 @@ input[type=checkbox] {
 input.cmn-toggle-yes-no + label {
 	padding: 2px;
 	width: 120px;
-	height: 60px;
+	height: 40px;
 	margin-left: auto;
 	margin-right:auto;
 	text-align: center;
@@ -1076,8 +1076,9 @@ input.cmn-toggle-yes-no + label:after {
 	color: #fff;
 	font-family: "Roboto Slab", serif;
 	font-size: 15px;
+	vertical-align: middle;
 	text-align: center;
-	line-height: 60px;
+	line-height: 40px;
 }
 input.cmn-toggle-yes-no + label:before {
 	background-color: #dddddd;

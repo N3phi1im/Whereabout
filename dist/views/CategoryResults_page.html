@@ -6,8 +6,8 @@
 		<div id="mapContainer">
 			<div id="map-canvas"></div>
 		</div>
-		<ul ng-repeat="res in vm.results">
-			<h3 class="well pointer wellWidth"><img ng-src={{res.icon}}><a ui-sref="Business({res: res.id})"> {{res.name}}</a></h3>
+		<ul ng-repeat="res in vm.results" class="wellSize">
+			<h3 class="well pointer wellWidth"><img ng-src={{res.icon}}><a ui-sref="Business({res: res.id})"> {{res.name}} {{res.formatted_address}}</a></h3>
 		</ul>	
 	</div>
 </div>
