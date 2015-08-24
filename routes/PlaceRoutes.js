@@ -5,22 +5,29 @@ var router = express.Router();
 var Photo = mongoose.model('Photo');
 var Place = mongoose.model('Place');
 var User = mongoose.model('User');
+var async = require('async');
 var jwt = require('express-jwt');
-var auth = jwt({secret: "Secret_bananas", userProperty: "payload"}); 
-
+var auth = jwt({secret: "Secret_bananas", userProperty: "payload"});
 
 router.param('par', function(req, res, next, id){
-  Place.findOne({'google.id': id}).populate('photos').exec(function(err, place){
-    if (err) return next (err);
-    req.par = place;
-    next();
+  Place.findOne({'google.id': id})
+  .populate('photos')
+  .exec(function(err, place){
+    async.forEach(place.photos, function(photo, cb) {
+      photo.populate('user', 'first_name last_name image', function(err, result) {
+        cb();
+      });
+    }, function(err) {
+      if(err) return next(err);
+      req.par = place;
+      next();
+    });
   });
 });
 
 router.param('fid', function(req, res, next, id){
-    if (err) return next (err);
-    req.fid = id;
-    next();
+  req.follow_id = id;
+  next();
 });
 
 router.post('/Place', function(req, res, next) {
@@ -46,10 +53,10 @@ router.get('/Place/info/:par', function(req, res, next) {
 
 router.post('/follow/:fid', auth, function(req, res, next){
   User.update({ "_id": req.payload.id },
-    { $push: {follow: {"_id": req.fid}}}, function(err, user) {
+    { $push: {follow: {_id: req.follow_id}}}, function(err, user) {
       console.log(err);
 
-      res.send(req.fid);
+      res.send(user);
     });
 });
 
