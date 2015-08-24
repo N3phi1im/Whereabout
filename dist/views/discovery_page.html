@@ -1,125 +1,166 @@
+<div ng-controller="CategoryCtrl" class="container capitalize">
 
-<div ng-controller="CategoryCtrl">
 	<accordion close-others="oneAtATime">
 		<accordion-group is-open="status.open">
 		<accordion-heading>
 		<i class="fa fa-cutlery"></i> Food&Drink <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
 	</accordion-heading>
-	<button ui-sref="CategoryResults({search:'bakery'})">bakery</button>
+	<button ui-sref="CategoryResults({search:'bakery'})">Bakery</button>
+	<button ui-sref="CategoryResults({search:'bar'})">Bar</button>
+	<button ui-sref="CategoryResults({search:'food'})">Food</button>
+	<button ui-sref="CategoryResults({search:'restaurant'})">Restaurant</button>
+	<button ui-sref="CategoryResults({search:'cafe'})">Cafe</button>
 </accordion-group>
 
 <accordion-group is-open="status.isSecondOpen">
 <accordion-heading>
-<i class="fa fa-car"></i></i> Automotive <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.isSecondOpen, 'glyphicon-chevron-right': !status.isSecondOpen}"></i>
+<i class="fa fa-car"></i></i> Transportaion <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.isSecondOpen, 'glyphicon-chevron-right': !status.isSecondOpen}"></i>
 </accordion-heading>
-<button ui-sref="CategoryResults({search:'bakery'})">bakery</button>
+<button ui-sref="CategoryResults({search:'airport'})">Airport</button>
+<button ui-sref="CategoryResults({search:'gas station'})">Gas station</button>
+<button ui-sref="CategoryResults({search:'parking'})">Parking</button>
+<button ui-sref="CategoryResults({search:'taxi stand'})">Taxi stand</button>
+<button ui-sref="CategoryResults({search:'train station'})">Train station</button>
+<button ui-sref="CategoryResults({search:'bus station'})">Bus station</button>
 </accordion-group>
 
 <accordion-group is-open="status.isThirdOpen">
 <accordion-heading>
-<i class="fa fa-cutlery"></i> Food&Drink <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.isThirdOpen, 'glyphicon-chevron-right': !status.isThirdOpen}"></i>
+<i class="fa fa-heart-o"></i></i> Beauty & Health  <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.isThirdOpen, 'glyphicon-chevron-right': !status.isThirdOpen}"></i>
 </accordion-heading>
-<button ui-sref="CategoryResults({search:'bakery'})">bakery</button>
+<button ui-sref="CategoryResults({search:'beauty salon'})">Beauty salon</button>
+<button ui-sref="CategoryResults({search:'spa'})">Spa</button>
+<button ui-sref="CategoryResults({search:'dentist'})">Dentist</button>
+<button ui-sref="CategoryResults({search:'doctor'})">Doctor</button>
+<button ui-sref="CategoryResults({search:'gym'})">Gym</button>
+<button ui-sref="CategoryResults({search:'hair care'})">Hair care</button>
+<button ui-sref="CategoryResults({search:'health'})">Health</button>
+<button ui-sref="CategoryResults({search:'hospital'})">Hospital</button>
+<button ui-sref="CategoryResults({search:'pharmacy'})">Pharmacy</button>
+<button ui-sref="CategoryResults({search:'physical therapist'})">Physical therapist</button>
+<button ui-sref="CategoryResults({search:'veterinary care'})">Veterinary care</button>
+</accordion-group>
+
+<accordion-group is-open="status.isFourthOpen">
+<accordion-heading>
+<i class="fa fa-money"></i></i> Finance  <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.isFourthOpen, 'glyphicon-chevron-right': !status.isFourthOpen}"></i>
+</accordion-heading>
+<button ui-sref="CategoryResults({search:'accounting'})">Accounting</button>
+<button ui-sref="CategoryResults({search:'bank'})">Bank</button>
+<button ui-sref="CategoryResults({search:'finance'})">Finance</button>
+<button ui-sref="CategoryResults({search:'insurance agency'})">Insurance agency</button>
+<button ui-sref="CategoryResults({search:'atm'})">ATM</button>
+</accordion-group>
+
+<accordion-group is-open="status.isFifthOpen">
+<accordion-heading>
+<i class="fa fa-music"></i></i> Entertainment  <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.isFifthOpen, 'glyphicon-chevron-right': !status.isFifthOpen}"></i>
+</accordion-heading>
+<button ui-sref="CategoryResults({search:'amusement park'})">Amusement park</button>
+<button ui-sref="CategoryResults({search:'aquarium'})">Aquarium</button>
+<button ui-sref="CategoryResults({search:'art gallery'})">Art gallery</button>
+<button ui-sref="CategoryResults({search:'bowling alley'})">Bowling alley</button>
+<button ui-sref="CategoryResults({search:'camp ground'})">Camp ground</button>
+<button ui-sref="CategoryResults({search:'casino'})">Casino</button>
+<button ui-sref="CategoryResults({search:'lodging'})">Lodging</button>
+<button ui-sref="CategoryResults({search:'movie theater'})">Movie theater</button>
+<button ui-sref="CategoryResults({search:'museum'})">Museum</button>
+<button ui-sref="CategoryResults({search:'nightclub'})">Nightclub</button>
+<button ui-sref="CategoryResults({search:'park'})">Park</button>
+<button ui-sref="CategoryResults({search:'rv park'})">Rv park</button>
+<button ui-sref="CategoryResults({search:'stadium'})">Stadium</button>
+<button ui-sref="CategoryResults({search:'zoo'})">Zoo</button>
+<button ui-sref="CategoryResults({search:'bowling alley'})">Bowling alley</button>
+</accordion-group>
+
+<accordion-group is-open="status.issixthOpen">
+<accordion-heading>
+<i class="fa fa-wrench"></i></i> Service  <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.issixthOpen, 'glyphicon-chevron-right': !status.issixthOpen}"></i>
+</accordion-heading>
+<button ui-sref="CategoryResults({search:'car dealer'})">Car dealer</button>
+<button ui-sref="CategoryResults({search:'car rental'})">Car rental</button>
+<button ui-sref="CategoryResults({search:'car repair'})">Car repair</button>
+<button ui-sref="CategoryResults({search:'car wash'})">Car wash</button>
+<button ui-sref="CategoryResults({search:'electrician'})">Electrician</button>
+<button ui-sref="CategoryResults({search:'funeral home'})">Funeral home</button>
+<button ui-sref="CategoryResults({search:'general contractor'})">General contractor</button>
+<button ui-sref="CategoryResults({search:'laundry'})">Laundry</button>
+<button ui-sref="CategoryResults({search:'lawyer'})">Lawyer</button>
+<button ui-sref="CategoryResults({search:'locksmith'})">Locksmith</button>
+<button ui-sref="CategoryResults({search:'meal delivery'})">Meal delivery</button>
+<button ui-sref="CategoryResults({search:'meal takeaway'})">Meal takeaway</button>
+<button ui-sref="CategoryResults({search:'painter'})">Painter</button>
+<button ui-sref="CategoryResults({search:'plumber'})">Plumber</button>
+<button ui-sref="CategoryResults({search:'real estate agency'})">Real estate agency</button>
+<button ui-sref="CategoryResults({search:'roofing contractor'})">Roofing contractor</button>
+<button ui-sref="CategoryResults({search:'cemetery'})">Cemetery</button>
+<button ui-sref="CategoryResults({search:'moving company'})">Moving company</button>
+</accordion-group>
+
+<accordion-group is-open="status.isseventhOpen">
+<accordion-heading>
+<i class="fa fa-users"></i></i> Religion  <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.isseventhOpen, 'glyphicon-chevron-right': !status.isseventhOpen}"></i>
+</accordion-heading>
+<button ui-sref="CategoryResults({search:'church'})">Church</button>
+<button ui-sref="CategoryResults({search:'aquarium'})">Aquarium</button>
+<button ui-sref="CategoryResults({search:'hindu temple'})">Hindu temple</button>
+<button ui-sref="CategoryResults({search:'mosque'})">Mosque</button>
+<button ui-sref="CategoryResults({search:'place of worship'})">Place of worship</button>
+<button ui-sref="CategoryResults({search:'synagogue'})">Synagogue</button>
+</accordion-group>
+
+<accordion-group is-open="status.iseighthOpen">
+<accordion-heading>
+<i class="fa fa-paw"></i></i> Pets  <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.iseighthOpen, 'glyphicon-chevron-right': !status.iseighthOpen}"></i>
+</accordion-heading>
+<button ui-sref="CategoryResults({search:'pet store'})">Pet store</button>
+</accordion-group>
+
+<accordion-group is-open="status.isninthOpen">
+<accordion-heading>
+<i class="fa fa-building"></i></i> Store  <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.isninthOpen, 'glyphicon-chevron-right': !status.isninthOpen}"></i>
+</accordion-heading>
+<button ui-sref="CategoryResults({search:'bicycle store'})">Bicycle store</button>
+<button ui-sref="CategoryResults({search:'book store'})">Book store</button>
+<button ui-sref="CategoryResults({search:'clothing store'})">Clothing store</button>
+<button ui-sref="CategoryResults({search:'convenience store'})">Convenience store</button>
+<button ui-sref="CategoryResults({search:'department store'})">Department store</button>
+<button ui-sref="CategoryResults({search:'electronics store'})">Electronics store</button>
+<button ui-sref="CategoryResults({search:'florist'})">Florist</button>
+<button ui-sref="CategoryResults({search:'furniture store'})">Furniture store</button>
+<button ui-sref="CategoryResults({search:'grocery or supermarket'})">Grocery or supermarket</button>
+<button ui-sref="CategoryResults({search:'hardware store'})">Hardware store</button>
+<button ui-sref="CategoryResults({search:'home goods store'})">Home goods store</button>
+<button ui-sref="CategoryResults({search:'jewelry store'})">Jewelry store</button>
+<button ui-sref="CategoryResults({search:'movie rental'})">Movie rental</button>
+<button ui-sref="CategoryResults({search:'shoe store'})">Shoe store</button>
+<button ui-sref="CategoryResults({search:'shopping mall'})">Shopping mall</button>
+<button ui-sref="CategoryResults({search:'storage'})">Storage</button>
+<button ui-sref="CategoryResults({search:'store'})">Store</button>
+<button ui-sref="CategoryResults({search:'travel agency'})">Travel agency</button>
+<button ui-sref="CategoryResults({search:'convenience store'})">Convenience store</button>
+</accordion-group>
+
+<accordion-group is-open="status.istenthOpen">
+<accordion-heading>
+<i class="fa fa-university"></i></i> Goverment  <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.istenthOpen, 'glyphicon-chevron-right': !status.istenthOpen}"></i>
+</accordion-heading>
+<button ui-sref="CategoryResults({search:'city hall'})">City hall</button>
+<button ui-sref="CategoryResults({search:'courthouse'})">Courthouse</button>
+<button ui-sref="CategoryResults({search:'embassy'})">Embassy</button>
+<button ui-sref="CategoryResults({search:'estabashment'})">Estabashment</button>
+<button ui-sref="CategoryResults({search:'fire station'})">Fire station</button>
+<button ui-sref="CategoryResults({search:'library'})">Library</button>
+<button ui-sref="CategoryResults({search:'local government office'})">Local government office</button>
+<button ui-sref="CategoryResults({search:'police'})">Police</button>
+<button ui-sref="CategoryResults({search:'post office'})">Post office</button>
+<button ui-sref="CategoryResults({search:'school'})">School</button>
+<button ui-sref="CategoryResults({search:'university'})">University</button>
+<button ui-sref="CategoryResults({search:'art gallery'})">Art gallery</button>
 </accordion-group>
 </accordion>
 </div>
 
-<ul>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'accounting'})">accounting</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'airport'})">airport</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'amusement park'})">amusement park</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'aquarium'})">aquarium</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'art gallery'})">art gallery</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'atm'})">atm</button>
-	
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'bank'})">bank</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'bar'})">bar</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'beauty salon'})">beauty salon</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'bicycle store'})">bicycle store</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'book store'})">book store</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'bowling alley'})">bowling alley</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'bus station'})">bus station</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'cafe'})">cafe</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'camp ground'})">camp ground</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'car dealer'})">car dealer</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'car rental'})">car rental</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'car repair'})">car repair</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'car wash'})">car wash</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'casino'})">casino</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'cemetery'})">cemetery</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'church'})">church</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'city hall'})">city hall</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'clothing store'})">clothing store</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'convenience store'})">convenience store</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'courthouse'})">courthouse</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'dentist'})">dentist</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'department store'})">department store</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'doctor'})">doctor</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'electrician'})">electrician</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'electronics store'})">electronics store</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'embassy'})">embassy</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'estabashment'})">estabashment</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'finance'})">finance</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'fire station<'})">fire station</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'florist'})">florist</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'food'})">food</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'funeral home'})">funeral home</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'furniture store'})">furniture store</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'gas station'})">gas station</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'general contractor'})">general contractor</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'grocery or supermarket'})">grocery or supermarket</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'gym'})">gym</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'hair care'})">hair care</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'hardware store'})">hardware store</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'health'})">health</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'hindu temple'})">hindu temple</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'home goods store'})">home goods store</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'hospital'})">hospital</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'insurance agency'})">insurance agency</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'jewelry store'})">jewelry store</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'laundry'})">laundry</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'lawyer'})">lawyer</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'library'})">library</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'a liquorstore'})">a liquorstore</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'local government office'})">local government office</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'locksmith'})">locksmith</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'lodging'})">lodging</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'meal delivery'})">meal delivery</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'meal takeaway'})">meal takeaway</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'mosque'})">mosque</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'movie rental'})">movie rental</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'movie theater'})">movie theater</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'moving company'})">moving company</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'museum'})">museum</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'nightclub'})">nightclub</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'painter'})">painter</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'park'})">park</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'parking'})">parking</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'pet store'})">pet store</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'pharmacy'})">pharmacy</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'physical therapist'})">physical therapist</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'place of worship'})">place of worship</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'plumber'})">plumber</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'police'})">police</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'post office'})">post office</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'real estate agency'})">real estate agency</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'restaurant'})">restaurant</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'roofing contractor'})">roofing contractor</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'rv park'})">rv park</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'school'})">school</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'shoe store'})">shoe store</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'shopping mall'})">shopping mall</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'spa'})">spa</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'stadium'})">stadium</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'storage'})">storage</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'store'})">store</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'subway station'})">subway station</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'synagogue'})">synagogue</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'taxi stand'})">taxi stand</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'train station'})">train station</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'travel agency'})">travel agency</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'university'})">university</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'veterinary care'})">veterinary care</button>
-	<button class="btn btn-default clickButton" ui-sref="CategoryResults({search:'zoo'})">zoo</button>
+<ul>	
 </ul>
 

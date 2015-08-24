@@ -1107,3 +1107,7 @@ label {
 	.glyphicon-heart {
 		font-size: 53px
 	}
+
+	button.capitalize {
+		text-transform: capitalize;
+	}
