@@ -1,15 +1,13 @@
 <div ng-controller="BusinessController as vm">
-	
+
 	<div class="bodyWidth">
-		<div style="height:400px; overflow-y:hidden; background:url('/img/palmTrees.jpg') no-repeat; background-size:cover;">					
+		<div style="height:400px; overflow-y:hidden; background:url('/img/palmTrees.jpg') no-repeat; background-size:cover;">
 
 			<div id="box">{{vm.business.google.name}}</div>
-			
 			<div class="switch hcenter">
 				<input id="cmn-toggle-7" class="cmn-toggle cmn-toggle-yes-no" type="checkbox">
 				<label for="cmn-toggle-7" data-on="FOLLOWING" data-off="FOLLOW"></label>
 			</div>
-			
 		</div>
 		<footer class="busNav">
 			<div class="container-fluid ">
@@ -30,29 +28,25 @@
 							</ul>
 						</div>
 					</div>
-				</div>		
-			</footer>	
-		</div>
+				</div>
+			</div>
+		</footer>
+	</div>
 
 
-		<div class="row-12 pinTop">
-			<div class="col-md-3 pinSide">
-				<div class="pin">
-					<div class="inner_wrap1">
-						<img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-128.png" id="profile-img-circle">
-						<h5>John Doe</h5>
-						<p>"I had so much fun at this place."</p>				
+	<div class="row-12 pinTop">
+		<div class="col-md-3 pinSide" ng-repeat="b in vm.business.photos">
+			<div class="pin">
+				<div class="inner_wrap1">
+					<img src="{{b.user.image}}" id="profile-img-circle">
+					<h5>{{b.user.name}}</h5>
+					<p>{{b.title}}</p>
+				</div>
+				<div class="post-meta">
+					<div >
+						<img src="{{b.url}}">
 					</div>
-
-					<div class="post-meta">
-						<div ng-repeat="b in vm.business.photos">
-							<!-- <img src="{{b.url}}" alt=""> -->
-							<!-- </div> -->
-							<img src="{{b.url}}">
-
-						</div>
-					</div>	
 				</div>
 			</div>
 		</div>
-
+	</div>
