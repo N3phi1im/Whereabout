@@ -8,6 +8,7 @@
 	function BusinessController(HomeFactory, $state, $stateParams) {
 		var vm = this;
 		vm.business = {};
+		
 	//-------------------------------------------------------------------------//
 	if($stateParams.res){
 		HomeFactory.getBusinessInfo($stateParams.res).then(function(res){
@@ -16,6 +17,9 @@
 
 		});
 	}
+	//-------------------------------------------------------------------------//
+
+
 }
 })();
 
