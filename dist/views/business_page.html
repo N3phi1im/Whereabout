@@ -7,7 +7,7 @@
 			
 			<div class="switch hcenter">
 				<input id="cmn-toggle-7" class="cmn-toggle cmn-toggle-yes-no" type="checkbox">
-				<label for="cmn-toggle-7" data-on="Following" data-off="Follow"></label>
+				<label for="cmn-toggle-7" data-on="FOLLOWING" data-off="FOLLOW"></label>
 			</div>
 			
 		</div>
@@ -25,32 +25,34 @@
 							<li>
 								<a href="#">Messages</a>
 							</li>
-						</ul>
+							<li>
+								<a ng-click='vm.followBusiness(vm.business._id)'>Follow</a>
+							</ul>
+						</div>
 					</div>
-				</div>
-			</div>		
-		</footer>	
-	</div>
-	
+				</div>		
+			</footer>	
+		</div>
 
-	<div class="row-12 pinTop">
-		<div class="col-md-3 pinSide">
-			<div class="pin">
-				<div class="inner_wrap1">
-					<img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-128.png" id="profile-img-circle">
-					<h5>John Doe</h5>
-					<p>"I had so much fun at this place."</p>				
-				</div>
 
-				<div class="post-meta">
-					<div ng-repeat="b in vm.business.photos">
-						<!-- <img src="{{b.url}}" alt=""> -->
-						<!-- </div> -->
-						<img src="{{b.url}}">
-						
+		<div class="row-12 pinTop">
+			<div class="col-md-3 pinSide">
+				<div class="pin">
+					<div class="inner_wrap1">
+						<img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-128.png" id="profile-img-circle">
+						<h5>John Doe</h5>
+						<p>"I had so much fun at this place."</p>				
 					</div>
-				</div>	
+
+					<div class="post-meta">
+						<div ng-repeat="b in vm.business.photos">
+							<!-- <img src="{{b.url}}" alt=""> -->
+							<!-- </div> -->
+							<img src="{{b.url}}">
+
+						</div>
+					</div>	
+				</div>
 			</div>
 		</div>
-	</div>
 
