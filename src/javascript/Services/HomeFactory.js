@@ -3,20 +3,19 @@
 	angular.module('app')
 	.factory('HomeFactory', HomeFactory);
 
-	HomeFactory.$inject = ['$http', '$q'];
+	HomeFactory.$inject = ['UserFactory','$http', '$q'];
 
-	function HomeFactory($http, $q) {
+	function HomeFactory(UserFactory, $http, $q) {
 		var o = {};
 		o.upload = upload;
 		o.setPhoto = setPhoto;
-		o.setPlace = setPlace;
+		o.combinePhotoPlace = combinePhotoPlace;
 		o.uploadLocation = uploadLocation;
 		o.dataObject ={};
 		o.getLocation = getLocation;
 		return o;
 
 		function upload(photo) {
-			console(photo);
 			var q = $q.defer();
 			$http.post('/api/Photos/upload', photo).success(function(req, res) {
 				q.resolve(res);
@@ -26,7 +25,6 @@
 		function uploadLocation(location) {
 			var q = $q.defer();
 			$http.post('/api/Places/Place', location).success(function(req, res) {
-
 				o.dataObject = location.id;
 				q.resolve();
 
@@ -42,19 +40,24 @@
 			return q.promise;
 		}
 
-		function setPhoto(photo) {
-
-			
+		function setPhoto(file) {
 			var q = $q.defer();
-			$http.post('/api/Photos/setPhoto').success(function() {
-				q.resolve();
+			var photo = {};
+			photo.id = file.public_id;
+			photo.url = file.url;
+			$http.post('/api/Photos/setPhoto', photo, {headers: {Authorization: "Bearer " + localStorage.getItem('token')}}).success(function(res) {
+
+				q.resolve(res);
 			});
 			return q.promise;
 		}
 
-		function setPlace() {
+		function combinePhotoPlace(file) {
 			var q = $q.defer();
-			$http.post('/api/Photos/setPlace').success(function() {
+			var place = {};
+			place.id = file.id;
+			place.google =  o.dataObject;
+			$http.post('/api/Photos/setPlace', place).success(function() {
 				q.resolve();
 			});
 			return q.promise;
@@ -67,6 +70,8 @@
 			});
 			return q.promise;
 		}
+
+
 
 	}
 })();

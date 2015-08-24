@@ -32,7 +32,9 @@ UserSchema.methods.generateJWT = function() {
 	exp.setDate(today.getDate() + 1);
 	return jwt.sign({
 		id: this._id,
-		username: this.username,
+		first_name: this.first_name,
+		last_name: this.last_name,
+		image: this.image,
 		exp: parseInt(exp.getTime() / 1000)
 	}, 'Secret_bananas');
 };

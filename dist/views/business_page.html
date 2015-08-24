@@ -1,16 +1,12 @@
 <div ng-controller="BusinessController as vm">
 
 	<div class="bodyWidth">
-		<div style="height:300px; overflow-y:hidden; background:url('http://naturewallpaper.rocks/wp-content/uploads/2015/06/palm-trees-wallpaper-backgrounds-hd.jpg') no-repeat; background-size:cover;">
+		<div style="height:400px; overflow-y:hidden; background:url('/img/palmTrees.jpg') no-repeat; background-size:cover;">
+			<div id="box">Room 389</div>
 			
-			<div id="box">389</div>
-
-
-
-			<!-- <img class="hcenter imageDisplay"></img> -->
-
-
-			<div class="container-fluid busNav">
+		</div>
+		<footer class="busNav">
+			<div class="container-fluid ">
 				<div class="row">
 					<div class="col-md-12">
 						<ul class="nav nav-tabs">
@@ -20,38 +16,39 @@
 							<li>
 								<a href="#">Profile</a>
 							</li>
-							<li class="disabled">
+							<li>
 								<a href="#">Messages</a>
 							</li>
 						</ul>
 					</div>
 				</div>
-			</div>
+			</div>		
+		</footer>
 
-		</div>
-
-
+		
 	</div>
 
-	<div class="bodyWidth2">
-		<div class="pin">
-			<div class="inner_wrap1">
-				<img src="http://seobuzzworld.com/wp-content/uploads/2012/12/twitter-profile.jpg" id="profile-img-circle">
-				<h5>Lucy-p</h5>
-				<p>"Ut wisi enim ad minim veniam."</p>				
-			</div>
-			<div ng-controller="CarouselCtrl">
-				<carousel class="carouselPart" interval="myInterval" no-wrap="noWrapSlides">
-					<slide ng-repeat="slide in slides" active="slide.active">
-						<img ng-src="{{slide.image}}" style="margin:auto;">
-					</slide>
-				</carousel>
-			</div>
-			<div class="post-meta">
-				<ul>
-					<li><h5 id="business">Starbucks</h5></li>
-					<li><h5 class="fa fa-heart" id="likes"> 9</h5></li>
-				</ul>
-			</div>
+	<div class="row-12 pinTop">
+		<div class="col-md-3 pinSide">
+			<div class="pin">
+				<div class="inner_wrap1">
+					<img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-128.png" id="profile-img-circle">
+					<h5>John Doe</h5>
+					<p>"I had so much fun at this place."</p>				
+				</div>
+				<div ng-controller="CarouselCtrl">
+					<carousel class="carouselPart" interval="myInterval" no-wrap="noWrapSlides">
+						<!-- <slide ng-repeat="slide in slides" active="slide.active"> -->
+						<img src="http://room389oakland.com/images/cocktails.jpg" style="margin:auto;">	
+						<!-- </slide> -->
+					</carousel>
+				</div>
+				<div class="post-meta">
+					<ul>
+						<h5 id="business">Room 389</h5>
+						<h5 class="fa fa-heart" id="likes"> 9</h5>
+					</ul>
+				</div>
+			</div>	
 		</div>
 	</div>

@@ -1,41 +1,28 @@
 <div ng-controller="HomeController as vm">
-
-<<<<<<< HEAD
-=======
-	<button ui-sref="TakePhoto">Take photo</button>
->>>>>>> b5ab27a06e5154803c4e3b0a691c5357da8487d4
-	<div id="wrapper">
-		<div id="columns">
+	<div class="row-12 pinTop">
+		<div class="col-md-3 pinSide">
 			<div class="pin">
 				<div class="inner_wrap1">
-					<img src="http://seobuzzworld.com/wp-content/uploads/2012/12/twitter-profile.jpg" id="profile-img-circle">
-					<h5>Lucy-p</h5>
-					<p>"Ut wisi enim ad minim veniam."</p>				
+					<img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-128.png" id="profile-img-circle">
+					<h5>John Doe</h5>
+					<p>"I had so much fun at this place."</p>				
 				</div>
-
 				<div ng-controller="CarouselCtrl">
-					
 					<carousel class="carouselPart" interval="myInterval" no-wrap="noWrapSlides">
 						<slide ng-repeat="slide in slides" active="slide.active">
-							<img ng-src="{{slide.image}}" style="margin:auto;">
-							
+							<img ng-src="{{slide.image}}" style="margin:auto;">	
 						</slide>
 					</carousel>
-
 				</div>
-				
 				<div class="post-meta">
 					<ul>
-						<li><h5 id="business">Starbucks</h5></li>
-						<li><h5 class="fa fa-heart" id="likes"> 9</h5></li>
+						<h5 id="business">Starbucks</h5>
+						<h5 class="fa fa-heart" id="likes"> 9</h5>
 					</ul>
 				</div>
-			</div>
-
-			
+			</div>	
 		</div>
 	</div>
-
-
 </div>
+
 

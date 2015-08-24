@@ -65,6 +65,7 @@
 			v: '3.17',
 			libraries: 'places,weather,geometry,visualization'
 		});
+		
 		$urlRouterProvider.otherwise('/');
 	}
 

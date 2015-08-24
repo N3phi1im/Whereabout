@@ -6,6 +6,8 @@ var Photo = mongoose.model('Photo');
 var Place = mongoose.model('Place');
 var multer  = require('multer');
 var upload = multer({ dest: 'uploads/' });
+var jwt = require('express-jwt');
+var auth = jwt({secret: "Secret_bananas", userProperty: "payload"});
 
 
 cloudinary.config({
@@ -16,29 +18,31 @@ cloudinary.config({
 
 router.post('/upload', upload.single('uploadedFile'), function(req, res) {
   cloudinary.uploader.upload(req.file.path, function(result) {
-    res.send(result.url);
+    res.send(result);
   });
 });
 
 
-router.post('/setPhoto', function(req, res) {
+router.post('/setPhoto', auth, function(req, res) {
   var photo = new Photo();
   photo.url = req.body.url;
-  photo.user = req.body.user.id;
-  photo.place = req.body.place.id;
+  photo.user = req.payload.id;
+  photo.id = req.body.id;
   photo.createdAt = new Date();
-  photo.title = req.body.title;
-  res.send(photo.id);
+  photo.save(function(err, Photo){
+    res.send(Photo);
+  });
 });
 
 router.post('/setPlace', function(req, res) {
-  Place.findByIdAndUpdate(
-    Place.google.id,
-    {$push: {"photos": {id: req.body.id }}},
-    {save: true, upsert: true, new: true},
+  console.log(req.body);
+  Place.update({
+    'google.id': req.body.place},
+    {$push: {photos: {id: req.body.id }}},
+    // {save: true, upsert: true, new: true},
     function(err) {
       console.log(err);
-      res.end();
+      res.send('posted');
     });
 });
 

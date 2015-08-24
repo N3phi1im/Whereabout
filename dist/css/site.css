@@ -7,8 +7,14 @@
 	vertical-align: middle;
 }
 
+h5 {
+	font-weight: bolder;
+	font-size: 20px;
+	font-family: 'Amatic SC', cursive;
+}
+
 #about {
-	width: 100%;
+	/*width: 100%;*/
 	text-align: center;
 	color: #fff;
 	background-image: url('../img/city-cars-traffic-lights.jpg');
@@ -54,11 +60,6 @@ h1 {
 	font-size: 65px;
 	font-weight: 900;
 	line-height: 1.1;
-	width: 880px;
-	color: white;
-	text-align: center;
-	margin-left: auto;
-	margin-right: auto;
 }
 
 .largerWidth {
@@ -107,7 +108,7 @@ label {
 	width: 100%;
 	max-width: 1100px;
 	min-width: 800px;
-	margin: 50px auto;
+	margin: 10px;
 
 }
 
@@ -132,11 +133,10 @@ label {
 	-webkit-column-break-inside: avoid;
 	-moz-column-break-inside: avoid;
 	column-break-inside: avoid;
-	padding: 15px;
+	/* padding: 15px; */
 	padding-bottom: 40px;
 	background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
 	opacity: 1;
-
 	-webkit-transition: all .2s ease;
 	-moz-transition: all .2s ease;
 	-o-transition: all .2s ease;
@@ -147,8 +147,7 @@ label {
 .pin img {
 	width: 100%;
 	border-bottom: 1px solid #ccc;
-	padding-bottom: 15px;
-	margin-bottom: 5px;
+
 }
 
 .pin p {
@@ -168,14 +167,11 @@ label {
 
 .post-meta %i{
 	display: inline;
-
-
 }
 
 #map-canvas {
 	height: 550px;
 	width: 80%;
-
 	margin: 20px 0;
 	border-radius: 5px;
 	border: 1px solid silver;
@@ -184,10 +180,9 @@ label {
 	margin-top: 20px;
 }
 
-
 #profile-img-circle {
-	border: 3px solid #c99;
 	border-radius: 50%;
+	margin-left: 10px;
 	width: 50px;
 	height: 50px;
 	float: left;
@@ -202,21 +197,22 @@ label {
 #business{
 	position: absolute;
 	left: 15px;
+	margin-top: 4px;
 }
 #likes{
 	position: absolute;
 	right: 10px;
 }
 
-
 .pointer {
 	cursor: pointer;
 }
 
 .wellWidth {
-	width: 25%;
+	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
+	font-size: 1.5vh;
 }
 
 #mapContainer {
@@ -240,6 +236,11 @@ label {
 	font-size: 2em;
 }
 #discover{
+	padding-bottom: 20px;
+	padding-top: 18px;
+}
+
+#homeButton {
 	padding-bottom: 20px;
 	padding-top: 18px;
 }
@@ -296,9 +297,65 @@ label {
 }
 
 .busNav {
-	position: absolute;
-	top: 258px;
-	/*margin-top: 22.75vh;*/
-	vertical-align: bottom;
+	margin-top: -42px;
+}
 
+.navbar {
+	margin-bottom: 0px;
+	border-radius: 0px;
+}
+
+.pinTop {
+	margin: 10px;
+}
+
+.pinSide {
+	padding: 0px;
+}
+
+.btn-file {
+	position: relative;
+	overflow: hidden;
+	margin-left: auto;
+	margin-right: auto;
+}
+.btn-file input[type=file] {
+	position: absolute;
+	top: 0;
+	right: 0;
+	min-width: 100%;
+	min-height: 100%;
+	font-size: 100px;
+	text-align: right;
+	filter: alpha(opacity=0);
+	opacity: 0;
+	outline: none;
+	background: white;
+	cursor: inherit;
+	display: block;
+}
+
+#uploadPhoto {
+	text-align: center;
+	margin: 20px;
+}
+
+.submitPhoto {
+	margin: 20px;
+}
+
+.wellSize {
+	padding-right: 10%;
+	padding-left: 10%
+}
+
+#userIcon {
+	height: 40px;
+	width: 40px;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+.modal-open {
+	padding-right: 0px;
 }
