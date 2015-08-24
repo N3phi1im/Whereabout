@@ -12,6 +12,7 @@ var UserSchema = new mongoose.Schema({
 	facebook: {
 		id: String
 	},
+	follow: [{type: mongoose.Schema.Types.ObjectId, ref: 'Place'}],
 	passwordHash: String,
 	salt: String
 });
