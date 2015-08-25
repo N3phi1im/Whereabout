@@ -7,7 +7,7 @@
 					<h5>John Doe</h5>
 					<p>"I had so much fun at this place."</p>				
 				</div>
-				<div ng-controller="CarouselCtrl as vm">
+				<div rn-carousel class="image" ng-controller="CarouselCtrl as vm">
 					<carousel class="carouselPart" interval="myInterval" no-wrap="vm.noWrapSlides">
 						<slide ng-repeat="slide in vm.slides" active="slide.active">
 							<img ng-src="{{slide.image}}" style="margin:auto;">	
