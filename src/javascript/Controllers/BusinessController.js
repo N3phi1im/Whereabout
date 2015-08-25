@@ -8,7 +8,7 @@
 	function BusinessController(HomeFactory, $state, $stateParams) {
 		var vm = this;
 		vm.business = {};
-		
+
 	//-------------------------------------------------------------------------//
 	if($stateParams.res){
 		HomeFactory.getBusinessInfo($stateParams.res).then(function(res){
@@ -22,7 +22,13 @@
 		HomeFactory.followById(id).then(function(res){
 		});
 	};
+
+	vm.alert = function() {
+		alert(1);
+	};
+
+	vm.alert2 = function() {
+		alert(2);
+	};
 }
 })();
-
-

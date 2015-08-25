@@ -1,11 +1,9 @@
 <div ng-controller="BusinessController as vm">
-
 	<div class="bodyWidth">
 		<div style="height:400px; overflow-y:hidden; background:url('/img/palmTrees.jpg') no-repeat; background-size:cover;">
-
 			<div id="box">{{vm.business.google.name}}</div>
 			<div class="switch hcenter">
-				<input id="cmn-toggle-7" class="cmn-toggle cmn-toggle-yes-no" type="checkbox">
+				<input id="cmn-toggle-7" class="cmn-toggle cmn-toggle-yes-no" type="checkbox" ng-change="data-on || ">
 				<label for="cmn-toggle-7" data-on="FOLLOWING" data-off="FOLLOW"></label>
 			</div>
 		</div>
@@ -29,7 +27,6 @@
 						</div>
 					</div>
 				</div>
-			</div>
 		</footer>
 	</div>
 
@@ -50,3 +47,4 @@
 			</div>
 		</div>
 	</div>
+</div>
