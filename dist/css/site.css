@@ -1147,3 +1147,7 @@ input.cmn-toggle-yes-no:checked + label:after {
 	margin-right: 10px;
 	margin-top: 20px;
 }
+
+.black {
+	color: black;
+}
