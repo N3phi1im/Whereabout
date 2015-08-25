@@ -38,20 +38,17 @@
 		$scope.send = function() {
 			console.log($scope.place.name + ' : ' + $scope.place.lat + ', ' + $scope.place.lng);
 		};
-		
+
 //-------------------------------------------------------------------------//
 
-
-
 vm.setlocation = function(location) {
-
 	HomeFactory.uploadLocation(location).then(function() {
-		$state.go('Home');
+		console.log("Location Selected");
 	});
 };
+
 if ($stateParams.search) Map.init(true).then($scope.search);
 else  Map.init();
 }
 
 })();
-

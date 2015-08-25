@@ -9,6 +9,7 @@
 		var vm = this;
 		vm.business = {};
 		vm.isFollowing = false;
+
 	//-------------------------------------------------------------------------//
 	if($stateParams.res){
 		HomeFactory.getBusinessInfo($stateParams.res).then(function(res){
@@ -29,14 +30,7 @@ vm.alert = function(id, isFollowing) {
 		{console.log('other');
 }
 };
-
-
-
-
-
-
 //-------------------------------------------------------------------------//	
 }
 })();
-
 
