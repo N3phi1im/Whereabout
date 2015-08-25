@@ -14,6 +14,7 @@
     // o.dataObject = {};
     o.getBusinessInfo = getBusinessInfo;
     o.followById = followById;
+    o.removeFollow = removeFollow;
     return o;
 
     function upload(photo) {
@@ -77,17 +78,34 @@
       return q.promise;
     }
 
-    function followById(id) {
+    function followById(id, isFollowing) {
       var q = $q.defer();
-      $http.post('/api/Places/follow/' + id, {isFollowing:isFollowing}, {
+      $http.post('/api/Places/follow/' + id, {
+        isFollowing: isFollowing
+      }, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem('token')
         }
       }).success(function(res) {
+        console.log("followed");
+        console.log(res);
         q.resolve(res);
       });
       return q.promise;
+    }
 
+    function removeFollow(id) {
+      var q = $q.defer();
+      $http.post('/api/Places/unfollow/' + id, {}, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem('token')
+        }
+      }).success(function(res) {
+        console.log("unfollowed");
+        console.log(res);
+        q.resolve(res);
+      });
+      return q.promise;
     }
 
   }

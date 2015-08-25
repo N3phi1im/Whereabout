@@ -126,7 +126,6 @@ label {
 }
 
 .pin {
-	display: inline-block;
 	background: #FEFEFE;
 	border: 2px solid #FAFAFA;
 	box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
@@ -135,7 +134,7 @@ label {
 	-moz-column-break-inside: avoid;
 	column-break-inside: avoid;
 	/* padding: 15px; */
-	padding-bottom: 40px;
+	padding-bottom: 0px;
 	background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
 	opacity: 1;
 	-webkit-transition: all .2s ease;
@@ -143,6 +142,7 @@ label {
 	-o-transition: all .2s ease;
 	transition: all .2s ease;
 	position: relative;
+	border-bottom-width: 30px;
 }
 
 .pin img {
@@ -197,12 +197,17 @@ label {
 }
 #business{
 	position: absolute;
-	left: 15px;
-	margin-top: 4px;
+	left: 5px;
+	margin-top: -2px;
 }
 #likes{
 	position: absolute;
-	right: 10px;
+	right: 15px;
+}
+
+.likeCounter {
+	margin-right: 6px;
+	margin-top: -5px;
 }
 
 .pointer {
@@ -234,8 +239,19 @@ label {
 	margin-top: 10px;
 }
 #camera{
-	font-size: 2em;
+	font-size: 30px;
+	color: black:;
 }
+
+.photoButtonCenter {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	width: 120px;
+	height: 40px;
+	border-radius: 10px;
+}
+
 #discover{
 	padding-bottom: 20px;
 	padding-top: 18px;
@@ -1150,3 +1166,77 @@ input.cmn-toggle-yes-no:checked + label:after {
 .black {
 	color: black;
 }
+
+.hidden{
+	font-size: 0;
+}
+
+.heading{
+	font-size: 5em;
+	margin: 0;
+}
+
+.like,p{
+	font-family: 'Open Sans';
+}
+
+.like-toggle{
+	outline:none;
+	box-shadow:none;
+	border: none;
+	width: 40px;
+	height: 30px;
+	font-size: 1.3em;
+	border-radius: 100px;
+}
+
+.like-active.basic{
+	background: #7CC576;
+	color: white;
+}
+
+.like-toggle.basic2{
+	border: none;
+	width: 30px;
+	height: 30px;
+	font-size: 1.3em;
+	border-radius: 100px;
+	background: #F26C4F;
+	color: #fff;
+}
+
+.like-active.basic2{
+	background: #F06EA9;
+}
+
+.like-toggle.basic2:not(.like-active):hover{
+	background: #438CCA;
+	width: 60px;
+}
+
+.like-toggle.basic3{
+	border: none;
+	width: 30px;
+	height: 30px;
+	font-size: 1.3em;
+	border-radius: 100px;
+	background: #438CCA;
+	color: #fff;
+	margin-bottom: 10px;
+}
+
+.like-active.basic3{
+	background: #7CC576;
+	transform: rotate(-180deg);
+}
+
+.like-toggle.basic3:not(.like-active):hover{
+	background: #F26C4F;
+	transform: rotate(90deg);
+}
+
+.floatRight {
+	float: right;
+	margin-bottom: 3px;
+}
+

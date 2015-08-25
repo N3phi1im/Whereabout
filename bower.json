@@ -2,20 +2,22 @@
   "name": "appname",
   "version": "0.0.0",
   "authors": [
-    "--"
+  "--"
   ],
   "license": "MIT",
   "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
+  "**/.*",
+  "node_modules",
+  "bower_components",
+  "test",
+  "tests"
   ],
   "dependencies": {
     "angular": "~1.4.3",
     "angular-ui-router": "~0.2.15",
     "angular-bootstrap": "~0.13.3",
-    "angular-file-model": "~0.3.1"
+    "angular-file-model": "~0.3.1",
+    "bootstrap-toggle": "~2.2.1"
+    "angular-carousel": "~0.3.12"
   }
 }

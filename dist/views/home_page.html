@@ -17,12 +17,29 @@
 				<div class="post-meta">
 					<ul>
 						<h5 id="business">Starbucks</h5>
-						<h5 class="fa fa-heart" id="likes"> 9</h5>
+						<div class='like navbar-right likeCounter floatRight'>
+							<span >1 like</span>
+							<button class='like-toggle basic'><i class="fa fa-heart"></i></button>
+						</div>
 					</ul>
 				</div>
 			</div>	
 		</div>
 	</div>
 </div>
+
+<script>
+	$(function(){
+		$('.like-toggle').click(function(){
+			$(this).toggleClass('like-active');
+			$(this).next().toggleClass('hidden');
+		});
+	});
+
+</script>
+
+
+
+
 
 
