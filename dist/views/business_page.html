@@ -36,15 +36,20 @@
 				<div class="pin">
 					<div class="inner_wrap1">
 						<img src="{{b.user.image}}" id="profile-img-circle">
-						<h5>{{b.user.name}}</h5>
+						<h5>{{b.user.first_name}} {{b.user.last_name}}</h5>
 						<p>{{b.title}}</p>
 					</div>
-					<div class="post-meta">
+					<div>
 						<div >
 							<img src="{{b.url}}">
 						</div>
 					</div>
+					<div class="post-meta">
+						<ul>
+							<h5 id="business">{{vm.business.google.name}}</h5>
+							<h5 class="fa fa-heart" id="likes"> 9</h5>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
