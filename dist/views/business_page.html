@@ -4,68 +4,55 @@
 			<div id="box">{{vm.business.google.name}}</div>
 			<div class="switch hcenter">
 				<input ng-click="vm.followBusiness(vm.business._id, vm.isFollowing)"  ng-model='vm.isFollowing' id="cmn-toggle-7" class="cmn-toggle cmn-toggle-yes-no" type="checkbox">
-
 				<label for="cmn-toggle-7" data-on="FOLLOWING" data-off="FOLLOW"></label>
+				
+
+				<Button class="active pointer btn btn-default photoButtonCenter">
+					<a ui-sref="TakePhoto"><i class="fa fa-camera" id="camera"></i></a>
+				</BUtton>
+
 			</div>
+			
 		</div>
-		<footer class="busNav">
-			<div class="container-fluid ">
-				<div class="row">
-					<div class="col-md-12">
-						<ul class="nav nav-tabs">
-							<li class="active">
-								<a href="#">Home</a>
-							</li>
-							<li>
-								<a href="#">Profile</a>
-							</li>
-							<li>
-								<a href="#">Messages</a>
-							</li>
-							<li>
-							</ul>
-						</div>
+		
+	</div>
+
+	<div class="row-12 pinTop">
+		<div class="col-md-3 pinSide" ng-repeat="b in vm.business.photos">
+			<div class="pin">
+				<div class="inner_wrap1">
+					<img src="{{b.user.image}}" id="profile-img-circle">
+					<h5>{{b.user.first_name}} {{b.user.last_name}}</h5>
+					<p>"I had so much fun at this place."</p>
+				</div>
+				<div>
+					<div >
+						<img src="{{b.url}}">
 					</div>
 				</div>
-			</footer>
-		</div>
 
-		<div class="row-12 pinTop">
-			<div class="col-md-3 pinSide" ng-repeat="b in vm.business.photos">
-				<div class="pin">
-					<div class="inner_wrap1">
-						<img src="{{b.user.image}}" id="profile-img-circle">
-						<h5>{{b.user.first_name}} {{b.user.last_name}}</h5>
-						<p>"I had so much fun at this place."</p>
-					</div>
-					<div>
-						<div >
-							<img src="{{b.url}}">
-						</div>
-					</div>
-
-					<script>
-						$(function(){
-							$('.like-toggle').click(function(){
-								$(this).toggleClass('like-active');
-								$(this).next().toggleClass('hidden');
-							});
+				<script>
+					$(function(){
+						$('.like-toggle').click(function(){
+							$(this).toggleClass('like-active');
+							$(this).next().toggleClass('hidden');
 						});
-					</script>
+					});
+				</script>
 
-					<div class="post-meta">
-						<ul>
-							<h5 id="business">Starbucks</h5>
-							<div class='like navbar-right likeCounter floatRight'>
-								<span >1 like</span>
-								<button class='like-toggle basic'><i class="fa fa-heart"></i></button>
-							</div>
-						</ul>
-					</div>
+				<div class="post-meta">
+					<ul>
+						<h5 id="business">Starbucks</h5>
+						<div class='like navbar-right likeCounter floatRight'>
+							<span >1 like</span>
+							<button class='like-toggle basic'><i class="fa fa-heart"></i></button>
+						</div>
+					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 
-	
+
 
