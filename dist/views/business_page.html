@@ -3,7 +3,9 @@
 		<div style="height:400px; overflow-y:hidden; background:url('/img/palmTrees.jpg') no-repeat; background-size:cover;">
 			<div id="box">{{vm.business.google.name}}</div>
 			<div class="switch hcenter">
+				<input ng-click="vm.alert(vm.business._id, vm.isFollowing)"  ng-model='vm.isFollowing' id="cmn-toggle-7" class="cmn-toggle cmn-toggle-yes-no" type="checkbox">
 				<input id="cmn-toggle-7" class="cmn-toggle cmn-toggle-yes-no" type="checkbox" ng-change="data-on || ">
+
 				<label for="cmn-toggle-7" data-on="FOLLOWING" data-off="FOLLOW"></label>
 			</div>
 		</div>
@@ -22,29 +24,28 @@
 								<a href="#">Messages</a>
 							</li>
 							<li>
-								<a ng-click='vm.followBusiness(vm.business._id)'>Follow</a>
 							</ul>
 						</div>
 					</div>
 				</div>
-		</footer>
-	</div>
+			</footer>
+		</div>
 
 
-	<div class="row-12 pinTop">
-		<div class="col-md-3 pinSide" ng-repeat="b in vm.business.photos">
-			<div class="pin">
-				<div class="inner_wrap1">
-					<img src="{{b.user.image}}" id="profile-img-circle">
-					<h5>{{b.user.name}}</h5>
-					<p>{{b.title}}</p>
-				</div>
-				<div class="post-meta">
-					<div >
-						<img src="{{b.url}}">
+		<div class="row-12 pinTop">
+			<div class="col-md-3 pinSide" ng-repeat="b in vm.business.photos">
+				<div class="pin">
+					<div class="inner_wrap1">
+						<img src="{{b.user.image}}" id="profile-img-circle">
+						<h5>{{b.user.name}}</h5>
+						<p>{{b.title}}</p>
+					</div>
+					<div class="post-meta">
+						<div >
+							<img src="{{b.url}}">
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>

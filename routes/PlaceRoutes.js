@@ -73,6 +73,7 @@ router.get('/Place/info/:par', function(req, res, next) {
   res.send(req.par);
 });
 
+
 router.post('/follow/:fid', auth, function(req, res, next) {
   User.update({
     "_id": req.payload.id
@@ -84,7 +85,6 @@ router.post('/follow/:fid', auth, function(req, res, next) {
     }
   }, function(err, user) {
     console.log(err);
-
     res.send(user);
   });
 });

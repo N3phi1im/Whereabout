@@ -79,7 +79,7 @@
 
     function followById(id) {
       var q = $q.defer();
-      $http.post('/api/Places/follow/' + id, {}, {
+      $http.post('/api/Places/follow/' + id, {isFollowing:isFollowing}, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem('token')
         }
