@@ -43,7 +43,7 @@
 
 vm.setlocation = function(location) {
 	HomeFactory.uploadLocation(location).then(function() {
-		$state.go('Home');
+		console.log("Location Selected");
 	});
 };
 

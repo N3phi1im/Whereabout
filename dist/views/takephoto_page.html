@@ -35,14 +35,10 @@
 				<div class="resultIcon" ui-sref="Business({res: res.id})"><a class="nameTitle"> {{res.name}}</a><br> {{res.formatted_address}}</div>
 
 				<div class="switch navbar-right selectedButton">
-					<input id="{{res.id}}" class="cmn-toggle cmn-toggle-yes-no" type="checkbox">
+					<input id="{{res.id}}" class="cmn-toggle cmn-toggle-yes-no" type="checkbox" ng-click="vm.setlocation(res)">
 					<label for="{{res.id}}" data-on="SELECTED" data-off="SELECT"></label>
 				</div>
 			</h3>
 		</ul>
 	</div>
 </div>
-
-
-
-
