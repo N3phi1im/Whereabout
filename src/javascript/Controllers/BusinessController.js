@@ -28,25 +28,12 @@
 			{console.log('other');
 
 	}
-//-------------------------------------------------------------------------//
-// vm.alert = function(id, isFollowing) {
-// 	if(vm.isFollowing){
-// 		console.log(id, isFollowing);
-// 		HomeFactory.followById(id, isFollowing).then(function(res){
-// 		});
-// 	}
-// 	else
-// 		{console.log('other');
-// }
-// };
-
-
-
 
 };
 
 //-------------------------------------------------------------------------//	
 }
 })();
+
 
 
