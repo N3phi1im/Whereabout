@@ -13,11 +13,13 @@ var auth = jwt({
 });
 
 router.param('par', function(req, res, next, id) {
+  var placetest = {};
   Place.findOne({
       'google.id': id
     })
     .populate('photos')
     .exec(function(err, place) {
+      placetest = place;
       if (!place) {
         return res.status(400).json({
           exists: false
@@ -70,7 +72,14 @@ router.get('/checkLocation/:locId', function(req, res, next) {
 });
 
 router.get('/Place/info/:par', function(req, res, next) {
-  res.send(req.par);
+  User.find({
+    'follow': req.par._id
+  }, {_id: 1}).exec(function(err, user) {
+    res.send({
+      place: req.par,
+      following: user
+    });
+  });
 });
 
 
@@ -81,6 +90,21 @@ router.post('/follow/:fid', auth, function(req, res, next) {
     $push: {
       follow: {
         _id: req.follow_id
+      }
+    }
+  }, function(err, user) {
+    console.log(err);
+    res.send(user);
+  });
+});
+
+router.post('/unFollow/:fid', auth, function(req, res, next) {
+  User.update({
+    "_id": req.payload.id
+  }, {
+    $pull: {
+      follow: {
+        $in: [req.follow_id]
       }
     }
   }, function(err, user) {
