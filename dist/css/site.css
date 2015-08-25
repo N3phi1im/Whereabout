@@ -136,7 +136,7 @@ label {
 	-moz-column-break-inside: avoid;
 	column-break-inside: avoid;
 	/* padding: 15px; */
-	padding-bottom: 40px;
+	padding-bottom: 0px;
 	background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
 	opacity: 1;
 	-webkit-transition: all .2s ease;
@@ -198,12 +198,17 @@ label {
 }
 #business{
 	position: absolute;
-	left: 15px;
-	margin-top: 4px;
+	left: 5px;
+	margin-top: -2px;
 }
 #likes{
 	position: absolute;
-	right: 10px;
+	right: 15px;
+}
+
+.likeCounter {
+	margin-right: 6px;
+	margin-top: -5px;
 }
 
 .pointer {
@@ -1150,4 +1155,77 @@ input.cmn-toggle-yes-no:checked + label:after {
 
 .black {
 	color: black;
+}
+
+.hidden{
+	font-size: 0;
+}
+
+.heading{
+	font-size: 5em;
+	margin: 0;
+}
+
+.like,p{
+	font-family: 'Open Sans';
+}
+
+.like-toggle{
+	outline:none;
+	box-shadow:none;
+	border: none;
+	width: 40px;
+	height: 30px;
+	font-size: 1.3em;
+	border-radius: 100px;
+}
+
+.like-active.basic{
+	background: #7CC576;
+	color: white;
+}
+
+.like-toggle.basic2{
+	border: none;
+	width: 30px;
+	height: 30px;
+	font-size: 1.3em;
+	border-radius: 100px;
+	background: #F26C4F;
+	color: #fff;
+}
+
+.like-active.basic2{
+	background: #F06EA9;
+}
+
+.like-toggle.basic2:not(.like-active):hover{
+	background: #438CCA;
+	width: 60px;
+}
+
+.like-toggle.basic3{
+	border: none;
+	width: 30px;
+	height: 30px;
+	font-size: 1.3em;
+	border-radius: 100px;
+	background: #438CCA;
+	color: #fff;
+	margin-bottom: 10px;
+}
+
+.like-active.basic3{
+	background: #7CC576;
+	transform: rotate(-180deg);
+}
+
+.like-toggle.basic3:not(.like-active):hover{
+	background: #F26C4F;
+	transform: rotate(90deg);
+}
+
+.floatRight {
+	float: right;
+	margin-bottom: 3px;
 }
