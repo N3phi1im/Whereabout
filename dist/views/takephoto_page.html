@@ -1,5 +1,5 @@
-<div id="uploadPhoto" ng-controller="TakePhotoController as photoctrl">
-  <div class="well">
+<div ng-controller="TakePhotoController as photoctrl">
+  <div class="well" id="uploadPhoto">
     <span class="btn btn-default btn-file">
       Upload
       <input id="fileToUpload" multiple ng-model-instant onchange="angular.element(this).scope().setFiles(this)" type="file"/>
@@ -14,42 +14,41 @@
         <span ng-switch="file.size > 1024*1024">
           <span ng-switch-when="true">{{file.size / 1024 / 1024 | number:2}}
             MB</span>
-          <span ng-switch-default>{{file.size / 1024 | number:2}}
-            kB</span>
-        </span>)
-      </div>
-      <button class="btn btn-success submitPhoto" ng-disabled="!photoctrl.selectedLocation" ng-click="uploadFile()" value="Upload">Submit</button>
+            <span ng-switch-default>{{file.size / 1024 | number:2}}
+              kB</span>
+            </span>)
+          </div>
+          <button class="btn btn-success submitPhoto" ng-disabled="!photoctrl.selectedLocation" ng-click="uploadFile()" value="Upload">Submit</button>
 
-      <div ng-show="progressVisible">
-        <div class="percent">{{progress}}%</div>
-        <div class="progress-bar">
-          <div class="uploaded" ng-style="{'width': progress+'%'}"></div>
+          <div ng-show="progressVisible">
+            <div class="percent">{{progress}}%</div>
+            <div class="progress-bar">
+              <div class="uploaded" ng-style="{'width': progress+'%'}"></div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <div ng-controller="SearchController as vm">
-    <div class="form-group">
-      <div class="col-md-4 col-md-offset-4"></div>
-      <div id="mapContainer">
-        <div id="map-canvas"></div>
-      </div>
-      <ul class="wellSize" ng-repeat="res in vm.results">
-        <h3 class="well pointer wellWidth">
-          <a id="resultIcon"><img ng-src={{res.icon}}></a>
-
-          <div class="resultIcon" ui-sref="Business({res: res.id})">
-            <a class="nameTitle">
-              {{res.name}}</a><br>
-            {{res.formatted_address}}</div>
-
-          <div class="switch navbar-right selectedButton">
-            <input class="cmn-toggle cmn-toggle-yes-no" id="{{res.id}}" ng-click="photoctrl.selectedLocation = res;" type="checkbox">
-            <label data-off="SELECT" data-on="SELECTED" for="{{res.id}}"></label>
+      <div ng-controller="SearchController as vm">
+        <div class="form-group">
+          <div class="col-md-4 col-md-offset-4"></div>
+          <div id="mapContainer">
+            <div id="map-canvas"></div>
           </div>
-        </h3>
-      </ul>
-    </div>
-  </div>
-</div>
+
+          <ul ng-repeat="res in vm.results" class="wellSize">
+            <h3 class="well pointer wellWidth">
+              <a><img ng-src={{res.icon}}></a>
+              <div class="resultIcon" ui-sref="Business({res: res.id})">
+                <a class="nameTitle">
+                  {{res.name}}</a><br>
+                  {{res.formatted_address}}</div>
+                  <div class="switch navbar-right selectedButton">
+                    <input class="cmn-toggle cmn-toggle-yes-no" id="{{res.id}}" ng-click="photoctrl.selectedLocation = res;" type="checkbox">
+                    <label data-off="SELECT" data-on="SELECTED" for="{{res.id}}"></label>
+                  </div>
+                </h3>
+              </ul>
+            </div>
+          </div>
+        </div>
