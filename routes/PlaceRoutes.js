@@ -57,7 +57,7 @@ router.post('/Place', function(req, res, next) {
   });
 });
 
-router.get('/place/checkLocation/:locId', function(req, res, next) {
+router.get('/checkLocation/:locId', function(req, res, next) {
   Place.findOne({
     "google.id": req.params.locId
   }, function(err, place) {
