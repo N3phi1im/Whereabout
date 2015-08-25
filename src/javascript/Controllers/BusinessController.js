@@ -9,7 +9,6 @@
 		var vm = this;
 		vm.business = {};
 		vm.isFollowing = false;
-
 	//-------------------------------------------------------------------------//
 	if($stateParams.res){
 		HomeFactory.getBusinessInfo($stateParams.res).then(function(res){
@@ -18,19 +17,36 @@
 
 		});
 	}
+	//-------------------------------------------------------------------------//
+	vm.followBusiness = function(id, isFollowing){
+		console.log(id);
+		if(vm.isFollowing){
+			HomeFactory.followById(id, isFollowing).then(function(res){
+			});
+		}
+		else
+			{console.log('other');
 
-//-------------------------------------------------------------------------//
-vm.alert = function(id, isFollowing) {
-	if(vm.isFollowing){
-		console.log(id, isFollowing);
-		HomeFactory.followById(id, isFollowing).then(function(res){
-		});
 	}
-	else
-		{console.log('other');
-}
+//-------------------------------------------------------------------------//
+// vm.alert = function(id, isFollowing) {
+// 	if(vm.isFollowing){
+// 		console.log(id, isFollowing);
+// 		HomeFactory.followById(id, isFollowing).then(function(res){
+// 		});
+// 	}
+// 	else
+// 		{console.log('other');
+// }
+// };
+
+
+
+
 };
+
 //-------------------------------------------------------------------------//	
 }
 })();
+
 

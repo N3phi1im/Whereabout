@@ -3,8 +3,7 @@
 		<div style="height:400px; overflow-y:hidden; background:url('/img/palmTrees.jpg') no-repeat; background-size:cover;">
 			<div id="box">{{vm.business.google.name}}</div>
 			<div class="switch hcenter">
-				<input ng-click="vm.alert(vm.business._id, vm.isFollowing)"  ng-model='vm.isFollowing' id="cmn-toggle-7" class="cmn-toggle cmn-toggle-yes-no" type="checkbox">
-				<input id="cmn-toggle-7" class="cmn-toggle cmn-toggle-yes-no" type="checkbox" ng-change="data-on || ">
+				<input ng-click="vm.followBusiness(vm.business._id, vm.isFollowing)"  ng-model='vm.isFollowing' id="cmn-toggle-7" class="cmn-toggle cmn-toggle-yes-no" type="checkbox">
 
 				<label for="cmn-toggle-7" data-on="FOLLOWING" data-off="FOLLOW"></label>
 			</div>
