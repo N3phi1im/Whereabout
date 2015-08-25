@@ -51,6 +51,7 @@ router.get('/Place/info/:par', function(req, res, next) {
   res.send(req.par);
 });
 
+//requires object with property isFollowing with either true or false.
 router.post('/follow/:fid', auth, function(req, res, next){
   User.update({ "_id": req.payload.id },
     { $push: {follow: {_id: req.follow_id}}}, function(err, user) {

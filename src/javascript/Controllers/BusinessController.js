@@ -8,7 +8,7 @@
 	function BusinessController(HomeFactory, $state, $stateParams) {
 		var vm = this;
 		vm.business = {};
-		
+		vm.isFollowing = false;
 	//-------------------------------------------------------------------------//
 	if($stateParams.res){
 		HomeFactory.getBusinessInfo($stateParams.res).then(function(res){
@@ -17,11 +17,25 @@
 
 		});
 	}
-	//-------------------------------------------------------------------------//
-	vm.followBusiness = function(id){
-		HomeFactory.followById(id).then(function(res){
+
+//-------------------------------------------------------------------------//
+vm.alert = function(id, isFollowing) {
+	if(vm.isFollowing){
+		console.log(id, isFollowing);
+		HomeFactory.followById(id, isFollowing).then(function(res){
 		});
-	};
+	}
+	else
+		{console.log('other');
+}
+};
+
+
+
+
+
+
+//-------------------------------------------------------------------------//	
 }
 })();
 
