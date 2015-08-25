@@ -4,10 +4,15 @@ var router = express.Router();
 var cloudinary = require('cloudinary');
 var Photo = mongoose.model('Photo');
 var Place = mongoose.model('Place');
-var multer  = require('multer');
-var upload = multer({ dest: 'uploads/' });
+var multer = require('multer');
+var upload = multer({
+  dest: 'uploads/'
+});
 var jwt = require('express-jwt');
-var auth = jwt({secret: "Secret_bananas", userProperty: "payload"});
+var auth = jwt({
+  secret: "Secret_bananas",
+  userProperty: "payload"
+});
 
 
 cloudinary.config({
@@ -29,15 +34,22 @@ router.post('/setPhoto', auth, function(req, res) {
   photo.user = req.payload.id;
   photo.id = req.body.id;
   photo.createdAt = new Date();
-  photo.save(function(err, Photo){
+  photo.save(function(err, Photo) {
     res.send(Photo);
   });
 });
 
 router.post('/setPlace', function(req, res) {
+  console.log(req.body.google)
   Place.update({
-    'google.id': req.body.google},
-    {$push: {photos: {_id: req.body._id }}},
+      'google.id': req.body.google
+    }, {
+      $push: {
+        photos: {
+          _id: req.body._id
+        }
+      }
+    },
     function(err) {
       console.log(err);
       res.send('posted');
@@ -48,7 +60,7 @@ router.get('/getPhotos', function(req, res) {
 
 });
 
-router.use(function (err, req, res, next) {
+router.use(function(err, req, res, next) {
   res.status(500).send(err);
 });
 
