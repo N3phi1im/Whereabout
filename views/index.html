@@ -56,27 +56,6 @@
 
              <div class="input-group">
               <input type="text" class="form-control" placeholder="Search" ng-model="searchContent">
-<<<<<<< HEAD
-              <a ng-click="isCollapsed = !isCollapsed" ui-sref="TakePhoto({search: searchContent })" class="btn btn-default">Submit</a>
-            </div>
-          </form>
-          <ul class="nav navbar-nav navbar-right" id="UserDropdown">
-            <img id="userIcon" ng-src="{{nav.status.image}}">
-            <div class="btn-group" dropdown>
-              <button id="single-button" type="button" class="btn btn-primary" dropdown-toggle>
-                {{nav.status.first_name}}
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu pointer" role="menu" aria-labelledby="single-button">
-                <li role="menuitem"><a ng-click="isCollapsed = !isCollapsed" class="glyphicon glyphicon-user" ui-sref="Profile"> Profile</a></li>
-                <li role="menuitem"><a ng-click="isCollapsed = !isCollapsed" class="glyphicon glyphicon-file" ui-sref="Home"> Posts</a></li>
-                <li role="menuitem"><a ng-click="isCollapsed = !isCollapsed" class="glyphicon glyphicon-question-sign" href="#"> Help</a></li>
-                <li class="divider"></li>
-                <li role="menuitem"><a ng-click="isCollapsed = !isCollapsed" class="glyphicon glyphicon-log-out" ng-click="nav.logout()"> Logout</a></li>
-              </ul>
-            </div>
-          </ul>
-=======
               <span class="input-group-btn">
                 <button ng-click="isCollapsed = !isCollapsed" ui-sref="TakePhoto({search: searchContent })" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
               </span>
@@ -101,7 +80,6 @@
             </ul>
           </div>
         </ul>
->>>>>>> e3ce84bff180f9f9e5d2a5186b66af3a8160f518
 
       </div>
       <!-- /.navbar-collapse -->
