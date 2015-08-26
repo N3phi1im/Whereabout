@@ -18,7 +18,9 @@
       });
     };
 
-		// vm.populateHome = function()
+	  vm.populateHome = function() {
+      
+    };
 
   }
 })();
