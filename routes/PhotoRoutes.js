@@ -50,7 +50,6 @@ router.post('/setPlace', function(req, res) {
       }
     },
     function(err) {
-      console.log(err);
       res.send('posted');
     });
 });

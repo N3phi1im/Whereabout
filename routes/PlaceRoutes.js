@@ -95,7 +95,6 @@ router.post('/follow/:fid', auth, function(req, res, next) {
       }
     }
   }, function(err, user) {
-    console.log(err);
     res.send(user);
   });
 });
@@ -110,16 +109,9 @@ router.post('/unFollow/:fid', auth, function(req, res, next) {
       }
     }
   }, function(err, user) {
-    console.log(err);
     res.send(user);
   });
 });
-
-
-
-
-
-
 
 router.post('/populate', auth, function(req, res, next) {
   User.findOne({
@@ -128,8 +120,14 @@ router.post('/populate', auth, function(req, res, next) {
     .populate('follow')
     .exec(function(err, user) {
       async.forEach(user.follow, function(place, cb) {
-        place.populate('photos', function(err, result) {
-          cb();
+        place.populate('photos', function(err, place) {
+          async.forEach(place.photos, function(photo, cb2) {
+            photo.populate('user', 'first_name last_name image', function(err, photo) {
+              cb2();
+            });
+          }, function(err, data) {
+            cb();
+          });
         });
       }, function(err, data) {
         if (err) return next(err);
@@ -137,14 +135,6 @@ router.post('/populate', auth, function(req, res, next) {
       });
     });
 });
-
-
-
-
-
-
-
-
 
 router.use(function(err, req, res, next) {
   res.status(500).send(err);
