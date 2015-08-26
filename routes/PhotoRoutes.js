@@ -40,7 +40,6 @@ router.post('/setPhoto', auth, function(req, res) {
 });
 
 router.post('/setPlace', function(req, res) {
-  console.log(req.body.google)
   Place.update({
       'google.id': req.body.google
     }, {
