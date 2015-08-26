@@ -27,7 +27,6 @@
 </head>
 
 <body>
-
   <div ng-controller="NavbarController as nav">
     <nav class="navbar navbar-default" ng-show="nav.status.isLoggedIn">
       <div class="container-fluid">
@@ -41,93 +40,68 @@
           </button>
           <a class="navbar-brand" id="homeButton" ui-sref="Home">Where@</a>
         </div>
-
         <!-- Collect the nav links, forms, and other content for toggling -->
-
         <div class="collapse navbar-collapse" collapse="!isCollapsed">
-
           <ul class="nav navbar-nav">
             <li class="active"><a ng-click="isCollapsed = !isCollapsed" ui-sref="Discovery" id="discover">Discover </a></li>
           </ul>
-
           <form class="navbar-form navbar-left" role="search">
-
             <div class="form-group">
-
-             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search" ng-model="searchContent">
-              <span class="input-group-btn">
-                <button ng-click="isCollapsed = !isCollapsed" ui-sref="TakePhoto({search: searchContent })" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
-              </span>
-            </div><!-- /input-group -->
-
-
-          </div>
-        </form>
-        <ul class="nav navbar-nav navbar-right" id="UserDropdown">
-          <img id="userIcon" ng-src="{{nav.status.image}}">
-          <div class="btn-group" dropdown>
-            <button id="single-button" type="button" class="btn btn-primary" dropdown-toggle>
-              {{nav.status.first_name}}
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu pointer" role="menu" aria-labelledby="single-button">
-              <li role="menuitem"><a ng-click="isCollapsed = !isCollapsed" class="glyphicon glyphicon-user" ui-sref="Profile"> Profile</a></li>
-              <li role="menuitem"><a ng-click="isCollapsed = !isCollapsed" class="glyphicon glyphicon-picture" ui-sref="MyPost"> Pics</a></li>
-              <li role="menuitem"><a ng-click="isCollapsed = !isCollapsed" class="glyphicon glyphicon-question-sign" href="#"> Help</a></li>
-              <li class="divider"></li>
-              <li role="menuitem"><a class="glyphicon glyphicon-log-out" ng-click="nav.logout(); isCollapsed = !isCollapsed"> Logout</a></li>
-            </ul>
-          </div>
-        </ul>
-
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search" ng-model="searchContent">
+                <span class="input-group-btn">
+                  <button ng-click="isCollapsed = !isCollapsed" ui-sref="TakePhoto({search: searchContent })" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                </span>
+              </div>
+            </div>
+          </form>
+          <ul class="nav navbar-nav navbar-right" id="UserDropdown">
+            <img id="userIcon" ng-src="{{nav.status.image}}">
+            <div class="btn-group" dropdown>
+              <button id="single-button" type="button" class="btn btn-primary" dropdown-toggle>
+                {{nav.status.first_name}}
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu pointer" role="menu" aria-labelledby="single-button">
+                <li role="menuitem"><a ng-click="isCollapsed = !isCollapsed" class="glyphicon glyphicon-user" ui-sref="Profile"> Profile</a></li>
+                <li role="menuitem"><a ng-click="isCollapsed = !isCollapsed" class="glyphicon glyphicon-picture" ui-sref="MyPost"> Pics</a></li>
+                <li role="menuitem"><a ng-click="isCollapsed = !isCollapsed" class="glyphicon glyphicon-question-sign" href="#"> Help</a></li>
+                <li class="divider"></li>
+                <li role="menuitem"><a class="glyphicon glyphicon-log-out" ng-click="nav.logout(); isCollapsed = !isCollapsed"> Logout</a></li>
+              </ul>
+            </div>
+          </ul>
+        </div>
       </div>
-      <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container-fluid -->
-  </nav>
-
-  <ui-view></ui-view>
+    </nav>
+    <ui-view></ui-view>
+  </div>
   <!-- Google API Libraries -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- <script type="text/javascript">
-    jQuery(document).ready(function() {
-      jQuery(".navbar-nav li a").click(function(event) {
-        jQuery(".navbar-collapse").collapse('hide');
-      });
-    });
-  </script> -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-animate.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-maps/2.1.5/angular-google-maps.js"></script>
+  <!-- Ext Libs -->
 
-</div>
-
-<!-- Ext Libs -->
-
-<!-- jQuery -->
-<script src="js/jquery.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
-
-<!-- Plugin JavaScript -->
-<script src="js/jquery.easing.min.js"></script>
-<script src="js/jquery.fittext.js"></script>
-<script src="js/wow.min.js"></script>
-<script src="angular-bootstrap/ui-bootstrap.js"></script>
-<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.3.js"></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="js/creative.js"></script>
-<script src="js/jsBundle.js"></script>
-
-<!-- Angular Carousel -->
-<script src="angular-touch/angular-touch.js"></script>
-<script src="angular-carousel/dist/angular-carousel.js"></script>
+  <!-- jQuery -->
+  <script src="js/jquery.js"></script>
+  <!-- Bootstrap Core JavaScript -->
+  <script src="js/bootstrap.min.js"></script>
+  <!-- Plugin JavaScript -->
+  <script src="js/jquery.easing.min.js"></script>
+  <script src="js/jquery.fittext.js"></script>
+  <script src="js/wow.min.js"></script>
+  <script src="angular-bootstrap/ui-bootstrap.js"></script>
+  <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.3.js"></script>
+  <!-- Custom Theme JavaScript -->
+  <script src="js/creative.js"></script>
+  <script src="js/jsBundle.js"></script>
+  <!-- Angular Carousel -->
+  <script src="angular-touch/angular-touch.js"></script>
+  <script src="angular-carousel/dist/angular-carousel.js"></script>
 
 </body>
 

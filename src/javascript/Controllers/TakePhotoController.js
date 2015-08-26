@@ -7,9 +7,11 @@
     //============== DRAG & DROP =============
     // source for drag&drop: http://www.webappers.com/2011/09/28/drag-drop-file-upload-with-html5-javascript/
 		var vm = this; // vm is photoctrl on takephotopage
+        vm.selectedLocation = {};
 
-    var dropbox = document.getElementById("dropbox");
-    scope.dropText = 'Drop files here...';
+
+        var dropbox = document.getElementById("dropbox");
+        scope.dropText = 'Drop files here...';
 
     // init event handlers
     function dragEnterLeave(evt) {
@@ -83,13 +85,13 @@
     	// xhr.send(fd);
     	$http.post('/api/Photos/upload', fd, { transformRequest: angular.identity, headers: {'Content-Type': undefined}})
     	.success(function(data){
-					HomeFactory.uploadLocation(vm.selectedLocation).then(function() {
-            HomeFactory.setPhoto(data).then(function(res){
-                HomeFactory.combinePhotoPlace(res, vm.selectedLocation).then(function(){
-                    $state.go('Home');
+            HomeFactory.uploadLocation(vm.selectedLocation).then(function() {
+                HomeFactory.setPhoto(data).then(function(res){
+                    HomeFactory.combinePhotoPlace(res, vm.selectedLocation).then(function(){
+                        $state.go('Home');
+                    });
                 });
             });
-					});
         })
     	.error(function(data){
     		console.log('a-aron');
