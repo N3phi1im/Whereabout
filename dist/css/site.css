@@ -175,8 +175,8 @@ label {
 }
 
 #map-canvas {
-	height: 550px;
-	width: 80%;
+	height: 30vh;
+	width: 85%;
 	margin: 20px 0;
 	border-radius: 5px;
 	border: 1px solid silver;
@@ -358,7 +358,8 @@ label {
 
 #uploadPhoto {
 	text-align: center;
-	margin: 20px;
+	border-radius: 0px;
+	margin-bottom: 0px;
 }
 
 .submitPhoto {
@@ -366,8 +367,8 @@ label {
 }
 
 .wellSize {
-	padding-right: 10%;
-	padding-left: 10%
+	padding-right: 8vw;
+	padding-left: 8vw;
 }
 
 #userIcon {
