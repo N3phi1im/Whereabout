@@ -29,30 +29,19 @@
 					</div>
 				</div>
 
-				<script>
-					$(function(){
-						$('.like-toggle').click(function(){
-							$(this).toggleClass('like-active');
-							$(this).next().toggleClass('hidden');
-						});
-					});
-				</script>
-
 				<div class="post-meta">
 					<ul style="display:flex; justify-content:space-between; padding:5px 10px; margin:0">
 						<span style="width:33.33%;">
-							<p style="font-size:1.5em; padding:0.25em 0;">Starbucks</p>
+							<p style="font-size:1.5em; padding:0.25em 0;">{{vm.business.google.name}}</p>
 							
 						</span>
 						<span style="width:33.33%;" class="hcenter">
-							
-							
 						</span>
 						<span style="width:33.33%;text-align: right;
 						margin-left: auto;
 						margin-right: auto;">
-						<span >1 like </span>
-						<button class='like-toggle basic'><i class="fa fa-heart"></i></button>
+						<span >{{b.likes.length}} likes</span>
+						<button class='like-toggle basic' ng-class="{'like-active': false}"><i class="fa fa-heart"></i></button>
 					</span>
 				</ul>
 			</div>
