@@ -64,7 +64,7 @@ router.get('/checkLocation/:locId', function(req, res, next) {
     "google.id": req.params.locId
   }, function(err, place) {
     if (err) return next(err);
-    if (!place) return res.status(400).json({
+    if (!place) return res.status(200).json({
       exists: false
     });
     res.send();

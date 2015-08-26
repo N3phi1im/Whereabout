@@ -19,7 +19,6 @@
 			Map.search(search, $scope.searchDistance)
 			.then(
 				function(res) {
-       				 	// successx
        				 	for (var i = 0; i < res.length; i++) {
        				 		Map.createMarker(res[i]);
        				 		vm.results.length = 0;
@@ -28,7 +27,7 @@
        				 	}
        				 	if ($stateParams.search) $stateParams.search = null;
        				 },
-        			function(status) { // error
+        			function(status) {
         				$scope.apiError = true;
         				$scope.apiStatus = status;
         			}

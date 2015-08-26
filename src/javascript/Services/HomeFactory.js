@@ -3,18 +3,18 @@
   angular.module('app')
     .factory('HomeFactory', HomeFactory);
 
-  HomeFactory.$inject = ['UserFactory', '$http', '$q'];
+  HomeFactory.$inject = ['Map', 'UserFactory', '$http', '$q'];
 
-  function HomeFactory(UserFactory, $http, $q) {
+  function HomeFactory(Map, UserFactory, $http, $q) {
     var o = {};
     o.upload = upload;
     o.setPhoto = setPhoto;
     o.combinePhotoPlace = combinePhotoPlace;
     o.uploadLocation = uploadLocation;
-    // o.dataObject = {};
     o.getBusinessInfo = getBusinessInfo;
     o.followById = followById;
     o.removeFollow = removeFollow;
+    o.makeBusiness = makeBusiness;
     return o;
 
     function upload(photo) {
@@ -28,7 +28,6 @@
     function uploadLocation(location) {
       var q = $q.defer();
       $http.post('/api/Places/Place', location).success(function(req, res) {
-        // o.dataObject = location.id;
         q.resolve();
 
       });
@@ -67,16 +66,36 @@
     function getBusinessInfo(id) {
       var q = $q.defer();
       $http.get('/api/Places/checkLocation/' + id).success(function(data) {
-        $http.get('/api/Places/place/info/' + id).success(function(data) {
-          q.resolve(data);
-        });
-      }).error(function(data) {
-        //do google api call to get location info
-        //then go and add info to the database
-        //then return the info back to the user
+        if (data.exists === false) {
+          var selectedPlace = {};
+          var results = Map.placesResults;
+          for (var i = 0; i <= results.length; i++) {
+            if (id === results[i].id) {
+              selectedPlace = results[i];
+              break;
+            } else {}
+          }
+          q.resolve(selectedPlace);
+        } else {
+          $http.get('/api/Places/place/info/' + id).success(function(data) {
+            q.resolve(data);
+          });
+        }
       });
       return q.promise;
     }
+
+
+    function makeBusiness(resPlace) {
+      var q = $q.defer();
+      $http.post('/api/Places/Place', resPlace).success(function(res, req, id) {
+        $http.get('/api/Places/place/info/' + resPlace.id).success(function(data) {
+          q.resolve(data);
+        });
+      });
+      return q.promise;
+    }
+
 
     function followById(id, isFollowing) {
       var q = $q.defer();
@@ -107,6 +126,5 @@
       });
       return q.promise;
     }
-
   }
 })();
