@@ -1,6 +1,6 @@
 <div ng-controller="HomeController as vm">
 	<div class="row-12 pinTop">
-		<div class="col-md-3 pinSide">
+		<div class="col-md-4 pinSide">
 			<div class="pin">
 				<div class="inner_wrap1">
 					<img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-128.png" id="profile-img-circle">
@@ -15,17 +15,26 @@
 					</carousel>
 				</div>
 				<div class="post-meta">
-					<ul>
-						<h5 id="business">Starbucks</h5>
-						<div class='like navbar-right likeCounter floatRight'>
-							<span >1 like</span>
-							<button class='like-toggle basic'><i class="fa fa-heart"></i></button>
-						</div>
-					</ul>
-				</div>
-			</div>	
-		</div>
+					<ul style="display:flex; justify-content:space-between; padding:5px 10px; margin:0">
+						<span style="width:33.33%;">
+							<p style="font-size:1.5em; padding:0.25em 0;">Starbucks</p>
+							
+						</span>
+						<span style="width:33.33%;" class="hcenter">
+							<a ui-sref="TakePhoto"><i class="fa fa-camera photoButtonCarousel" id="camera"></i></a>
+							
+						</span>
+						<span style="width:33.33%;text-align: right;
+						margin-left: auto;
+						margin-right: auto;">
+						<span >1 like </span>
+						<button class='like-toggle basic'><i class="fa fa-heart"></i></button>
+					</span>
+				</ul>
+			</div>
+		</div>	
 	</div>
+</div>
 </div>
 
 <script>
