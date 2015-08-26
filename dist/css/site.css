@@ -142,7 +142,7 @@ label {
 	-o-transition: all .2s ease;
 	transition: all .2s ease;
 	position: relative;
-	border-bottom-width: 30px;
+	border-bottom-width: 0px;
 }
 
 .pin img {
@@ -168,6 +168,10 @@ label {
 
 .post-meta %i{
 	display: inline;
+}
+
+.post-meta {
+	height: 40px;
 }
 
 #map-canvas {
@@ -240,7 +244,7 @@ label {
 }
 #camera{
 	font-size: 30px;
-	color: black:;
+	margin-top: 0px;
 }
 
 .photoButtonCenter {
@@ -1240,3 +1244,15 @@ input.cmn-toggle-yes-no:checked + label:after {
 	margin-bottom: 3px;
 }
 
+.photoButtonCarousel {
+	margin-left: auto;
+	margin-right: 2%;
+	text-align: center;
+	width: -1px;
+	height: 40px;
+	margin-top: -11px;
+}
+
+#marginTopTwenty {
+	margin-top: 20px;
+}
