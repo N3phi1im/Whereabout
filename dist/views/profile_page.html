@@ -50,63 +50,64 @@
 						<li><a href="http://www.skype.com" title="Skype" rel="nofollow"><span class="fa fa-skype fa-lg"></span></a></li>
 					</ul>
 					<img src="http://api.randomuser.me/portraits/men/49.jpg" class="center-block img-circle img-responsive">
+
 				</br>
 				<button type="">Upload you picture</button>
 			</div><!--/col-->
 		</div><!--/row-->
 	</div><!--/panel-body-->
+	
 	<form class="form-horizontal top-border" role="form">
 		<div class="form-group padding-top-ten-px">
 			<label class="col-md-3 control-label">Firstname:</label>
 			<div class="col-md-8">
-				<input class="form-control" type="text" value="Tony">
+				<input class="form-control" type="text" value="{{nav.status.first_name}}">
 			</div>
 		</div>
 		<div class="form-group padding-top-ten-px">
 			<label class="col-md-3 control-label">Lastname:</label>
 			<div class="col-md-8">
-				<input class="form-control" type="text" value="Tong">
+				<input class="form-control" type="text" value="{{nav.status.last_name}}">
 			</div>
 		</div>
 		<div class="form-group padding-top-ten-px">
 			<label class="col-md-3 control-label">Age:</label>
 			<div class="col-md-8">
-				<input class="form-control" type="text" value="27">
+				<input class="form-control" type="text" value="{{nav.status.age}}">
 			</div>
 		</div>
 		<div class="form-group padding-top-ten-px">
 			<label class="col-md-3 control-label">Gender:</label>
 			<div class="col-md-8">
-				<input class="form-control" type="text" value="male">
+				<input class="form-control" type="text" value="{{nav.status.gender}}">
 			</div>
 		</div><div class="form-group padding-top-ten-px">
 		<label class="col-md-3 control-label">Email:</label>
 		<div class="col-md-8">
-			<input class="form-control" type="text" value="tongchang@hotmail.com">
+			<input class="form-control" type="text" value="{{nav.status.email}}">
 		</div>
-	</div>
 
-	<div class="form-group">
-		<label class="col-md-3 control-label">New Password:</label>
-		<div class="col-md-8">
-			<input class="form-control" type="password" value="11111122333">
+		<div class="form-group">
+			<label class="col-md-3 control-label">New Password:</label>
+			<div class="col-md-8">
+				<input class="form-control" type="password" value="11111122333">
+			</div>
 		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label">Password again:</label>
-		<div class="col-md-8">
-			<input class="form-control" type="password" value="11111122333">
+		<div class="form-group">
+			<label class="col-md-3 control-label">Password again:</label>
+			<div class="col-md-8">
+				<input class="form-control" type="password" value="11111122333">
+			</div>
 		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-3 control-label"></label>
-		<div class="col-md-8">
-			<input type="button" class="btn btn-primary" value="Save Changes">
-			<span></span>
-			<input type="reset" class="btn btn-default" value="Cancel">
+		<div class="form-group">
+			<label class="col-md-3 control-label"></label>
+			<div class="col-md-8">
+				<input type="button" class="btn btn-primary" value="Save Changes">
+				<span></span>
+				<input type="reset" class="btn btn-default" value="Cancel">
+			</div>
 		</div>
-	</div>
-</form><!--/form-->        
+	</form><!--/form-->        
 </div><!--/panel-->   
 </div>
 </div>
