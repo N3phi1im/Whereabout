@@ -1,28 +1,30 @@
-<div ng-controller="HomeController as vm">
+<div ng-controller="HomeController as hc">
 	<div class="row-12 pinTop">
-		<div class="col-md-4 pinSide">
+		<div class="col-md-4 pinSide" ng-repeat='place in hc.info.follow'>
 			<div class="pin">
-				<div class="inner_wrap1">
-					<img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-128.png" id="profile-img-circle">
-					<h5>John Doe</h5>
-					<p>"I had so much fun at this place."</p>				
-				</div>
+
 				<div rn-carousel class="image" ng-controller="CarouselCtrl as vm">
+
 					<carousel class="carouselPart" interval="myInterval" no-wrap="vm.noWrapSlides">
-						<slide ng-repeat="slide in vm.slides" active="slide.active">
-							<img ng-src="{{slide.image}}" style="margin:auto;">	
+						<slide ng-repeat="slide in place.photos" active="slide.active">
+							<div class="inner_wrap1">
+								<img id="profile-img-circle">
+								<h5></h5>
+								<p>{{slide.title}}</p>
+							</div>
+							<img ng-src="{{slide.url}}" style="margin:auto;">
 						</slide>
 					</carousel>
 				</div>
 				<div class="post-meta">
 					<ul style="display:flex; justify-content:space-between; padding:5px 10px; margin:0">
 						<span style="width:33.33%;">
-							<p style="font-size:1.5em; padding:0.25em 0;">Starbucks</p>
-							
+							<p style="font-size:1.5em; padding:0.25em 0;">{{place.google.name}}</p>
+
 						</span>
 						<span style="width:33.33%;" class="hcenter">
 							<a ui-sref="TakePhoto"><i class="fa fa-camera photoButtonCarousel" id="camera"></i></a>
-							
+
 						</span>
 						<span style="width:33.33%;text-align: right;
 						margin-left: auto;
@@ -32,7 +34,7 @@
 					</span>
 				</ul>
 			</div>
-		</div>	
+		</div>
 	</div>
 </div>
 </div>
@@ -46,9 +48,3 @@
 	});
 
 </script>
-
-
-
-
-
-

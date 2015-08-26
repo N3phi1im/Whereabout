@@ -12,13 +12,12 @@
 
     function populateHome() {
       var q = $q.defer();
-      $http.get('/api/Places/populate', {
+      $http.post('/api/Places/populate', {}, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem('token')
         }
       }).success(function(res) {
-        console.log('factory');
-        q.resolve();
+        q.resolve(res);
       });
       return q.promise;
     }

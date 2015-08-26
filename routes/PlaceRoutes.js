@@ -121,26 +121,22 @@ router.post('/unFollow/:fid', auth, function(req, res, next) {
 
 
 
-router.get('/populate', auth, function(req, res, next, id) {
-  Place.findOne({
-      'google.id': id
+router.post('/populate', auth, function(req, res, next) {
+  User.findOne({
+      '_id': req.payload.id
     })
-    .populate('photos')
-    .exec(function(err, place) {
-      async.forEach(place.photos, function(photo, cb) {
-        photo.populate('user', 'first_name last_name image', function(err, result) {
+    .populate('follow')
+    .exec(function(err, user) {
+      async.forEach(user.follow, function(place, cb) {
+        place.populate('photos', function(err, result) {
           cb();
         });
-      }, function(err) {
+      }, function(err, data) {
         if (err) return next(err);
-        req.par = place;
-        next();
+        res.send(user);
       });
     });
 });
-
-
-
 
 
 

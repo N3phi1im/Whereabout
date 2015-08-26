@@ -7,7 +7,7 @@
 
   function HomeController(PhotoFactory, HomeFactory, UserFactory) {
     var vm = this;
-    vm.populateHome();
+    vm.info = {};
 
     vm.upload = function(photo) {
       HomeFactory.upload(photo).then(function() {
@@ -21,9 +21,12 @@
 
     vm.populateHome = function() {
       PhotoFactory.populateHome().then(function(res) {
-        console.log(res);
+        vm.info = res;
+        console.log(vm.info);
       });
     };
+
+    vm.populateHome();
 
   }
 })();
