@@ -69,7 +69,7 @@
                 <li role="menuitem"><a ng-click="isCollapsed = !isCollapsed" class="glyphicon glyphicon-file" href="#"> About</a></li>
                 <li role="menuitem"><a ng-click="isCollapsed = !isCollapsed" class="glyphicon glyphicon-question-sign" href="#"> Help</a></li>
                 <li class="divider"></li>
-                <li role="menuitem"><a ng-click="isCollapsed = !isCollapsed" class="glyphicon glyphicon-log-out" ng-click="nav.logout()"> Logout</a></li>
+                <li role="menuitem"><a class="glyphicon glyphicon-log-out" ng-click="nav.logout(); isCollapsed = !isCollapsed"> Logout</a></li>
               </ul>
             </div>
           </ul>

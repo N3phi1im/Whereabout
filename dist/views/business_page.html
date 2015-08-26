@@ -34,13 +34,13 @@
 			<div class="col-md-3 pinSide" ng-repeat="b in vm.business.photos">
 				<div class="pin">
 					<div class="inner_wrap1">
-						<img src="{{b.user.image}}" id="profile-img-circle">
+						<img ng-src="{{b.user.image}}" id="profile-img-circle">
 						<h5>{{b.user.first_name}} {{b.user.last_name}}</h5>
 						<p>"I had so much fun at this place."</p>
 					</div>
 					<div>
 						<div >
-							<img src="{{b.url}}">
+							<img ng-src="{{b.url}}">
 						</div>
 					</div>
 
@@ -66,6 +66,3 @@
 			</div>
 		</div>
 	</div>
-
-	
-
