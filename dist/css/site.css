@@ -218,13 +218,6 @@ label {
 	cursor: pointer;
 }
 
-.wellWidth {
-	width: 100%;
-	margin-left: auto;
-	margin-right: auto;
-	font-size: 1.5vh;
-}
-
 #mapContainer {
 	margin-top: 20px;
 }
@@ -1145,23 +1138,6 @@ input.cmn-toggle-yes-no:checked + label:after {
 	height: 50px;
 }
 
-.nameTitle {
-	color: black;
-	font-size: 30px;
-	margin-top: 10px;
-	
-}
-
-.glyphicon-heart {
-	font-size: 53px
-}
-
-.resultIcon {
-	display: inline-block;
-
-	margin-left: 5px;
-}
-
 .selectedButton {
 	float: right!important;
 	margin-right: 10px;
@@ -1256,4 +1232,73 @@ input.cmn-toggle-yes-no:checked + label:after {
 
 #marginTopTwenty {
 	margin-top: 20px;
+}
+
+.cameraPhotoButton {
+	width: 50px;
+	height: 45px;
+	font-size: 25px;
+}
+
+
+/*-------------------- Result well----------------------*/
+@media screen and (max-width: 768px) {
+	.wellContainer {
+		width: 85vw;
+		height: 8vh;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 2vw;
+	} 
+}
+@media screen and (min-width: 769px) {
+	.wellContainer {
+		width: 85vw;
+		height: 8vh;
+		margin-left: auto;
+		margin-right: auto;
+	} 
+}
+.resultsWell {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	text-align: left;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.goTocameraPhotoButton {
+	width: 25px;
+	height: 25px;
+	font-size: 25px;
+}
+
+.glyphicon-heart {
+	font-size: 53px
+}
+
+.resultIcon {
+	display: inline-block;
+	text-align: left;
+}
+
+.googleIcon {
+	width: 5vh;
+}
+
+.wellWidth {
+	font-size: 1vh;
+	text-align: left;
+	padding-left: 0.5vh;
+	padding-right: 0.5vh;
+}
+
+.nameTitle {
+	color: black;
+	font-size: 2vh;
+	margin-top: 10px;	
+}
+
+.valign {
+	float: right;
 }

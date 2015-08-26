@@ -3,10 +3,11 @@
   angular.module('app')
     .controller('HomeController', HomeController);
 
-  HomeController.$inject = ['HomeFactory', 'UserFactory'];
+  HomeController.$inject = ['PhotoFactory', 'HomeFactory', 'UserFactory'];
 
-  function HomeController(HomeFactory, UserFactory) {
+  function HomeController(PhotoFactory, HomeFactory, UserFactory) {
     var vm = this;
+    vm.info = {};
 
     vm.upload = function(photo) {
       HomeFactory.upload(photo).then(function() {
@@ -18,9 +19,14 @@
       });
     };
 
-	  vm.populateHome = function() {
-      
+    vm.populateHome = function() {
+      PhotoFactory.populateHome().then(function(res) {
+        vm.info = res;
+        console.log(vm.info);
+      });
     };
+
+    vm.populateHome();
 
   }
 })();

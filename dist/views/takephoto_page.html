@@ -3,108 +3,111 @@
   <!-- Search Results -->
   <div ng-controller="SearchController as vm">
     <div class="form-group">
-      <div class="col-md-4 col-md-offset-4"></div>
       <div id="mapContainer">
         <div id="map-canvas"></div>
       </div>
-      <ul ng-repeat="res in vm.results" class="wellSize">
-        <h3 class="well pointer wellWidth">
-          <a><img ng-src={{res.icon}}></a>
+
+      <ul ng-repeat="res in vm.results" class="well wellContainer">
+
+        <div class="col-md-1 col-xs-2  wellWidth">
+          <img class="googleIcon" ng-src={{res.icon}}>
+        </div>
+
+        <div class="col-md-10 col-xs-8 wellWidth">
           <div class="resultIcon" ui-sref="Business({res: res.id})">
-            <a class="nameTitle">
-              {{res.name}}</a><br>
-              {{res.formatted_address}}</div>
-              <!-- Camera Modal Toggle -->
-              <div class="switch navbar-right selectedButton">
-               <!--  <input class="cmn-toggle cmn-toggle-yes-no" id="{{res.id}}" ng-click="photoctrl.selectedLocation = res;" type="checkbox">
-                <label data-off="SELECT" data-on="SELECTED" for="{{res.id}}"></label>
-              -->
-              <button id="{{res.id}}" ng-click="photoctrl.selectedLocation = res;" data-toggle="modal" data-target="#upload" class="btn btn-default btn-s"><i class="glyphicon glyphicon-camera"></i></button>
+            <a class="nameTitle">{{res.name}}</a>
+            <br>
+            {{res.formatted_address}}
+          </div>
+        </div>  
 
-            </div>
+        <div class="col-md-1 col-xs-2">
+          <button id="{{res.id}}" ng-click="photoctrl.selectedLocation = res;" data-toggle="modal" data-target="#upload" class="btn btn-primary btn-s"><i class="glyphicon glyphicon-camera goTocameraPhotoButton valign"></i></button>
+        </div>
 
-          </h3>
-        </ul>
-      </div>
+      </ul>
+    </div>
+  </div>
 
-      <!-- login modal -->
-      <div class="modal fade" id="upload" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <form ng-submit="uploadFile()" value="Upload" class="login-inner-form" novalidate>
-              <!-- -------------------------------------------------Header------------------------------------------- -->
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">
-                  <div class="resultIcon" ui-sref="Business({res: res.id})">
-                    <a class="nameTitle">
-                      {{photoctrl.selectedLocation.name}}</a><br>
-                      {{photoctrl.selectedLocation.formatted_address}}</div>
-                    </h4>
-                  </div>
-                  <!-- ------------------------------------------Body------------------------------------------ -->
-                  <div class="modal-body">
-                    <div class="hcenter">
-                      <div class="form-well vcenter">
+  <!-- login modal -->
+  <div class="modal fade" id="upload" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form ng-submit="uploadFile()" value="Upload" class="login-inner-form" novalidate>
+          <!-- -------------------------------------------------Header---------------------------------------------------- -->
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">
+              <div class="resultIcon" ui-sref="Business({res: res.id})">
+                <a class="nameTitle">
+                  {{photoctrl.selectedLocation.name}}</a><br>
+                  {{photoctrl.selectedLocation.formatted_address}}</div>
+                </h4>
+              </div>
+              <!-- ------------------------------------------Body------------------------------------------ -->
+              <div class="modal-body">
+                <div class="hcenter">
+                  <div class="form-well vcenter">
 
 
-                        <!-- Take Photo Button -->
-                        <div class="form-group loginForm">
-                          <button class=" btn btn-default form-control inputBox input-lg"><i class="glyphicon glyphicon-camera"></i></button>
+                    <!-- Take Photo Button -->
+                    <div class="form-group loginForm">
+                      <button class=" btn btn-primary cameraPhotoButton"><i class="glyphicon glyphicon-camera"></i></button>
+                    </div>
+
+                    <!-- Upload Photo Button -->
+                    <div class="form-group loginForm">
+                      <div id="uploadPhoto">
+                        <span class="btn btn-default btn-file">
+                          Upload File
+                          <input id="fileToUpload" multiple ng-model-instant onchange="angular.element(this).scope().setFiles(this)" type="file"/>
+                        </span>
+                        <br><p> Or </p>
+                        <div class="dropbox" id="dropbox" ng-class="dropClass">
+                          <span>{{dropText}}</span>
                         </div>
+                        <div ng-show="files.length">
+                          <div ng-repeat="file in files.slice(0)">
+                            <span>{{file.webkitRelativePath || file.name}}</span>
+                            (
+                            <span ng-switch="file.size > 1024*1024">
+                              <span ng-switch-when="true">{{file.size / 1024 / 1024 | number:2}}
+                                MB</span>
+                                <span ng-switch-default>{{file.size / 1024 | number:2}}
+                                  kB</span>
+                                </span>)
+                              </div>
+                              <button class="btn btn-success submitPhoto" ng-disabled="!photoctrl.selectedLocation" ng-click="uploadFile()" value="Upload">Submit</button>
 
-                        <!-- Upload Photo Button -->
-                        <div class="form-group loginForm">
-                          <div id="uploadPhoto">
-                            <span class="btn btn-default btn-file">
-                              Upload
-                              <input id="fileToUpload" multiple ng-model-instant onchange="angular.element(this).scope().setFiles(this)" type="file"/>
-                            </span>
-                            <div class="dropbox" id="dropbox" ng-class="dropClass">
-                              <span>{{dropText}}</span>
-                            </div>
-                            <div ng-show="files.length">
-                              <div ng-repeat="file in files.slice(0)">
-                                <span>{{file.webkitRelativePath || file.name}}</span>
-                                (
-                                <span ng-switch="file.size > 1024*1024">
-                                  <span ng-switch-when="true">{{file.size / 1024 / 1024 | number:2}}
-                                    MB</span>
-                                    <span ng-switch-default>{{file.size / 1024 | number:2}}
-                                      kB</span>
-                                    </span>)
-                                  </div>
-                                  <button class="btn btn-success submitPhoto" ng-disabled="!photoctrl.selectedLocation" ng-click="uploadFile()" value="Upload">Submit</button>
-
-                                  <div ng-show="progressVisible">
-                                    <div class="percent">{{progress}}%</div>
-                                    <div class="progress-bar">
-                                      <div class="uploaded" ng-style="{'width': progress+'%'}"></div>
-                                    </div>
-                                  </div>
+                              <div ng-show="progressVisible">
+                                <div class="percent">{{progress}}%</div>
+                                <div class="progress-bar">
+                                  <div class="uploaded" ng-style="{'width': progress+'%'}"></div>
                                 </div>
                               </div>
                             </div>
-
-                            <!-- Photo Title -->
-                            <div class="form-group loginForm">
-                              <label>Photo Title</label>
-                              <input class="form-control inputBox input-lg" type="text" ng-model="photoctrl.photo.title" placeholder="Photo title...">
-                            </div>
-
-
                           </div>
                         </div>
-                      </div>
-                      <!-- ---------------------------------------------------Footer--------------------------------- -->
-                      <div class="modal-footer">
 
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="submit" ng-disabled="!photoctrl.selectedLocation" class="btn btn-success">Submit</button>
+                        <!-- Photo Title -->
+                        <div class="form-group loginForm">
+                          <label>Photo Title</label>
+                          <input class="form-control inputBox input-lg" type="text" ng-model="photoctrl.photo.title" placeholder="Photo title...">
+                        </div>
+
+
                       </div>
-                    </form>
+                    </div>
                   </div>
-                </div>
+                  <!-- ---------------------------------------------------Footer-------------------------------------------------------------------------- -->
+                  <div class="modal-footer">
+
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" ng-disabled="!photoctrl.selectedLocation" class="btn btn-success">Submit</button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
+        </div>
+      </div>
