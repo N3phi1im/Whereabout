@@ -74,7 +74,9 @@ router.get('/checkLocation/:locId', function(req, res, next) {
 router.get('/Place/info/:par', function(req, res, next) {
   User.find({
     'follow': req.par._id
-  }, {_id: 1}).exec(function(err, user) {
+  }, {
+    _id: 1
+  }).exec(function(err, user) {
     res.send({
       place: req.par,
       following: user
@@ -112,6 +114,41 @@ router.post('/unFollow/:fid', auth, function(req, res, next) {
     res.send(user);
   });
 });
+
+
+
+
+
+
+
+router.get('/populate', auth, function(req, res, next, id) {
+  Place.findOne({
+      'google.id': id
+    })
+    .populate('photos')
+    .exec(function(err, place) {
+      async.forEach(place.photos, function(photo, cb) {
+        photo.populate('user', 'first_name last_name image', function(err, result) {
+          cb();
+        });
+      }, function(err) {
+        if (err) return next(err);
+        req.par = place;
+        next();
+      });
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
 
 router.use(function(err, req, res, next) {
   res.status(500).send(err);
