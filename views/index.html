@@ -53,36 +53,43 @@
           <form class="navbar-form navbar-left" role="search">
 
             <div class="form-group">
+
+             <div class="input-group">
               <input type="text" class="form-control" placeholder="Search" ng-model="searchContent">
-              <a ng-click="isCollapsed = !isCollapsed" ui-sref="TakePhoto({search: searchContent })" class="btn btn-default">Submit</a>
-            </div>
-          </form>
-          <ul class="nav navbar-nav navbar-right" id="UserDropdown">
-            <img id="userIcon" ng-src="{{nav.status.image}}">
-            <div class="btn-group" dropdown>
-              <button id="single-button" type="button" class="btn btn-primary" dropdown-toggle>
-                {{nav.status.first_name}}
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu pointer" role="menu" aria-labelledby="single-button">
-                <li role="menuitem"><a ng-click="isCollapsed = !isCollapsed" class="glyphicon glyphicon-user" ui-sref="Profile"> Profile</a></li>
-                <li role="menuitem"><a ng-click="isCollapsed = !isCollapsed" class="glyphicon glyphicon-file" href="#"> About</a></li>
-                <li role="menuitem"><a ng-click="isCollapsed = !isCollapsed" class="glyphicon glyphicon-question-sign" href="#"> Help</a></li>
-                <li class="divider"></li>
-                <li role="menuitem"><a class="glyphicon glyphicon-log-out" ng-click="nav.logout(); isCollapsed = !isCollapsed"> Logout</a></li>
-              </ul>
-            </div>
-          </ul>
+              <span class="input-group-btn">
+                <button ng-click="isCollapsed = !isCollapsed" ui-sref="TakePhoto({search: searchContent })" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+              </span>
+            </div><!-- /input-group -->
 
-        </div>
-        <!-- /.navbar-collapse -->
+
+          </div>
+        </form>
+        <ul class="nav navbar-nav navbar-right" id="UserDropdown">
+          <img id="userIcon" ng-src="{{nav.status.image}}">
+          <div class="btn-group" dropdown>
+            <button id="single-button" type="button" class="btn btn-primary" dropdown-toggle>
+              {{nav.status.first_name}}
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu pointer" role="menu" aria-labelledby="single-button">
+              <li role="menuitem"><a ng-click="isCollapsed = !isCollapsed" class="glyphicon glyphicon-user" ui-sref="Profile"> Profile</a></li>
+              <li role="menuitem"><a ng-click="isCollapsed = !isCollapsed" class="glyphicon glyphicon-picture" ui-sref="MyPost"> Pics</a></li>
+              <li role="menuitem"><a ng-click="isCollapsed = !isCollapsed" class="glyphicon glyphicon-question-sign" href="#"> Help</a></li>
+              <li class="divider"></li>
+              <li role="menuitem"><a class="glyphicon glyphicon-log-out" ng-click="nav.logout(); isCollapsed = !isCollapsed"> Logout</a></li>
+            </ul>
+          </div>
+        </ul>
+
       </div>
-      <!-- /.container-fluid -->
-    </nav>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+  </nav>
 
-    <ui-view></ui-view>
-    <!-- Google API Libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <ui-view></ui-view>
+  <!-- Google API Libraries -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- <script type="text/javascript">
     jQuery(document).ready(function() {
       jQuery(".navbar-nav li a").click(function(event) {
