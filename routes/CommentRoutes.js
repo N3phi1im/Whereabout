@@ -9,7 +9,6 @@ var auth = jwt({
 	userProperty: "payload"
 });
 
-
 router.param('photoId', function(req, res, next, id){
 	req.body.id = id;
 	next();
