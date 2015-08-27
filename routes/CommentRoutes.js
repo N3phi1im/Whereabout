@@ -32,7 +32,7 @@ router.post('/add/:photoId', auth, function(req, res, next){
 }
 );
 
-router.get('/get/:photoId', function(req, res, next){
+router.get('/get/:photoId', auth, function(req, res, next){
 	Photo.find({
 		'id': req.body.id,
 	}).populate('comments')

@@ -55,6 +55,10 @@
 			url: '/Dummy',
 			templateUrl: '/views/dummyModal.html'
 		})
+		.state('DummyComment', {
+			url: '/DummyComment',
+			templateUrl: '/views/DummyCommentGet.html'
+		})
 		.state("Token", {
 			url: "/Token/:token",
 			templateUrl: "views/token.html",
