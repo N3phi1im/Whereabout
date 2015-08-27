@@ -21,6 +21,12 @@ cloudinary.config({
   api_secret: 'qeL8V9TKF5O-xuYgCRINKmIhRaY'
 });
 
+
+router.post('/upload:like');
+
+
+
+
 router.post('/upload', upload.single('uploadedFile'), function(req, res) {
   cloudinary.uploader.upload(req.file.path, function(result) {
     res.send(result);
@@ -55,7 +61,13 @@ router.post('/setPlace', function(req, res) {
     });
 });
 
-router.get('/getPhotos', function(req, res) {
+router.get('/mine', auth, function(req, res) {
+  Photo.find({
+    'user': req.payload.id
+  }).populate('comments')
+  .exec(function (err, data) {
+    res.send(data);
+  });
 
 });
 

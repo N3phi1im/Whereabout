@@ -25,12 +25,10 @@
       </ul>
     </div>
   </div>
-<!-- login modal -->
   <div aria-labelledby="myModalLabel" class="modal fade" id="upload" role="dialog" tabindex="-1">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <form class="login-inner-form" ng-submit="uploadFile()" novalidate value="Upload">
-<!-- -------------------------------------------------Header---------------------------------------------------- -->
           <div class="modal-header">
             <button aria-label="Close" class="close" data-dismiss="modal" type="button">
               <span aria-hidden="true">&times;</span>
@@ -42,7 +40,6 @@
                 {{photoctrl.selectedLocation.formatted_address}}</div>
             </h4>
           </div>
-<!-- ------------------------------------------Body------------------------------------------ -->
           <div class="modal-body">
             <div class="hcenter">
               <div class="form-well vcenter">
@@ -94,10 +91,9 @@
               </div>
             </div>
           </div>
-<!-- ---------------------------------------------------Footer-------------------------------------------------------------------------- -->
           <div class="modal-footer">
             <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
-            <button type="submit" class="btn btn-success submitPhoto" ng-click="uploadFile(); photoctrl.title = photoctrl.photo.title" ng-disabled='!photoctrl.photo.title' value="Upload">Submit</button>
+            <button class="btn btn-success submitPhoto" ng-click="uploadFile(); photoctrl.title = photoctrl.photo.title" ng-disabled='!photoctrl.photo.title' type="submit" value="Upload">Submit</button>
           </div>
         </form>
       </div>

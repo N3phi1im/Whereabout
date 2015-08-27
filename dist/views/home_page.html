@@ -7,42 +7,35 @@
             <slide active="slide.active" ng-repeat="slide in place.photos">
               <div class="inner_wrap1">
                 <img id="profile-img-circle" ng-src='{{slide.user.image}}'>
-                <h5>{{slide.user.first_name}}
-                  {{slide.user.last_name}}</h5>
-                <p>{{slide.title}}</p>
-              </div>
-              <img ng-src="{{slide.url}}" style="margin:auto;">
-            </slide>
-          </carousel>
-        </div>
-        <div class="post-meta">
-          <ul style="display:flex; justify-content:space-between; padding:5px 10px; margin:0">
-            <span style="width:33.33%;">
-              <p style="font-size:1.5em; padding:0.25em 0;">{{place.google.name}}</p>
-            </span>
-            <span class="hcenter" style="width:33.33%;">
-              <a ui-sref="TakePhoto({search: place.google.name})">
-                <i class="fa fa-camera photoButtonCarousel" id="camera"></i>
-              </a>
-            </span>
-            <span style="width:33.33%;text-align: right; margin-left: auto; margin-right: auto;">
-              <span >1 like</span>
-              <button class='like-toggle basic'>
-                <i class="fa fa-heart"></i>
-              </button>
-            </span>
-          </ul>
+                <h5 class="floatLeft">{{slide.user.first_name}}
+                  {{slide.user.last_name}}
+                  </h5>
+                  <p class="floatLeft">{{slide.title}}</p>
+                </div>
+                <img ng-src="{{slide.url}}" style="margin:auto;">
+              </slide>
+            </carousel>
+          </div>
+          <div class="post-meta">
+            <ul style="display:flex; justify-content:space-between; padding:5px 10px; margin:0">
+              <span style="width:33.33%;">
+                <p style="font-size:1.5em; padding:0.25em 0;"><a ui-sref="Business({res: place.google.id})">{{place.google.name}}</a></p>
+              </span>
+              <span class="hcenter" style="width:33.33%;">
+                <a ui-sref="TakePhoto({search: place.google.name})">
+                  <i class="fa fa-camera photoButtonCarousel" id="camera"></i>
+                </a>
+              </span>
+              <span style="width:33.33%;text-align: right; margin-left: auto; margin-right: auto;">
+                <span >1 like</span>
+                <button class='like-toggle basic'>
+                  <i class="fa fa-heart"></i>
+                </button>
+              </span>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<script>
-  $(function() {
-    $('.like-toggle').click(function() {
-      $(this).toggleClass('like-active');
-      $(this).next().toggleClass('hidden');
-    });
-  });
-</script>

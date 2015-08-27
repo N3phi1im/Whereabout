@@ -280,7 +280,7 @@ label {
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 2%;
-	/*	height: 600px;*/
+
 }
 
 .bodyWidth2 {
@@ -301,9 +301,8 @@ label {
 	margin-right: auto;
 	top: 0px;
 	color: white;
-	font-size: 60px;
+	font-size: 5vh;
 	font-family: 'Amatic SC', cursive;
-	font-size: 80px;
 	padding: 10px;
 	border-radius: 0px 0px 2px 0px;
 	border-color: white;
@@ -1241,8 +1240,6 @@ input.cmn-toggle-yes-no:checked + label:after {
 	font-size: 25px;
 }
 
-
-/*-------------------- Result well----------------------*/
 @media screen and (max-width: 768px) {
 	.wellContainer {
 		width: 85vw;
@@ -1305,6 +1302,10 @@ input.cmn-toggle-yes-no:checked + label:after {
 	margin-top: 10px;	
 }
 
-.valign {
-	float: right;
+a {
+	text-decoration: none !important;
+}
+
+.floatLeft {
+	text-align: left;
 }
