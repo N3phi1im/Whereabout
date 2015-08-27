@@ -80,7 +80,13 @@ router.post('/setPlace', function(req, res) {
   });
 });
 
-router.get('/getPhotos', function(req, res) {
+router.get('/mine', auth, function(req, res) {
+  Photo.find({
+    'user': req.payload.id
+  }).populate('comments')
+  .exec(function (err, data) {
+    res.send(data);
+  });
 
 });
 

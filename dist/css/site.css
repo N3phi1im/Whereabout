@@ -193,6 +193,7 @@ label {
 	float: left;
 	overflow: hidden;
 	margin-right: 10px;
+	margin-bottom: 10px;
 }
 
 .carouselPart {
@@ -362,6 +363,7 @@ label {
 	padding-right: 8vw;
 	padding-left: 8vw;
 }
+#double li {width:50%;}
 
 #userIcon {
 	height: 40px;
@@ -1274,9 +1276,12 @@ input.cmn-toggle-yes-no:checked + label:after {
 	font-size: 53px
 }
 
-.resultIcon {
-	display: inline-block;
+.resultText {
 	text-align: left;
+	vertical-align: middle;
+}
+.resultIcon{
+	height:50px; float: left; vertical-align: middle; margin-right: 10px;
 }
 
 .googleIcon {
@@ -1288,6 +1293,8 @@ input.cmn-toggle-yes-no:checked + label:after {
 	text-align: left;
 	padding-left: 0.5vh;
 	padding-right: 0.5vh;
+	
+	height: 85px;
 }
 
 .nameTitle {
@@ -1302,4 +1309,12 @@ a {
 
 .floatLeft {
 	text-align: left;
+}
+
+.carousel-control {
+	top: 70px;
+}
+
+.carouselPart {
+	margin-top: 0px;
 }
