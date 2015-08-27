@@ -3,16 +3,15 @@
   angular.module('app')
   .controller('BusinessController', BusinessController);
 
-  BusinessController.$inject = ['PhotoFactory','UserFactory', 'HomeFactory', '$state', '$stateParams'];
+  BusinessController.$inject = ['PhotoFactory','UserFactory', 'HomeFactory', '$window','$state', '$stateParams'];
 
-  function BusinessController(PhotoFactory, UserFactory, HomeFactory, $state, $stateParams) {
-    console.log("Loaded");
+  function BusinessController(PhotoFactory, UserFactory, HomeFactory, $window, $state, $stateParams) {
     var vm = this;
     vm.business = {};
     vm.isFollowing = false;
     vm.status = UserFactory.status.id;
     var obj = {};
-    vm.comments = {};
+    vm.comments = PhotoFactory.comments;
     //-------------------------------------------------------------------------//
     if ($stateParams.res) {
       HomeFactory.getBusinessInfo($stateParams.res).then(function(res) {
@@ -55,28 +54,28 @@
       $state.go('Dummy');
       PhotoFactory.addPhoto(photo).then(function(){
         PhotoFactory.getComment().then(function(res){
-          vm.comments = res;
-          console.log(vm.comments);
         }); 
       });
     };
 
-
     //-------------------------------------------------------------------------//
     vm.createComment = function(comment) {
+      console.log(comment);
       PhotoFactory.combinePhotoComment(comment).then(function(res){
         PhotoFactory.getComment().then(function(res){
           console.log(res);
           vm.comments = res;
+          // $route.reload('Business');
+
         });
       });
     };
-
     //-------------------------------------------------------------------------//
-
-
-
-
+    vm.addLike = function(id) {
+      HomeFactory.sendLike(id).then (function(res){
+        console.log(res);
+      });
+    };
     //-------------------------------------------------------------------------//
   }
 })();

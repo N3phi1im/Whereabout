@@ -21,6 +21,12 @@ cloudinary.config({
   api_secret: 'qeL8V9TKF5O-xuYgCRINKmIhRaY'
 });
 
+
+router.post('/upload:like');
+
+
+
+
 router.post('/upload', upload.single('uploadedFile'), function(req, res) {
   cloudinary.uploader.upload(req.file.path, function(result) {
     res.send(result);
