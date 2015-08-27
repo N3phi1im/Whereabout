@@ -1299,6 +1299,6 @@ input.cmn-toggle-yes-no:checked + label:after {
 	margin-top: 10px;	
 }
 
-.valign {
-	float: right;
+a {
+	text-decoration: none !important;
 }
