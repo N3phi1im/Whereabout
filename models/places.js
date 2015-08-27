@@ -14,6 +14,6 @@ var PlaceSchema = new mongoose.Schema({
 	photos: [{type: mongoose.Schema.Types.ObjectId, ref: 'Photo'}]
 });
 
-// Model is ready for Use
+// Model is ready for Use 
 
 mongoose.model('Place', PlaceSchema);

@@ -17,7 +17,7 @@
     "angular-ui-router": "~0.2.15",
     "angular-bootstrap": "~0.13.3",
     "angular-file-model": "~0.3.1",
-    "bootstrap-toggle": "~2.2.1"
+    "bootstrap-toggle": "~2.2.1",
     "angular-carousel": "~0.3.12"
   }
 }

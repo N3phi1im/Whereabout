@@ -51,6 +51,10 @@
 			url: '/PasswordReset',
 			templateUrl: '/views/passwordreset_page.html'
 		})
+		.state('Dummy', {
+			url: '/Dummy',
+			templateUrl: '/views/dummyModal.html'
+		})
 		.state("Token", {
 			url: "/Token/:token",
 			templateUrl: "views/token.html",

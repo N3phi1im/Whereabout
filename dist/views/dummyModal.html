@@ -1,0 +1,12 @@
+<div ng-controller="BusinessController as vm">
+	<!--...............................................-->
+
+	<textarea ng-model="vm.commentBody" type="text"></textarea>
+	<br>
+	<button ng-click='vm.createComment(vm.commentBody)' class='btn btn-info'>Submit</button>
+
+	<div ng-repeat="c in vm.comments">
+		<div class='well' ng-repeat="a in c.comments">{{a.body}}</div>
+	</div>
+	<!--...............................................-->
+</div>

@@ -107,8 +107,6 @@
           Authorization: "Bearer " + localStorage.getItem('token')
         }
       }).success(function(res) {
-        console.log("followed");
-        console.log(res);
         q.resolve(res);
       });
       return q.promise;
@@ -121,7 +119,6 @@
           Authorization: "Bearer " + localStorage.getItem('token')
         }
       }).success(function(res) {
-        console.log("unfollowed");
         console.log(res);
         q.resolve(res);
       });
