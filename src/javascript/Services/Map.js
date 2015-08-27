@@ -42,7 +42,9 @@
 					});
 					if(promise) q.resolve();
 				});
+
 			if(promise) return q.promise;
+
 		};
 
 		this.deleteMarker = function() {

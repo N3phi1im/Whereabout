@@ -1,12 +1,12 @@
 <div ng-controller="BusinessController as vm">
   <div class="bodyWidth">
     <div style="height:400px; overflow-y:hidden; background:url('/img/palmTrees.jpg') no-repeat; background-size:cover;">
-      <div id="box">{{vm.business.google.name}}</div>
+      <div ><h3 id="box">{{vm.business.google.name}}</h3></div>
       <div class="switch hcenter">
         <input class="cmn-toggle cmn-toggle-yes-no" id="cmn-toggle-7" ng-click="vm.followBusiness(vm.business._id, vm.isFollowing)" ng-model='vm.isFollowing' type="checkbox">
         <label data-off="FOLLOW" data-on="FOLLOWING" for="cmn-toggle-7"></label>
         <button class="active pointer btn btn-default photoButtonCenter">
-          <a ui-sref="TakePhoto">
+          <a ui-sref="TakePhoto({search: vm.business.google.name})">
             <i class="fa fa-camera" id="camera"></i>
           </a>
         </button>
@@ -21,7 +21,7 @@
           <img id="profile-img-circle" ng-src="{{b.user.image}}">
           <h5>{{b.user.first_name}}
             {{b.user.last_name}}</h5>
-          <p>"I had so much fun at this place."</p>
+          <p>{{b.title}}</p>
         </div>
         <div id="marginTopTwenty">
           <div>
@@ -35,8 +35,8 @@
             </span>
             <span class="hcenter" style="width:33.33%;"></span>
             <span style="width:33.33%;text-align: right;
-						margin-left: auto;
-						margin-right: auto;">
+              margin-left: auto;
+              margin-right: auto;">
               <span >{{b.likes.length}}
                 likes</span>
               <button class='like-toggle basic' ng-class="{'like-active': false}">

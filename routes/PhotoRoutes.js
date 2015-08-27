@@ -30,6 +30,7 @@ router.post('/upload', upload.single('uploadedFile'), function(req, res) {
 
 router.post('/setPhoto', auth, function(req, res) {
   var photo = new Photo();
+  photo.title = req.body.title;
   photo.url = req.body.url;
   photo.user = req.payload.id;
   photo.id = req.body.id;
@@ -40,7 +41,6 @@ router.post('/setPhoto', auth, function(req, res) {
 });
 
 router.post('/setPlace', function(req, res) {
-  console.log(req.body.google)
   Place.update({
       'google.id': req.body.google
     }, {
@@ -51,7 +51,6 @@ router.post('/setPlace', function(req, res) {
       }
     },
     function(err) {
-      console.log(err);
       res.send('posted');
     });
 });
