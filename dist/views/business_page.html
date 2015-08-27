@@ -39,14 +39,13 @@
               margin-right: auto;">
               <span >{{b.likes.length}}
                 likes</span>
-                <button ng-click="vm.addLike(b._id)" class='like-toggle basic' ng-class="{'like-active': false}">
+                <button ng-click="vm.addLike(b._id, vm.isLiked)" class='like-toggle basic' ng-class="{'like-active': b.userLike}" ng-model="vm.isLiked">
                   <i class="fa fa-heart"></i>
                 </button>
-              </span>
-            </ul>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
+      <!--...................................................................-->
     </div>
-    <!--...................................................................-->
-  </div>

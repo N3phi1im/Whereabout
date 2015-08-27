@@ -19,9 +19,28 @@
     return o;
 //-------------------------------------------------------------------------//
 function sendLike(id) {
-  var q = $q.defer;
-  $http.post('/api/Photos/like/'+id).success(function(res){
-    resolve(res);
+  var q = $q.defer();
+  $http.post('/api/Photos/like/'+id, {},
+  {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem('token')
+    }
+  }).success(function(res){
+    q.resolve(res);
+  });
+  return q.promise;
+}
+//-------------------------------------------------------------------------//
+function followById(id, isFollowing) {
+  var q = $q.defer();
+  $http.post('/api/Places/follow/' + id, {
+    isFollowing: isFollowing
+  }, {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem('token')
+    }
+  }).success(function(res) {
+    q.resolve(res);
   });
   return q.promise;
 }
@@ -106,20 +125,7 @@ function makeBusiness(resPlace) {
   return q.promise;
 }
 
-//-------------------------------------------------------------------------//
-function followById(id, isFollowing) {
-  var q = $q.defer();
-  $http.post('/api/Places/follow/' + id, {
-    isFollowing: isFollowing
-  }, {
-    headers: {
-      Authorization: "Bearer " + localStorage.getItem('token')
-    }
-  }).success(function(res) {
-    q.resolve(res);
-  });
-  return q.promise;
-}
+
 //-------------------------------------------------------------------------//
 function removeFollow(id) {
   var q = $q.defer();
