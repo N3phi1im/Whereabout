@@ -280,7 +280,7 @@ label {
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 2%;
-	/*	height: 600px;*/
+
 }
 
 .bodyWidth2 {
@@ -1239,8 +1239,6 @@ input.cmn-toggle-yes-no:checked + label:after {
 	font-size: 25px;
 }
 
-
-/*-------------------- Result well----------------------*/
 @media screen and (max-width: 768px) {
 	.wellContainer {
 		width: 85vw;
@@ -1300,4 +1298,8 @@ input.cmn-toggle-yes-no:checked + label:after {
 
 a {
 	text-decoration: none !important;
+}
+
+.floatLeft {
+	text-align: left;
 }

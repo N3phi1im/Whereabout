@@ -7,9 +7,10 @@
             <slide active="slide.active" ng-repeat="slide in place.photos">
               <div class="inner_wrap1">
                 <img id="profile-img-circle" ng-src='{{slide.user.image}}'>
-                <h5>{{slide.user.first_name}}
-                  {{slide.user.last_name}}</h5>
-                  <p>{{slide.title}}</p>
+                <h5 class="floatLeft">{{slide.user.first_name}}
+                  {{slide.user.last_name}}
+                  </h5>
+                  <p class="floatLeft">{{slide.title}}</p>
                 </div>
                 <img ng-src="{{slide.url}}" style="margin:auto;">
               </slide>
@@ -38,11 +39,3 @@
     </div>
   </div>
 
-  <script>
-    $(function() {
-      $('.like-toggle').click(function() {
-        $(this).toggleClass('like-active');
-        $(this).next().toggleClass('hidden');
-      });
-    });
-  </script>
