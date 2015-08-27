@@ -193,6 +193,7 @@ label {
 	float: left;
 	overflow: hidden;
 	margin-right: 10px;
+	margin-bottom: 10px;
 }
 
 .carouselPart {
@@ -1308,4 +1309,12 @@ a {
 
 .floatLeft {
 	text-align: left;
+}
+
+.carousel-control {
+	top: 70px;
+}
+
+.carouselPart {
+	margin-top: 0px;
 }
