@@ -15,7 +15,6 @@ h5 {
 }
 
 #about {
-	/*width: 100%;*/
 	text-align: center;
 	color: #fff;
 	background-image: url('../img/city-cars-traffic-lights.jpg');
@@ -363,6 +362,7 @@ label {
 	padding-right: 8vw;
 	padding-left: 8vw;
 }
+#double li {width:50%;}
 
 #userIcon {
 	height: 40px;
@@ -1275,9 +1275,12 @@ input.cmn-toggle-yes-no:checked + label:after {
 	font-size: 53px
 }
 
-.resultIcon {
-	display: inline-block;
+.resultText {
 	text-align: left;
+	vertical-align: middle;
+}
+.resultIcon{
+	height:50px; float: left; vertical-align: middle; margin-right: 10px;
 }
 
 .googleIcon {
@@ -1289,6 +1292,8 @@ input.cmn-toggle-yes-no:checked + label:after {
 	text-align: left;
 	padding-left: 0.5vh;
 	padding-right: 0.5vh;
+	
+	height: 85px;
 }
 
 .nameTitle {
@@ -1323,22 +1328,12 @@ a {
 	margin: 10px;
 }
 
-
-
-/* ============================================================================================================================
-== BUBBLE WITH A RIGHT-ANGLED TRIANGLE
-** ============================================================================================================================ */
-
-/* THE SPEECH BUBBLE
-------------------------------------------------------------------------------------------------------------------------------- */
-
 .triangle-right {
 	position:relative;
 	padding:15px;
 	margin:1em 0 3em;
 	color:#fff;
-	background:#333; /* default background for browsers without gradient support */
-	/* css3 */
+	background:#333; 
 	background:-webkit-gradient(linear, 0 0, 0 100%, from(#2e88c4), to(#333));
 	background:-moz-linear-gradient(#2e88c4, #333);
 	background:-o-linear-gradient(#2e88c4, #333);
@@ -1347,9 +1342,6 @@ a {
 	-moz-border-radius:10px;
 	border-radius:10px;
 }
-
-/* Variant : for top positioned triangle
------------------------------------------- */
 
 .triangle-right.top {
 	background:-webkit-gradient(linear, 0 0, 0 100%, from(#333), to(#2e88c4));
@@ -1425,13 +1417,6 @@ a {
 	border-width:15px 0 0 40px; /* vary these values to change the angle of the vertex */
 	border-color:transparent #333 ;
 }
-
-/* ============================================================================================================================
-== BUBBLE WITH A RIGHT-ANGLED TRIANGLE
-** ============================================================================================================================ */
-
-/* THE SPEECH BUBBLE
-------------------------------------------------------------------------------------------------------------------------------- */
 
 .triangle-right {
 	position:relative;

@@ -4,3 +4,4 @@ npm-debug.log
 /dist/js/jsBundle.js
 /dist/js/jsBundle.min.js
 /uploads
+.DS_Store

@@ -62,13 +62,6 @@ function getComment() {
 //-------------------------------------------------------------------------//
 
 
-
-
-
-
-//-------------------------------------------------------------------------//
-
-
 function myPhotos() {
   var q = $q.defer();
   $http.get('/api/Photos/mine', { headers: {
@@ -76,7 +69,7 @@ function myPhotos() {
       q.resolve(res);
     });
     return q.promise;
-}
+  }
 
 
 

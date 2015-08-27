@@ -22,7 +22,26 @@ cloudinary.config({
 });
 
 
-router.post('/upload:like');
+router.param('likeid', function(req, res, next, id) {
+  req.likes_id = id;
+  next();
+});
+
+
+router.post('/like/:likeid', auth, function(req, res, next) {
+  Photo.update({
+    "_id": req.likes_id
+  }, {
+    $push: {
+      likes: {
+        _id: req.payload.id
+      }
+    }
+  }, function(err, photo) {
+    console.log(photo);
+    res.send(photo);
+  });
+});
 
 
 
@@ -48,17 +67,17 @@ router.post('/setPhoto', auth, function(req, res) {
 
 router.post('/setPlace', function(req, res) {
   Place.update({
-      'google.id': req.body.google
-    }, {
-      $push: {
-        photos: {
-          _id: req.body._id
-        }
+    'google.id': req.body.google
+  }, {
+    $push: {
+      photos: {
+        _id: req.body._id
       }
-    },
-    function(err) {
-      res.send('posted');
-    });
+    }
+  },
+  function(err) {
+    res.send('posted');
+  });
 });
 
 router.get('/mine', auth, function(req, res) {
