@@ -51,7 +51,6 @@
 
     //-------------------------------------------------------------------------//
     vm.goToComment = function(photo) {
-      $state.go('Dummy');
       PhotoFactory.addPhoto(photo).then(function(){
         PhotoFactory.getComment().then(function(res){
         }); 

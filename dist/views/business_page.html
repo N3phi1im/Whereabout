@@ -13,7 +13,6 @@
       </div>
     </div>
   </div>
-  <!--...................................................................-->
   <div  class="row-12 pinTop">
     <div class="col-md-3 pinSide" ng-repeat="b in vm.business.photos">
       <div class="pin">
@@ -25,7 +24,7 @@
           </div>
           <div id="marginTopTwenty">
             <div>
-              <img ng-click="vm.goToComment(b)" ng-src="{{b.url}}">
+              <a data-toggle="modal" data-target="#comments"><img ng-click="vm.goToComment(b)" ng-src="{{b.url}}"></a>
             </div>
           </div>
           <div class="post-meta">
@@ -46,7 +45,47 @@
             </ul>
           </div>
         </div>
+
+
+        <div aria-labelledby="myModalLabel" class="modal fade" id="comments" role="dialog" tabindex="-1">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <form class="login-inner-form" ng-submit="uploadFile()" novalidate value="Upload">
+                <div class="modal-header">
+                 <span style="width:33.33%;">
+                  <p style="font-size:1.5em; padding:0.25em 0;">{{vm.business.google.name}}</p>
+                </span>
+                <p>{{b.title}}</p>
+              </div>
+              <div class="modal-body hcenter">
+
+                <img id="commentImage" class="well" ng-src="{{b.url}}">
+
+                <div ng-controller="BusinessController as vm">
+                  <div>
+                    <div class="widthContain row"  ng-repeat="c in vm.comments">
+                      <div class="col-sm-12" ng-repeat="a in c.comments">
+                        <img id="comment-img-circle" ng-src="{{b.user.image}}">
+                        <a class='well triangle-right right'>{{a.body}} </a><br>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <label class="commentsLabel footer">Comments...</label>
+                  <textarea class="form-control" ng-model="vm.commentBody" type="text"></textarea>
+                  <div>
+                    <div class="modal-footer">
+                      <button class="btn btn-primary" data-dismiss="modal" type="button">Close</button>
+                      <button id="commentSubmitButton" ng-click='vm.createComment(vm.commentBody)' class='btn btn-info'>Submit</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <!--...................................................................-->
+
   </div>
