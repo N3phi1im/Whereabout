@@ -30,6 +30,7 @@ router.post('/upload', upload.single('uploadedFile'), function(req, res) {
 
 router.post('/setPhoto', auth, function(req, res) {
   var photo = new Photo();
+  photo.title = req.body.title;
   photo.url = req.body.url;
   photo.user = req.payload.id;
   photo.id = req.body.id;
