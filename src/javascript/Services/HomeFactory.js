@@ -38,6 +38,7 @@
     function setPhoto(file) {
       var q = $q.defer();
       var photo = {};
+      photo.title = file.title;
       photo.id = file.public_id;
       photo.url = file.url;
       $http.post('/api/Photos/setPhoto', photo, {

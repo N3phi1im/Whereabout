@@ -21,31 +21,32 @@
           <img id="profile-img-circle" ng-src="{{b.user.image}}">
           <h5>{{b.user.first_name}}
             {{b.user.last_name}}</h5>
-          <p>"I had so much fun at this place."</p>
-        </div>
-        <div id="marginTopTwenty">
-          <div>
-            <img ng-src="{{b.url}}">
+            <p>"I had so much fun at this place."</p>
           </div>
-        </div>
-        <div class="post-meta">
-          <ul style="display:flex; justify-content:space-between; padding:5px 10px; margin:0">
-            <span style="width:33.33%;">
-              <p style="font-size:1.5em; padding:0.25em 0;">{{vm.business.google.name}}</p>
-            </span>
-            <span class="hcenter" style="width:33.33%;"></span>
-            <span style="width:33.33%;text-align: right;
-						margin-left: auto;
-						margin-right: auto;">
+          <div id="marginTopTwenty">
+            <div>
+              <img ng-src="{{b.url}}">
+            </div>
+          </div>
+          <div class="post-meta">
+            <ul style="display:flex; justify-content:space-between; padding:5px 10px; margin:0">
+              <span style="width:33.33%;">
+                <p style="font-size:1.5em; padding:0.25em 0;">{{vm.business.google.name}}</p>
+              </span>
+              <span class="hcenter" style="width:33.33%;"></span>
+              <span style="width:33.33%;text-align: right;
+              margin-left: auto;
+              margin-right: auto;">
               <span >{{b.likes.length}}
                 likes</span>
-              <button class='like-toggle basic' ng-class="{'like-active': false}">
-                <i class="fa fa-heart"></i>
-              </button>
-            </span>
-          </ul>
+                <button class='like-toggle basic' ng-class="{'like-active': false}">
+                  <i class="fa fa-heart"></i>
+                </button>
+              </span>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+

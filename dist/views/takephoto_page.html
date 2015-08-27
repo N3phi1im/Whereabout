@@ -6,36 +6,33 @@
       <div id="mapContainer">
         <div id="map-canvas"></div>
       </div>
-
-      <ul ng-repeat="res in vm.results" class="well wellContainer">
-
+      <ul class="well wellContainer" ng-repeat="res in vm.results">
         <div class="col-md-1 col-xs-2  wellWidth">
           <img class="googleIcon" ng-src={{res.icon}}>
         </div>
-
         <div class="col-md-10 col-xs-8 wellWidth">
           <div class="resultIcon" ui-sref="Business({res: res.id})">
             <a class="nameTitle">{{res.name}}</a>
             <br>
             {{res.formatted_address}}
           </div>
-        </div>  
-
-        <div class="col-md-1 col-xs-2">
-          <button id="{{res.id}}" ng-click="photoctrl.selectedLocation = res;" data-toggle="modal" data-target="#upload" class="btn btn-primary btn-s"><i class="glyphicon glyphicon-camera goTocameraPhotoButton valign"></i></button>
         </div>
-
+        <div class="col-md-1 col-xs-2">
+          <button class="btn btn-primary btn-s" data-target="#upload" data-toggle="modal" id="{{res.id}}" ng-click="photoctrl.selectedLocation = res;">
+            <i class="glyphicon glyphicon-camera goTocameraPhotoButton valign"></i>
+          </button>
+        </div>
       </ul>
     </div>
   </div>
-
-  <!-- login modal -->
-  <div class="modal fade" id="upload" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div aria-labelledby="myModalLabel" class="modal fade" id="upload" role="dialog" tabindex="-1">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <form ng-submit="uploadFile()" value="Upload" class="login-inner-form" novalidate>
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+              <span aria-hidden="true">&times;</span>
+            </button>
             <h4 class="modal-title" id="myModalLabel">
               <div class="resultIcon" ui-sref="Business({res: res.id})">
                 <a class="nameTitle">
@@ -46,12 +43,12 @@
               <div class="modal-body">
                 <div class="hcenter">
                   <div class="form-well vcenter">
-
                     <!-- Take Photo Button -->
                     <div class="form-group loginForm">
-                      <button class=" btn btn-primary cameraPhotoButton"><i class="glyphicon glyphicon-camera"></i></button>
+                      <button class=" btn btn-primary cameraPhotoButton">
+                        <i class="glyphicon glyphicon-camera"></i>
+                      </button>
                     </div>
-
                     <!-- Upload Photo Button -->
                     <div class="form-group loginForm">
                       <div id="uploadPhoto">
@@ -59,7 +56,10 @@
                           Upload File
                           <input id="fileToUpload" multiple ng-model-instant onchange="angular.element(this).scope().setFiles(this)" type="file"/>
                         </span>
-                        <br><p> Or </p>
+                        <br>
+                        <p>
+                          Or
+                        </p>
                         <div class="dropbox" id="dropbox" ng-class="dropClass">
                           <span>{{dropText}}</span>
                         </div>
@@ -74,8 +74,6 @@
                                   kB</span>
                                 </span>)
                               </div>
-                              <button class="btn btn-success submitPhoto" ng-disabled="!photoctrl.selectedLocation" ng-click="uploadFile()" value="Upload">Submit</button>
-
                               <div ng-show="progressVisible">
                                 <div class="percent">{{progress}}%</div>
                                 <div class="progress-bar">
@@ -85,25 +83,20 @@
                             </div>
                           </div>
                         </div>
-
                         <!-- Photo Title -->
                         <div class="form-group loginForm">
                           <label>Photo Title</label>
-                          <input class="form-control inputBox input-lg" type="text" ng-model="photoctrl.photo.title" placeholder="Photo title...">
+                          <input class="form-control inputBox input-lg" ng-model="photoctrl.photo.title" placeholder="Photo title..." type="text">
                         </div>
-
-
                       </div>
                     </div>
                   </div>
                   <div class="modal-footer">
-
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" ng-disabled="!photoctrl.selectedLocation" class="btn btn-success">Submit</button>
+                    <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+                    <button type="submit" class="btn btn-success submitPhoto" ng-click="uploadFile(); photoctrl.title = photoctrl.photo.title" ng-disabled='!photoctrl.photo.title' value="Upload">Submit</button>
                   </div>
                 </form>
               </div>
             </div>
           </div>
         </div>
-      </div>

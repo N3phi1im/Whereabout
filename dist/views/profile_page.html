@@ -1,110 +1,77 @@
-<!-- <div class="hcenter userPhoto">
-	<a><img ng-src="{{nav.status.image}}"></a><p><a class="nameTitle"> {{nav.status.first_name}} {{nav.status.last_name}}</a></p>
-</div>
-
-
-<h3 class="well profileWell">Option 1 
-	<div class="slideThree navbar-right onOff">	
-		<input type="checkbox" value="None" id="slideThree" name="check" />
-		<label for="slideThree"></label>
-	</div>
-</h3>
-
-<h3 class="well profileWell">Option 2 
-	<div class="slideThree navbar-right onOff">	
-		<input type="checkbox" value="None" id="slideThree1" name="check" />
-		<label for="slideThree1"></label>
-	</div>
-</h3>
-
-<h3 class="well profileWell">Option 3 
-	<div class="slideThree navbar-right onOff">	
-		<input type="checkbox" value="None" id="slideThree2" name="check" />
-		<label for="slideThree2"></label>
-	</div>
-</h3> -->
-
-<!-- -------------------------------- -->
-
 <div class="row well">
-	<div class="container" style="margin: auto; width: 800px">
-		<div class="panel panel-default">
-			<div class="panel-body">
-				<div class="row"><div class="row"></div>
-				<div class="col-xs-12 col-sm-8">
-					<h2>{{nav.status.first_name}} {{nav.status.last_name}}</h2>
-					<p><strong>Following: </strong>
-						<span class="label label-info tags">389</span> 
-					</p>
-					<p><strong>Stats: </strong>
-						<span class="label label-primary"><i class="fa fa-user"></i> 24 Following</span>
-						<span class="label label-danger"><i class="fa fa-eye"></i> 245 Comments</span>
-						<span class="label label-success"><i class="fa fa-cog"></i> 43 Posts</span>
-					</p>
-				</div><!--/col-->          
-				<div class="col-xs-12 col-sm-4 text-center">
-					<ul class="list-inline text-center" title="Social Links">
-						<li><a href="http://twitter.com" title="Twitter Feed" rel="nofollow"><span class="fa fa-twitter fa-lg"></span></a></li>
-						<li><a href="http://www.facebook.com" title="Facebook Wall" rel="nofollow"><span class="fa fa-facebook fa-lg"></span></a></li>
-						<li><a href="http://www.linkedin.com" title="LinkedIn Profile" rel="nofollow"><span class="fa fa-linkedin fa-lg"></span></a></li>
-						<li><a href="http://www.skype.com" title="Skype" rel="nofollow"><span class="fa fa-skype fa-lg"></span></a></li>
-					</ul>
-					<img ng-src="{{nav.status.image}}" class="center-block img-circle img-responsive">
-				</div><!--/col-->
-			</div><!--/row-->
-		</div><!--/panel-body-->
-		<form class="form-horizontal top-border" role="form">
-			<div class="form-group padding-top-ten-px">
-				<label class="col-md-3 control-label">Firstname:</label>
-				<div class="col-md-8">
-					<input class="form-control" type="text" value="{{nav.status.first_name}}">
+	<div class="container" style="margin: auto">
+		<div class=" panel-default">
+			<div class="panel-body" style="text-align:center">
+				<div class="row">
+					<div class=" col-sm-6" style="text-align:left">
+						<h2>{{nav.status.first_name}} {{nav.status.last_name}}</h2>
+						<p><strong>Following: </strong>
+							<span class="label label-info tags">389</span> 
+						</p>
+						<p><strong>Stats: </strong>
+							<span class="label label-primary"><i class="fa fa-user"></i> 24 Following</span>
+							<span class="label label-danger"><i class="fa fa-eye"></i> 245 Comments</span>
+							<span class="label label-success"><i class="fa fa-cog"></i> 43 Posts</span>
+						</p>
+					</div><!--/col-->          
+					<div class="col-xs-12 col-sm-4 text-center">
+						<img ng-src="{{nav.status.image}}" class="center-block img-circle img-responsive">
+						<button class="btn btn-info" multiple ng-model-instant onchange="angular.element(this).scope().setFiles(this)" type="file">Change your picture</button>
+					</div><!--/col-->
+				</div><!--/row-->
+			</div><!--/panel-body-->
+			<form class="form-horizontal top-border" role="form">
+				<div class="form-group padding-top-ten-px">
+					<label class="col-md-3 control-label">Firstname:</label>
+					<div class="col-md-3">
+						<input class="form-control" type="text" value="{{nav.status.first_name}}">
+					</div>
+				</div>
+				<div class="form-group padding-top-ten-px">
+					<label class="col-md-3 control-label">Lastname:</label>
+					<div class="col-md-3">
+						<input class="form-control" type="text" value="{{nav.status.last_name}}">
+					</div>
+				</div>
+				<div class="form-group padding-top-ten-px">
+					<label class="col-md-3 control-label">Age:</label>
+					<div class="col-md-1">
+						<input class="form-control" type="text" value="{{nav.status.age}}">
+					</div>
+				</div>
+				<div class="form-group padding-top-ten-px">
+					<label class="col-md-3 control-label">Gender:</label>
+					<div class="col-md-1">
+						<input class="form-control" type="text" value="{{nav.status.gender}}">
+					</div>
+				</div><div class="form-group padding-top-ten-px">
+				<label class="col-md-3 control-label">Email:</label>
+				<div class="col-md-6">
+					<input class="form-control" type="text" value="{{nav.status.email}}">
 				</div>
 			</div>
-			<div class="form-group padding-top-ten-px">
-				<label class="col-md-3 control-label">Lastname:</label>
-				<div class="col-md-8">
-					<input class="form-control" type="text" value="{{nav.status.last_name}}">
-				</div>
-			</div>
-			<div class="form-group padding-top-ten-px">
-				<label class="col-md-3 control-label">Age:</label>
-				<div class="col-md-8">
-					<input class="form-control" type="text" value="{{nav.status.age}}">
-				</div>
-			</div>
-			<div class="form-group padding-top-ten-px">
-				<label class="col-md-3 control-label">Gender:</label>
-				<div class="col-md-8">
-					<input class="form-control" type="text" value="{{nav.status.gender}}">
-				</div>
-			</div><div class="form-group padding-top-ten-px">
-			<label class="col-md-3 control-label">Email:</label>
-			<div class="col-md-8">
-				<input class="form-control" type="text" value="{{nav.status.email}}">
-			</div>
-		</div>
 
-		<div class="form-group">
-			<label class="col-md-3 control-label">Password:</label>
-			<div class="col-md-8">
-				<input class="form-control" type="password" value="11111122333">
+			<div class="form-group">
+				<label class="col-md-3 control-label">Password:</label>
+				<div class="col-md-4">
+					<input class="form-control" type="password" value="11111122333">
+				</div>
 			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-md-3 control-label">Password again:</label>
-			<div class="col-md-8">
-				<input class="form-control" type="password" value="11111122333">
+			<div class="form-group">
+				<label class="col-md-3 control-label">Password again:</label>
+				<div class="col-md-4">
+					<input class="form-control" type="password" value="11111122333">
+				</div>
 			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-md-3 control-label"></label>
-			<div class="col-md-8">
-				<input type="button" class="btn btn-primary" value="Save Changes">
-				<span></span>
-				<input type="reset" class="btn btn-default" value="Cancel">
+			<div class="form-group">
+				<label class="col-md-3 control-label"></label>
+				<div class="col-md-8">
+					<input type="button" class="btn btn-primary" value="Save Changes">
+					<span></span>
+					<input type="reset" class="btn btn-default" value="Cancel">
+				</div>
 			</div>
-		</div>
-	</form><!--/form-->        
-</div><!--/panel-->   
+		</form><!--/form-->        
+	</div><!--/panel-->   
 </div>
 </div>
