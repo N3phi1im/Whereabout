@@ -8,6 +8,7 @@
     // source for drag&drop: http://www.webappers.com/2011/09/28/drag-drop-file-upload-with-html5-javascript/
 		var vm = this; // vm is photoctrl on takephotopage
         vm.selectedLocation = {};
+				vm.title = {};
 
 
         var dropbox = document.getElementById("dropbox");
@@ -86,6 +87,7 @@
     	$http.post('/api/Photos/upload', fd, { transformRequest: angular.identity, headers: {'Content-Type': undefined}})
     	.success(function(data){
             HomeFactory.uploadLocation(vm.selectedLocation).then(function() {
+							data.title = vm.title;
                 HomeFactory.setPhoto(data).then(function(res){
                     HomeFactory.combinePhotoPlace(res, vm.selectedLocation).then(function(){
                         $state.go('Home');
