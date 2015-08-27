@@ -363,6 +363,7 @@ label {
 	padding-right: 8vw;
 	padding-left: 8vw;
 }
+#double li {width:50%;}
 
 #userIcon {
 	height: 40px;
@@ -1277,9 +1278,12 @@ input.cmn-toggle-yes-no:checked + label:after {
 	font-size: 53px
 }
 
-.resultIcon {
-	display: inline-block;
+.resultText {
 	text-align: left;
+	vertical-align: middle;
+}
+.resultIcon{
+	height:50px; float: left; vertical-align: middle; margin-right: 10px;
 }
 
 .googleIcon {
@@ -1291,6 +1295,8 @@ input.cmn-toggle-yes-no:checked + label:after {
 	text-align: left;
 	padding-left: 0.5vh;
 	padding-right: 0.5vh;
+	min-width: 353px;
+	height: 100px;
 }
 
 .nameTitle {

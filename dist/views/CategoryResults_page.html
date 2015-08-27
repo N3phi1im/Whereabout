@@ -5,14 +5,14 @@
 			<div id="map-canvas"></div>
 		</div>
 
-		<ul ng-repeat="res in vm.results" class="wellSize">
-			<h3 class="well pointer wellWidth">
-				<a><img ng-src={{res.icon}}></a>
-				<div class="resultIcon" ui-sref="Business({res: res.id})">
-					<a class="nameTitle">
-						{{res.name}}</a><br>
-						{{res.formatted_address}}</div>
-					</h3>
-				</ul>
+		<ul ng-repeat="res in vm.results" class="wellSize"  style="display:inline-block ">
+			<div class="well pointer wellWidth" ui-sref="Business({res: res.id})" >
+				<img ng-src={{res.icon}} class="resultIcon">
+				<div class="resultText">
+					<a class="nameTitle">{{res.name}}</a>
+					<p style="font-size:1.7em">{{res.formatted_address}}</p>
+				</div>
 			</div>
-		</div>
+		</ul>
+	</div>
+</div>
