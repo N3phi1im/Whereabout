@@ -14,9 +14,9 @@
     </div>
   </div>
   <!--...................................................................-->
-  <div ng-click="goToComment(vm.business)" ui-sref="Dummy" class="row-12 pinTop">
+  <div  class="row-12 pinTop">
     <div class="col-md-3 pinSide" ng-repeat="b in vm.business.photos">
-      <div class="pin">
+      <div ng-click="vm.goToComment(b)" class="pin">
         <div class="inner_wrap1">
           <img id="profile-img-circle" ng-src="{{b.user.image}}">
           <h5>{{b.user.first_name}}
