@@ -12,7 +12,7 @@
     o.combinePhotoComment = combinePhotoComment;
     o.getComment = getComment;
     o.populateHome = populateHome;
-
+    o.myPhotos = myPhotos;
     return o;
 
     function populateHome() {
@@ -44,7 +44,7 @@ function combinePhotoComment(comment) {
       });
       return q.promise;
     }
-    
+
 //-------------------------------------------------------------------------//
 function getComment() {
   var id = obj.id;
@@ -55,7 +55,20 @@ function getComment() {
   return q.promise;
 }
 //-------------------------------------------------------------------------//
+
+
+function myPhotos() {
+  var q = $q.defer();
+  $http.get('/api/Photos/mine', { headers: {
+    Authorization: "Bearer " + localStorage.getItem('token')}}).success(function(res) {
+      q.resolve(res);
+    });
+    return q.promise;
+}
+
+
+
+
+
 }
 })();
-
-
