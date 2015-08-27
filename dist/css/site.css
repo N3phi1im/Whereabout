@@ -1292,8 +1292,8 @@ input.cmn-toggle-yes-no:checked + label:after {
 	text-align: left;
 	padding-left: 0.5vh;
 	padding-right: 0.5vh;
-	min-width: 353px;
-	height: 100px;
+	
+	height: 85px;
 }
 
 .nameTitle {
