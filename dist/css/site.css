@@ -1539,3 +1539,7 @@ textarea {
 .widthContain {
 	width: 100%;
 }
+
+.overflowHidden {
+	text-overflow: ellipsis !important;
+}
