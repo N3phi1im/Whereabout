@@ -15,6 +15,7 @@
     "ejs": "^2.3.3",
     "express": "^4.13.3",
     "express-jwt": "^3.0.1",
+    "guid": "0.0.12",
     "jsonwebtoken": "^5.0.4",
     "mongoose": "^4.1.0",
     "multer": "^1.0.3",
