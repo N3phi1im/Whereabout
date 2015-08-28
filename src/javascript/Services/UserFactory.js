@@ -63,8 +63,11 @@
 
 		function update(user) {
 			var q = $q.defer();
-			$http.post('/api/Users/Update', user).success(function(res) {
-				
+			$http.post('/api/Users/Update', {user: user}, {
+				headers: {
+					Authorization: "Bearer " + localStorage.getItem('token')
+				}
+			}).success(function(res) {
 				setToken(res.token);
 				o.status.isLoggedIn = true;
 				q.resolve();

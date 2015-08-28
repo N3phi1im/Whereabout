@@ -10,28 +10,26 @@ var auth = jwt({
 });
 
 router.post('/Update', auth, function(req, res, next) {
-  var user = User.findById(req.payload.id);
-  console.log(req.payload.id);
-  console.log(user);
-  user.email = req.body.email;
-  user.first_name = req.body.first_name;
-  user.last_name = req.body.last_name;
-  user.id = req.body.id;
-  user.setPassword(req.body.password);
-  user.save(function(err, user) {
-    if (err) return next(err);
-    res.json({
-      token: user.generateJWT()
+  User.findById({"_id":req.payload.id}, function(err, user){
+    user.email= req.body.user.email;
+    user.first_name = req.body.user.first_name;
+    user.last_name = req.body.user.last_name;
+    user.age = req.body.user.age;
+    user.gender = req.body.user.gender;
+    user.setPassword(req.body.user.password);
+    user.save(function(err, user) {
+      if (err) return next(err);
+      res.json({
+        token: user.generateJWT()
+      });
     });
-  });
+  }); 
 });
 
 
 router.post('/Register', function(req, res, next) {
   var user = new User();
-  
   user.email = req.body.email;
-  
   user.first_name = req.body.first_name;
   user.last_name = req.body.last_name;
   user.setPassword(req.body.password);
