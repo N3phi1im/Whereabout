@@ -1541,5 +1541,12 @@ textarea {
 }
 
 .overflowHidden {
-	text-overflow: ellipsis !important;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space:nowrap;
 }
+
+
+
+
+
