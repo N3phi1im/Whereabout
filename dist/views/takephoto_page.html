@@ -1,28 +1,22 @@
 <div ng-controller="TakePhotoController as photoctrl">
-
   <!-- Search Results -->
   <div ng-controller="SearchController as vm">
     <div class="form-group">
       <div id="mapContainer">
         <div id="map-canvas"></div>
       </div>
-
       <ul class="wellSize col-md-7 " ng-repeat="res in vm.results">
         <div class="well  wellWidth" style="height: 100px">
           <img class="googleIcon resultIcon" ng-src={{res.icon}}>
-
           <div class="resultText pointer">
             <div class="resultIcon" ui-sref="Business({res: res.id})">
               <a class="nameTitle">{{res.name}}</a>
               <p style="font-size:1.7em">{{res.formatted_address}}</p>
-              <button class="btn btn-primary btn-s" data-target="#upload" data-toggle="modal" id="{{res.id}}" ng-click="photoctrl.selectedLocation = res;" style="float: right;margin-right: 5px;">
-                <i class="glyphicon glyphicon-camera goTocameraPhotoButton valign"></i>
-              </button>
             </div>
           </div>
-          
-          
-          
+          <button class="btn btn-primary btn-s" data-target="#upload" data-toggle="modal" id="{{res.id}}" ng-click="photoctrl.selectedLocation = res;" style="float: right;margin-right: 5px;">
+            <i class="glyphicon glyphicon-camera goTocameraPhotoButton valign"></i>
+          </button>
         </div>
       </ul>
     </div>
@@ -88,7 +82,7 @@
                         <!-- Photo Title -->
                         <div class="form-group loginForm">
                           <label>Photo Title</label>
-                          <input class="form-control inputBox input-lg" ng-model="photoctrl.photo.title" maxlength="50" placeholder="Photo title..." type="text">
+                          <input class="form-control inputBox input-lg" maxlength="50" ng-model="photoctrl.photo.title" placeholder="Photo title..." type="text">
                         </div>
                       </div>
                     </div>
@@ -102,3 +96,4 @@
             </div>
           </div>
         </div>
+        
