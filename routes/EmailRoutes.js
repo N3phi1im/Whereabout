@@ -20,18 +20,20 @@ router.post('/check', function(req, res, next) {
   User.findOne({
     'email': req.body.email
   }).exec(function(err, data) {
-    if(err) return next(err);
+    if (err) return next(err);
     res.send(data._id);
   });
 });
 
 router.post('/generate', function(req, res, next) {
-  User.findOne({
+  User.findById({
     '_id': req.body.id
-  }).exec(function(err, data){
+  }, function(err, user) {
     var guid = Guid.create();
-    thing = guid;
-    res.send(thing);
+    user.guid = guid;
+    user.save(function(err, data) {
+      res.send(guid);
+    });
   });
 });
 
