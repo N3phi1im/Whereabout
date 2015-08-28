@@ -1,4 +1,7 @@
 <div ng-controller="HomeController as hc">
+  <div class="" ng-hide="hc.info.follow.length">
+    Go follow stuff!
+  </div>
   <div class="row-12 pinTop">
     <div class="col-md-4 pinSide" ng-repeat='place in hc.info.follow'>
       <div class="pin">
@@ -37,4 +40,3 @@
       </div>
     </div>
   </div>
-

@@ -5,7 +5,7 @@ var jwt = require('jsonwebtoken');
 var UserSchema = new mongoose.Schema({
 	first_name: { type: String, 'default': null },
 	last_name: { type: String, 'default': null },
-	image: { type: String, 'default': null },
+	image: { type: String, 'default': 'http://res.cloudinary.com/whereabout/image/upload/v1440793240/placeholder_l0m8mw.png' },
 	age: { type: Number, 'default': null },
 	gender: { type: String, 'default': null },
 	email: {type: String, unique: true, lowercase: true},
@@ -13,6 +13,7 @@ var UserSchema = new mongoose.Schema({
 		id: String
 	},
 	follow: [{type: mongoose.Schema.Types.ObjectId, ref: 'Place'}],
+	resetGuid: {type: String, 'default': null},
 	passwordHash: String,
 	salt: String
 });
