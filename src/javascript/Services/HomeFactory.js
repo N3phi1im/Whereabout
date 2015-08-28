@@ -134,7 +134,6 @@ function removeFollow(id) {
       Authorization: "Bearer " + localStorage.getItem('token')
     }
   }).success(function(res) {
-    console.log(res);
     q.resolve(res);
   });
   return q.promise;

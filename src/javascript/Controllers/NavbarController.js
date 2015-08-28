@@ -39,12 +39,17 @@
       var request = {};
       UserFactory.checkEmail(email).then(function(res1) {
         UserFactory.generate(res1).then(function(res2) {
-          request.email = email;
-          request.id = res1;
-          request.guid = res2.guid;
-          UserFactory.resetPass(request).then(function(res3) {
-            
-          });
+          if (res2 === undefined) {
+            alert('No Account exists with that Email.');
+          }
+          else {
+            request.email = email;
+            request.id = res1;
+            request.guid = res2;
+            UserFactory.resetPass(request).then(function(res3) {
+
+            });
+          }
         });
       });
     }
