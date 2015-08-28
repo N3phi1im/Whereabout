@@ -41,9 +41,9 @@
                 res.place.photos[e].userLike = true;
               } else {
                 console.log("You do not like this. No.");
+                console.log(vm.business);
               }
             }
-            console.log(res.place.photos[e]);
           }
         }
       });
