@@ -43,7 +43,6 @@
                 console.log("You do not like this. No.");
               }
             }
-            console.log(res.place.photos[e]);
           }
         }
       });
@@ -63,10 +62,9 @@
 
     //-------------------------------------------------------------------------//
     vm.goToComment = function(photo) {
-      $state.go('Dummy');
       PhotoFactory.addPhoto(photo).then(function(){
         PhotoFactory.getComment().then(function(res){
-        }); 
+        });
       });
     };
 
@@ -74,7 +72,6 @@
     vm.createComment = function(comment) {
       PhotoFactory.combinePhotoComment(comment).then(function(res){
         PhotoFactory.getComment().then(function(res){
-          console.log(res);
           vm.comments = res;
 
         });
@@ -84,7 +81,6 @@
     vm.addLike = function(id) {
       location.reload();
       HomeFactory.sendLike(id).then(function(res) {
-        console.log(res);
       });
     };
 

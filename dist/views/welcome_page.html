@@ -1,287 +1,282 @@
 <html lang="en">
-<body id="page-top" >
 
-    <!-- header section -->
-    <section class="bg-primary" id="about">
-        <div class="navbar-right" id="paddingRight">
-         <ul class="nav navbar-nav">
-            <li id="signInButton">
-                <a data-toggle="modal" data-target="#login" class="btn btn-secondary btn-s">Sign in</a>
-            </li>
-        </ul>
-        <br>
-
-        <a data-toggle="modal" data-target="#register" id="registerLink">Register</a>
-
-
+<body id="page-top">
+  <!-- header section -->
+  <section class="bg-primary" id="about">
+    <div class="navbar-right" id="paddingRight">
+      <ul class="nav navbar-nav">
+        <li id="signInButton">
+          <a data-toggle="modal" data-target="#login" class="btn btn-secondary btn-s">Sign in</a>
+        </li>
+      </ul>
+      <br>
+      <a data-toggle="modal" data-target="#register" id="registerLink">Register</a>
     </div>
-
     <div class="container" id="welcomeText">
-        <h1 class="section-heading">Share your photo online!</h1>
-        <hr class="light">
-        <p class="text-faded">Whereabout is a photo album for places that allows the user to add their favorite photo of that place into the photo album.</p>
-        <a ui-sref="Discovery" class="btn btn-default btn-xl">Discover</a>
+      <h1 class="section-heading">Share your photo online!</h1>
+      <hr class="light">
+      <p class="text-faded">Whereabout is a photo album for places that allows the user to add their favorite photo of that place into the photo album.</p>
+      <a ui-sref="Discovery" class="btn btn-default btn-xl">Discover</a>
     </div>
-</section>
-
-<!-- login modal -->
-<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  </section>
+  <!-- login modal -->
+  <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <form ng-submit="nav.login()" class="login-inner-form" novalidate>
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Log in</h4>
-            </div>
-            <div class="modal-body">
-                <div class="hcenter">
-                    <div class="form-well vcenter">
-                        <div class="form-group loginForm">
-                            <label>E-mail</label>
-                            <input class="form-control inputBox input-lg" ng-model="nav.user.email" placeholder="E-mail...">
-                        </div>
-                        <div class="form-group loginForm">
-                            <label>Password</label>
-                            <input class="form-control inputBox input-lg" type="password" ng-model="nav.user.password" placeholder="password...">
-                            <a class="pointer" ui-sref="">Forgot Password?</a>
-                        </div>
-                    </div>
+      <div class="modal-content">
+        <form ng-submit="nav.login(); nav.user.email = ''; nav.user.password = ''" class="login-inner-form" novalidate>
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Log in</h4>
+          </div>
+          <div class="modal-body">
+            <div class="hcenter">
+              <div class="form-well vcenter">
+                <div class="form-group loginForm">
+                  <label>E-mail</label>
+                  <input class="form-control inputBox input-lg" ng-model="nav.user.email" placeholder="E-mail...">
                 </div>
-            </div>
-            <div class="modal-footer">
-                <a id="square" href="/api/Facebook/auth/facebook" class="btn btn-social btn-sm btn-facebook navbar-left">
-                    <i class="fa fa-facebook"></i> Sign in with facebook
-                </a>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success">Submit</button>
-            </div>
-        </form>
-    </div>
-</div>
-</div>
-
-
-<!-- Register modal -->
-<div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <form  ng-submit="nav.register()">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Register</h4>
-            </div>
-            <div class="modal-body">
-                <div class="hcenter">
-                    <div class="form-well vcenter">
-                        <div class="form-group">
-                          <label>First Name</label>
-                          <input class="form-control input-lg" type="text" placeholder="First Name..." ng-model="nav.user.first_name" required />
-                      </div>
-                      <div class="form-group">
-                          <label>Last Name</label>
-                          <input class="form-control input-lg" type="text" placeholder="Last Name..." ng-model="nav.user.last_name" required />
-                      </div>
-                      <div class="form-group">
-                          <label>E-mail</label>
-                          <input class="form-control input-lg" placeholder="E-mail..." ng-model="nav.user.email" type="email" required />
-                      </div>
-                      <div class="form-group">
-                          <label>Password</label>
-                          <input class="form-control input-lg" type="password" placeholder="Password..." ng-model="nav.user.password" required />
-                      </div>
-                      <div class="form-group">
-                          <label>Confirm Password</label>
-                          <input class="form-control input-lg" type="password" placeholder="Confirm Password..." ng-model="nav.user.cpassword" required />
-                      </div>
+                <div class="form-group loginForm">
+                  <label>Password</label>
+                  <input class="form-control inputBox input-lg" type="password" ng-model="nav.user.password" placeholder="Password...">
+                  <a class="pointer" ng-click="passwordCollapse = !passwordCollapse">Forgot Password?</a>
+                  <div class="" collapse="!passwordCollapse">
+                    <input class='form-control' type="email" ng-model="passwordReset" placeholder="E-mail...">
+                    <p>Send email to reset password.</p>
+                    <button type="button" class="btn btn-sm btn-success" ng-click='passwordCollapse = !passwordCollapse; nav.resetPass(passwordReset); passwordReset = ""'>Send</button>
                   </div>
+                </div>
               </div>
+            </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-success" ng-disabled="!nav.user.email || !nav.user.password || !nav.user.cpassword || (nav.user.password !== nav.user.cpassword)">Submit</button>
-        </div>
-    </form>
-</div>
-</div>
-</div>
-</section>
-
-<!-- learn more button -->
-<div class="hcenter" ng-controller="NavbarController as vm">
-    <a ng-click="vm.scrollTo('bottomPage')" id="learnMore"class="btn btn-default btn-xl">Learn More</a>
-
-</div>
-
-</section>
-
-
-<section id="services">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2 class="section-heading">How to use WhereAbout</h2>
-                <hr class="primary">
+            <a id="square" href="/api/Facebook/auth/facebook" class="btn btn-social btn-sm btn-facebook navbar-left">
+              <i class="fa fa-facebook"></i> Sign in with facebook
+            </a>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-success">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Register modal -->
+  <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form ng-submit="nav.register(); nav.user.first_name = ''; nav.user.last_name = ''; nav.user.email = ''; nav.user.password = ''; nav.user.cpassword = ''">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Register</h4>
+          </div>
+          <div class="modal-body">
+            <div class="hcenter">
+              <div class="form-well vcenter">
+                <div class="form-group">
+                  <label>First Name</label>
+                  <input class="form-control input-lg" type="text" placeholder="First Name..." ng-model="nav.user.first_name" required />
+                </div>
+                <div class="form-group">
+                  <label>Last Name</label>
+                  <input class="form-control input-lg" type="text" placeholder="Last Name..." ng-model="nav.user.last_name" required />
+                </div>
+                <div class="form-group">
+                  <label>E-mail</label>
+                  <input class="form-control input-lg" placeholder="E-mail..." ng-model="nav.user.email" type="email" required />
+                </div>
+                <div class="form-group">
+                  <label>Password</label>
+                  <input class="form-control input-lg" type="password" placeholder="Password..." ng-model="nav.user.password" required />
+                </div>
+                <div class="form-group">
+                  <label>Confirm Password</label>
+                  <input class="form-control input-lg" type="password" placeholder="Confirm Password..." ng-model="nav.user.cpassword" required />
+                </div>
+              </div>
             </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-success" ng-disabled="!nav.user.email || !nav.user.password || !nav.user.cpassword || (nav.user.password !== nav.user.cpassword)">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </section>
+  <!-- learn more button -->
+  <div class="hcenter" ng-controller="NavbarController as vm">
+    <a ng-click="vm.scrollTo('bottomPage')" id="learnMore" class="btn btn-default btn-xl">Learn More</a>
+  </div>
+  </section>
+  <section id="services">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading">How to use WhereAbout</h2>
+          <hr class="primary">
         </div>
+      </div>
     </div>
     <div class="container" id="bottomPage">
-        <div class="row">
-            <div class="col-lg-3 col-md-6 text-center">
-                <div class="service-box">
-                    <i class="fa fa-4x fa-sign-in wow bounceIn text-primary"></i>
-                    <h3>Sign into WhereAbout</h3>
-                    <p class="text-muted">Sign in online or with your smart phone.</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 text-center">
-                <div class="service-box">
-                    <i class="fa fa-4x fa-camera wow bounceIn text-primary" data-wow-delay=".1s"></i>
-                    <h3>Take your picture</h3>
-                    <p class="text-muted">Take a picture using your phone.</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 text-center">
-                <div class="service-box">
-                    <i class="fa fa-4x fa-picture-o wow bounceIn text-primary" data-wow-delay=".2s"></i>
-                    <h3>Share your picture</h3>
-                    <p class="text-muted">Upload your photo to your favorite location.</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 text-center">
-                <div class="service-box">
-                    <i class="fa fa-4x fa-comment wow bounceIn text-primary" data-wow-delay=".3s"></i>
-                    <h3>Make comments</h3>
-                    <p class="text-muted">Comment other photos.</p>
-                </div>
-            </div>
+      <div class="row">
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="service-box">
+            <i class="fa fa-4x fa-sign-in wow bounceIn text-primary"></i>
+            <h3>Sign into WhereAbout</h3>
+            <p class="text-muted">Sign in online or with your smart phone.</p>
+          </div>
         </div>
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="service-box">
+            <i class="fa fa-4x fa-camera wow bounceIn text-primary" data-wow-delay=".1s"></i>
+            <h3>Take your picture</h3>
+            <p class="text-muted">Take a picture using your phone.</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="service-box">
+            <i class="fa fa-4x fa-picture-o wow bounceIn text-primary" data-wow-delay=".2s"></i>
+            <h3>Share your picture</h3>
+            <p class="text-muted">Upload your photo to your favorite location.</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="service-box">
+            <i class="fa fa-4x fa-comment wow bounceIn text-primary" data-wow-delay=".3s"></i>
+            <h3>Make comments</h3>
+            <p class="text-muted">Comment other photos.</p>
+          </div>
+        </div>
+      </div>
     </div>
-</section>
-
-<section class="no-padding" id="portfolio">
+  </section>
+  <section class="no-padding" id="portfolio">
     <div class="container-fluid">
-        <div class="row no-gutter">
-            <div class="col-lg-4 col-sm-6">
-                <a href="#" class="portfolio-box">
-                    <img src="img/portfolio/7.jpg" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="portfolio-box-caption-content">
-                            <div class="project-category text-faded">
-                                Category
-                            </div>
-                            <div class="project-name">
-                                Project Name
-                            </div>
-                        </div>
-                    </div>
-                </a>
+      <div class="row no-gutter">
+        <div class="col-lg-4 col-sm-6">
+          <a href="#" class="portfolio-box">
+            <img src="img/portfolio/7.jpg" class="img-responsive" alt="">
+            <div class="portfolio-box-caption">
+              <div class="portfolio-box-caption-content">
+                <div class="project-category text-faded">
+                  Category
+                </div>
+                <div class="project-name">
+                  Project Name
+                </div>
+              </div>
             </div>
-            <div class="col-lg-4 col-sm-6">
-                <a href="#" class="portfolio-box">
-                    <img src="img/portfolio/8.jpg" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="portfolio-box-caption-content">
-                            <div class="project-category text-faded">
-                                Category
-                            </div>
-                            <div class="project-name">
-                                Project Name
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a href="#" class="portfolio-box">
-                    <img src="img/portfolio/9.jpg" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="portfolio-box-caption-content">
-                            <div class="project-category text-faded">
-                                Category
-                            </div>
-                            <div class="project-name">
-                                Project Name
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a href="#" class="portfolio-box">
-                    <img src="img/portfolio/10.jpg" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="portfolio-box-caption-content">
-                            <div class="project-category text-faded">
-                                Category
-                            </div>
-                            <div class="project-name">
-                                Project Name
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a href="#" class="portfolio-box">
-                    <img src="img/portfolio/11.jpg" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="portfolio-box-caption-content">
-                            <div class="project-category text-faded">
-                                Category
-                            </div>
-                            <div class="project-name">
-                                Project Name
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a href="#" class="portfolio-box">
-                    <img src="img/portfolio/12.jpg" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="portfolio-box-caption-content">
-                            <div class="project-category text-faded">
-                                Category
-                            </div>
-                            <div class="project-name">
-                                Project Name
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
+          </a>
         </div>
+        <div class="col-lg-4 col-sm-6">
+          <a href="#" class="portfolio-box">
+            <img src="img/portfolio/8.jpg" class="img-responsive" alt="">
+            <div class="portfolio-box-caption">
+              <div class="portfolio-box-caption-content">
+                <div class="project-category text-faded">
+                  Category
+                </div>
+                <div class="project-name">
+                  Project Name
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <a href="#" class="portfolio-box">
+            <img src="img/portfolio/9.jpg" class="img-responsive" alt="">
+            <div class="portfolio-box-caption">
+              <div class="portfolio-box-caption-content">
+                <div class="project-category text-faded">
+                  Category
+                </div>
+                <div class="project-name">
+                  Project Name
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <a href="#" class="portfolio-box">
+            <img src="img/portfolio/10.jpg" class="img-responsive" alt="">
+            <div class="portfolio-box-caption">
+              <div class="portfolio-box-caption-content">
+                <div class="project-category text-faded">
+                  Category
+                </div>
+                <div class="project-name">
+                  Project Name
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <a href="#" class="portfolio-box">
+            <img src="img/portfolio/11.jpg" class="img-responsive" alt="">
+            <div class="portfolio-box-caption">
+              <div class="portfolio-box-caption-content">
+                <div class="project-category text-faded">
+                  Category
+                </div>
+                <div class="project-name">
+                  Project Name
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <a href="#" class="portfolio-box">
+            <img src="img/portfolio/12.jpg" class="img-responsive" alt="">
+            <div class="portfolio-box-caption">
+              <div class="portfolio-box-caption-content">
+                <div class="project-category text-faded">
+                  Category
+                </div>
+                <div class="project-name">
+                  Project Name
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
     </div>
-</section>
-
-<aside class="bg-dark">
+  </section>
+  <aside class="bg-dark">
     <div class="container text-center">
-        <div class="call-to-action">
-            <h2>Get started and create an account</h2>
-            <a data-toggle="modal" data-target="#register" class="btn btn-default btn-xl wow tada">Register</a>
-        </div>
+      <div class="call-to-action">
+        <h2>Get started and create an account</h2>
+        <a data-toggle="modal" data-target="#register" class="btn btn-default btn-xl wow tada">Register</a>
+      </div>
     </div>
-</aside>
-
-<section id="contact">
+  </aside>
+  <section id="contact">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 text-center">
-                <h2 class="section-heading">Let's Get In Touch!</h2>
-                <hr class="primary">
-                <p>If you have any suggestions or feedback, please give us a call or send us an email.</p>
-            </div>
-            <div class="col-lg-4 col-lg-offset-2 text-center">
-                <i class="fa fa-phone fa-3x wow bounceIn"></i>
-                <p>123-456-6789</p>
-            </div>
-            <div class="col-lg-4 text-center">
-                <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-                <p><a href="mailto:your-email@your-domain.com">feedback@whereabout.com</a></p>
-            </div>
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 text-center">
+          <h2 class="section-heading">Let's Get In Touch!</h2>
+          <hr class="primary">
+          <p>If you have any suggestions or feedback, please give us a call or send us an email.</p>
         </div>
+        <div class="col-lg-4 col-lg-offset-2 text-center">
+          <i class="fa fa-phone fa-3x wow bounceIn"></i>
+          <p>123-456-6789</p>
+        </div>
+        <div class="col-lg-4 text-center">
+          <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+          <p><a href="mailto:your-email@your-domain.com">feedback@whereabout.com</a></p>
+        </div>
+      </div>
     </div>
-</section>
+  </section>
 </body>
+
 </html>
