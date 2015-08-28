@@ -21,6 +21,7 @@
 		o.register = register;
 		o.login = login;
 		o.logout = logout;
+		o.update = update;
 		return o;
 
 		function register(user) {
@@ -32,6 +33,18 @@
 			});
 			return q.promise;
 		}
+
+		function update(user) {
+			var q = $q.defer();
+			$http.post('/api/Users/Update', user).success(function(res) {
+				
+				setToken(res.token);
+				o.status.isLoggedIn = true;
+				q.resolve();
+			});
+			return q.promise;
+		}
+
 		function login(user) {
 			var u = { email: user.email.toLowerCase(), password: user.password};
 			var q = $q.defer();

@@ -12,9 +12,10 @@
 		vm.register = register;
 		vm.login = login;
 		vm.logout = logout;
+		vm.update = update;
 
 		function register() {
-			console.log(vm.user);
+
 			var u = vm.user;
 			if(!u.email || !u.password || !u.cpassword || (u.password !== u.cpassword)) {
 				return false;
@@ -23,6 +24,18 @@
 				$state.go('Home');
 			});
 		}
+
+		function update() {
+			var u = vm.user;
+			// if(!u.email || !u.password || !u.cpassword || (u.password !== u.cpassword)) {
+			// 	return false;
+			// }
+			console.log(u);
+			UserFactory.update(u).then(function() {
+				$state.go('Home');
+			});
+		}
+
 		function login() {
 			UserFactory.login(vm.user).then(function() {
 				$state.go('Home');
