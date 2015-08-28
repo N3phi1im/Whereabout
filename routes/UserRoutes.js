@@ -30,6 +30,10 @@ router.post('/Login', function(req, res, next) {
   })(req, res, next);
 });
 
+router.post('/change', function(req, res, next) {
+  
+});
+
 router.use(function(err, req, res, next) {
   res.status(500).send(err);
 });

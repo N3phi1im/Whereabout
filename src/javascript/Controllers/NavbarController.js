@@ -47,7 +47,6 @@
             request.id = res1;
             request.guid = res2;
             UserFactory.resetPass(request).then(function(res3) {
-
             });
           }
         });

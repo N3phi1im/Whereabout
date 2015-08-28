@@ -59,6 +59,14 @@
       return q.promise;
     }
 
+    function changePass(pass) {
+      var q = $q.defer();
+      $http.post('/api/Users/change', pass).success(function(res) {
+        q.resolve(res);
+      });
+      return q.promise;
+    }
+
     function register(user) {
       var q = $q.defer();
       $http.post('/api/Users/Register', user).success(function(res) {
