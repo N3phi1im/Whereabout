@@ -38,7 +38,6 @@ router.post('/like/:likeid', auth, function(req, res, next) {
       }
     }
   }, function(err, photo) {
-    console.log(photo);
     res.send(photo);
   });
 });

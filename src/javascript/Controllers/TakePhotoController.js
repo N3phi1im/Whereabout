@@ -79,7 +79,6 @@
     	// xhr.addEventListener("abort", uploadCanceled, false);
     	// xhr.open("POST", "/api/Photos/upload");
     	// xhr.onload = function(res) {
-    	// 	console.log(res);
     	// 	HomeFactory.setPhoto(res);
     	// };
     	// scope.progressVisible = true;

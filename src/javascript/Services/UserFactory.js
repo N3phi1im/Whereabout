@@ -43,17 +43,16 @@
 
     function generate(id) {
       var q = $q.defer();
-      $http.post('/api/Email/generate', {id:id})
-      .success(function(res) {
-        q.resolve();
-      });
+      $http.post('/api/Email/generate', {id:id}).success(function(res) {
+          q.resolve(res);
+        });
       return q.promise;
     }
 
-    function resetPass(email) {
+    function resetPass(request) {
       var q = $q.defer();
       $http.post('/api/Email/send', {
-        email: email
+        request: request
       }).success(function(res) {
         q.resolve(res);
       });

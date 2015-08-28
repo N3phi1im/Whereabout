@@ -28,17 +28,17 @@ router.post('/generate', function(req, res, next) {
     '_id': req.body.id
   }).exec(function(err, data){
     var guid = Guid.create();
-    data.guid = guid;
-    res.send(data);
+    thing = guid;
+    res.send(thing);
   });
 });
 
 router.post('/send', function(req, res, next) {
   transporter.sendMail({
     from: 'admin@whereabout.com',
-    to: req.body.email,
+    to: req.body.request.email,
     subject: 'Whereabout Password Reset',
-    html: '<p>Dear Customer,</p><p></p><p>You have requested to have your password reset for your account with Whereabout.</p><p></p><p>Please visit this url to reset your password. </p><p></p><p>Url Here</p><p></p><p>If you received this email in error, you can safely ignore this email.</p>'
+    html: '<p>Dear Customer,</p><p></p><p>You have requested to have your password reset for your account with Whereabout.</p><p></p><p>Please visit this url to reset your password. </p><p></p><p>' + req.body.request.guid + '</p><p></p><p>If you received this email in error, you can safely ignore this email.</p>'
   });
   res.end();
 });
