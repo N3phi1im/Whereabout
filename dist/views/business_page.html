@@ -1,8 +1,9 @@
 <div ng-controller="BusinessController as vm">
   <div class="bodyWidth">
-    <div style="height:400px; overflow-y:hidden; background:url('/img/palmTrees.jpg') no-repeat; background-size:cover;">
-      <div ><h3 id="box">{{vm.business.google.name}}</h3></div>
-      <div class="switch hcenter">
+    <div style="overflow-y:hidden; background:url('/img/palmTrees.jpg') no-repeat; background-size:cover;" class="box_height">
+      <div id="box" ><h3 style="font-family: 'Amatic SC', cursive;
+      }; display: inline-block;background-color: rgba(0,0,0, 0.5);padding: 41px;" class="business_name">{{vm.business.google.name}}</h3></div>
+      <div class="switch hcenter" style="margin-top: 5px;margin-bottom: 10px;">
         <input class="cmn-toggle cmn-toggle-yes-no" id="cmn-toggle-7" ng-click="vm.followBusiness(vm.business._id, vm.isFollowing)" ng-model='vm.isFollowing' type="checkbox">
         <label data-off="FOLLOW" data-on="FOLLOWING" for="cmn-toggle-7"></label>
         <button class="active pointer btn btn-default photoButtonCenter">
