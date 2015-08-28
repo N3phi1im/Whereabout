@@ -13,6 +13,7 @@
     vm.login = login;
     vm.logout = logout;
     vm.resetPass = resetPass;
+    vm.update = update;
 
     function register() {
       var u = vm.user;
@@ -20,6 +21,13 @@
         return false;
       }
       UserFactory.register(u).then(function() {
+        $state.go('Home');
+      });
+    }
+
+    function update() {
+      var u = vm.user;
+      UserFactory.update(u).then(function() {
         $state.go('Home');
       });
     }
@@ -41,17 +49,16 @@
         UserFactory.generate(res1).then(function(res2) {
           if (res2 === undefined) {
             alert('No Account exists with that Email.');
-          }
-          else {
+          } else {
             request.email = email;
             request.id = res1;
             request.guid = res2;
-            UserFactory.resetPass(request).then(function(res3) {
-            });
+            UserFactory.resetPass(request).then(function(res3) {});
           }
         });
       });
     }
+
 
     vm.scrollTo = function(id) {
       $location.hash(id);
