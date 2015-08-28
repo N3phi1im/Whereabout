@@ -22,7 +22,6 @@
     vm.populateHome = function() {
       PhotoFactory.populateHome().then(function(res) {
         vm.info = res;
-        console.log(vm.info);
       });
     };
 

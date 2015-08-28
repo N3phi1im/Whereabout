@@ -50,7 +50,7 @@
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search" ng-model="vm.searchContent">
                 <span class="input-group-btn">
-                  <button data-ng-click="vm.searchContent = ''; isCollapsed = !isCollapsed" ui-sref="TakePhoto({search: vm.searchContent })" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                  <button data-ng-click="isCollapsed = !isCollapsed" ui-sref="TakePhoto({search:vm.searchContent})" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
                 </span>
               </div>
             </div>
