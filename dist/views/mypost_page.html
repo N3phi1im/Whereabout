@@ -1,6 +1,6 @@
 <div ng-controller="MyPostController as vm">
 	<div class="row-12 pinTop">
-		<div class="col-xs-6 col-md-2 pinSide" ng-repeat='pic in vm.mine | filter: {deletedAt: null} | orderBy: '-createdAt''>
+		<div class="col-xs-6 col-md-2 pinSide" ng-repeat='pic in vm.mine | filter: {deletedAt: null} | orderBy: "-createdAt"'>
 			<div class="pin">
 				<div class="inner_wrap1">
 						<p style="font-size:1.5em; padding:0.25em 0;">{{pic.title}}</p>
