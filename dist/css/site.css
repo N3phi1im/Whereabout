@@ -1288,17 +1288,17 @@ input.cmn-toggle-yes-no:checked + label:after {
 }
 
 .wellWidth {
-	font-size: 1vh;
+	
 	text-align: left;
 	padding-left: 0.5vh;
 	padding-right: 0.5vh;
 	
-	height: 85px;
+	min-height: 70px;
 }
 
 .nameTitle {
 	color: black;
-	font-size: 2vh;
+	font-size: 1em;
 	margin-top: 10px;	
 }
 
