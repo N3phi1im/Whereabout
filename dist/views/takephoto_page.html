@@ -14,7 +14,7 @@
               <p style="font-size:1.7em">{{res.formatted_address}}</p>
             </div>
           </div>
-          <button class="btn btn-primary btn-s" data-target="#upload" data-toggle="modal" id="{{res.id}}" ng-click="photoctrl.selectedLocation = res;" style="float: right;margin-right: 5px;">
+          <button class="btn btn-primary btn-sm" data-target="#upload" data-toggle="modal" id="{{res.id}}" ng-click="photoctrl.selectedLocation = res;" style="float: right;margin-right: 5px;">
             <i class="glyphicon glyphicon-camera goTocameraPhotoButton valign"></i>
           </button>
         </div>
@@ -88,7 +88,7 @@
                     </div>
                   </div>
                   <div class="modal-footer">
-                    <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+                    <button class="btn btn-primary moveButton" data-dismiss="modal" type="button">Close</button>
                     <button class="btn btn-success submitPhoto" ng-click="uploadFile(); photoctrl.title = photoctrl.photo.title" ng-disabled='!photoctrl.photo.title' type="submit" value="Upload">Submit</button>
                   </div>
                 </form>
