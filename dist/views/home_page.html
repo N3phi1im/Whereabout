@@ -3,7 +3,7 @@
     <img class="img-responsive" style="width: 400px" src="http://res.cloudinary.com/whereabout/image/upload/v1440877684/nothingtosee_pu9mzs.jpg">
   </div>
   <div class="row-12 pinTop">
-    <div class="col-md-4 pinSide" ng-repeat='place in hc.info.follow'>
+    <div class="col-md-3 pinSide" ng-repeat='place in hc.info.follow'>
       <div class="pin">
         <div class="image" ng-controller="CarouselCtrl as vm" rn-carousel>
           <carousel class="carouselPart" interval="myInterval" no-wrap="vm.noWrapSlides">
@@ -14,7 +14,9 @@
                   {{slide.user.last_name}}</h5>
                   <p class="floatLeft">{{slide.title}}</p>
                 </div>
-                <img ng-src="{{slide.url}}" style="margin:auto;">
+                <div id="myphotos">
+                  <img  ng-src="{{slide.url}}" style="margin:auto;">
+                </div>
               </slide>
             </carousel>
           </div>

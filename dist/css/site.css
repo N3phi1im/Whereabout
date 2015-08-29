@@ -1086,7 +1086,7 @@ input.cmn-toggle-yes-no + label:after {
 	left: 0;
 	bottom: 0;
 	right: 0;
-	color: #fff;
+	color: #f05f40;
 	font-family: "Roboto Slab", serif;
 	font-size: 15px;
 	vertical-align: middle;
@@ -1094,6 +1094,7 @@ input.cmn-toggle-yes-no + label:after {
 	line-height: 40px;
 }
 input.cmn-toggle-yes-no + label:before {
+	
 	background-color: #dddddd;
 	content: attr(data-off);
 	transition: transform 0.5s;
@@ -1101,6 +1102,7 @@ input.cmn-toggle-yes-no + label:before {
 	border-radius: 10px;
 }
 input.cmn-toggle-yes-no + label:after {
+	color: white;
 	background-color: #f05f40;
 	content: attr(data-on);
 	transition: transform 0.5s;
@@ -1233,13 +1235,20 @@ input.cmn-toggle-yes-no:checked + label:after {
 #marginTopTwenty {
 	margin-top: 20px;
 	height: 255px;
-	
-
+	width: 100%;
+	overflow-y: hidden;
+}	
+#myphotos {
+	height: 255px;
+	width: 100%;
+	overflow: hidden;
 }
-.bussinessImage{
+
+#bussinessImage{
+	
+	height: 230px;
 	overflow-x: hidden;
-	height: 100%;
-	vertical-align: middle;
+	
 }
 
 .cameraPhotoButton {
