@@ -1,12 +1,10 @@
 <div ng-controller="TakePhotoController as photoctrl">
-
   <!-- Search Results -->
   <div ng-controller="SearchController as vm">
     <div class="form-group">
       <div id="mapContainer">
         <div id="map-canvas"></div>
       </div>
-
       <ul class="wellSize col-md-7 " ng-repeat="res in vm.results">
         <div class="well  wellWidth" style="height: 100px">
           <img class="googleIcon resultIcon" ng-src={{res.icon}}>
@@ -16,7 +14,7 @@
               <p style="font-size:1.7em">{{res.formatted_address}}</p>
             </div>
           </div>
-          <button class="btn btn-primary btn-s" data-target="#upload" data-toggle="modal" id="{{res.id}}" ng-click="photoctrl.selectedLocation = res;" style="float: right;margin-right: 5px;">
+          <button class="btn btn-primary btn-sm" data-target="#upload" data-toggle="modal" id="{{res.id}}" ng-click="photoctrl.selectedLocation = res;" style="float: right;margin-right: 5px;">
             <i class="glyphicon glyphicon-camera goTocameraPhotoButton valign"></i>
           </button>
         </div>
@@ -84,13 +82,13 @@
                         <!-- Photo Title -->
                         <div class="form-group loginForm">
                           <label>Photo Title</label>
-                          <input class="form-control inputBox input-lg" ng-model="photoctrl.photo.title" maxlength="50" placeholder="Photo title..." type="text">
+                          <input class="form-control inputBox input-lg" maxlength="50" ng-model="photoctrl.photo.title" placeholder="Photo title..." type="text">
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="modal-footer">
-                    <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+                    <button class="btn btn-primary moveButton" data-dismiss="modal" type="button">Close</button>
                     <button class="btn btn-success submitPhoto" ng-click="uploadFile(); photoctrl.title = photoctrl.photo.title" ng-disabled='!photoctrl.photo.title' type="submit" value="Upload">Submit</button>
                   </div>
                 </form>

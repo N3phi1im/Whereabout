@@ -48,7 +48,7 @@
 			templateUrl: '/views/CategoryResults_page.html'
 		})
 		.state('PasswordReset', {
-			url: '/PasswordReset',
+			url: '/PasswordReset?code&token',
 			templateUrl: '/views/passwordreset_page.html'
 		})
 		.state('Dummy', {
@@ -73,7 +73,7 @@
 			v: '3.17',
 			libraries: 'places,weather,geometry,visualization'
 		});
-		
+
 		$urlRouterProvider.otherwise('/');
 	}
 
@@ -84,7 +84,8 @@
 			if(!userInfo.isLoggedIn) {
 				var welcome = toState.name === "Welcome";
 				var token = toState.name === "Token";
-				if(welcome || token) {
+				var passwordReset = toState.name === "PasswordReset";
+				if(welcome || token || passwordReset) {
 					return;
 				}
 				e.preventDefault();

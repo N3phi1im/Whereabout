@@ -1546,7 +1546,31 @@ textarea {
 	white-space:nowrap;
 }
 
+.myImage {
+	margin-top: 25px;
+	margin-bottom: 25px;
+	max-width: 50px;
+	max-height: 50px;
+	border-radius: 50%;
+	margin-right: 5px;
+	margin-left: 5px;
+}
 
+.socialStatus {
+	font-size: 15px;
+}
 
+.moveButton {
+	margin-bottom: -18px
+}
 
+.modal-header {
+	min-height: 16.43px;
+	padding: 15px;
+	border-bottom: 1px solid #e5e5e5;
+	height: 80px;
+}
 
+.modalTitle  {
+	font-size: 35px
+}
