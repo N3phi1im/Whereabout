@@ -27,7 +27,7 @@
               </span>
               <span style="width:33.33%;text-align: right; margin-left: auto; margin-right: auto;">
                 <span >1 like</span>
-                <button class='like-toggle basic'>
+                <button ng-click="hc.addLike(hc.info)" class='like-toggle basic' ng-class="{'like-active': b.userLike}">
                   <i class="fa fa-heart"></i>
                 </button>
               </span>

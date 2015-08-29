@@ -51,9 +51,9 @@
 			url: '/PasswordReset',
 			templateUrl: '/views/passwordreset_page.html'
 		})
-		.state('Dummy', {
-			url: '/Dummy',
-			templateUrl: '/views/dummyModal.html'
+		.state('AddCommentModal', {
+			url: '/AddCommentModal',
+			templateUrl: '/views/AddCommentModal.html'
 		})
 		.state('DummyComment', {
 			url: '/DummyComment',

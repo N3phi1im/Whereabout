@@ -24,6 +24,7 @@ cloudinary.config({
 
 router.param('likeid', function(req, res, next, id) {
   req.likes_id = id;
+  console.log(id);
   next();
 });
 
@@ -38,7 +39,6 @@ router.post('/like/:likeid', auth, function(req, res, next) {
       }
     }
   }, function(err, photo) {
-    console.log(photo);
     res.send(photo);
   });
 });

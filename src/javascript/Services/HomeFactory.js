@@ -20,6 +20,7 @@
 //-------------------------------------------------------------------------//
 function sendLike(id) {
   var q = $q.defer();
+  console.log(id);
   $http.post('/api/Photos/like/'+id, {},
   {
     headers: {

@@ -1,7 +1,7 @@
 (function() {
   'use strict';
   angular.module('app')
-    .factory('PhotoFactory', PhotoFactory);
+  .factory('PhotoFactory', PhotoFactory);
 
   PhotoFactory.$inject = ['HomeFactory', 'Map', 'UserFactory', '$http', '$q'];
 
@@ -14,19 +14,21 @@
     o.getComment = getComment;
     o.populateHome = populateHome;
     o.myPhotos = myPhotos;
+    o.deleteCommentById = deleteCommentById;
     return o;
 
-    function populateHome() {
-      var q = $q.defer();
-      $http.post('/api/Places/populate', {}, {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem('token')
-        }
-      }).success(function(res) {
-        q.resolve(res);
-      });
-      return q.promise;
+//-------------------------------------------------------------------------//
+function populateHome() {
+  var q = $q.defer();
+  $http.post('/api/Places/populate', {}, {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem('token')
     }
+  }).success(function(res) {
+    q.resolve(res);
+  });
+  return q.promise;
+}
     //-------------------------------------------------------------------------//
     function addPhoto(photo) {
       var q = $q.defer();
@@ -45,11 +47,32 @@
           Authorization: "Bearer " + localStorage.getItem('token')
         }
       }).success(function(res) {
+        o.comments.push(res);
         q.resolve(res);
       });
       return q.promise;
     }
+    //-------------------------------------------------------------------------//
+    function deleteCommentById(photo, id) {
 
+      var q = $q.defer();
+      $http.post('/api/Comment/delete/' + id, {photo: photo},
+      {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem('token')
+        }
+      }).success(function(){
+        for(var i = 0; i < o.comments.length; i++) {
+          if(o.comments[i]._id === id){
+            o.comments.splice(i, 1);
+            break;
+          }
+        }
+        q.resolve();
+      });
+
+      return q.promise;
+    }
     //-------------------------------------------------------------------------//
     function getComment() {
       var id = obj.id;
@@ -59,7 +82,9 @@
           Authorization: "Bearer " + localStorage.getItem('token')
         }
       }).success(function(res) {
+        o.comments.length = 0;
         o.comments.push.apply(o.comments, res);
+        console.log(res);
         q.resolve(res);
       });
       return q.promise;
