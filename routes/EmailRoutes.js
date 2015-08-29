@@ -30,7 +30,7 @@ router.post('/generate', function(req, res, next) {
     '_id': req.body.id
   }, function(err, user) {
     var guid = Guid.create();
-    user.guid = guid;
+    user.resetGuid = guid;
     user.save(function(err, data) {
       res.send(guid);
     });

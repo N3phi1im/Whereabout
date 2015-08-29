@@ -14,7 +14,6 @@
 			pass.id = $state.params.token;
 			pass.guid = $state.params.code;
 			UserFactory.changePass(pass).then(function(res) {
-				console.log(res);
 				$state.go('Welcome');
 			});
 		}
