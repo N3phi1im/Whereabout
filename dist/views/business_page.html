@@ -26,14 +26,14 @@
             {{b.user.last_name}}</h5>
             <p>{{b.title}}</p>
           </div>
+
           <div id="marginTopTwenty">
-            <div>
-              <a data-toggle="modal" data-target="#comments"><img ng-click="vm.goToComment(b)" ng-src="{{b.url}}"></a>
-            </div>
+            <a data-toggle="modal" data-target="#comments"><img class="bussinessImage" ng-click="vm.goToComment(b)" ng-src="{{b.url}}"></a>
           </div>
+
           <div class="post-meta">
             <ul style="display:flex; justify-content:space-between; padding:5px 10px; margin:0">
-              <span style="width:33.33%;" class="overflowHidden">
+              <span style="width:60%;" class="overflowHidden">
                 <p style="font-size:1.5em; padding:0.25em 0;" >{{vm.business.google.name}}</p>
               </span>
               <span class="hcenter" style="width:33.33%;"></span>
@@ -41,7 +41,7 @@
               margin-left: auto;
               margin-right: auto;">
               <span >{{b.likes.length}}
-                likes</span>
+                likes </span>
                 <button ng-click="vm.addLike(b._id, vm.isLiked)" class='like-toggle basic' ng-class="{'like-active': b.userLike}" ng-model="vm.isLiked">
                   <i class="fa fa-heart"></i>
                 </button>

@@ -1232,6 +1232,14 @@ input.cmn-toggle-yes-no:checked + label:after {
 
 #marginTopTwenty {
 	margin-top: 20px;
+	height: 255px;
+	
+
+}
+.bussinessImage{
+	overflow-x: hidden;
+	height: 100%;
+	vertical-align: middle;
 }
 
 .cameraPhotoButton {
@@ -1278,9 +1286,12 @@ input.cmn-toggle-yes-no:checked + label:after {
 .resultText {
 	text-align: left;
 	vertical-align: middle;
+	width: 80%;
+
 }
 .resultIcon{
-	height:50px; float: left; vertical-align: middle; margin-right: 10px;
+	height:50px; float: left; text-align: left; margin-right: 10px;
+
 }
 
 .googleIcon {
@@ -1288,12 +1299,18 @@ input.cmn-toggle-yes-no:checked + label:after {
 }
 
 .wellWidth {
-	
+	position: relative;
 	text-align: left;
 	padding-left: 0.5vh;
 	padding-right: 0.5vh;
-	
 	min-height: 70px;
+}
+
+.cameraButton{
+	position: absolute;
+	right: 10px;
+	display: inline-block;
+	top: 20px;
 }
 
 .nameTitle {

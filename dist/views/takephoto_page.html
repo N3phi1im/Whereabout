@@ -5,16 +5,16 @@
       <div id="mapContainer">
         <div id="map-canvas"></div>
       </div>
-      <ul class="wellSize col-md-7 " ng-repeat="res in vm.results">
-        <div class="well  wellWidth" style="height: 100px">
-          <img class="googleIcon resultIcon" ng-src={{res.icon}}>
+      <ul class="wellSize col-md-6 " ng-repeat="res in vm.results">
+        <div class="well  wellWidth">
+          <img class="resultIcon" ng-src={{res.icon}}>
           <div class="resultText pointer">
-            <div class="resultIcon" ui-sref="Business({res: res.id})">
+            <div  ui-sref="Business({res: res.id})">
               <a class="nameTitle">{{res.name}}</a>
-              <p style="font-size:1.7em">{{res.formatted_address}}</p>
+              <p style="font-size:1em">{{res.formatted_address}}</p>
             </div>
           </div>
-          <button class="btn btn-primary btn-sm" data-target="#upload" data-toggle="modal" id="{{res.id}}" ng-click="photoctrl.selectedLocation = res;" style="float: right;margin-right: 5px;">
+          <button class="btn btn-primary btn-sm cameraButton" data-target="#upload" data-toggle="modal" id="{{res.id}}" ng-click="photoctrl.selectedLocation = res;">
             <i class="glyphicon glyphicon-camera goTocameraPhotoButton valign"></i>
           </button>
         </div>
