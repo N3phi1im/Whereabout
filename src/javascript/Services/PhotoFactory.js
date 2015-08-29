@@ -14,6 +14,7 @@
     o.getComment = getComment;
     o.populateHome = populateHome;
     o.myPhotos = myPhotos;
+    o.deletePhoto = deletePhoto;
     return o;
 
     function populateHome() {
@@ -68,6 +69,18 @@
     function myPhotos() {
       var q = $q.defer();
       $http.get('/api/Photos/mine', {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem('token')
+        }
+      }).success(function(res) {
+        q.resolve(res);
+      });
+      return q.promise;
+    }
+
+    function deletePhoto(id) {
+      var q = $q.defer();
+      $http.post('/api/Photos/delete', {id:id}, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem('token')
         }

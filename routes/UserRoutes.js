@@ -60,11 +60,11 @@ router.post('/change', function(req, res, next) {
   User.findById({
     '_id': req.body.id
   }, function(err, user) {
-    if (user.guid === req.body.guid) {
-      user.setPassword(req.body.confirmpassword);
-      user.save(function(err, user) {
+    if (user.resetGuid === req.body.guid) {
+      user.setPassword(req.body.password);
+      user.save(function(err, data) {
         if (err) return next(err);
-        res.send();
+        res.send(data);
       });
     }
   });
