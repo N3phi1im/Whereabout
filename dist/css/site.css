@@ -145,8 +145,9 @@ label {
 }
 
 .pin img {
-	width: 100%;
+	width: auto;
 	border-bottom: 1px solid #ccc;
+	overflow-x: hidden;
 
 }
 
@@ -1235,20 +1236,18 @@ input.cmn-toggle-yes-no:checked + label:after {
 #marginTopTwenty {
 	margin-top: 20px;
 	height: 255px;
-	width: 100%;
-	overflow-y: hidden;
-}	
-#myphotos {
-	height: 255px;
-	width: 100%;
-	overflow: hidden;
+	background-color: #FAFAFA;
+	text-align: center;
+	overflow-x: hidden;
 }
 
 #bussinessImage{
 	
 	height: 230px;
 	overflow-x: hidden;
-	
+	height: 100%;
+	width: auto;
+	vertical-align: middle;
 }
 
 .cameraPhotoButton {
