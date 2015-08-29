@@ -18,7 +18,7 @@
     Go Post pictures and stuff!
   </div>
   <div  class="row-12 pinTop">
-    <div class="col-md-3 pinSide" ng-repeat="b in vm.business.photos">
+    <div class="col-md-3 pinSide" ng-repeat="b in vm.business.photos | filter: {deletedAt: null} | orderBy: '-createdAt'">
       <div class="pin">
         <div class="inner_wrap1">
           <img id="profile-img-circle" ng-src="{{b.user.image}}">

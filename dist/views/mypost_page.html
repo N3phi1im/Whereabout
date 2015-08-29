@@ -1,6 +1,6 @@
 <div ng-controller="MyPostController as vm">
 	<div class="row-12 pinTop">
-		<div class="col-xs-6 col-md-2 pinSide" ng-repeat='pic in vm.mine'>
+		<div class="col-xs-6 col-md-2 pinSide" ng-repeat='pic in vm.mine | filter: {deletedAt: null} | orderBy: '-createdAt''>
 			<div class="pin">
 				<div class="inner_wrap1">
 						<p style="font-size:1.5em; padding:0.25em 0;">{{pic.title}}</p>
@@ -10,16 +10,24 @@
 							<img height="200" ng-src="{{pic.url}}">
 						</div>
 					</div>
+					<div collapse="!deleteCollapse">
+						<div class="">
+							<p>
+								Are you sure?
+							</p>
+							<button class="btn btn-xs btn-danger" ng-click='vm.deletePhoto(pic._id); deleteCollapse = !deleteCollapse'>Yes</button>
+						</div>
+					</div>
 					<div class="post-meta">
 						<ul style="display:flex; justify-content:space-between; padding:5px 10px; margin:0">
 							<span style="width:33.33%;">
 								<p>{{pic.createdAt | date:'short'}}</p>
 							</span>
-							<span class="hcenter" style="width:33.33%;"></span>
+							<span class="hcenter" style="width:33.33%;"><button class="btn btn-xs btn-danger" ng-click='deleteCollapse = !deleteCollapse'>Delete</button></span>
 							<span style="width:33.33%;text-align: right;
 							margin-left: auto;
 							margin-right: auto;">
-							<span >{{pic.likes.length}}
+							<span>{{pic.likes.length}}
 								likes</span>
 									<i class="fa fa-heart"></i>
 								</button>

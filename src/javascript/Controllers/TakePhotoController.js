@@ -89,7 +89,7 @@
 							data.title = vm.title;
                 HomeFactory.setPhoto(data).then(function(res){
                     HomeFactory.combinePhotoPlace(res, vm.selectedLocation).then(function(){
-                        $state.go('Home');
+											$state.go('Home');
                     });
                 });
             });
