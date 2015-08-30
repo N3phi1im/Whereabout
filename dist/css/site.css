@@ -1240,11 +1240,25 @@ input.cmn-toggle-yes-no:checked + label:after {
 	text-align: center;
 	overflow-x: hidden;
 }
-
+#myphotos{
+	height: 255px;
+	margin-top: 10px;
+	background-color: #FAFAFA;
+	text-align: center;
+	overflow-x: hidden;
+}
 #bussinessImage{
-	
+
 	height: 230px;
 	overflow-x: hidden;
+	height: 100%;
+	width: auto;
+	vertical-align: middle;
+}
+
+#homeImage{
+	height: 230px;
+	
 	height: 100%;
 	width: auto;
 	vertical-align: middle;
