@@ -15,7 +15,7 @@
     </div>
   </div>
   <div class="" ng-hide="vm.business.photos.length">
-    Go Post pictures and stuff!
+    Nothing posted yet!
   </div>
   <div  class="row-12 pinTop">
     <div class="col-md-3 pinSide" ng-repeat="b in vm.business.photos | filter: {deletedAt: null} | orderBy: '-createdAt'">
