@@ -106,8 +106,20 @@ router.get('/mine', auth, function(req, res) {
   .exec(function (err, data) {
     res.send(data);
   });
-
 });
+
+router.post('/delete', auth, function(req, res) {
+  Photo.findById({
+    '_id': req.body.id
+  }, function(err, photo) {
+      photo.deletedAt = new Date();
+      photo.save(function(err, data) {
+        if (err) return next(err);
+        res.send(data);
+      });
+  });
+});
+
 
 router.use(function(err, req, res, next) {
   res.status(500).send(err);

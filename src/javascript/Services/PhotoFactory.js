@@ -15,20 +15,21 @@
     o.populateHome = populateHome;
     o.myPhotos = myPhotos;
     o.deleteCommentById = deleteCommentById;
+    o.deletePhoto = deletePhoto;
     return o;
 
     
-function populateHome() {
-  var q = $q.defer();
-  $http.post('/api/Places/populate', {}, {
-    headers: {
-      Authorization: "Bearer " + localStorage.getItem('token')
+    function populateHome() {
+      var q = $q.defer();
+      $http.post('/api/Places/populate', {}, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem('token')
+        }
+      }).success(function(res) {
+        q.resolve(res);
+      });
+      return q.promise;
     }
-  }).success(function(res) {
-    q.resolve(res);
-  });
-  return q.promise;
-}
 
     function addPhoto(photo) {
       var q = $q.defer();
@@ -93,6 +94,18 @@ function populateHome() {
     function myPhotos() {
       var q = $q.defer();
       $http.get('/api/Photos/mine', {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem('token')
+        }
+      }).success(function(res) {
+        q.resolve(res);
+      });
+      return q.promise;
+    }
+
+    function deletePhoto(id) {
+      var q = $q.defer();
+      $http.post('/api/Photos/delete', {id:id}, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem('token')
         }

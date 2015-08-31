@@ -1,13 +1,14 @@
 <div ng-controller="HomeController as hc">
   <div class="" ng-hide="hc.info.follow.length">
-    Go follow stuff!
+    <img class="img-responsive" style="width: 400px" src="http://res.cloudinary.com/whereabout/image/upload/v1440877684/nothingtosee_pu9mzs.jpg">
   </div>
   <div class="row-12 pinTop">
     <div class="col-md-4 pinSide" ng-repeat='place in hc.info.follow track by $index' ng-init="followIndex = $index">
       <div class="pin">
         <div class="image" ng-controller="CarouselCtrl as vm" rn-carousel>
           <carousel class="carouselPart" interval="myInterval" no-wrap="vm.noWrapSlides">
-            <slide active="slide.active" ng-repeat="slide in place.photos track by $index" ng-init="photoIndex = $index">
+            <slide active="slide.active" ng-repeat="slide in place.photos track by $index | filter: {deletedAt: null} | orderBy: '-createdAt'" ng-init="photoIndex = $index">
+
               <div class="inner_wrap1">
                 <img id="profile-img-circle" ng-src='{{slide.user.image}}'>
                 <h5 class="floatLeft">{{slide.user.first_name}}
@@ -32,6 +33,7 @@
                       <i class="fa fa-camera photoButtonCarousel" id="camera"></i>
                     </a>
                   </span>
+
 
                 </button>
               </span>

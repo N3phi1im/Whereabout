@@ -1,6 +1,7 @@
 (function() {
 	'use strict';
-	angular.module('app', ['omr.directives','ui.router','uiGmapgoogle-maps','ui.bootstrap', 'ngAnimate', 'angular-carousel'])
+
+	angular.module('app', ['omr.directives','ui.router','uiGmapgoogle-maps','ui.bootstrap', 'ngAnimate', 'angular-carousel', 'duScroll'])
 	.config(Config)
 	.run(auth);
 

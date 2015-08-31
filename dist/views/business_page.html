@@ -15,10 +15,11 @@
     </div>
   </div>
   <div class="" ng-hide="vm.business.photos.length">
-    Go Post pictures and stuff!
+    Nothing posted yet!
   </div>
   <div  class="row-12 pinTop">
-    <div class="col-md-3 pinSide" ng-repeat="b in vm.business.photos track by $index">
+    <div class="col-md-3 pinSide" ng-repeat="b in vm.business.photos track by $index  | filter: {deletedAt: null} | orderBy: '-createdAt'">
+
       <div class="pin">
         <div class="inner_wrap1">
           <img id="profile-img-circle" ng-src="{{b.user.image}}">
@@ -26,16 +27,19 @@
             {{b.user.last_name}}</h5>
             <p>{{b.title}}</p>
           </div>
+
           <div id="marginTopTwenty">
             <div>
               <a data-toggle="modal" data-target="#comments">
                 <img ng-click="vm.openModal(vm.business.photos[$index])" ng-src="{{b.url}}">
               </a>
             </div>
+
           </div>
+
           <div class="post-meta">
             <ul style="display:flex; justify-content:space-between; padding:5px 10px; margin:0">
-              <span style="width:33.33%;" class="overflowHidden">
+              <span style="width:60%;" class="overflowHidden">
                 <p style="font-size:1.5em; padding:0.25em 0;" >{{vm.business.google.name}}</p>
               </span>
               <span class="hcenter" style="width:33.33%;"></span>
@@ -45,6 +49,7 @@
               <span >{{b.likes.length}}
                 likes</span>
                 <button ng-click="vm.addLike(b._id); vm.plusOne($index)" class='like-toggle basic' ng-class="{'like-active': b.userLike}">
+
                   <i class="fa fa-heart"></i>
                 </button>
               </span>

@@ -145,8 +145,9 @@ label {
 }
 
 .pin img {
-	width: 100%;
+	width: auto;
 	border-bottom: 1px solid #ccc;
+	overflow-x: hidden;
 
 }
 
@@ -1086,7 +1087,7 @@ input.cmn-toggle-yes-no + label:after {
 	left: 0;
 	bottom: 0;
 	right: 0;
-	color: #fff;
+	color: #f05f40;
 	font-family: "Roboto Slab", serif;
 	font-size: 15px;
 	vertical-align: middle;
@@ -1094,6 +1095,7 @@ input.cmn-toggle-yes-no + label:after {
 	line-height: 40px;
 }
 input.cmn-toggle-yes-no + label:before {
+	
 	background-color: #dddddd;
 	content: attr(data-off);
 	transition: transform 0.5s;
@@ -1101,6 +1103,7 @@ input.cmn-toggle-yes-no + label:before {
 	border-radius: 10px;
 }
 input.cmn-toggle-yes-no + label:after {
+	color: white;
 	background-color: #f05f40;
 	content: attr(data-on);
 	transition: transform 0.5s;
@@ -1232,6 +1235,33 @@ input.cmn-toggle-yes-no:checked + label:after {
 
 #marginTopTwenty {
 	margin-top: 20px;
+	height: 255px;
+	background-color: #FAFAFA;
+	text-align: center;
+	overflow-x: hidden;
+}
+#myphotos{
+	height: 255px;
+	margin-top: 10px;
+	background-color: #FAFAFA;
+	text-align: center;
+	overflow-x: hidden;
+}
+#bussinessImage{
+
+	height: 230px;
+	overflow-x: hidden;
+	height: 100%;
+	width: auto;
+	vertical-align: middle;
+}
+
+#homeImage{
+	height: 230px;
+	
+	height: 100%;
+	width: auto;
+	vertical-align: middle;
 }
 
 .cameraPhotoButton {
@@ -1278,9 +1308,12 @@ input.cmn-toggle-yes-no:checked + label:after {
 .resultText {
 	text-align: left;
 	vertical-align: middle;
+	width: 80%;
+
 }
 .resultIcon{
-	height:50px; float: left; vertical-align: middle; margin-right: 10px;
+	height:50px; float: left; text-align: left; margin-right: 10px;
+
 }
 
 .googleIcon {
@@ -1288,17 +1321,23 @@ input.cmn-toggle-yes-no:checked + label:after {
 }
 
 .wellWidth {
-	font-size: 1vh;
+	position: relative;
 	text-align: left;
 	padding-left: 0.5vh;
 	padding-right: 0.5vh;
-	
-	height: 85px;
+	min-height: 70px;
+}
+
+.cameraButton{
+	position: absolute;
+	right: 10px;
+	display: inline-block;
+	top: 20px;
 }
 
 .nameTitle {
 	color: black;
-	font-size: 2vh;
+	font-size: 1em;
 	margin-top: 10px;	
 }
 
@@ -1574,3 +1613,18 @@ textarea {
 .modalTitle  {
 	font-size: 35px
 }
+
+.customButton {
+	margin-right: 0px;
+	margin-top: -12px;
+}
+
+.floatRight {
+	margin-right: 0px;
+}
+
+#someSpace {
+	margin-left: 10px;
+	margin-left: 10px;
+}
+
