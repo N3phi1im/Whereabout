@@ -41,21 +41,27 @@
                   <label>Password</label>
                   <input class="form-control inputBox input-lg" type="password" ng-model="nav.user.password" placeholder="Password...">
                   <a class="pointer" ng-click="passwordCollapse = !passwordCollapse">Forgot Password?</a>
-                  <div class="" collapse="!passwordCollapse">
+                  <div id=" fullWidth" collapse="!passwordCollapse">
                     <input class='form-control' type="email" ng-model="passwordReset" placeholder="E-mail...">
                     <p>Send email to reset password.</p>
                     <button type="button" class="btn btn-sm btn-success" ng-click='passwordCollapse = !passwordCollapse; nav.resetPass(passwordReset); passwordReset = ""'>Send</button>
                   </div>
+
+
                 </div>
               </div>
             </div>
           </div>
           <div class="modal-footer">
-            <a id="square" href="/api/Facebook/auth/facebook" class="btn btn-social btn-sm btn-facebook navbar-left">
-              <i class="fa fa-facebook"></i> Sign in with facebook
-            </a>
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-success">Submit</button>
+            <div id="fullWidth">
+              <a id="square" href="/api/Facebook/auth/facebook" class="btn btn-social btn-sm btn-facebook navbar-left">
+                <i class="fa fa-facebook"></i> Sign in with facebook
+              </a>
+            </div>
+            <div id="closeSubmit">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-success">Submit</button>
+            </div>
           </div>
         </form>
       </div>

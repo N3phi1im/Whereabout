@@ -6,12 +6,12 @@
         <div id="map-canvas"></div>
       </div>
       <ul class="wellSize col-md-6 " ng-repeat="res in vm.results">
-        <div class="well  wellWidth">
+        <div class="well pointer wellWidth">
           <img class="resultIcon" ng-src={{res.icon}}>
           <div class="resultText pointer">
             <div  ui-sref="Business({res: res.id})">
-              <a class="nameTitle">{{res.name}}</a>
-              <p style="font-size:1em">{{res.formatted_address}}</p>
+              <a class="nameTitle pointer">{{res.name}}</a>
+              <address class="pointer" style="font-size:1em">{{res.formatted_address}}</address>
             </div>
           </div>
           <button class="btn btn-primary btn-sm cameraButton" data-target="#upload" data-toggle="modal" id="{{res.id}}" ng-click="photoctrl.selectedLocation = res;">
@@ -29,12 +29,12 @@
             <button aria-label="Close" class="close" data-dismiss="modal" type="button">
               <span aria-hidden="true">&times;</span>
             </button>
-            <h4 class="modal-title" id="myModalLabel">
-              <div class="resultIcon" ui-sref="Business({res: res.id})">
+            <h6 class="modal-title" id="myModalLabel">
+              <div ui-sref="Business({res: res.id})">
                 <a class="nameTitle">
                   {{photoctrl.selectedLocation.name}}</a><br>
                   {{photoctrl.selectedLocation.formatted_address}}</div>
-                </h4>
+                </h6>
               </div>
               <div class="modal-body">
                 <div class="hcenter">
