@@ -3,11 +3,11 @@
     <img class="img-responsive" style="width: 400px" src="http://res.cloudinary.com/whereabout/image/upload/v1440877684/nothingtosee_pu9mzs.jpg">
   </div>
   <div class="row-12 pinTop">
-    <div class="col-md-4 pinSide" ng-repeat='place in hc.info.follow track by $index' ng-init="followIndex = $index">
+    <div class="col-md-4 pinSide" ng-repeat='place in hc.info.follow track by place._id' ng-init="followIndex = place._id">
       <div class="pin">
         <div class="image" ng-controller="CarouselCtrl as vm" rn-carousel>
           <carousel class="carouselPart" interval="myInterval" no-wrap="vm.noWrapSlides">
-            <slide active="slide.active" ng-repeat="slide in place.photos | filter: {deletedAt: null} | orderBy: '-createdAt' track by $index" ng-init="photoIndex = $index">
+            <slide active="slide.active" ng-repeat="slide in place.photos | filter: {deletedAt: null} | orderBy: '-createdAt' track by slide._id" ng-init="photoIndex = slide._id">
 
               <div class="inner_wrap1">
                 <img id="profile-img-circle" ng-src='{{slide.user.image}}'>
@@ -16,8 +16,8 @@
                   <p class="floatLeft">{{slide.title}}</p>
                   <span style="width:33.33%;text-align: right; margin-left: auto; margin-right: auto;">
                     <span >{{slide.likes.length}} likes</span>
-                    <button ng-click="hc.addLike(slide); hc.plusOne(followIndex, photoIndex)" class='like-toggle basic' ng-class="{'like-active': slide.userLike}">
-                      <i class="fa fa-heart"></i>
+                    <button ng-click="hc.addLike(slide); hc.plusOne(followIndex, photoIndex)" class='like-toggle basic' ng-class="{'like-active': slide.userLike}" ng-disabled="slide.userLike === true">
+                      <i class="fa fa-heart"></i></button></span>
                     </div>
                     <img ng-src="{{slide.url}}" style="margin:auto;">
                   </slide>
@@ -33,13 +33,10 @@
                       <i class="fa fa-camera photoButtonCarousel" id="camera"></i>
                     </a>
                   </span>
-
-
-                </button>
-              </span>
-            </ul>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
+

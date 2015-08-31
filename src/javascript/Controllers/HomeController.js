@@ -59,7 +59,15 @@
     };
 
     vm.plusOne = function(follow, photo) {
-      vm.info.follow[follow].photos[photo].likes.length +=1;
+      for (var i = 0; i < vm.info.follow.length; i++) {
+        if(vm.info.follow[i]._id === follow) {
+          for (var x = 0; x < vm.info.follow[i].photos.length; x++) {
+            if(vm.info.follow[i].photos[x]._id === photo) {
+              vm.info.follow[i].photos[x].likes.length +=1;
+            }
+          }
+        }
+      }
     };
 
 

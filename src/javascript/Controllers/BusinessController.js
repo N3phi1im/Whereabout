@@ -12,6 +12,8 @@
     vm.status = UserFactory.status.id;
     var obj = {};
     vm.comments = PhotoFactory.comments;
+    vm.indlike = Number;
+
     //-------------------------------------------------------------------------//
     if ($stateParams.res) {
       HomeFactory.getBusinessInfo($stateParams.res).then(function(res) {
@@ -89,14 +91,35 @@ vm.createComment = function(comment) {
 
 //ADD A LIKE BY PHOTO ID AND GET LIKES BY THAT PHOTO ID
 vm.addLike = function(id) {
-  HomeFactory.sendLike(id).then(function(res) {
-    HomeFactory.getLikes(id).then(function(res){
+  HomeFactory.sendLike(id._id).then(function(res) {
+    HomeFactory.getLikes(id._id).then(function(res){
+      var index = res[0];
+      id.userLike = true;
+      for(var e = 0; e < index.likes.length; e += 1) {
+        index.likes[e].userLike = false;
+      }
+      for(var s = 0; s < index.likes.length; s += 1) {
+        if(index.likes[s]._id === vm.status) {
+          index.likes[s].userLike = true;
+          vm.indlike = s;
+        } else {
+        }
+      }
     });
   });
 };
 
+HomeFactory.getLikes();
+
+
+
 vm.plusOne = function(photo) {
-  vm.business.photos[photo].likes.length +=1;
+  for (var i = 0; i < vm.business.photos.length; i++) {
+    if(vm.business.photos[i]._id === photo) {
+      vm.business.photos[i].likes.length +=1;
+
+    }
+  }
 };
 
 vm.deleteComment = function(photo, commentId) {

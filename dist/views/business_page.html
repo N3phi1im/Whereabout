@@ -18,7 +18,7 @@
     Nothing posted yet!
   </div>
   <div  class="row-12 pinTop">
-    <div class="col-md-3 pinSide" ng-repeat="b in vm.business.photos | filter: {deletedAt: null} | orderBy: '-createdAt' track by $index ">
+    <div class="col-md-3 pinSide" ng-repeat="b in vm.business.photos | filter: {deletedAt: null} | orderBy: '-createdAt' track by b._id" ng-init="photo = b._id">
 
       <div class="pin">
         <div class="inner_wrap1">
@@ -48,7 +48,7 @@
               margin-right: auto;">
               <span >{{b.likes.length}}
                 likes</span>
-                <button ng-click="vm.addLike(b._id); vm.plusOne($index)" class='like-toggle basic' ng-class="{'like-active': b.userLike}">
+                <button ng-click="vm.addLike(b); vm.plusOne(photo)" class='like-toggle basic' ng-class="{'like-active': b.userLike}" ng-disabled="b.userLike === true">
 
                   <i class="fa fa-heart"></i>
                 </button>
