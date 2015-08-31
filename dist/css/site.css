@@ -1287,7 +1287,6 @@ input.cmn-toggle-yes-no:checked + label:after {
 }
 
 #homeImage{
-	height: 230px;
 	height: 100%;
 	width: auto;
 	vertical-align: middle;
