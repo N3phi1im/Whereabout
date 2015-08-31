@@ -51,7 +51,6 @@
             if(index.likes[s]._id === vm.status) {
               index.likes[s].userLike = true;
               vm.indlike = s;
-              console.log(s);
             } else {
             }
           }

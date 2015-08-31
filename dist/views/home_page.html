@@ -7,7 +7,7 @@
       <div class="pin">
         <div class="image" ng-controller="CarouselCtrl as vm" rn-carousel>
           <carousel class="carouselPart" interval="myInterval" no-wrap="vm.noWrapSlides">
-            <slide active="slide.active" ng-repeat="slide in place.photos track by $index | filter: {deletedAt: null} | orderBy: '-createdAt'" ng-init="photoIndex = $index">
+            <slide active="slide.active" ng-repeat="slide in place.photos | filter: {deletedAt: null} | orderBy: '-createdAt' track by $index" ng-init="photoIndex = $index">
 
               <div class="inner_wrap1">
                 <img id="profile-img-circle" ng-src='{{slide.user.image}}'>

@@ -18,7 +18,7 @@
     Nothing posted yet!
   </div>
   <div  class="row-12 pinTop">
-    <div class="col-md-3 pinSide" ng-repeat="b in vm.business.photos track by $index  | filter: {deletedAt: null} | orderBy: '-createdAt'">
+    <div class="col-md-3 pinSide" ng-repeat="b in vm.business.photos | filter: {deletedAt: null} | orderBy: '-createdAt' track by $index ">
 
       <div class="pin">
         <div class="inner_wrap1">

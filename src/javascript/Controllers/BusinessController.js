@@ -39,8 +39,6 @@
               if(res.place.photos[e].likes[s]._id === vm.status) {
                 res.place.photos[e].userLike = true;
               } else {
-                console.log("You do not like this. No.");
-                console.log(vm.business);
               }
             }
           }
@@ -63,7 +61,6 @@ vm.openModal = function (photo) {
         }
       });
       instance.result.then(function(c) {
-        console.log(c);
       });
     });
   });
@@ -84,7 +81,6 @@ vm.followBusiness = function(id, isFollowing) {
 vm.createComment = function(comment) {
   PhotoFactory.combinePhotoComment(comment).then(function(res){
     PhotoFactory.getComment().then(function(res){
-      console.log(res);
       vm.comments = res;
 
     });
