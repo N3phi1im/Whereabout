@@ -11,7 +11,6 @@
     vm.isFollowing = false;
     vm.status = UserFactory.status.id;
     var obj = {};
-    vm.comments = PhotoFactory.comments;
     vm.indlike = Number;
 
     //-------------------------------------------------------------------------//
@@ -78,17 +77,6 @@ vm.followBusiness = function(id, isFollowing) {
   }
 };
 
-
-//CREATE A COMMENT AND GET THAT COMMENT
-vm.createComment = function(comment) {
-  PhotoFactory.combinePhotoComment(comment).then(function(res){
-    PhotoFactory.getComment().then(function(res){
-      vm.comments = res;
-
-    });
-  });
-};
-
 //ADD A LIKE BY PHOTO ID AND GET LIKES BY THAT PHOTO ID
 vm.addLike = function(id) {
   HomeFactory.sendLike(id._id).then(function(res) {
@@ -122,10 +110,7 @@ vm.plusOne = function(photo) {
   }
 };
 
-vm.deleteComment = function(photo, commentId) {
-  PhotoFactory.deleteCommentById(photo, commentId).then(function(res){
-  });
-};
+
 
 
 
