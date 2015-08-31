@@ -19,7 +19,6 @@
   </div>
   <div  class="row-12 pinTop">
     <div class="col-md-3 pinSide" ng-repeat="b in vm.business.photos | filter: {deletedAt: null} | orderBy: '-createdAt' track by b._id" ng-init="photo = b._id">
-
       <div class="pin">
         <div class="inner_wrap1">
           <img id="profile-img-circle" ng-src="{{b.user.image}}">
@@ -29,21 +28,17 @@
           </div>
 
           <div id="marginTopTwenty">
-            <div>
-              <a data-toggle="modal" data-target="#comments">
-                <img ng-click="vm.openModal(vm.business.photos[$index])" ng-src="{{b.url}}">
-              </a>
-            </div>
-
+            <a data-toggle="modal" data-target="#comments"><img id="bussinessImage" ng-click="vm.goToComment(b)" ng-src="{{b.url}}"></a>
           </div>
+
 
           <div class="post-meta">
             <ul style="display:flex; justify-content:space-between; padding:5px 10px; margin:0">
               <span style="width:60%;" class="overflowHidden">
                 <p style="font-size:1.5em; padding:0.25em 0;" >{{vm.business.google.name}}</p>
               </span>
-              <span class="hcenter" style="width:33.33%;"></span>
-              <span style="width:33.33%;text-align: right;
+              <span class="hcenter" style="width:50%;"></span>
+              <span style="width:50%;text-align: right;
               margin-left: auto;
               margin-right: auto;">
               <span >{{b.likes.length}}
@@ -57,5 +52,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
+</div>

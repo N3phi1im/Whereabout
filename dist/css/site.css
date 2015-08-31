@@ -235,6 +235,16 @@ label {
 	cursor: pointer;
 }
 
+.likesButtonContainer {
+	width: 25%;
+	text-align: right;
+	margin-left: auto;
+	margin-right: auto;
+	float: right;
+	margin-top: -35px;
+	margin-right: 5px;
+}
+
 #mapContainer {
 	margin-top: 20px;
 }
@@ -255,6 +265,12 @@ label {
 #camera{
 	font-size: 30px;
 	margin-top: 0px;
+}
+
+#camera2 {
+	font-size: 30px;
+	margin-top: 0px;
+	float: right;
 }
 
 .photoButtonCenter {
@@ -1264,8 +1280,6 @@ input.cmn-toggle-yes-no:checked + label:after {
 	overflow-x: hidden;
 }
 #bussinessImage{
-
-	height: 230px;
 	overflow-x: hidden;
 	height: 100%;
 	width: auto;
@@ -1274,7 +1288,6 @@ input.cmn-toggle-yes-no:checked + label:after {
 
 #homeImage{
 	height: 230px;
-	
 	height: 100%;
 	width: auto;
 	vertical-align: middle;
