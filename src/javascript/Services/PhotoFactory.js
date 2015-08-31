@@ -17,7 +17,7 @@
     o.deleteCommentById = deleteCommentById;
     return o;
 
-//-------------------------------------------------------------------------//
+    
 function populateHome() {
   var q = $q.defer();
   $http.post('/api/Places/populate', {}, {
@@ -29,14 +29,14 @@ function populateHome() {
   });
   return q.promise;
 }
-    //-------------------------------------------------------------------------//
+
     function addPhoto(photo) {
       var q = $q.defer();
       obj.id = photo.id;
       q.resolve();
       return q.promise;
     }
-    //-------------------------------------------------------------------------//
+    
     function combinePhotoComment(comment) {
       var id = obj.id;
       var q = $q.defer();
@@ -52,7 +52,7 @@ function populateHome() {
       });
       return q.promise;
     }
-    //-------------------------------------------------------------------------//
+    
     function deleteCommentById(photo, id) {
 
       var q = $q.defer();
@@ -73,7 +73,7 @@ function populateHome() {
 
       return q.promise;
     }
-    //-------------------------------------------------------------------------//
+    
     function getComment() {
       var id = obj.id;
       var q = $q.defer();
@@ -89,7 +89,7 @@ function populateHome() {
       });
       return q.promise;
     }
-    //-------------------------------------------------------------------------//
+    
     function myPhotos() {
       var q = $q.defer();
       $http.get('/api/Photos/mine', {

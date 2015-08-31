@@ -9,7 +9,6 @@
     var vm = this;
     vm.business = {};
     vm.isFollowing = false;
-    vm.isLiked = false;
     vm.status = UserFactory.status.id;
     var obj = {};
     vm.comments = PhotoFactory.comments;
@@ -49,11 +48,10 @@
       });
 }
 
-
+//OPEN ADD COMMENT MODAL
 vm.openModal = function (photo) {
   PhotoFactory.addPhoto(photo).then(function(){
     PhotoFactory.getComment().then(function(res){
-      console.log(res);
       var instance = $modal.open({
         controller: 'AddCommentController',
         controllerAs: "vm",
@@ -72,7 +70,7 @@ vm.openModal = function (photo) {
 };
 
 
-
+//CHANGE THE 'FOLLOW/FOLLOWING' STATE
 vm.followBusiness = function(id, isFollowing) {
   if (vm.isFollowing) {
     HomeFactory.followById(id, isFollowing).then(function(res) {});
@@ -82,17 +80,35 @@ vm.followBusiness = function(id, isFollowing) {
 };
 
 
+//CREATE A COMMENT AND GET THAT COMMENT
+vm.createComment = function(comment) {
+  PhotoFactory.combinePhotoComment(comment).then(function(res){
+    PhotoFactory.getComment().then(function(res){
+      console.log(res);
+      vm.comments = res;
+
+    });
+  });
+};
+
+//ADD A LIKE BY PHOTO ID AND GET LIKES BY THAT PHOTO ID
+vm.addLike = function(id) {
+  HomeFactory.sendLike(id).then(function(res) {
+    HomeFactory.getLikes(id).then(function(res){
+    });
+  });
+};
+
+vm.plusOne = function(photo) {
+  vm.business.photos[photo].likes.length +=1;
+};
 
 vm.deleteComment = function(photo, commentId) {
   PhotoFactory.deleteCommentById(photo, commentId).then(function(res){
   });
 };
 
-vm.addLike = function(id) {
-  location.reload();
-  HomeFactory.sendLike(id).then(function(res) {
-  });
-};
+
 
 
 }

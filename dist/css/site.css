@@ -283,6 +283,15 @@ label {
 
 }
 
+@media screen and (min-width: 780px) {
+	.box_height {
+		padding: 60px 0;
+	}
+	.business_name {
+		font-size:2em;
+	}
+}
+
 .bodyWidth2 {
 	width: 85%;
 	margin-left: auto;
@@ -290,20 +299,11 @@ label {
 }
 
 #box {
-	width: 300px;
-	height: 10vh;
-	min-height: 10vh;
-	background-color: rgba(51, 51, 51, 1);
-	opacity: 0.7;
-	margin-top:5vh;
-	margin-bottom: 5vh;
-	margin-left: auto;
-	margin-right: auto;
-	top: 0px;
+	min-width:300px;
+	height: auto;
 	color: white;
-	font-size: 5vh;
+	font-size: 2.5em;
 	font-family: 'Amatic SC', cursive;
-	padding: 10px;
 	border-radius: 0px 0px 2px 0px;
 	border-color: white;
 	text-align: center;
@@ -1541,5 +1541,36 @@ textarea {
 }
 
 .overflowHidden {
-	text-overflow: ellipsis !important;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space:nowrap;
+}
+
+.myImage {
+	margin-top: 25px;
+	margin-bottom: 25px;
+	max-width: 50px;
+	max-height: 50px;
+	border-radius: 50%;
+	margin-right: 5px;
+	margin-left: 5px;
+}
+
+.socialStatus {
+	font-size: 15px;
+}
+
+.moveButton {
+	margin-bottom: -18px
+}
+
+.modal-header {
+	min-height: 16.43px;
+	padding: 15px;
+	border-bottom: 1px solid #e5e5e5;
+	height: 80px;
+}
+
+.modalTitle  {
+	font-size: 35px
 }

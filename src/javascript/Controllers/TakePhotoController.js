@@ -8,7 +8,7 @@
     // source for drag&drop: http://www.webappers.com/2011/09/28/drag-drop-file-upload-with-html5-javascript/
 		var vm = this; // vm is photoctrl on takephotopage
         vm.selectedLocation = {};
-				vm.title = {};
+        vm.title = {};
 
 
         var dropbox = document.getElementById("dropbox");
@@ -55,9 +55,16 @@
     }, false);
     //============== DRAG & DROP =============
 
-    scope.setFiles = function(element) {
-    	scope.$apply(function(scope) {
-    		console.log('files:', element.files);
+    vm.capture = function(media) {
+        HomeFactory.postBase64(media).then(function(res){
+            console.log(res);
+        });
+        };
+    
+
+scope.setFiles = function(element) {
+ scope.$apply(function(scope) {
+  console.log('files:', element.files);
       // Turn the FileList object into an Array
       scope.files = [];
       for (var i = 0; i < element.files.length; i++) {
@@ -65,13 +72,13 @@
       }
       scope.progressVisible = false;
   });
-    };
+};
 
-    scope.uploadFile = function() {
-    	var fd = new FormData();
-    	for (var i in scope.files) {
-    		fd.append("uploadedFile", scope.files[i]);
-    	}
+scope.uploadFile = function() {
+ var fd = new FormData();
+ for (var i in scope.files) {
+  fd.append("uploadedFile", scope.files[i]);
+}
     	// var xhr = new XMLHttpRequest();
     	// xhr.upload.addEventListener("progress", uploadProgress, false);
     	// xhr.addEventListener("load", uploadComplete, false);
@@ -79,7 +86,6 @@
     	// xhr.addEventListener("abort", uploadCanceled, false);
     	// xhr.open("POST", "/api/Photos/upload");
     	// xhr.onload = function(res) {
-    	// 	console.log(res);
     	// 	HomeFactory.setPhoto(res);
     	// };
     	// scope.progressVisible = true;
@@ -87,16 +93,15 @@
     	$http.post('/api/Photos/upload', fd, { transformRequest: angular.identity, headers: {'Content-Type': undefined}})
     	.success(function(data){
             HomeFactory.uploadLocation(vm.selectedLocation).then(function() {
-							data.title = vm.title;
-                HomeFactory.setPhoto(data).then(function(res){
-                    HomeFactory.combinePhotoPlace(res, vm.selectedLocation).then(function(){
-                        $state.go('Home');
-                    });
+               data.title = vm.title;
+               HomeFactory.setPhoto(data).then(function(res){
+                HomeFactory.combinePhotoPlace(res, vm.selectedLocation).then(function(){
+                    $state.go('Home');
                 });
             });
+           });
         })
     	.error(function(data){
-    		console.log('a-aron');
     	});
     };
 

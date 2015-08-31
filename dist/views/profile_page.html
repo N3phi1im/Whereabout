@@ -5,70 +5,73 @@
 				<div class="row">
 					<div class=" col-sm-6" style="text-align:left">
 						<h2>{{nav.status.first_name}} {{nav.status.last_name}}</h2>
-						<p><strong>Following: </strong>
+						<p><strong>Likes: </strong>
 							<span class="label label-info tags">389</span> 
 						</p>
-						<p><strong>Stats: </strong>
+						<p class="socialStatus"><strong>Stats: </strong>
 							<span class="label label-primary"><i class="fa fa-user"></i> 24 Following</span>
 							<span class="label label-danger"><i class="fa fa-eye"></i> 245 Comments</span>
 							<span class="label label-success"><i class="fa fa-cog"></i> 43 Posts</span>
 						</p>
 					</div><!--/col-->          
 					<div class="col-xs-12 col-sm-4 text-center">
-						<img ng-src="{{nav.status.image}}" class="center-block img-circle img-responsive">
+						<img class="myImage" ng-src="{{nav.status.image}}" class="center-block img-circle img-responsive">
 						<button class="btn btn-info" multiple ng-model-instant onchange="angular.element(this).scope().setFiles(this)" type="file">Change your picture</button>
 					</div><!--/col-->
 				</div><!--/row-->
 			</div><!--/panel-body-->
-			<form class="form-horizontal top-border" role="form">
+			<form class="form-horizontal top-border" role="form" ng-submit="nav.update()">
 				<div class="form-group padding-top-ten-px">
 					<label class="col-md-3 control-label">Firstname:</label>
 					<div class="col-md-3">
-						<input class="form-control" type="text" value="{{nav.status.first_name}}">
+						<input class="form-control" type="text" ng-model="nav.user.first_name">
 					</div>
 				</div>
 				<div class="form-group padding-top-ten-px">
 					<label class="col-md-3 control-label">Lastname:</label>
 					<div class="col-md-3">
-						<input class="form-control" type="text" value="{{nav.status.last_name}}">
+						<input class="form-control" type="text"  ng-model="nav.user.last_name">
 					</div>
 				</div>
 				<div class="form-group padding-top-ten-px">
 					<label class="col-md-3 control-label">Age:</label>
 					<div class="col-md-1">
-						<input class="form-control" type="text" value="{{nav.status.age}}">
+						<input class="form-control" type="text"  ng-model="nav.user.age">
 					</div>
 				</div>
 				<div class="form-group padding-top-ten-px">
 					<label class="col-md-3 control-label">Gender:</label>
-					<div class="col-md-1">
-						<input class="form-control" type="text" value="{{nav.status.gender}}">
+					<div class="col-md-2">
+						<select class="form-control" type="text" ng-model="nav.user.gender" id="select">
+							<option>Male</option>
+							<option>Female</option>
+						</select>
 					</div>
 				</div><div class="form-group padding-top-ten-px">
 				<label class="col-md-3 control-label">Email:</label>
-				<div class="col-md-6">
-					<input class="form-control" type="text" value="{{nav.status.email}}">
+				<div class="col-md-3">
+					<input class="form-control" type="email" ng-model="nav.user.email">
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label class="col-md-3 control-label">Password:</label>
-				<div class="col-md-4">
-					<input class="form-control" type="password" value="11111122333">
+				<div class="col-md-3">
+					<input class="form-control" type="password" ng-model="nav.user.password">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-md-3 control-label">Password again:</label>
-				<div class="col-md-4">
-					<input class="form-control" type="password" value="11111122333">
+				<div class="col-md-3">
+					<input class="form-control" type="password" ng-model="nav.user.cpassword">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-md-3 control-label"></label>
 				<div class="col-md-8">
-					<input type="button" class="btn btn-primary" value="Save Changes">
+					<button type="submit" class="btn btn-primary" >Save Changes</button>
 					<span></span>
-					<input type="reset" class="btn btn-default" value="Cancel">
+					<button type="reset" class="btn btn-default" >Cancel</button>
 				</div>
 			</div>
 		</form><!--/form-->        

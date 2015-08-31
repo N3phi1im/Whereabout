@@ -1,34 +1,38 @@
 <div ng-controller="HomeController as hc">
+  <div class="" ng-hide="hc.info.follow.length">
+    Go follow stuff!
+  </div>
   <div class="row-12 pinTop">
-    <div class="col-md-4 pinSide" ng-repeat='place in hc.info.follow'>
+    <div class="col-md-4 pinSide" ng-repeat='place in hc.info.follow track by $index' ng-init="followIndex = $index">
       <div class="pin">
         <div class="image" ng-controller="CarouselCtrl as vm" rn-carousel>
           <carousel class="carouselPart" interval="myInterval" no-wrap="vm.noWrapSlides">
-            <slide active="slide.active" ng-repeat="slide in place.photos">
+            <slide active="slide.active" ng-repeat="slide in place.photos track by $index" ng-init="photoIndex = $index">
               <div class="inner_wrap1">
                 <img id="profile-img-circle" ng-src='{{slide.user.image}}'>
                 <h5 class="floatLeft">{{slide.user.first_name}}
                   {{slide.user.last_name}}</h5>
                   <p class="floatLeft">{{slide.title}}</p>
-                </div>
-                <img ng-src="{{slide.url}}" style="margin:auto;">
-              </slide>
-            </carousel>
-          </div>
-          <div class="post-meta">
-            <ul style="display:flex; justify-content:space-between; padding:5px 10px; margin:0">
-              <span style="max-width:33.33%;">
-                <p style="font-size:1.5em; padding:0.25em 0;"><a class="overflowHidden" ui-sref="Business({res: place.google.id})">{{place.google.name}}</a></p>
-              </span>
-              <span class="hcenter" style="width:33.33%;">
-                <a ui-sref="TakePhoto({search: place.google.name})">
-                  <i class="fa fa-camera photoButtonCarousel" id="camera"></i>
-                </a>
-              </span>
-              <span style="width:33.33%;text-align: right; margin-left: auto; margin-right: auto;">
-                <span >1 like</span>
-                <button ng-click="hc.addLike(hc.info)" class='like-toggle basic' ng-class="{'like-active': b.userLike}">
-                  <i class="fa fa-heart"></i>
+                  <span style="width:33.33%;text-align: right; margin-left: auto; margin-right: auto;">
+                    <span >{{slide.likes.length}} likes</span>
+                    <button ng-click="hc.addLike(slide); hc.plusOne(followIndex, photoIndex)" class='like-toggle basic' ng-class="{'like-active': slide.userLike}">
+                      <i class="fa fa-heart"></i>
+                    </div>
+                    <img ng-src="{{slide.url}}" style="margin:auto;">
+                  </slide>
+                </carousel>
+              </div>
+              <div class="post-meta">
+                <ul style="display:flex; justify-content:space-between; padding:5px 10px; margin:0">
+                  <span class="overflowHidden" style="width:33.33%">
+                    <p class="overflowHidden" style="font-size:1.5em; padding:0.25em 0;"><a class="overflowHidden" ui-sref="Business({res: place.google.id})">{{place.google.name}}</a></p>
+                  </span>
+                  <span class="hcenter" style="width:33.33%;">
+                    <a ui-sref="TakePhoto({search: place.google.name})">
+                      <i class="fa fa-camera photoButtonCarousel" id="camera"></i>
+                    </a>
+                  </span>
+
                 </button>
               </span>
             </ul>
@@ -37,4 +41,3 @@
       </div>
     </div>
   </div>
-

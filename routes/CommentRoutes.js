@@ -33,23 +33,25 @@ router.post('/add/:photoId', auth, function(req, res, next){
 );
 
 
-router.get('/get/:photoId', auth, function(req, res, next){
-	Photo.find({
-		'id': req.body.id,
-	}).populate('comments')
-	.exec(function(err, data){
-		res.send(data);
-	});
-});
-async.forEach(comments, function(photo, cb) {
-	photo.populate('user', 'first_name last_name image', function(err, result) {
-		cb();
-	});
-}, function(err) {
-	if (err) return next(err);
-	req.par = place;
-	next();
-});
+// router.get('/get/:photoId', auth, function(req, res, next){
+// 	Photo.findOne({
+// 		'id': req.body.id,
+// 	}).populate('comments')
+// 	.exec(function(err, data){
+// 		async.forEach(data.comments, function(comment, cb) {
+// 			console.log(cb);
+// 			comment.populate('user', 'first_name last_name image', function(err, result) {
+// 				cb();
+// 			});
+// 		},
+// 		function(err) {
+// 			console.log(result);
+// 			if (err) return next(err);
+// 			res.send(data);
+
+// 		});
+// 	});
+// });
 
 
 

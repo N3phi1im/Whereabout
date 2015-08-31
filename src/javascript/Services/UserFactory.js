@@ -24,6 +24,8 @@
     o.resetPass = resetPass;
     o.checkEmail = checkEmail;
     o.generate = generate;
+    o.update = update;
+    o.changePass = changePass;
     return o;
 
     function checkEmail(email) {
@@ -43,18 +45,39 @@
 
     function generate(id) {
       var q = $q.defer();
-      $http.post('/api/Email/generate', {id:id})
-      .success(function(res) {
-        q.resolve();
+      $http.post('/api/Email/generate', {id:id}).success(function(res) {
+          q.resolve(res);
+        });
+      return q.promise;
+    }
+
+    function resetPass(request) {
+      var q = $q.defer();
+      $http.post('/api/Email/send', {
+        request: request
+      }).success(function(res) {
+        q.resolve(res);
       });
       return q.promise;
     }
 
-    function resetPass(email) {
+    function update(user) {
+			var q = $q.defer();
+			$http.post('/api/Users/Update', {user: user}, {
+				headers: {
+					Authorization: "Bearer " + localStorage.getItem('token')
+				}
+			}).success(function(res) {
+				setToken(res.token);
+				o.status.isLoggedIn = true;
+				q.resolve();
+			});
+			return q.promise;
+		}
+
+    function changePass(pass) {
       var q = $q.defer();
-      $http.post('/api/Email/send', {
-        email: email
-      }).success(function(res) {
+      $http.post('/api/Users/change', pass).success(function(res) {
         q.resolve(res);
       });
       return q.promise;
@@ -125,4 +148,5 @@
       return JSON.parse(atob(getToken().split('.')[1])).id;
     }
   }
+
 })();

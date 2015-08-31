@@ -2,34 +2,34 @@
        	<div class="modal-dialog" role="document">
        		<div class="modal-content">
        			<form class="login-inner-form" ng-submit="uploadFile()" novalidate value="Upload"> -->
-       				<div class="modal-header">
-       					<span style="width:33.33%;">
-       						<p style="font-size:1.5em; padding:0.25em 0;">{{vm.business.google.name}}</p>
-       					</span>
-       					<p>{{b.title}}</p>
-       				</div>
-       				<div class="modal-body hcenter">
+                                   <div class="modal-header">
+                                          <span style="width:33.33%;">
+                                                 <p style="font-size:1.5em; padding:0.25em 0;">{{vm.business.google.name}}</p>
+                                          </span>
+                                          <p>{{b.title}}</p>
+                                   </div>
+                                   <div class="modal-body hcenter">
 
-       					<img id="commentImage" class="well" ng-src="{{vm.photo.url}}">
+                                          <img id="commentImage" class="well" ng-src="{{vm.photo.url}}">
 
-       					<div>
-       						<div class="widthContain row" >
-       							<div class="col-sm-12">
-       								<img id="comment-img-circle" ng-src="{{b.user.image}}">
-       								<a class='well triangle-right right'>{{a.body}} </a><br><span><button ng-click="vm.deleteComment(vm.comments, a._id)">X</button>
-       							</div>
-       						</div>
-       					</div>
-       					<div>
-       						<label class="commentsLabel footer">Comments...</label>
-       						<textarea class="form-control" ng-model="vm.commentBody" type="text"></textarea>
-       						<div>
-       							<div class="modal-footer">
-       								<button class="btn btn-primary" data-dismiss="modal" type="button">Close</button>
-       								<button id="commentSubmitButton" ng-click='vm.createComment(vm.commentBody)' class='btn btn-info'>Submit</button>
-       							</div>
-       						</div>
-       					</div>
+                                          <div>
+                                                 <div class="widthContain row" >
+                                                        <div class="col-sm-12">
+                                                               <img id="comment-img-circle" ng-src="{{b.user.image}}">
+                                                               <a class='well triangle-right right'>{{a.body}} </a><br><span><button ng-click="vm.deleteComment(vm.comments, a._id)">X</button>
+                                                        </div>
+                                                 </div>
+                                          </div>
+                                          <div>
+                                                 <label class="commentsLabel footer">Comments...</label>
+                                                 <textarea class="form-control" ng-model="vm.commentBody" type="text"></textarea>
+                                                 <div>
+                                                        <div class="modal-footer">
+                                                               <button class="btn btn-primary" data-dismiss="modal" type="button">Close</button>
+                                                               <button id="commentSubmitButton" ng-click='vm.createComment(vm.commentBody)' class='btn btn-info'>Submit</button>
+                                                        </div>
+                                                 </div>
+                                          </div>
        			<!-- 	</form>
        			</div>
        		</div>
