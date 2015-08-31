@@ -19,7 +19,7 @@ h5 {
 	color: #fff;
 	background-image: url('../img/city-cars-traffic-lights.jpg');
 	background-size: cover;
-	min-height: 85vh;
+	min-height: 100vh;
 	background-repeat: none;
 	padding: 10px;
 }
