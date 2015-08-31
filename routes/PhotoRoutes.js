@@ -43,6 +43,26 @@ router.post('/like/:likeid', auth, function(req, res, next) {
 });
 
 
+router.get('/getlikes/:likeid', function(req, res, next){
+  Photo.find({
+    "_id": req.likes_id
+  })
+  .populate('likes')
+  .exec(function(err, photo){
+    res.send(photo);
+  });
+});
+
+// router.post('/base64', upload.single('uploadedFile'), function(req, res) {
+//   cloudinary.uploader.upload(req.file.path, function(result) {
+//     res.send(result);
+//   });
+// });
+
+router.post('/base64', function(req, res){
+  console.log(req.body);
+});
+
 
 
 router.post('/upload', upload.single('uploadedFile'), function(req, res) {

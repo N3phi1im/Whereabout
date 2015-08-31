@@ -7,7 +7,7 @@
         <input class="cmn-toggle cmn-toggle-yes-no" id="cmn-toggle-7" ng-click="vm.followBusiness(vm.business._id, vm.isFollowing)" ng-model='vm.isFollowing' type="checkbox">
         <label data-off="FOLLOW" data-on="FOLLOWING" for="cmn-toggle-7"></label>
         <button class="active pointer btn btn-default photoButtonCenter">
-          <a ui-sref="TakePhoto({search: vm.business.google.name})">
+          <a ui-sref="TakePhoto({search: vm.business.name})">
             <i class="fa fa-camera" id="camera"></i>
           </a>
         </button>
@@ -18,7 +18,8 @@
     Nothing posted yet!
   </div>
   <div  class="row-12 pinTop">
-    <div class="col-md-3 pinSide" ng-repeat="b in vm.business.photos | filter: {deletedAt: null} | orderBy: '-createdAt'">
+    <div class="col-md-3 pinSide" ng-repeat="b in vm.business.photos | filter: {deletedAt: null} | orderBy: '-createdAt' track by b._id" ng-init="photo = b._id">
+
       <div class="pin">
         <div class="inner_wrap1">
           <img id="profile-img-circle" ng-src="{{b.user.image}}">
@@ -28,7 +29,12 @@
           </div>
 
           <div id="marginTopTwenty">
-            <a data-toggle="modal" data-target="#comments"><img id="bussinessImage" ng-click="vm.goToComment(b)" ng-src="{{b.url}}"></a>
+            <div>
+              <a data-toggle="modal" data-target="#comments">
+                <img ng-click="vm.openModal(vm.business.photos[$index])" ng-src="{{b.url}}">
+              </a>
+            </div>
+
           </div>
 
           <div class="post-meta">
@@ -41,51 +47,13 @@
               margin-left: auto;
               margin-right: auto;">
               <span >{{b.likes.length}}
-                likes </span>
-                <button ng-click="vm.addLike(b._id, vm.isLiked)" class='like-toggle basic' ng-class="{'like-active': b.userLike}" ng-model="vm.isLiked">
+                likes</span>
+                <button ng-click="vm.addLike(b); vm.plusOne(photo)" class='like-toggle basic' ng-class="{'like-active': b.userLike}" ng-disabled="b.userLike === true">
+
                   <i class="fa fa-heart"></i>
                 </button>
               </span>
             </ul>
-          </div>
-        </div>
-
-        <div aria-labelledby="myModalLabel" class="modal fade" id="comments" role="dialog" tabindex="-1">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <form class="login-inner-form" ng-submit="uploadFile()" novalidate value="Upload">
-                <div class="modal-header">
-                 <span style="width:33.33%;">
-                   <p style="font-size:1.5em; padding:0.25em 0;">{{vm.business.google.name}}</p>
-                 </span>
-                 <p>{{b.title}}</p>
-               </div>
-               <div class="modal-body hcenter">
-
-                <img id="commentImage" class="well" ng-src="{{b.url}}">
-
-                <div ng-controller="BusinessController as vm">
-                  <div>
-                    <div class="widthContain row"  ng-repeat="c in vm.comments">
-                      <div class="col-sm-12" ng-repeat="a in c.comments">
-                        <img id="comment-img-circle" ng-src="{{b.user.image}}">
-                        <a class='well triangle-right right'>{{a.body}} </a><br>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <label class="commentsLabel footer">Comments...</label>
-                  <textarea class="form-control" ng-model="vm.commentBody" type="text"></textarea>
-                  <div>
-                    <div class="modal-footer">
-                      <button class="btn btn-primary" data-dismiss="modal" type="button">Close</button>
-                      <button id="commentSubmitButton" ng-click='vm.createComment(vm.commentBody)' class='btn btn-info'>Submit</button>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
           </div>
         </div>
       </div>

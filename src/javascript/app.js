@@ -1,6 +1,7 @@
 (function() {
 	'use strict';
-	angular.module('app', ['ui.router','uiGmapgoogle-maps','ui.bootstrap', 'ngAnimate', 'angular-carousel', 'duScroll'])
+
+	angular.module('app', ['omr.directives','ui.router','uiGmapgoogle-maps','ui.bootstrap', 'ngAnimate', 'angular-carousel', 'duScroll'])
 	.config(Config)
 	.run(auth);
 
@@ -51,9 +52,9 @@
 			url: '/PasswordReset?code&token',
 			templateUrl: '/views/passwordreset_page.html'
 		})
-		.state('Dummy', {
-			url: '/Dummy',
-			templateUrl: '/views/dummyModal.html'
+		.state('AddCommentModal', {
+			url: '/AddCommentModal',
+			templateUrl: '/views/AddCommentModal.html'
 		})
 		.state('DummyComment', {
 			url: '/DummyComment',
