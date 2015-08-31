@@ -8,7 +8,7 @@
     // source for drag&drop: http://www.webappers.com/2011/09/28/drag-drop-file-upload-with-html5-javascript/
 		var vm = this; // vm is photoctrl on takephotopage
         vm.selectedLocation = {};
-				vm.title = {};
+        vm.title = {};
 
 
         var dropbox = document.getElementById("dropbox");
@@ -55,9 +55,16 @@
     }, false);
     //============== DRAG & DROP =============
 
+    vm.capture = function(media) {
+        HomeFactory.postBase64(media).then(function(res){
+            console.log(res);
+        });
+    };
+    
+
     scope.setFiles = function(element) {
-    	scope.$apply(function(scope) {
-    		console.log('files:', element.files);
+     scope.$apply(function(scope) {
+      console.log('files:', element.files);
       // Turn the FileList object into an Array
       scope.files = [];
       for (var i = 0; i < element.files.length; i++) {
@@ -65,13 +72,13 @@
       }
       scope.progressVisible = false;
   });
-    };
+ };
 
-    scope.uploadFile = function() {
-    	var fd = new FormData();
-    	for (var i in scope.files) {
-    		fd.append("uploadedFile", scope.files[i]);
-    	}
+ scope.uploadFile = function() {
+     var fd = new FormData();
+     for (var i in scope.files) {
+      fd.append("uploadedFile", scope.files[i]);
+  }
     	// var xhr = new XMLHttpRequest();
     	// xhr.upload.addEventListener("progress", uploadProgress, false);
     	// xhr.addEventListener("load", uploadComplete, false);
@@ -86,43 +93,43 @@
     	$http.post('/api/Photos/upload', fd, { transformRequest: angular.identity, headers: {'Content-Type': undefined}})
     	.success(function(data){
             HomeFactory.uploadLocation(vm.selectedLocation).then(function() {
-							data.title = vm.title;
+                data.title = vm.title;
                 HomeFactory.setPhoto(data).then(function(res){
                     HomeFactory.combinePhotoPlace(res, vm.selectedLocation).then(function(){
-											$state.go('Home');
-                    });
+                       $state.go('Home');
+                   });
                 });
             });
         })
-    	.error(function(data){
-    		console.log('a-aron');
-    	});
+
+        .error(function(data){
+        });
     };
 
     function uploadProgress(evt) {
-    	scope.$apply(function(){
-    		if (evt.lengthComputable) {
-    			scope.progress = Math.round(evt.loaded * 100 / evt.total);
-    		} else {
-    			scope.progress = 'unable to compute';
-    		}
-    	});
-    }
+     scope.$apply(function(){
+      if (evt.lengthComputable) {
+       scope.progress = Math.round(evt.loaded * 100 / evt.total);
+   } else {
+       scope.progress = 'unable to compute';
+   }
+});
+ }
 
-    function uploadComplete(evt) {
-    	/* This event is raised when the server send back a response */
-    	console.log(evt.target.responseText);
-    }
+ function uploadComplete(evt) {
+     /* This event is raised when the server send back a response */
+     console.log(evt.target.responseText);
+ }
 
-    function uploadFailed(evt) {
-    	console.log("There was an error attempting to upload the file.");
-    }
+ function uploadFailed(evt) {
+     console.log("There was an error attempting to upload the file.");
+ }
 
-    function uploadCanceled(evt) {
-    	scope.$apply(function(){
-    		scope.progressVisible = false;
-    	});
-    	console.log("The upload has been canceled by the user or the browser dropped the connection.");
-    }
+ function uploadCanceled(evt) {
+     scope.$apply(function(){
+      scope.progressVisible = false;
+  });
+     console.log("The upload has been canceled by the user or the browser dropped the connection.");
+ }
 }
 })();
