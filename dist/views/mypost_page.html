@@ -4,11 +4,13 @@
 			<div class="pin">
 				<div class="inner_wrap1">
 					<p style="font-size:1.5em; padding:0.25em 0;">{{pic.title}}</p>
+					<span class="customButton" style="width:20%;">
+						<input class="cmn-toggle cmn-toggle-yes-no floatRight" id="{{pic.url}}" ng-click='deleteCollapse = !deleteCollapse' type="checkbox">
+						<label data-off="Delete" data-on="Cancel" for="{{pic.url}}"></label>
+					</span>
 				</div>
 				<div id="marginTopTwenty">
-					<div>
-						<img height="200" ng-src="{{pic.url}}">
-					</div>
+					<img id="bussinessImage" ng-src="{{pic.url}}">
 				</div>
 				<div collapse="!deleteCollapse">
 					<div>
@@ -25,11 +27,11 @@
 						<span style="width:80%;">
 							<p>{{pic.createdAt | date:'short'}}</p>
 						</span>
-						<span class="customButton" style="width:20%;">
+<!-- 						<span class="customButton" style="width:20%;">
 							<input class="cmn-toggle cmn-toggle-yes-no floatRight" id="{{pic.url}}" ng-click='deleteCollapse = !deleteCollapse' type="checkbox">
 							<label data-off="Delete" data-on="Cancel" for="{{pic.url}}"></label>
 						</span>
-
+					-->
 
 
 								<!-- <span style="width:33.33%;text-align: right;
