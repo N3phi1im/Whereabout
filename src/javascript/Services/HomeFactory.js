@@ -31,7 +31,7 @@
       });
       return q.promise;
     }
-    
+
     //ADD LIKE TO DATABASE 'LIKES' ARRAY BY PHOTO ID
     function sendLike(id) {
       var q = $q.defer();

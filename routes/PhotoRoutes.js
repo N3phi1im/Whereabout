@@ -53,17 +53,11 @@ router.get('/getlikes/:likeid', function(req, res, next){
   });
 });
 
-// router.post('/base64', upload.single('uploadedFile'), function(req, res) {
-//   cloudinary.uploader.upload(req.file.path, function(result) {
-//     res.send(result);
-//   });
-// });
-
-router.post('/base64', function(req, res){
-  console.log(req.body);
+router.post('/base64', function(req, res) {
+  cloudinary.uploader.upload(req.body.data, function(result) {
+    res.send(result);
+  });
 });
-
-
 
 router.post('/upload', upload.single('uploadedFile'), function(req, res) {
   cloudinary.uploader.upload(req.file.path, function(result) {
