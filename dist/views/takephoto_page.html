@@ -39,27 +39,33 @@
               <div class="modal-body">
                 <div class="hcenter">
                   <div class="form-well vcenter">
+
+
                     <!-- Take Photo Button -->
                     <div class="form-group loginForm">
-                      <button ng-click="vm.capture(vm.media)" class=" btn btn-primary cameraPhotoButton">
+<!--                       <button ng-click="vm.capture(vm.media)" class=" btn btn-primary cameraPhotoButton">
                         <i class="glyphicon glyphicon-camera"></i>
-                      </button>
+                      </button> -->
                       <ng-camera ng-hide="photoctrl.media"
                       type="photo"
                       enabled="true"
-                      width="1"
-                      height="1"
-                      countdown="1"
+                      width="320"
+                      height="240"
+                      countdown="0"
                       ng-model="photoctrl.media"
+                      capture="callback(media)"
                       capture-message="Go!">
                     </ng-camera>
                     <div ng-show="photoctrl.media">
-                      <p>{{photoctrl.media}}</p>
-                      <!-- <img src="{{photoctrl.media}}" alt=""> -->
-                      <button class="btn btn-success" ng-click="photoctrl.capture(photoctrl.media)">Upload</button>
-                      <button ng-click="photoctrl.media = false">Cancel</button>
+                      <img src="{{photoctrl.media}}" alt="">
+                      <div id="cancelUploadButton">
+                        <button class="btn btn-success" ng-click="photoctrl.capture(photoctrl.media)">Upload</button>
+                        <button class="btn btn-danger" ng-click="photoctrl.media = false">Cancel</button>
+                      </div>
                     </div>
                   </div>
+
+
                   <!-- Upload Photo Button -->
                   <div class="form-group loginForm">
                     <div id="uploadPhoto">
