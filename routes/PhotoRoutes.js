@@ -9,17 +9,27 @@ var multer = require('multer');
 var upload = multer({
   dest: 'uploads/'
 });
+var config;
+if(process.env.NODE_ENV === 'production') {
+  config = {};
+  config.CLOUDINARY_KEY = process.env.CLOUDINARY_KEY;
+  config.CLOUDINARY_SECRET = process.env.CLOUDINARY_SECRET;
+  config.JWT_SECRET = process.env.JWT_SECRET;
+}else {
+  config = require('../config.js');
+}
+
 var jwt = require('express-jwt');
 var auth = jwt({
-  secret: "Secret_bananas",
+  secret: config.JWT_SECRET,
   userProperty: "payload"
 });
 
 
 cloudinary.config({
   cloud_name: 'whereabout',
-  api_key: '482554732538581',
-  api_secret: 'qeL8V9TKF5O-xuYgCRINKmIhRaY'
+  api_key: config.CLOUDINARY_KEY,
+  api_secret: config.CLOUDINARY_SECRET
 });
 
 

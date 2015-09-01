@@ -7,8 +7,19 @@ var Place = mongoose.model('Place');
 var User = mongoose.model('User');
 var async = require('async');
 var jwt = require('express-jwt');
+
+var config;
+if(process.env.NODE_ENV === 'production') {
+  config = {};
+  config.JWT_SECRET = process.env.JWT_SECRET;
+}else {
+  config = require('../config.js');
+}
+
+
+
 var auth = jwt({
-  secret: "Secret_bananas",
+  secret: config.JWT_SECRET,
   userProperty: "payload"
 });
 
