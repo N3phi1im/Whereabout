@@ -1,7 +1,7 @@
 (function() {
   'use strict';
   angular.module('app')
-    .factory('UserFactory', UserFactory);
+  .factory('UserFactory', UserFactory);
 
   UserFactory.$inject = ['$http', '$q'];
 
@@ -14,6 +14,7 @@
       o.status.first_name = getFirstname();
       o.status.last_name = getLastname();
       o.status.image = getImage();
+      o.status.follow = getFollow();
     }
     o.setToken = setToken;
     o.getToken = getToken;
@@ -56,8 +57,8 @@
     function generate(id) {
       var q = $q.defer();
       $http.post('/api/Email/generate', {id:id}).success(function(res) {
-          q.resolve(res);
-        });
+        q.resolve(res);
+      });
       return q.promise;
     }
 
@@ -72,91 +73,96 @@
     }
 
     function update(user) {
-			var q = $q.defer();
-			$http.post('/api/Users/Update', {user: user}, {
-				headers: {
-					Authorization: "Bearer " + localStorage.getItem('token')
-				}
-			}).success(function(res) {
-				setToken(res.token);
-				o.status.isLoggedIn = true;
-				q.resolve();
-			});
-			return q.promise;
-		}
+     var q = $q.defer();
+     $http.post('/api/Users/Update', {user: user}, {
+      headers: {
+       Authorization: "Bearer " + localStorage.getItem('token')
+     }
+   }).success(function(res) {
+    setToken(res.token);
+    o.status.isLoggedIn = true;
+    q.resolve();
+  });
+   return q.promise;
+ }
 
-    function changePass(pass) {
-      var q = $q.defer();
-      $http.post('/api/Users/change', pass).success(function(res) {
-        q.resolve(res);
-      });
-      return q.promise;
-    }
+ function changePass(pass) {
+  var q = $q.defer();
+  $http.post('/api/Users/change', pass).success(function(res) {
+    q.resolve(res);
+  });
+  return q.promise;
+}
 
-    function register(user) {
-      var q = $q.defer();
-      $http.post('/api/Users/Register', user).success(function(res) {
-        setToken(res.token);
-        o.status.isLoggedIn = true;
-        q.resolve();
-      });
-      return q.promise;
-    }
+function register(user) {
+  var q = $q.defer();
+  $http.post('/api/Users/Register', user).success(function(res) {
+    setToken(res.token);
+    o.status.isLoggedIn = true;
+    q.resolve();
+  });
+  return q.promise;
+}
 
-    function login(user) {
-      var u = {
-        email: user.email.toLowerCase(),
-        password: user.password
-      };
-      var q = $q.defer();
-      $http.post('/api/Users/Login', u).success(function(res) {
-        setToken(res.token);
-        o.status.isLoggedIn = true;
-        q.resolve();
-      });
-      return q.promise;
-    }
+function login(user) {
+  var u = {
+    email: user.email.toLowerCase(),
+    password: user.password
+  };
+  var q = $q.defer();
+  $http.post('/api/Users/Login', u).success(function(res) {
+    setToken(res.token);
+    o.status.isLoggedIn = true;
+    q.resolve();
+  });
+  return q.promise;
+}
 
-    function logout() {
-      o.status.isLoggedIn = false;
-      removeToken();
-    }
+function logout() {
+  o.status.isLoggedIn = false;
+  removeToken();
+}
 
-    function setToken(token) {
-      localStorage.setItem('token', token);
-      o.status.id = getId();
-      o.status.first_name = getFirstname();
-      o.status.last_name = getLastname();
-      o.status.image = getImage();
-    }
+function setToken(token) {
+  localStorage.setItem('token', token);
+  o.status.id = getId();
+  o.status.first_name = getFirstname();
+  o.status.last_name = getLastname();
+  o.status.image = getImage();
+  o.status.follow = getFollow();
+  console.log(o.status.follow);
+}
 
-    function getToken() {
-      return localStorage.token;
-    }
+function getToken() {
+  return localStorage.token;
+}
 
-    function removeToken() {
-      localStorage.removeItem('token');
-      o.status.id = null;
-      o.status.first_name = null;
-      o.status.last_name = null;
-      o.status.image = null;
-    }
+function removeToken() {
+  localStorage.removeItem('token');
+  o.status.id = null;
+  o.status.first_name = null;
+  o.status.last_name = null;
+  o.status.image = null;
+}
 
-    function getFirstname() {
-      return JSON.parse(atob(getToken().split('.')[1])).first_name;
-    }
+function getFollow() {
+  return JSON.parse(atob(getToken().split('.')[1])).follow;
+}
+function getFirstname() {
+  return JSON.parse(atob(getToken().split('.')[1])).first_name;
+}
 
-    function getLastname() {
-      return JSON.parse(atob(getToken().split('.')[1])).last_name;
-    }
+function getLastname() {
+  return JSON.parse(atob(getToken().split('.')[1])).last_name;
+}
 
-    function getImage() {
-      return JSON.parse(atob(getToken().split('.')[1])).image;
-    }
+function getImage() {
+  return JSON.parse(atob(getToken().split('.')[1])).image;
+}
 
-    function getId() {
-      return JSON.parse(atob(getToken().split('.')[1])).id;
-    }
-  }
+function getId() {
+  return JSON.parse(atob(getToken().split('.')[1])).id;
+}
+}
 
 })();
