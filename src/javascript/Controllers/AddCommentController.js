@@ -9,6 +9,7 @@
     var vm = this;
     vm.photo = photo;
     vm.comments = photo.comments;
+    vm.status = UserFactory.status;
 
 //CREATE A COMMENT AND GET THAT COMMENT
 
@@ -16,6 +17,7 @@ vm.createComment = function(comment) {
   PhotoFactory.combinePhotoComment(comment).then(function(res){
    PhotoFactory.getComment().then(function(res){
     vm.comments.push(res.comments[res.comments.length - 1]);
+    vm.commentBody = "";
   });
  });
 };

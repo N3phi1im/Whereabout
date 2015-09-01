@@ -29,8 +29,9 @@ var transporter = nodemailer.createTransport({
 router.post('/check', function(req, res, next) {
   User.findOne({
     'email': req.body.email
-  }).exec(function(err, data) {
-    if (err) return next(err);
+  }, function(err, data) {
+    if (err) return res.status(400).send(err);
+    if (data === null) return res.status(400).send(err);
     res.send(data._id);
   });
 });
@@ -39,6 +40,9 @@ router.post('/generate', function(req, res, next) {
   User.findById({
     '_id': req.body.id
   }, function(err, user) {
+    if(user === undefined) {
+      return res.status(400).send(err);
+    }
     var guid = Guid.create();
     user.resetGuid = guid;
     user.save(function(err, data) {
@@ -58,4 +62,7 @@ router.post('/send', function(req, res, next) {
   res.end();
 });
 
+router.use(function(err, req, res, next) {
+  res.status(500).send(err);
+});
 module.exports = router;

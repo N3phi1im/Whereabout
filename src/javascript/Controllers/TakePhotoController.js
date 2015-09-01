@@ -61,6 +61,7 @@
           HomeFactory.setPhoto(data).then(function(res) {
             HomeFactory.combinePhotoPlace(res, vm.selectedLocation).then(function() {
               $state.go('Home');
+              toastr.success('Your photo was added!');
             });
           });
         });
@@ -97,12 +98,12 @@
             HomeFactory.setPhoto(data).then(function(res) {
               HomeFactory.combinePhotoPlace(res, vm.selectedLocation).then(function() {
                 $state.go('Home');
+                toastr.success('Your photo was added!');
               });
             });
           });
         })
-
-      .error(function(data) {});
+        .error(function(data) {});
     };
 
     function uploadProgress(evt) {

@@ -2,6 +2,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var router = express.Router();
 var cloudinary = require('cloudinary');
+var User = mongoose.model('User');
 var Photo = mongoose.model('Photo');
 var Place = mongoose.model('Place');
 var multer = require('multer');
@@ -75,6 +76,31 @@ router.post('/upload', upload.single('uploadedFile'), function(req, res) {
   });
 });
 
+
+router.post('/profilephoto', upload.single('uploadedFile'), function(req, res) {
+  cloudinary.uploader.upload(req.file.path, function(result) {
+    res.send(result);
+  });
+});
+
+
+router.param('profileId', function(req, res, next, id){
+  req.profileId = id;
+  next();
+});
+
+
+router.post('/updatephoto/:profileId', function(req, res, next) {
+  User.findById({
+    '_id': req.profileId
+  }, function(err, user) {
+    user.image = req.body.url;
+    user.save(function(err, data){
+      if (err) return next(err);
+      res.send(data);
+    });
+  });
+});
 
 router.post('/setPhoto', auth, function(req, res) {
   var photo = new Photo();
