@@ -13,7 +13,7 @@
               <div ng-repeat="a in vm.photo.comments | orderBy: '-dateCreated' | filter: {dateDeleted: null}" class="widthContain row" >
                      <div class="col-sm-12">
                             <img id="comment-img-circle" ng-src="{{a.user.image}}">
-                            <a class='well triangle-right right'> <p id="x" ng-click="vm.deleteComment(vm.comments, a._id)">X</p><br>"{{a.body}}"<br><br><span id="commentdate"> {{a.user.first_name}} {{a.user.last_name}} {{a.dateCreated | date: "short"}}
+                            <a class='well triangle-right right'> <p id="x" ng-click="vm.deleteComment(vm.comments, a._id)" ng-show="a.user._id === vm.status.id">X</p><br>"{{a.body}}"<br><br><span id="commentdate"> {{a.user.first_name}} {{a.user.last_name}} {{a.dateCreated | date: "short"}}
                             </span> </a>
                      </div>
               </div>

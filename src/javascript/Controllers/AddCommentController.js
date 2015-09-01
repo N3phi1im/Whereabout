@@ -9,6 +9,7 @@
     var vm = this;
     vm.photo = photo;
     vm.comments = photo.comments;
+    vm.status = UserFactory.status;
 
 //CREATE A COMMENT AND GET THAT COMMENT
 
