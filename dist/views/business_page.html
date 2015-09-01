@@ -48,7 +48,8 @@
         <img id="profile-img-circle" ng-src="{{b.user.image}}">
         <h5>{{b.user.first_name}}
           {{b.user.last_name}}</h5>
-          <p>{{b.title}}</p>
+          {{b.createdAt | date: 'short'}}
+          <p>"{{b.title}}"</p>
         </div>
 
         <div id="marginTopTwenty">
