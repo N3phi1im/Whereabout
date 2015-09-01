@@ -14,20 +14,13 @@
               <address class="pointer" style="font-size:1em">{{res.formatted_address}}</address>
             </div>
           </div>
-
-          <button class="btn btn-primary btn-sm" data-target="#upload" data-toggle="modal" id="{{res.id}}" ng-click="photoctrl.selectedLocation = res;" style="float: right;margin-right: 5px;">
-            <i class="btn btn-success" class="glyphicon glyphicon-camera goTocameraPhotoButton valign"></i>
-
+          <button class="btn btn-primary btn-sm cameraButton" data-target="#upload" data-toggle="modal" id="{{res.id}}" ng-click="photoctrl.selectedLocation = res;">
+            <i class="glyphicon glyphicon-camera goTocameraPhotoButton valign"></i>
           </button>
-
         </div>
       </ul>
     </div>
   </div>
-
-
-
-
   <div aria-labelledby="myModalLabel" class="modal fade" id="upload" role="dialog" tabindex="-1">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
