@@ -72,6 +72,13 @@ router.post('/upload', upload.single('uploadedFile'), function(req, res) {
 });
 
 
+router.post('/profilephoto', upload.single('uploadedFile'), function(req, res) {
+  cloudinary.uploader.upload(req.file.path, function(result) {
+    res.send(result);
+  });
+});
+
+
 router.post('/setPhoto', auth, function(req, res) {
   var photo = new Photo();
   photo.title = req.body.title;

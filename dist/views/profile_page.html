@@ -13,68 +13,160 @@
 							<span class="label label-danger"><i class="fa fa-eye"></i> 245 Comments</span>
 							<span class="label label-success"><i class="fa fa-cog"></i> 43 Posts</span>
 						</p>
-					</div><!--/col-->          
+					</div>         
 					<div class="col-xs-12 col-sm-4 text-center">
 						<img class="myImage" ng-src="{{nav.status.image}}" class="center-block img-circle img-responsive">
-						<button class="btn btn-info" ng-click="nav.openModal(nav.user)">Change your picture</button>
-					</div><!--/col-->
-				</div><!--/row-->
-			</div><!--/panel-body-->
-			<form class="form-horizontal top-border" role="form" ng-submit="nav.update()">
-				<div class="form-group padding-top-ten-px">
-					<label class="col-md-3 control-label">Firstname:</label>
-					<div class="col-md-3">
-						<input class="form-control" type="text" ng-model="nav.user.first_name">
-					</div>
-				</div>
-				<div class="form-group padding-top-ten-px">
-					<label class="col-md-3 control-label">Lastname:</label>
-					<div class="col-md-3">
-						<input class="form-control" type="text"  ng-model="nav.user.last_name">
-					</div>
-				</div>
-				<div class="form-group padding-top-ten-px">
-					<label class="col-md-3 control-label">Age:</label>
-					<div class="col-md-1">
-						<input class="form-control" type="text"  ng-model="nav.user.age">
-					</div>
-				</div>
-				<div class="form-group padding-top-ten-px">
-					<label class="col-md-3 control-label">Gender:</label>
-					<div class="col-md-2">
-						<select class="form-control" type="text" ng-model="nav.user.gender" id="select">
-							<option>Male</option>
-							<option>Female</option>
-						</select>
-					</div>
-				</div><div class="form-group padding-top-ten-px">
-				<label class="col-md-3 control-label">Email:</label>
-				<div class="col-md-3">
-					<input class="form-control" type="email" ng-model="nav.user.email">
-				</div>
-			</div>
+						<button class="btn btn-info" data-target="#upload" data-toggle="modal" id="{{res.id}}" ng-click="photoctrl.selectedLocation = res;">Change your picture</button>
 
-			<div class="form-group">
-				<label class="col-md-3 control-label">Password:</label>
-				<div class="col-md-3">
-					<input class="form-control" type="password" ng-model="nav.user.password">
+						<div ng-repeat="u in nav.user" aria-labelledby="myModalLabel" class="modal fade" id="upload" role="dialog" tabindex="-1">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<form class="login-inner-form" ng-submit="nav.uploadFile(nav.user.id)" novalidate value="Upload">
+										<div class="modal-header">
+											<button aria-label="Close" class="close" data-dismiss="modal" type="button">
+												<span aria-hidden="true">&times;</span>
+											</button>
+											<h6 class="modal-title" id="myModalLabel">
+												<div ui-sref="Business({res: res.id})">
+													<a class="nameTitle">
+														{{photoctrl.selectedLocation.name}}</a><br>
+														{{photoctrl.selectedLocation.formatted_address}}</div>
+													</h6>
+												</div>
+												<div class="modal-body">
+													<div class="hcenter">
+														<div class="form-well vcenter">
+
+
+															<div class="form-group loginForm">
+
+																<ng-camera ng-hide="photoctrl.media"
+																type="photo"
+																enabled="true"
+																width="320"
+																height="240"
+																countdown="0"
+																ng-model="photoctrl.media"
+																capture="callback(media)"
+																capture-message="Go!">
+															</ng-camera>
+															<div ng-show="photoctrl.media">
+																<img src="{{photoctrl.media}}" alt="">
+																<div id="cancelUploadButton">
+																	<button class="btn btn-success" ng-click="photoctrl.capture(photoctrl.media)">Upload</button>
+																	<button class="btn btn-danger" ng-click="photoctrl.media = false">Cancel</button>
+																</div>
+															</div>
+														</div>
+
+
+														<!-- Upload Photo Button -->
+														<div class="form-group loginForm">
+															<div id="uploadPhoto">
+																<span class="btn btn-default btn-file">
+																	Upload File
+																	<input id="fileToUpload" multiple ng-model-instant onchange="angular.element(this).scope().setFiles(this)" type="file"/>
+																</span>
+																<br>
+																<p>
+																	Or
+																</p>
+																<div class="dropbox" id="dropbox" ng-class="dropClass">
+																	<span>{{dropText}}</span>
+																</div>
+																<div ng-show="files.length">
+																	<div ng-repeat="file in files.slice(0)">
+																		<span>{{file.webkitRelativePath || file.name}}</span>
+																		(
+																		<span ng-switch="file.size > 1024*1024">
+																			<span ng-switch-when="true">{{file.size / 1024 / 1024 | number:2}}
+																				MB</span>
+																				<span ng-switch-default>{{file.size / 1024 | number:2}}
+																					kB</span>
+																				</span>)
+																			</div>
+																			<div ng-show="progressVisible">v>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<!-- Photo Title -->
+																<div class="form-group loginForm">
+																	<label>Photo Title</label>
+																	<input class="form-control inputBox input-lg" maxlength="50" ng-model="photoctrl.photo.title" placeholder="Photo title..." type="text">
+																</div>
+															</div>
+														</div>
+
+														<div class="modal-footer">
+															<button class="btn btn-primary moveButton" data-dismiss="modal" type="button">Close</button>
+															<button class="btn btn-success submitPhoto" ng-click="uploadFile(); photoctrl.title = photoctrl.photo.title" ng-disabled='!photoctrl.photo.title' type="submit" value="Upload" data-dismiss="modal">Submit</button>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+
+
+
+									</div><!--/col-->
+								</div><!--/row-->
+							</div><!--/panel-body-->
+							<form class="form-horizontal top-border" role="form" ng-submit="nav.update()">
+								<div class="form-group padding-top-ten-px">
+									<label class="col-md-3 control-label">Firstname:</label>
+									<div class="col-md-3">
+										<input class="form-control" type="text" ng-model="nav.user.first_name">
+									</div>
+								</div>
+								<div class="form-group padding-top-ten-px">
+									<label class="col-md-3 control-label">Lastname:</label>
+									<div class="col-md-3">
+										<input class="form-control" type="text"  ng-model="nav.user.last_name">
+									</div>
+								</div>
+								<div class="form-group padding-top-ten-px">
+									<label class="col-md-3 control-label">Age:</label>
+									<div class="col-md-1">
+										<input class="form-control" type="text"  ng-model="nav.user.age">
+									</div>
+								</div>
+								<div class="form-group padding-top-ten-px">
+									<label class="col-md-3 control-label">Gender:</label>
+									<div class="col-md-2">
+										<select class="form-control" type="text" ng-model="nav.user.gender" id="select">
+											<option>Male</option>
+											<option>Female</option>
+										</select>
+									</div>
+								</div><div class="form-group padding-top-ten-px">
+								<label class="col-md-3 control-label">Email:</label>
+								<div class="col-md-3">
+									<input class="form-control" type="email" ng-model="nav.user.email">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-md-3 control-label">Password:</label>
+								<div class="col-md-3">
+									<input class="form-control" type="password" ng-model="nav.user.password">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 control-label">Password again:</label>
+								<div class="col-md-3">
+									<input class="form-control" type="password" ng-model="nav.user.cpassword">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 control-label"></label>
+								<div class="col-md-8">
+									<button type="submit" class="btn btn-primary" >Save Changes</button>
+									<span></span>
+									<button type="reset" class="btn btn-default" >Cancel</button>
+								</div>
+							</div>
+						</form><!--/form-->        
+					</div><!--/panel-->   
 				</div>
 			</div>
-			<div class="form-group">
-				<label class="col-md-3 control-label">Password again:</label>
-				<div class="col-md-3">
-					<input class="form-control" type="password" ng-model="nav.user.cpassword">
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-md-3 control-label"></label>
-				<div class="col-md-8">
-					<button type="submit" class="btn btn-primary" >Save Changes</button>
-					<span></span>
-					<button type="reset" class="btn btn-default" >Cancel</button>
-				</div>
-			</div>
-		</form><!--/form-->        
-	</div><!--/panel-->   
-</div>
-</div>
