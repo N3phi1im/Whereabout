@@ -53,18 +53,17 @@
                       height="auto"
                       countdown="0"
                       ng-model="photoctrl.media"
-                      capture="callback(media)"
                       capture-message="Go!">
                     </ng-camera>
                     <div ng-show="photoctrl.media">
                       <img src="{{photoctrl.media}}" alt="">
                       <div id="cancelUploadButton">
-                        <button class="btn btn-success" ng-click="photoctrl.capture(photoctrl.media)">Upload</button>
                         <button class="btn btn-danger" ng-click="photoctrl.media = false">Cancel</button>
                       </div>
                     </div>
                   </div>
 
+                  <!-- capture="callback(media)" -->
 
                   <!-- Upload Photo Button -->
                   <div class="form-group loginForm">
@@ -110,7 +109,7 @@
 
                   <div class="modal-footer">
                     <button class="btn btn-primary moveButton" data-dismiss="modal" type="button">Close</button>
-                    <button class="btn btn-success submitPhoto" ng-click="uploadFile(); photoctrl.title = photoctrl.photo.title" ng-disabled='!photoctrl.photo.title' type="submit" value="Upload" data-dismiss="modal">Submit</button>
+                    <button class="btn btn-success submitPhoto" ng-click="photoctrl.capture(photoctrl.media); uploadFile(); photoctrl.title = photoctrl.photo.title" ng-disabled='!photoctrl.photo.title' type="submit" value="Upload" data-dismiss="modal">Submit</button>
                   </div>
                 </form>
               </div>

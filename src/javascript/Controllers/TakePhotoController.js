@@ -56,11 +56,18 @@
     //============== DRAG & DROP =============
 
     vm.capture = function(media) {
-        HomeFactory.postBase64(media).then(function(res){
-            console.log(res);
+        HomeFactory.postBase64(media).then(function(data){
+					HomeFactory.uploadLocation(vm.selectedLocation).then(function() {
+							data.title = vm.title;
+							HomeFactory.setPhoto(data).then(function(res){
+									HomeFactory.combinePhotoPlace(res, vm.selectedLocation).then(function(){
+										 $state.go('Home');
+								 });
+							});
+					});
         });
     };
-    
+
 
     scope.setFiles = function(element) {
      scope.$apply(function(scope) {

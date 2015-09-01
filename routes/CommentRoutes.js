@@ -4,7 +4,7 @@ var router = express.Router();
 var cloudinary = require('cloudinary');
 var Photo = mongoose.model('Photo');
 var async = require('async');
-var jwt = require('express-jwt'); 
+var jwt = require('express-jwt');
 var auth = jwt({
 	secret: "Secret_bananas",
 	userProperty: "payload"
@@ -57,7 +57,6 @@ router.post('/delete/:commentId', auth, function(req, res, next) {
 			$set: {'comments.$.dateDeleted': new Date()}},
 
 			function(err, photo){
-				console.log(res);
 				if (err) return next (err);
 				res.send();
 			});

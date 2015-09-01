@@ -3,9 +3,9 @@
   angular.module('app')
   .controller('NavbarController', NavbarController);
 
-  NavbarController.$inject = ['UserFactory', '$state', '$scope', '$anchorScroll', '$location'];
+  NavbarController.$inject = ['$modal', 'UserFactory', '$state', '$scope', '$anchorScroll', '$location'];
 
-  function NavbarController(UserFactory, $state, $scope, $anchorScroll, $location) {
+  function NavbarController($modal, UserFactory, $state, $scope, $anchorScroll, $location) {
     var vm = this;
     vm.user = {};
     vm.status = UserFactory.status;
@@ -15,8 +15,21 @@
     vm.resetPass = resetPass;
     vm.update = update;
     vm.goPage = goPage;
-    
-    
+
+    //OPEN profile img MODAL
+    vm.openModal = function (c) {
+      console.log(c);
+      var instance = $modal.open({
+        controller: 'changePhotoCtrl',
+        templateUrl: './../views/changephoto.html',
+        resolve: {
+          photo: function() {
+            return instance.result;
+          }
+        }
+      });
+    };
+
     function register() {
       var u = vm.user;
       if (!u.email || !u.password || !u.cpassword || (u.password !== u.cpassword)) {
