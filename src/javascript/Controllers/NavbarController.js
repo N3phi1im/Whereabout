@@ -31,6 +31,9 @@
       var u = vm.user;
       UserFactory.update(u).then(function() {
         $state.go('Home');
+       toastr.success('Your profile changes were successful!');
+
+
       });
     }
 
@@ -153,7 +156,7 @@
       $http.post('/api/Photos/profilephoto', fd, 
       { transformRequest: angular.identity, headers: {'Content-Type': undefined}}).success(function(data){
       UserFactory.updatePhoto(data).then(function(res){
-        console.log(res);
+       toastr.info('Please log out and log back in to see changes');
       });
         })
         .error(function(data){
