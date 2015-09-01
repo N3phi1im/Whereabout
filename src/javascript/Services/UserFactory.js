@@ -1,7 +1,7 @@
 (function() {
   'use strict';
   angular.module('app')
-    .factory('UserFactory', UserFactory);
+  .factory('UserFactory', UserFactory);
 
   UserFactory.$inject = ['$http', '$q'];
 
@@ -14,6 +14,7 @@
       o.status.first_name = getFirstname();
       o.status.last_name = getLastname();
       o.status.image = getImage();
+      o.status.follow = getFollow();
     }
     o.setToken = setToken;
     o.getToken = getToken;
@@ -26,18 +27,32 @@
     o.generate = generate;
     o.update = update;
     o.changePass = changePass;
+    o.updatePhoto = updatePhoto;
     return o;
+
+    function updatePhoto(data) {
+      var q = $q.defer();
+      var userID = o.status.id;
+      $http.post('/api/Photos/updatephoto/' + userID, data).success(function(res){
+        q.resolve(res);
+      });
+      return q.promise;
+    }
 
     function checkEmail(email) {
       var q = $q.defer();
       if (email === undefined) {
-        alert('Address field is empty!');
+        toastr.options.positionClass = "toast-top-center";
+        toastr.error('Incomplete field');
         q.resolve();
       } else {
         $http.post('/api/Email/check', {
           email: email
         }).success(function(res) {
           q.resolve(res);
+        }).error(function(res){
+        toastr.options.positionClass = "toast-top-center";
+        toastr.error('No account exists with that email address'); 
         });
       }
       return q.promise;
@@ -46,8 +61,8 @@
     function generate(id) {
       var q = $q.defer();
       $http.post('/api/Email/generate', {id:id}).success(function(res) {
-          q.resolve(res);
-        });
+        q.resolve(res);
+      });
       return q.promise;
     }
 
@@ -62,91 +77,100 @@
     }
 
     function update(user) {
-			var q = $q.defer();
-			$http.post('/api/Users/Update', {user: user}, {
-				headers: {
-					Authorization: "Bearer " + localStorage.getItem('token')
-				}
-			}).success(function(res) {
-				setToken(res.token);
-				o.status.isLoggedIn = true;
-				q.resolve();
-			});
-			return q.promise;
-		}
+     var q = $q.defer();
+     $http.post('/api/Users/Update', {user: user}, {
+      headers: {
+       Authorization: "Bearer " + localStorage.getItem('token')
+     }
+   }).success(function(res) {
+    setToken(res.token);
+    o.status.isLoggedIn = true;
+    q.resolve();
+  });
+   return q.promise;
+ }
 
-    function changePass(pass) {
-      var q = $q.defer();
-      $http.post('/api/Users/change', pass).success(function(res) {
-        q.resolve(res);
-      });
-      return q.promise;
-    }
+ function changePass(pass) {
+  var q = $q.defer();
+  $http.post('/api/Users/change', pass).success(function(res) {
+    q.resolve(res);
+  });
+  return q.promise;
+}
 
-    function register(user) {
-      var q = $q.defer();
-      $http.post('/api/Users/Register', user).success(function(res) {
-        setToken(res.token);
-        o.status.isLoggedIn = true;
-        q.resolve();
-      });
-      return q.promise;
-    }
+function register(user) {
+  var q = $q.defer();
+  $http.post('/api/Users/Register', user).success(function(res) {
+    setToken(res.token);
+    o.status.isLoggedIn = true;
+    q.resolve();
+  });
+  return q.promise;
+}
 
-    function login(user) {
-      var u = {
-        email: user.email.toLowerCase(),
-        password: user.password
-      };
-      var q = $q.defer();
-      $http.post('/api/Users/Login', u).success(function(res) {
-        setToken(res.token);
-        o.status.isLoggedIn = true;
-        q.resolve();
-      });
-      return q.promise;
-    }
+function login(user) {
+  var u = {
+    email: user.email.toLowerCase(),
+    password: user.password
+  };
+  var q = $q.defer();
+  $http.post('/api/Users/Login', u).success(function(res) {
+    setToken(res.token);
+    o.status.isLoggedIn = true;
+    q.resolve();
+  }).error(function(res){
+    toastr.options.positionClass = "toast-top-center";
+    toastr.error('Incorrect email or password');
 
-    function logout() {
-      o.status.isLoggedIn = false;
-      removeToken();
-    }
+  });
+  return q.promise;
+}
 
-    function setToken(token) {
-      localStorage.setItem('token', token);
-      o.status.id = getId();
-      o.status.first_name = getFirstname();
-      o.status.last_name = getLastname();
-      o.status.image = getImage();
-    }
+function logout() {
+  o.status.isLoggedIn = false;
+  removeToken();
+}
 
-    function getToken() {
-      return localStorage.token;
-    }
+function setToken(token) {
+  localStorage.setItem('token', token);
+  o.status.id = getId();
+  o.status.first_name = getFirstname();
+  o.status.last_name = getLastname();
+  o.status.image = getImage();
+  o.status.follow = getFollow();
+  console.log(o.status.follow);
+}
 
-    function removeToken() {
-      localStorage.removeItem('token');
-      o.status.id = null;
-      o.status.first_name = null;
-      o.status.last_name = null;
-      o.status.image = null;
-    }
+function getToken() {
+  return localStorage.token;
+}
 
-    function getFirstname() {
-      return JSON.parse(atob(getToken().split('.')[1])).first_name;
-    }
+function removeToken() {
+  localStorage.removeItem('token');
+  o.status.id = null;
+  o.status.first_name = null;
+  o.status.last_name = null;
+  o.status.image = null;
+}
 
-    function getLastname() {
-      return JSON.parse(atob(getToken().split('.')[1])).last_name;
-    }
+function getFollow() {
+  return JSON.parse(atob(getToken().split('.')[1])).follow;
+}
+function getFirstname() {
+  return JSON.parse(atob(getToken().split('.')[1])).first_name;
+}
 
-    function getImage() {
-      return JSON.parse(atob(getToken().split('.')[1])).image;
-    }
+function getLastname() {
+  return JSON.parse(atob(getToken().split('.')[1])).last_name;
+}
 
-    function getId() {
-      return JSON.parse(atob(getToken().split('.')[1])).id;
-    }
-  }
+function getImage() {
+  return JSON.parse(atob(getToken().split('.')[1])).image;
+}
+
+function getId() {
+  return JSON.parse(atob(getToken().split('.')[1])).id;
+}
+}
 
 })();

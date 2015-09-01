@@ -33,6 +33,7 @@ UserSchema.methods.generateJWT = function() {
 	var exp = new Date(today);
 	exp.setDate(today.getDate() + 1);
 	return jwt.sign({
+		follow: this.follow,
 		id: this._id,
 		first_name: this.first_name,
 		last_name: this.last_name,
