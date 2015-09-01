@@ -6,9 +6,9 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 //define the models
-require('./models/Users');
-require('./models/Places');
-require('./models/Photo');
+require('./models/users');
+require('./models/places');
+require('./models/photo');
 require('./config/passport');
 //connect to the server
 var mongoString;
