@@ -135,7 +135,6 @@
    };
 
    scope.uploadFile = function(user) {
-    console.log(user);
     var fd = new FormData();
     for (var i in scope.files) {
       fd.append("uploadedFile", scope.files[i]);
@@ -152,8 +151,10 @@
       // scope.progressVisible = true;
       // xhr.send(fd);
       $http.post('/api/Photos/profilephoto', fd, 
-        { transformRequest: angular.identity, headers: {'Content-Type': undefined}}).success(function(data){
-          
+      { transformRequest: angular.identity, headers: {'Content-Type': undefined}}).success(function(data){
+      UserFactory.updatePhoto(data).then(function(res){
+        console.log(res);
+      });
         })
         .error(function(data){
         });

@@ -26,7 +26,17 @@
     o.generate = generate;
     o.update = update;
     o.changePass = changePass;
+    o.updatePhoto = updatePhoto;
     return o;
+
+    function updatePhoto(data) {
+      var q = $q.defer();
+      var userID = o.status.id;
+      $http.post('/api/Photos/updatephoto/' + userID, data).success(function(res){
+        q.resolve(res);
+      });
+      return q.promise;
+    }
 
     function checkEmail(email) {
       var q = $q.defer();
