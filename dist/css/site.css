@@ -1663,3 +1663,6 @@ textarea {
 	margin-left: 10px;
 }
 
+#cancelUploadButton {
+	margin: 10px;
+}
