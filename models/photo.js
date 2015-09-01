@@ -16,7 +16,7 @@ var PhotoSchema = new mongoose.Schema({
     dateLiked: { type: Date, 'default': Date.now },
     user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
   }],
-  title: String,
+  title: { type: String, 'default': null },
   comments: [{
     body: String,
     user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
