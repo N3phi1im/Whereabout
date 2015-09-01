@@ -1,3 +1,4 @@
+
 <div ng-controller="BusinessController as vm">
   <div class="bodyWidth">
     <div style="overflow-y:hidden; background:url('/img/palmTrees.jpg') no-repeat; background-size:cover;" class="box_height">
@@ -20,7 +21,7 @@
    <div  class="row-12 pinTop">
     <div class="col-md-3 pinSide">
       <div class="pin">
-        
+
         <div id="marginTopTwenty">
           <img id="bussinessImage" src="css/office.jpg">
         </div>
@@ -40,9 +41,14 @@
   </div>
 </div>
 </div>
+
+
+
+
 </div>
 <div  class="row-12 pinTop">
   <div class="col-md-3 pinSide" ng-repeat="b in vm.business.photos | filter: {deletedAt: null} | orderBy: '-createdAt' track by b._id" ng-init="photo = b._id">
+
     <div class="pin">
       <div class="inner_wrap1">
         <img id="profile-img-circle" ng-src="{{b.user.image}}">
@@ -52,9 +58,7 @@
         </div>
 
         <div id="marginTopTwenty">
-          <a data-toggle="modal" data-target="#comments">
-            <img id="bussinessImage" ng-click="vm.openModal(photo)" ng-src="{{b.url}}">
-          </a>
+          <a data-toggle="modal" data-target="#comments"><img id="bussinessImage" ng-click="vm.goToComment(b)" ng-src="{{b.url}}"></a>
         </div>
 
 
@@ -82,8 +86,3 @@
 
 </div>
 </div>
-
-
-
-
-

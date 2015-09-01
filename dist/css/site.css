@@ -23,7 +23,7 @@ h5 {
 	color: #fff;
 	background-image: url('../img/city-cars-traffic-lights.jpg');
 	background-size: cover;
-	min-height: 85vh;
+	min-height: 100vh;
 	background-repeat: none;
 	padding: 10px;
 }
@@ -89,8 +89,24 @@ h1 {
 
 #square {
 	border-radius: 2px;
-	margin-top: 5px;
 	width: 185;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	float: center;
+	margin-top: 0px;
+}
+
+#closeSubmit {
+	margin-top: 35px;
+}
+
+#fullWidth {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	width: 100%;
+	margin-top: 35px;
 }
 
 label {
@@ -223,6 +239,16 @@ label {
 	cursor: pointer;
 }
 
+.likesButtonContainer {
+	width: 25%;
+	text-align: right;
+	margin-left: auto;
+	margin-right: auto;
+	float: right;
+	margin-top: -35px;
+	margin-right: 5px;
+}
+
 #mapContainer {
 	margin-top: 20px;
 }
@@ -243,6 +269,12 @@ label {
 #camera{
 	font-size: 30px;
 	margin-top: 0px;
+}
+
+#camera2 {
+	font-size: 30px;
+	margin-top: 0px;
+	float: right;
 }
 
 .photoButtonCenter {
@@ -1252,8 +1284,6 @@ input.cmn-toggle-yes-no:checked + label:after {
 	overflow-x: hidden;
 }
 #bussinessImage{
-
-	height: 230px;
 	overflow-x: hidden;
 	height: 100%;
 	width: auto;
@@ -1261,8 +1291,6 @@ input.cmn-toggle-yes-no:checked + label:after {
 }
 
 #homeImage{
-	height: 230px;
-	
 	height: 100%;
 	width: auto;
 	vertical-align: middle;
@@ -1312,16 +1340,23 @@ input.cmn-toggle-yes-no:checked + label:after {
 .resultText {
 	text-align: left;
 	vertical-align: middle;
-	width: 80%;
+	width: 75%;
 
 }
 .resultIcon{
-	height:50px; float: left; text-align: left; margin-right: 10px;
-
+	height:50px; 
+	float: left; 
+	text-align: left; 
+	margin-right: 10px;
+	margin-bottom: 32px;
 }
 
 .googleIcon {
 	width: 5vh;
+}
+
+address {
+	margin-bottom: 0px;
 }
 
 .wellWidth {
@@ -1336,7 +1371,7 @@ input.cmn-toggle-yes-no:checked + label:after {
 	position: absolute;
 	right: 10px;
 	display: inline-block;
-	top: 20px;
+	top: 28px;
 }
 
 .nameTitle {

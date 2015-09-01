@@ -3,40 +3,43 @@
     <img class="img-responsive" style="width: 400px" src="http://res.cloudinary.com/whereabout/image/upload/v1440877684/nothingtosee_pu9mzs.jpg">
   </div>
   <div class="row-12 pinTop">
-    <div class="col-md-4 pinSide" ng-repeat='place in hc.info.follow track by place._id' ng-init="followIndex = place._id">
+    <div class="col-md-3 pinSide" ng-repeat='place in hc.info.follow track by place._id' ng-init="followIndex = place._id">
       <div class="pin">
         <div class="image" ng-controller="CarouselCtrl as vm" rn-carousel>
           <carousel class="carouselPart" interval="myInterval" no-wrap="vm.noWrapSlides">
             <slide active="slide.active" ng-repeat="slide in place.photos | filter: {deletedAt: null} | orderBy: '-createdAt' track by slide._id" ng-init="photoIndex = slide._id">
-
               <div class="inner_wrap1">
                 <img id="profile-img-circle" ng-src='{{slide.user.image}}'>
-                <h5 class="floatLeft">{{slide.user.first_name}}
-                  {{slide.user.last_name}}</h5>
+                <h5 class="floatLeft">{{slide.user.first_name}} {{slide.user.last_name}}</h5>
+                <span class="likesButtonContainer">
+                  <span >{{slide.likes.length}} likes</span>
+                  <button ng-click="hc.addLike(slide); hc.plusOne(followIndex, photoIndex)" class='like-toggle basic' ng-class="{'like-active': slide.userLike}" ng-disabled="slide.userLike === true">
+                    <i class="fa fa-heart"></i></button>
+                  </span>
+
                   <p class="floatLeft">{{slide.title}}</p>
-                  <span style="width:33.33%;text-align: right; margin-left: auto; margin-right: auto;">
-                    <span >{{slide.likes.length}} likes</span>
-                    <button ng-click="hc.addLike(slide); hc.plusOne(followIndex, photoIndex)" class='like-toggle basic' ng-class="{'like-active': slide.userLike}" ng-disabled="slide.userLike === true">
-                      <i class="fa fa-heart"></i></button></span>
-                    </div>
-                    <img ng-src="{{slide.url}}" style="margin:auto;">
-                  </slide>
-                </carousel>
-              </div>
-              <div class="post-meta">
-                <ul style="display:flex; justify-content:space-between; padding:5px 10px; margin:0">
-                  <span class="overflowHidden" style="width:33.33%">
-                    <p class="overflowHidden" style="font-size:1.5em; padding:0.25em 0;"><a class="overflowHidden" ui-sref="Business({res: place.google.id})">{{place.google.name}}</a></p>
-                  </span>
-                  <span class="hcenter" style="width:33.33%;">
-                    <a ui-sref="TakePhoto({search: place.google.name})">
-                      <i class="fa fa-camera photoButtonCarousel" id="camera"></i>
-                    </a>
-                  </span>
-                </ul>
-              </div>
-            </div>
+                  
+                </div>
+                <div id="myphotos">
+                  <img id="homeImage" ng-src="{{slide.url}}" style="margin:auto;">
+                </div>
+              </slide>
+            </carousel>
+          </div>
+          <div class="post-meta">
+            <ul style="display:flex; justify-content:space-between; padding:5px 10px; margin:0">
+              <span class="overflowHidden" style="width:50%">
+                <p class="overflowHidden" style="font-size:1.5em; padding:0.25em 0;"><a class="overflowHidden" ui-sref="Business({res: place.google.id})">{{place.google.name}}</a></p>
+              </span>
+              <span class="hcenter" style="width:50%;">
+                <a ui-sref="TakePhoto({search: place.google.name})">
+                  <i class="fa fa-camera photoButtonCarousel" id="camera2"></i>
+                </a>
+              </span>
+            </ul>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 

@@ -1,7 +1,7 @@
 (function() {
   'use strict';
   angular.module('app')
-    .controller('NavbarController', NavbarController);
+  .controller('NavbarController', NavbarController);
 
   NavbarController.$inject = ['UserFactory', '$state', '$scope', '$anchorScroll', '$location'];
 
@@ -14,7 +14,8 @@
     vm.logout = logout;
     vm.resetPass = resetPass;
     vm.update = update;
-
+    vm.goPage = goPage;
+    
     function register() {
       var u = vm.user;
       if (!u.email || !u.password || !u.cpassword || (u.password !== u.cpassword)) {
@@ -58,7 +59,9 @@
         });
       });
     }
-
+    function goPage(search) {
+      $state.go('CategoryResults', {search: search});
+    }
 
     vm.scrollTo = function(id) {
       $location.hash(id);
