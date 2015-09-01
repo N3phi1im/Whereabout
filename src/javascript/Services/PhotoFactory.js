@@ -18,6 +18,7 @@
     o.deletePhoto = deletePhoto;
     return o;
 
+
     
     function populateHome() {
       var q = $q.defer();
