@@ -19,19 +19,20 @@
 			Map.search(search, $scope.searchDistance)
 			.then(
 				function(res) {
-       				 	for (var i = 0; i < res.length; i++) {
-       				 		Map.createMarker(res[i]);
-       				 		vm.results.length = 0;
-       				 		vm.results.push.apply(vm.results, res);
+					console.log(res);
+					for (var i = 0; i < res.length; i++) {
+						Map.createMarker(res[i]);
+						vm.results.length = 0;
+						vm.results.push.apply(vm.results, res);
 
-       				 	}
-       				 	if ($stateParams.search) $stateParams.search = null;
-       				 },
-        			function(status) {
-        				$scope.apiError = true;
-        				$scope.apiStatus = status;
-        			}
-        			);
+					}
+					if ($stateParams.search) $stateParams.search = null;
+				},
+				function(status) {
+					$scope.apiError = true;
+					$scope.apiStatus = status;
+				}
+				);
 
 		};
 		$scope.send = function() {
