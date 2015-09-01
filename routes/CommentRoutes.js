@@ -16,7 +16,7 @@ router.param('photoId', function(req, res, next, id){
 });
 router.post('/add/:photoId', auth, function(req, res, next){
 	Photo.update({
-		'id': req.body.id
+		'_id': req.body.id
 	},
 	{
 		$push: {
@@ -33,25 +33,16 @@ router.post('/add/:photoId', auth, function(req, res, next){
 );
 
 
-// router.get('/get/:photoId', auth, function(req, res, next){
-// 	Photo.findOne({
-// 		'id': req.body.id,
-// 	}).populate('comments')
-// 	.exec(function(err, data){
-// 		async.forEach(data.comments, function(comment, cb) {
-// 			console.log(cb);
-// 			comment.populate('user', 'first_name last_name image', function(err, result) {
-// 				cb();
-// 			});
-// 		},
-// 		function(err) {
-// 			console.log(result);
-// 			if (err) return next(err);
-// 			res.send(data);
-
-// 		});
-// 	});
-// });
+router.get('/get/:photoId', auth, function(req, res, next){
+	// console.log(req.body.id);
+	Photo.findOne({
+		'_id': req.body.id,
+	}).populate('comments.user')
+	.exec(function(err, data){
+		if (err) return next(err);
+		res.send(data);
+	});
+});
 
 
 
