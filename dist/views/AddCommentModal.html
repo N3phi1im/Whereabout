@@ -6,7 +6,7 @@
        <p>{{b.title}}</p>
 </div>
 <div id="addcommentmodal" class="modal-body hcenter">
-
+<p>@ {{vm.photo.createdAt | date: 'short'}}
        <img id="commentImage" class="well" ng-src="{{vm.photo.url}}">
 
        <div>
