@@ -3,7 +3,13 @@
 	margin-left: auto;
 	margin-right: auto;
 }
-
+#commentdate{
+	font-size: 10px;
+}
+#x{
+	float: right;
+	cursor: pointer;
+}
 #addcommentmodal{
 	height: 90vh;
 	overflow: scroll;
