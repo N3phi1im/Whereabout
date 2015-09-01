@@ -63,5 +63,5 @@ app.use('/api/Comment', commentRoutes);
 
 var server = app.listen(port, function() {
 	var host = server.address().address;
-	console.log('Example app listening at http://localhost:' + port);
+	console.log('Whereabout running on port ' + port);
 });

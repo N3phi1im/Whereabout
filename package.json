@@ -4,7 +4,8 @@
   "description": "An application built using the MEAN stack and gulp for the Fullstack JS course from Coder Camps.",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon -e js,html server.js & gulp watch"
+    "devstart": "nodemon -e js,html server.js & gulp watch",
+    "start": "node server.js"
   },
   "license": "MIT",
   "dependencies": {
@@ -23,8 +24,7 @@
     "nodemailer": "^1.4.0",
     "passport": "^0.2.2",
     "passport-facebook": "^2.0.0",
-    "passport-local": "^1.0.0",
-    "toastr": "^2.1.2"
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
