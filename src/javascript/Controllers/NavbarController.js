@@ -16,6 +16,7 @@
     vm.update = update;
     vm.goPage = goPage;
     
+    
     function register() {
       var u = vm.user;
       if (!u.email || !u.password || !u.cpassword || (u.password !== u.cpassword)) {
