@@ -53,7 +53,8 @@
       UserFactory.checkEmail(email).then(function(res1) {
         UserFactory.generate(res1).then(function(res2) {
           if (res2 === undefined) {
-            alert('No Account exists with that Email.');
+             toastr.options.positionClass = "toast-top-center";
+              toastr.error('No account exists with that email');
           } else {
             request.email = email;
             request.id = res1;

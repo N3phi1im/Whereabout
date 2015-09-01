@@ -42,13 +42,17 @@
     function checkEmail(email) {
       var q = $q.defer();
       if (email === undefined) {
-        alert('Address field is empty!');
+        toastr.options.positionClass = "toast-top-center";
+        toastr.error('Incomplete field');
         q.resolve();
       } else {
         $http.post('/api/Email/check', {
           email: email
         }).success(function(res) {
           q.resolve(res);
+        }).error(function(res){
+        toastr.options.positionClass = "toast-top-center";
+        toastr.error('No account exists with that email address'); 
         });
       }
       return q.promise;
@@ -114,6 +118,10 @@ function login(user) {
     setToken(res.token);
     o.status.isLoggedIn = true;
     q.resolve();
+  }).error(function(res){
+    toastr.options.positionClass = "toast-top-center";
+    toastr.error('Incorrect email or password');
+
   });
   return q.promise;
 }
