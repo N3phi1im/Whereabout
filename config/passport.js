@@ -4,8 +4,17 @@ var LocalStrategy = require('passport-local').Strategy;
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
-
-
+var config;
+if (process.env.NODE_ENV === 'production') {
+    // Do something
+    config = {};
+    config.FACEBOOK_CLIENT_SECRET = process.env.FACEBOOK_CLIENT_SECRET;
+    config.FACEBOOK_CLIENT_ID = process.env.FACEBOOK_CLIENT_ID;
+    config.FACEBOOK_CALLBACK = 'http://whereaboutapp.herokuapp.com'
+}
+else {
+  config = require('../config.js');
+}
 
 passport.use(new LocalStrategy({usernameField: 'email'}, function(email, password, done) {
     User.findOne({email: email}, function(err, user) {
@@ -16,10 +25,11 @@ passport.use(new LocalStrategy({usernameField: 'email'}, function(email, passwor
     });
 }));
 
+
 passport.use(new FacebookStrategy({
-  clientID: "859731630748483",
-  clientSecret: "8fa6616b6633811575b699b0e574974d",
-  callbackURL: "http://localhost:3000/api/Facebook/auth/facebook/callback",
+  clientID: config.FACEBOOK_CLIENT_ID,
+  clientSecret: config.FACEBOOK_CLIENT_SECRET,
+  callbackURL: config.FACEBOOK_CALLBACK + "/api/Facebook/auth/facebook/callback",
   passReqToCallback: true,
   profileFields: ['id', 'photos', 'name', 'emails', 'gender', 'birthday']
 },

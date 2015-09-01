@@ -11,7 +11,12 @@ require('./models/Places');
 require('./models/Photo');
 require('./config/passport');
 //connect to the server
-mongoose.connect('mongodb://localhost/final');
+var mongoString;
+if(process.env.NODE_ENV === 'production') {
+	mongoString = "mongodb://" + process.env.DB_USER + ':' + process.env.DB_PASS+"@"+process.env.DB_HOST + ':'+process.env.DB_PORT+'/whereabout';
+}
+else mongoString = 'mongodb://localhost/final';
+mongoose.connect(mongoString);
 
 var userRoutes = require('./routes/UserRoutes');
 var facebookRoutes = require('./routes/FacebookRoutes');

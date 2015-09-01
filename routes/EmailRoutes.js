@@ -6,13 +6,23 @@ var router = express.Router();
 var nodemailer = require('nodemailer');
 var Guid = require('guid');
 
-var emailRoot = "http://localhost:3000/";
+var config;
+if(process.env.NODE_ENV === 'production') {
+  config = {};
+  config.EMAIL_ROOT = process.env.EMAIL_ROOT;
+  config.EMAIL_USER = process.env.EMAIL_USER;
+  config.EMAIL_PASS = process.env.EMAIL_PASS;
+}else {
+  config = require('../config.js');
+}
+
+var emailRoot = config.EMAIL_ROOT;
 
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'whereabout.ad@gmail.com',
-    pass: 'ASDFasdf123'
+    user: config.EMAIL_USER,
+    pass: config.EMAIL_PASS
   }
 });
 
