@@ -1,0 +1,67 @@
+<!-- upload user profile img modal -->
+<div aria-labelledby="myModalLabel" class="modal fade" id="upload" role="dialog" tabindex="-1">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<form class="login-inner-form" ng-submit="uploadFile()" novalidate value="Upload">
+				<div class="modal-header">
+					<button aria-label="Close" class="close" data-dismiss="modal" type="button">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h2 class="modal-title" id="myModalLabel">
+						Your profile image
+					</h2>
+				</div>
+				<div class="modal-body">
+					<div class="hcenter">
+						<div class="form-well vcenter">
+							<!-- Take Photo Button -->
+							<div class="form-group loginForm">
+								<button class=" btn btn-primary cameraPhotoButton">
+									<i class="glyphicon glyphicon-camera"></i>
+								</button>
+							</div>
+							<!-- Upload Photo Button -->
+							<div class="form-group loginForm">
+								<div id="uploadPhoto">
+									<span class="btn btn-default btn-file">
+										Upload File
+										<input id="fileToUpload" multiple ng-model-instant onchange="angular.element(this).scope().setFiles(this)" type="file"/>
+									</span>
+									<br>
+									<p>
+										Or
+									</p>
+									<div class="dropbox" id="dropbox" ng-class="dropClass">
+										<span>{{dropText}}</span>
+									</div>
+									<div ng-show="files.length">
+										<div ng-repeat="file in files.slice(0)">
+											<span>{{file.webkitRelativePath || file.name}}</span>
+											(
+											<span ng-switch="file.size > 1024*1024">
+												<span ng-switch-when="true">{{file.size / 1024 / 1024 | number:2}}
+													MB</span>
+													<span ng-switch-default>{{file.size / 1024 | number:2}}
+														kB</span>
+													</span>)
+												</div>
+												<div ng-show="progressVisible">
+													<div class="percent">{{progress}}%</div>
+													<div class="progress-bar">
+														<div class="uploaded" ng-style="{'width': progress+'%'}"></div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-primary moveButton" data-dismiss="modal" type="button">Close</button>
+							<button class="btn btn-success submitPhoto" ng-click="uploadFile(); photoctrl.title = photoctrl.photo.title" ng-disabled='!photoctrl.photo.title' type="submit" value="Upload" data-dismiss="modal">Submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>

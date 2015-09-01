@@ -56,6 +56,10 @@
 			url: '/AddCommentModal',
 			templateUrl: '/views/AddCommentModal.html'
 		})
+		.state('ChangePhotoModal', {
+			url: '/ChangePhotoModal',
+			templateUrl: '/views/changephoto.html'
+		})
 		.state('DummyComment', {
 			url: '/DummyComment',
 			templateUrl: '/views/DummyCommentGet.html'
