@@ -4,6 +4,10 @@
 	margin-right: auto;
 }
 
+#addcommentmodal{
+	height: 90vh;
+	overflow: scroll;
+}
 .vcenter {
 	vertical-align: middle;
 }

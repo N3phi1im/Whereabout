@@ -33,7 +33,7 @@
 
     function addPhoto(photo) {
       var q = $q.defer();
-      obj.id = photo.id;
+      obj.id = photo;
       q.resolve();
       return q.promise;
     }
@@ -85,7 +85,6 @@
       }).success(function(res) {
         o.comments.length = 0;
         o.comments.push.apply(o.comments, res);
-        console.log(res);
         q.resolve(res);
       });
       return q.promise;
