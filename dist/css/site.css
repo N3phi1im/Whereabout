@@ -1670,3 +1670,15 @@ textarea {
 #cancelUploadButton {
 	margin: 10px;
 }
+
+video {
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
+
+.ng-camera-feed {
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}

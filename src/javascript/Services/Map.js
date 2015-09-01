@@ -17,12 +17,16 @@
 		this.placesResults = placesResults;
 
 		this.init = function(promise) {
+			
 			var q;
 			if(promise) q = $q.defer();
+
 			$window.navigator.geolocation.getCurrentPosition (
 				function (position) {
 					lat = position.coords.latitude;
 					lng = position.coords.longitude;
+
+					console.log(lat);
 
 					urHere = new google.maps.LatLng(lat, lng);
 
@@ -74,6 +78,7 @@
 			function callback(results, status) {
 				if (status == google.maps.places.PlacesServiceStatus.OK) {
 					d.resolve(results);
+					console.log(results);
 				}
 			}
 			var image2 = '/img/1440149027_Map-Marker-Marker-Inside-Azure.png';

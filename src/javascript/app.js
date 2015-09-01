@@ -70,7 +70,7 @@
 				}]
 			}});
 		uiGmapGoogleMapApiProvider.configure({
-			key: 'AIzaSyBxyZmdIb_nrx9U2AbXXNbAIGXH_ev3X78',
+			key: 'AIzaSyCkTua2q6pumJWT4WUY6WCVG4UAzg0hdBM',
 			v: '3.17',
 			libraries: 'places,weather,geometry,visualization'
 		});
