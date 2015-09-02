@@ -1,4 +1,12 @@
-angular.module('app').controller('CategoryCtrl', function ($scope) {
+(function() {
+  'use strict';
+angular.module('app')
+.controller('CategoryCtrl', CategoryCtrl);
+
+CategoryCtrl.$inject=['$scope'];
+
+
+function CategoryCtrl($scope) {
   $scope.oneAtATime = true;
 
   $scope.groups = [
@@ -23,4 +31,5 @@ angular.module('app').controller('CategoryCtrl', function ($scope) {
     isFirstOpen: true,
     isFirstDisabled: false
   };
-});
+}
+})();
