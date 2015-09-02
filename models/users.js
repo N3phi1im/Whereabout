@@ -39,7 +39,7 @@ UserSchema.methods.validatePassword = function(password) {
 UserSchema.methods.generateJWT = function() {
 	var today = new Date();
 	var exp = new Date(today);
-	exp.setDate(today.getDate() + 1);
+	exp.setDate(today.getDate() + 14);
 	return jwt.sign({
 		follow: this.follow,
 		id: this._id,

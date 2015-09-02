@@ -43,7 +43,7 @@ function(req, accessToken, refreshToken, profile, done){
         if(user){
             req.login(user,function(err){
                 if(err){
-                    return next(err);
+                    return done(err);
                 }
                 return done(null, user);
             });
@@ -61,7 +61,7 @@ function(req, accessToken, refreshToken, profile, done){
                 }
                 req.login(newUser,function(err){
                     if(err){
-                        return next(err);
+                        return done(err);
                     }
                     return done(null, newUser);
                 });

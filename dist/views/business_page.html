@@ -6,10 +6,8 @@
       <div class="switch hcenter" style="margin-top: 5px;margin-bottom: 10px;">
         <input class="cmn-toggle cmn-toggle-yes-no" id="cmn-toggle-7" ng-click="vm.followBusiness(vm.business._id, vm.isFollowing)" ng-model='vm.isFollowing' type="checkbox">
         <label data-off="FOLLOW" data-on="FOLLOWING" for="cmn-toggle-7"></label>
-        <button class="active pointer btn btn-default photoButtonCenter">
-          <a ui-sref="TakePhoto({search: vm.business.google.name})">
+        <button class="active pointer btn btn-default photoButtonCenter" ui-sref="TakePhoto({search: vm.business.google.name})">
             <i class="fa fa-camera" id="camera"></i>
-          </a>
         </button>
       </div>
     </div>
