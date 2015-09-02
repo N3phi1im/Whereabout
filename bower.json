@@ -21,6 +21,6 @@
     "angular-scroll": "~0.7.2",
     "angular-ui-router": "~0.2.15",
     "bootstrap-toggle": "~2.2.1",
-    "toastr": "~2.1.2"
+    "toastr": "~2.1.2",
   }
 }
