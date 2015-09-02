@@ -2,6 +2,14 @@ var mongoose = require('mongoose');
 var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
 
+var config;
+if(process.env.NODE_ENV === 'production') {
+  config = {};
+  config.JWT_SECRET = process.env.JWT_SECRET;
+}else {
+  config = require('../config.js');
+}
+
 var UserSchema = new mongoose.Schema({
 	first_name: { type: String, 'default': null },
 	last_name: { type: String, 'default': null },
@@ -39,7 +47,7 @@ UserSchema.methods.generateJWT = function() {
 		last_name: this.last_name,
 		image: this.image,
 		exp: parseInt(exp.getTime() / 1000)
-	}, 'Secret_bananas');
+	}, config.JWT_SECRET);
 };
 
 mongoose.model('User', UserSchema);
