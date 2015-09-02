@@ -4,7 +4,6 @@
   "description": "An application built using the MEAN stack and gulp for the Fullstack JS course from Coder Camps.",
   "main": "server.js",
   "scripts": {
-    "postinstall": "./node_modules/bower/bin/bower install",
     "devstart": "nodemon -e js,html server.js & gulp watch",
     "start": "node server.js"
   },
@@ -13,7 +12,6 @@
     "angular-scroll": "^0.7.2",
     "async": "^1.4.2",
     "body-parser": "^1.12.4",
-    "bower": "^1.5.2",
     "cloudinary": "^1.2.4",
     "crypto": "0.0.3",
     "ejs": "^2.3.3",
