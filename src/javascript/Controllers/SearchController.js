@@ -19,7 +19,6 @@
 			Map.search(search, $scope.searchDistance)
 			.then(
 				function(res) {
-					console.log(res);
 					for (var i = 0; i < res.length; i++) {
 						Map.createMarker(res[i]);
 						vm.results.length = 0;

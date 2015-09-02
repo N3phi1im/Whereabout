@@ -43,7 +43,6 @@ router.post('/add/:photoId', auth, function(req, res, next){
 
 
 router.get('/get/:photoId', auth, function(req, res, next){
-	// console.log(req.body.id);
 	Photo.findOne({
 		'_id': req.body.id,
 	}).populate('comments.user')

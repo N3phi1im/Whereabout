@@ -52,7 +52,7 @@
           q.resolve(res);
         }).error(function(res){
         toastr.options.positionClass = "toast-top-center";
-        toastr.error('No account exists with that email address'); 
+        toastr.error('No account exists with that email address');
         });
       }
       return q.promise;
@@ -138,7 +138,6 @@ function setToken(token) {
   o.status.last_name = getLastname();
   o.status.image = getImage();
   o.status.follow = getFollow();
-  console.log(o.status.follow);
 }
 
 function getToken() {

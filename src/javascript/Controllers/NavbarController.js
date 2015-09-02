@@ -121,10 +121,9 @@
 
     vm.capture = function(media) {
       HomeFactory.postBase64(media).then(function(res){
-        console.log(res);
       });
     };
-    
+
 
     scope.setFiles = function(element) {
      scope.$apply(function(scope) {
@@ -154,7 +153,7 @@
       // };
       // scope.progressVisible = true;
       // xhr.send(fd);
-      $http.post('/api/Photos/profilephoto', fd, 
+      $http.post('/api/Photos/profilephoto', fd,
       { transformRequest: angular.identity, headers: {'Content-Type': undefined}}).success(function(data){
       UserFactory.updatePhoto(data).then(function(res){
        toastr.info('Please log out and log back in to see changes');
