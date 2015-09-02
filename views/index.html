@@ -39,12 +39,12 @@
           <ul class="nav navbar-nav">
             <li class="active"><a ng-click="isCollapsed = !isCollapsed" ui-sref="Discovery" id="discover">Discover </a></li>
           </ul>
-          <form class="navbar-form navbar-left" role="search">
+          <form class="navbar-form navbar-left" role="search" style="margin-top: 12px;">
             <div class="form-group">
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search" ng-model="vm.searchContent">
                 <span class="input-group-btn">
-                  <button data-ng-click="isCollapsed = !isCollapsed" ui-sref="TakePhoto({search:vm.searchContent})" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                  <button data-ng-click="isCollapsed = !isCollapsed" ui-sref="TakePhoto({search:vm.searchContent})" class="btn btn-default" style="padding-top: 7px; padding-bottom: 7px;"><i class="glyphicon glyphicon-search"></i></button>
                 </span>
               </div>
             </div>
