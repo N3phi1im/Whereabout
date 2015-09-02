@@ -27,7 +27,7 @@ h5 {
 #about {
 	text-align: center;
 	color: #fff;
-	background-image: url('../img/city-cars-traffic-lights.jpg');
+	background-image: url('https://res.cloudinary.com/whereabout/image/upload/v1441219554/city-cars-traffic-lights_q3lloo.jpg');
 	background-size: cover;
 	min-height: 100vh;
 	background-repeat: none;
