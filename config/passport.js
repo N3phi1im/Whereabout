@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === 'production') {
     config = {};
     config.FACEBOOK_CLIENT_SECRET = process.env.FACEBOOK_CLIENT_SECRET;
     config.FACEBOOK_CLIENT_ID = process.env.FACEBOOK_CLIENT_ID;
-    config.FACEBOOK_CALLBACK = 'http://whereaboutapp.herokuapp.com'
+    config.FACEBOOK_CALLBACK = 'whereaboutapp.herokuapp.com'
 }
 else {
   config = require('../config.js');
