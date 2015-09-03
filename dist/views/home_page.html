@@ -10,7 +10,7 @@
             <slide active="slide.active" ng-repeat="slide in place.photos | filter: {deletedAt: null} | orderBy: '-createdAt' track by slide._id" ng-init="photoIndex = slide._id">
               <div class="inner_wrap1">
                 <img id="profile-img-circle" ng-src='{{slide.user.image}}'>
-                <h5 class="floatLeft">{{slide.user.first_name}} {{slide.user.last_name}}<br> {{slide.createdAt | date: 'short'}}</h5>
+                <h5 class="floatLeft">{{slide.user.first_name}} {{slide.user.last_name}}</h5><h6 class="floatLeft">{{slide.createdAt | date: 'short'}}</h6>
                 <span class="likesButtonContainer">
                   <span >{{slide.likes.length}} likes</span>
                   <button ng-click="hc.addLike(slide); hc.plusOne(followIndex, photoIndex)" class='like-toggle basic' ng-class="{'like-active': slide.userLike}" ng-disabled="slide.userLike === true">
