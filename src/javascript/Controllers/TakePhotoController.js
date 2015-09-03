@@ -96,10 +96,14 @@
           HomeFactory.uploadLocation(vm.selectedLocation).then(function() {
             data.title = vm.title;
             HomeFactory.setPhoto(data).then(function(res) {
-              HomeFactory.combinePhotoPlace(res, vm.selectedLocation).then(function() {
-                $state.go('Home');
-                toastr.success('Your photo was added!');
-              });
+              if (res.url) {
+                HomeFactory.combinePhotoPlace(res, vm.selectedLocation).then(function() {
+                  $state.go('Home');
+                  toastr.success('Your photo was added!');
+                });
+              } else {
+                return;
+              }
             });
           });
         })

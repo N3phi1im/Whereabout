@@ -24,7 +24,7 @@
   <div aria-labelledby="myModalLabel" class="modal fade" id="upload" role="dialog" tabindex="-1">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <form class="login-inner-form" ng-submit="uploadFile()" novalidate value="Upload">
+        <form class="login-inner-form" novalidate value="Upload">
           <div class="modal-header">
             <button aria-label="Close" class="close" data-dismiss="modal" type="button">
               <span aria-hidden="true">&times;</span>
@@ -70,7 +70,7 @@
                     <div id="uploadPhoto">
                       <span class="btn btn-default btn-file">
                         Upload File
-                        <input id="fileToUpload" multiple ng-model-instant onchange="angular.element(this).scope().setFiles(this)" type="file"/>
+                        <input id="fileToUpload" ng-model-instant onchange="angular.element(this).scope().setFiles(this)" type="file"/>
                       </span>
                       <br>
                       <p>
@@ -109,7 +109,7 @@
 
                   <div class="modal-footer">
                     <button class="btn btn-primary moveButton" data-dismiss="modal" type="button">Close</button>
-                    <button class="btn btn-success submitPhoto" ng-click="photoctrl.capture(photoctrl.media); uploadFile(); photoctrl.title = photoctrl.photo.title" ng-disabled='!photoctrl.photo.title' type="submit" value="Upload" data-dismiss="modal">Submit</button>
+                    <button class="btn btn-success submitPhoto" ng-click="photoctrl.capture(photoctrl.media); uploadFile(); photoctrl.title = photoctrl.photo.title" ng-disabled='!photoctrl.photo.title' data-dismiss="modal">Submit</button>
                   </div>
                 </form>
               </div>
